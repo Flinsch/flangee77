@@ -38,8 +38,8 @@ class Shell
 
 public:
     /**
-     * Grants Collection access to notify this shell when one of its children is
-     * about to be removed (see Collection::remove_child()), keeping that
+     * Grants `Collection` access to notify this shell when one of its children is
+     * about to be removed (see `Collection::remove_child()`), keeping that
      * (backend-facing) capability out of the public query API.
      */
     class Attorney
@@ -74,8 +74,8 @@ public:
     /**
      * Returns the keyboard this shell routes input from, e.g. so a focused face can
      * query modifier key state (Shift, Ctrl, ...) from within its own
-     * _on_key_down()/_on_mouse_drag() (see TextField's Shift-extended selection and
-     * drag-select) instead of every such interaction needing its own dedicated
+     * `_on_key_down()`/`_on_mouse_drag()` (see `TextField`'s Shift-extended selection
+     * and drag-select) instead of every such interaction needing its own dedicated
      * parameter.
      */
     const xl7::input::Keyboard* get_keyboard() const { return _keyboard; }
@@ -111,10 +111,10 @@ public:
 
     /**
      * Returns the mouse's current absolute (screen) position, as of the most
-     * recent update(). Meant for a face whose _requires_own_bounds_for_hover()
+     * recent `update()`. Meant for a face whose `_requires_own_bounds_for_hover()`
      * is true, to check whether the pointer is really within its own bounds,
      * not just somewhere over whatever it's proxying its hovered state from
-     * (see Face::get_effective_style()); most faces need get_hovered_face()
+     * (see `Face::get_effective_style()`); most faces need `get_hovered_face()`
      * instead, not this.
      */
     ml7::Vector2f get_mouse_position() const { return _mouse_position; }
@@ -154,20 +154,20 @@ public:
      * Moves focus to the nearest focusable face in the given direction
      * within the current top-level face (the focused face's own top-level
      * ancestor, or, with nothing currently focused, the topmost one), by
-     * on-screen geometry, unlike the linear Tab/Shift+Tab (see update()).
+     * on-screen geometry, unlike the linear Tab/Shift+Tab (see `update()`).
      * With `force` false, a focused face that consumes the arrow for itself
-     * (see Face::_consumes_arrow(), e.g. a text caret) keeps it; with
+     * (see `Face::_consumes_arrow()`, e.g. a text caret) keeps it; with
      * `force` true, only a "hard" consumer (e.g. a list with somewhere left
      * to go) still keeps it. Does nothing if the current top-level face has
-     * arrow navigation disabled (see Face::get_arrow_navigation_enabled()),
+     * arrow navigation disabled (see `Face::get_arrow_navigation_enabled()`),
      * or has no focusable face at all. Called automatically for a plain
-     * arrow key press (see update()); exposed publicly so other input (a
+     * arrow key press (see `update()`); exposed publicly so other input (a
      * gamepad's d-pad, say) can drive the same navigation manually.
      */
     void focus_toward(ArrowDirection dir, bool force = false);
 
     /**
-     * Returns whether click_focus() would currently trigger anything: a face is
+     * Returns whether `click_focus()` would currently trigger anything: a face is
      * focused, it's clickable, and still enabled/visible (either might have changed
      * since it gained focus, without it losing focus over that alone). Exposed so a
      * caller (a gamepad's "confirm" button, say) can tell in advance whether
@@ -177,8 +177,8 @@ public:
 
     /**
      * Triggers the currently focused face as if it had just been clicked, if
-     * can_click_focus(); returns whether it actually did. Called automatically for
-     * Enter/Space (see update()). Exposed publicly so other input (a gamepad's
+     * `can_click_focus()`; returns whether it actually did. Called automatically for
+     * Enter/Space (see `update()`). Exposed publicly so other input (a gamepad's
      * "confirm" button, say) can trigger the same activation manually.
      */
     bool click_focus();
@@ -186,25 +186,25 @@ public:
     /**
      * Moves focus directly to the specified face (or, with `nullptr`, clears it),
      * the same way a click or Tab/arrow navigation would: fires
-     * _on_focus_lost()/_on_focus_gained() as needed, a no-op if `face` is already
+     * `_on_focus_lost()`/`_on_focus_gained()` as needed, a no-op if `face` is already
      * the focused face. Exposed for a face that needs to hand focus back to itself
      * (or elsewhere) of its own accord, outside of any direct click on it (e.g.,
-     * faces::DropDown, once its popup list closes: actually clicking into the
-     * popup unavoidably focuses it first instead, see update()'s mouse handling).
+     * `faces::DropDown`, once its popup list closes: actually clicking into the
+     * popup unavoidably focuses it first instead, see `update()`'s mouse handling).
      */
     void set_focus(Face* face);
 
     /**
      * Registers `popup` (which must already be one of this shell's own top-level
-     * faces, see add_face()) as a popup owned by `owner`, bringing it to the front
-     * of the Z-order (see update()) and keeping it there every time this is called
+     * faces, see `add_face()`) as a popup owned by `owner`, bringing it to the front
+     * of the Z-order (see `update()`) and keeping it there every time this is called
      * again, e.g. on every re-open: without this, a popup that was only ever
-     * created once and hidden/shown again afterwards (Shell has no way to remove a
-     * top-level face at all, see close_popup()) would stay wherever it first ended
-     * up in the Z-order, even once some unrelated face has since been brought to
-     * front ahead of it.
+     * created once and hidden/shown again afterwards (this shell has no way to
+     * remove a top-level face at all, see `close_popup()`) would stay wherever it
+     * first ended up in the Z-order, even once some unrelated face has since been
+     * brought to front ahead of it.
      *
-     * Also makes this shell close the popup again on its own (see close_popup()),
+     * Also makes this shell close the popup again on its own (see `close_popup()`),
      * the moment focus moves to a face that is neither the popup nor `owner`, nor
      * a descendant of either (a plain click elsewhere, Tab/arrow navigation moving
      * on, ...): the common "clicking/tabbing away closes the open dropdown/menu/
@@ -216,9 +216,9 @@ public:
     void open_popup(Face* popup, Face* owner);
 
     /**
-     * Unregisters and hides (set_visible(false)) the given popup, if currently
-     * registered (see open_popup()); a no-op otherwise. Called automatically once
-     * focus moves away (see open_popup()), but just as well callable directly for
+     * Unregisters and hides (`set_visible(false)`) the given popup, if currently
+     * registered (see `open_popup()`); a no-op otherwise. Called automatically once
+     * focus moves away (see `open_popup()`), but just as well callable directly for
      * an explicit close (e.g., Escape, or the opening face toggling it closed again).
      */
     void close_popup(Face* popup);
@@ -239,10 +239,11 @@ private:
     // #############################################################################
 
     /**
-     * Called by Collection::remove_child() just before it actually erases/destroys
+     * Called by `Collection::remove_child()` just before it actually erases/destroys
      * the specified face (and, transitively, its own descendants, if any): clears
-     * whichever of _hovered_face/_pressed_face/_focused_face (if any) falls within
-     * that subtree, so none of them is ever left dangling once it's actually gone.
+     * whichever of `_hovered_face`/`_pressed_face`/`_focused_face` (if any) falls
+     * within that subtree, so none of them is ever left dangling once it's actually
+     * gone.
      */
     void _handle_face_removed(Face* removed);
 
@@ -254,38 +255,39 @@ private:
 
     /**
      * Moves focus to the next (or, if `backward`, previous) Tab stop (see
-     * Face::_is_focusable()/get_tab_order()), scoped to the currently focused
+     * `Face::_is_focusable()`/`get_tab_order()`), scoped to the currently focused
      * face's own top-level face's subtree, wrapping around at either end.
      * No-op if nothing is currently focused (there's no "current" top-level
-     * face to scope to otherwise, see update()'s Tab handling) or if that
+     * face to scope to otherwise, see `update()`'s Tab handling) or if that
      * subtree has no Tab stop at all.
      */
     void _focus_adjacent_tab_stop(bool backward);
 
     /**
-     * Changes _focused_face to the specified face (or `nullptr`), firing
-     * _on_focus_lost()/_on_focus_gained() as needed, and resetting the key-repeat
+     * Changes `_focused_face` to the specified face (or `nullptr`), firing
+     * `_on_focus_lost()`/`_on_focus_gained()` as needed, and resetting the key-repeat
      * timers so a key already held before the new face gained focus doesn't
      * immediately fire a spurious repeat on it. A no-op if `face` is already the
-     * focused face. The shared implementation behind update()'s mouse-press
-     * handling, focus_toward(), _focus_adjacent_tab_stop(), and set_focus().
+     * focused face. The shared implementation behind `update()`'s mouse-press
+     * handling, `focus_toward()`, `_focus_adjacent_tab_stop()`, and `set_focus()`.
      */
     void _change_focus(Face* face);
 
     /**
      * Moves the specified top-level face (which must actually currently be one) to
-     * the back of _top_level_faces, i.e., the front of the Z-order (see update(),
-     * hit-tested/drawn last, same as a newly added one would be): the usual "bring
-     * the clicked-into window to the front" behavior. A no-op if it's already there.
+     * the back of `_top_level_faces`, i.e., the front of the Z-order (see
+     * `update()`, hit-tested/drawn last, same as a newly added one would be): the
+     * usual "bring the clicked-into window to the front" behavior. A no-op if it's
+     * already there.
      *
-     * Also raises, the same way, any registered popup (see open_popup()) whose
+     * Also raises, the same way, any registered popup (see `open_popup()`) whose
      * owner lies within `top_level`'s own subtree: without this, raising a face
      * whose own popup happens to currently sit further back (e.g., some other face
      * having been raised in between) would leave that popup stranded visually
      * behind it, for however long it still takes to actually get closed (its
      * owner's own click handling, e.g., toggling it closed again, only takes
-     * effect once that press is released, see update()'s mouse handling): purely a
-     * Z-order correction, never closing or otherwise touching the popup itself.
+     * effect once that press is released, see `update()`'s mouse handling): purely
+     * a Z-order correction, never closing or otherwise touching the popup itself.
      * Raising the popup itself needs no such chase the other way around.
      */
     void _bring_to_front(Face* top_level);
@@ -300,7 +302,7 @@ private:
     /**
      * Returns the nearest focusable face in the given direction from the
      * currently focused face, among `top_level`'s own Tab stops (see
-     * Face::_collect_tab_stops()), by on-screen geometry, or `nullptr` if
+     * `Face::_collect_tab_stops()`), by on-screen geometry, or `nullptr` if
      * there's no usable candidate. Without a usable starting point (no
      * current focus, or an invisible one), picks the outermost candidate in
      * that direction instead (topmost for Up, bottommost for Down, and so
@@ -315,10 +317,10 @@ private:
     // Helper Types
     // #############################################################################
 
-    /** One registered popup/owner pair, see open_popup(). */
+    /** One registered popup/owner pair, see `open_popup()`. */
     struct PopupEntry
     {
-        /** Non-owning: one of _top_level_faces. */
+        /** Non-owning: one of `_top_level_faces`. */
         Face* popup;
         /** Non-owning: whatever face opened it. */
         Face* owner;
@@ -342,7 +344,7 @@ private:
 
     std::vector<std::unique_ptr<Face>> _top_level_faces;
 
-    /** Currently registered popups, see open_popup()/close_popup(). */
+    /** Currently registered popups, see `open_popup()`/`close_popup()`. */
     std::vector<PopupEntry> _popups;
 
     /** Non-owning: the topmost face currently under the mouse cursor. */
@@ -352,20 +354,20 @@ private:
     /** Non-owning: the face that is the focus target. */
     Face* _focused_face = nullptr;
 
-    /** The mouse's current absolute (screen) position, as of the most recent update(). */
+    /** The mouse's current absolute (screen) position, as of the most recent `update()`. */
     ml7::Vector2f _mouse_position;
 
-    /** The mouse position as of the previous update, for computing the delta for mouse drags. */
+    /** The mouse position as of the previous `update()`, for computing the delta for mouse drags. */
     ml7::Vector2f _previous_mouse_position;
-    /** Whether the previous mouse position has actually been set yet (guards first update's delta against a spurious jump). */
+    /** Whether the previous mouse position has actually been set yet (guards first `update()`'s delta against a spurious jump). */
     bool _has_previous_mouse_position = false;
 
     /**
-     * Per-key next scheduled auto-repeat fire time for _on_key_down (see update()),
-     * while that key is being held and repeated; unset otherwise. Indexed the same
-     * way as Keyboard's own per-key state. Cleared whenever _focused_face changes,
-     * so a key already held before a face gained focus never fires a spurious
-     * immediate repeat on it.
+     * Per-key next scheduled auto-repeat fire time for `_on_key_down()` (see
+     * `update()`), while that key is being held and repeated; unset otherwise.
+     * Indexed the same way as `Keyboard`'s own per-key state. Cleared whenever
+     * `_focused_face` changes, so a key already held before a face gained focus
+     * never fires a spurious immediate repeat on it.
      */
     std::array<std::optional<std::chrono::steady_clock::time_point>, static_cast<size_t>(xl7::input::Key::COUNT)> _key_repeat_next_fire_times;
 

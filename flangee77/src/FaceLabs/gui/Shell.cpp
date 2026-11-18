@@ -201,14 +201,14 @@ namespace fl7::gui {
      * Moves focus to the nearest focusable face in the given direction
      * within the current top-level face (the focused face's own top-level
      * ancestor, or, with nothing currently focused, the topmost one), by
-     * on-screen geometry, unlike the linear Tab/Shift+Tab (see update()).
+     * on-screen geometry, unlike the linear Tab/Shift+Tab (see `update()`).
      * With `force` false, a focused face that consumes the arrow for itself
-     * (see Face::_consumes_arrow(), e.g. a text caret) keeps it; with
+     * (see `Face::_consumes_arrow()`, e.g. a text caret) keeps it; with
      * `force` true, only a "hard" consumer (e.g. a list with somewhere left
      * to go) still keeps it. Does nothing if the current top-level face has
-     * arrow navigation disabled (see Face::get_arrow_navigation_enabled()),
+     * arrow navigation disabled (see `Face::get_arrow_navigation_enabled()`),
      * or has no focusable face at all. Called automatically for a plain
-     * arrow key press (see update()); exposed publicly so other input (a
+     * arrow key press (see `update()`); exposed publicly so other input (a
      * gamepad's d-pad, say) can drive the same navigation manually.
      */
     void Shell::focus_toward(ArrowDirection dir, bool force)
@@ -225,7 +225,7 @@ namespace fl7::gui {
     }
 
     /**
-     * Returns whether click_focus() would currently trigger anything: a face is
+     * Returns whether `click_focus()` would currently trigger anything: a face is
      * focused, it's clickable, and still enabled/visible (either might have changed
      * since it gained focus, without it losing focus over that alone). Exposed so a
      * caller (a gamepad's "confirm" button, say) can tell in advance whether
@@ -238,8 +238,8 @@ namespace fl7::gui {
 
     /**
      * Triggers the currently focused face as if it had just been clicked, if
-     * can_click_focus(); returns whether it actually did. Called automatically for
-     * Enter/Space (see update()). Exposed publicly so other input (a gamepad's
+     * `can_click_focus()`; returns whether it actually did. Called automatically for
+     * Enter/Space (see `update()`). Exposed publicly so other input (a gamepad's
      * "confirm" button, say) can trigger the same activation manually.
      */
     bool Shell::click_focus()
@@ -254,11 +254,11 @@ namespace fl7::gui {
     /**
      * Moves focus directly to the specified face (or, with `nullptr`, clears it),
      * the same way a click or Tab/arrow navigation would: fires
-     * _on_focus_lost()/_on_focus_gained() as needed, a no-op if `face` is already
+     * `_on_focus_lost()`/`_on_focus_gained()` as needed, a no-op if `face` is already
      * the focused face. Exposed for a face that needs to hand focus back to itself
      * (or elsewhere) of its own accord, outside of any direct click on it (e.g.,
-     * faces::DropDown, once its popup list closes: actually clicking into the
-     * popup unavoidably focuses it first instead, see update()'s mouse handling).
+     * `faces::DropDown`, once its popup list closes: actually clicking into the
+     * popup unavoidably focuses it first instead, see `update()`'s mouse handling).
      */
     void Shell::set_focus(Face* face)
     {
@@ -267,15 +267,15 @@ namespace fl7::gui {
 
     /**
      * Registers `popup` (which must already be one of this shell's own top-level
-     * faces, see add_face()) as a popup owned by `owner`, bringing it to the front
-     * of the Z-order (see update()) and keeping it there every time this is called
+     * faces, see `add_face()`) as a popup owned by `owner`, bringing it to the front
+     * of the Z-order (see `update()`) and keeping it there every time this is called
      * again, e.g. on every re-open: without this, a popup that was only ever
-     * created once and hidden/shown again afterwards (Shell has no way to remove a
-     * top-level face at all, see close_popup()) would stay wherever it first ended
-     * up in the Z-order, even once some unrelated face has since been brought to
-     * front ahead of it.
+     * created once and hidden/shown again afterwards (this shell has no way to
+     * remove a top-level face at all, see `close_popup()`) would stay wherever it
+     * first ended up in the Z-order, even once some unrelated face has since been
+     * brought to front ahead of it.
      *
-     * Also makes this shell close the popup again on its own (see close_popup()),
+     * Also makes this shell close the popup again on its own (see `close_popup()`),
      * the moment focus moves to a face that is neither the popup nor `owner`, nor
      * a descendant of either (a plain click elsewhere, Tab/arrow navigation moving
      * on, ...): the common "clicking/tabbing away closes the open dropdown/menu/
@@ -297,9 +297,9 @@ namespace fl7::gui {
     }
 
     /**
-     * Unregisters and hides (set_visible(false)) the given popup, if currently
-     * registered (see open_popup()); a no-op otherwise. Called automatically once
-     * focus moves away (see open_popup()), but just as well callable directly for
+     * Unregisters and hides (`set_visible(false)`) the given popup, if currently
+     * registered (see `open_popup()`); a no-op otherwise. Called automatically once
+     * focus moves away (see `open_popup()`), but just as well callable directly for
      * an explicit close (e.g., Escape, or the opening face toggling it closed again).
      */
     void Shell::close_popup(Face* popup)
@@ -329,10 +329,11 @@ namespace fl7::gui {
     // #############################################################################
 
     /**
-     * Called by Collection::remove_child() just before it actually erases/destroys
+     * Called by `Collection::remove_child()` just before it actually erases/destroys
      * the specified face (and, transitively, its own descendants, if any): clears
-     * whichever of _hovered_face/_pressed_face/_focused_face (if any) falls within
-     * that subtree, so none of them is ever left dangling once it's actually gone.
+     * whichever of `_hovered_face`/`_pressed_face`/`_focused_face` (if any) falls
+     * within that subtree, so none of them is ever left dangling once it's actually
+     * gone.
      */
     void Shell::_handle_face_removed(Face* removed)
     {
@@ -370,12 +371,12 @@ namespace fl7::gui {
     // #############################################################################
 
     /**
-     * Changes _focused_face to the specified face (or `nullptr`), firing
-     * _on_focus_lost()/_on_focus_gained() as needed, and resetting the key-repeat
+     * Changes `_focused_face` to the specified face (or `nullptr`), firing
+     * `_on_focus_lost()`/`_on_focus_gained()` as needed, and resetting the key-repeat
      * timers so a key already held before the new face gained focus doesn't
      * immediately fire a spurious repeat on it. A no-op if `face` is already the
-     * focused face. The shared implementation behind update()'s mouse-press
-     * handling, focus_toward(), _focus_adjacent_tab_stop(), and set_focus().
+     * focused face. The shared implementation behind `update()`'s mouse-press
+     * handling, `focus_toward()`, `_focus_adjacent_tab_stop()`, and `set_focus()`.
      */
     void Shell::_change_focus(Face* face)
     {
@@ -413,18 +414,19 @@ namespace fl7::gui {
 
     /**
      * Moves the specified top-level face (which must actually currently be one) to
-     * the back of _top_level_faces, i.e., the front of the Z-order (see update(),
-     * hit-tested/drawn last, same as a newly added one would be): the usual "bring
-     * the clicked-into window to the front" behavior. A no-op if it's already there.
+     * the back of `_top_level_faces`, i.e., the front of the Z-order (see
+     * `update()`, hit-tested/drawn last, same as a newly added one would be): the
+     * usual "bring the clicked-into window to the front" behavior. A no-op if it's
+     * already there.
      *
-     * Also raises, the same way, any registered popup (see open_popup()) whose
+     * Also raises, the same way, any registered popup (see `open_popup()`) whose
      * owner lies within `top_level`'s own subtree: without this, raising a face
      * whose own popup happens to currently sit further back (e.g., some other face
      * having been raised in between) would leave that popup stranded visually
      * behind it, for however long it still takes to actually get closed (its
      * owner's own click handling, e.g., toggling it closed again, only takes
-     * effect once that press is released, see update()'s mouse handling): purely a
-     * Z-order correction, never closing or otherwise touching the popup itself.
+     * effect once that press is released, see `update()`'s mouse handling): purely
+     * a Z-order correction, never closing or otherwise touching the popup itself.
      * Raising the popup itself needs no such chase the other way around.
      */
     void Shell::_bring_to_front(Face* top_level)
@@ -463,10 +465,10 @@ namespace fl7::gui {
 
     /**
      * Moves focus to the next (or, if `backward`, previous) Tab stop (see
-     * Face::_is_focusable()/get_tab_order()), scoped to the currently focused
+     * `Face::_is_focusable()`/`get_tab_order()`), scoped to the currently focused
      * face's own top-level face's subtree, wrapping around at either end.
      * No-op if nothing is currently focused (there's no "current" top-level
-     * face to scope to otherwise, see update()'s Tab handling) or if that
+     * face to scope to otherwise, see `update()`'s Tab handling) or if that
      * subtree has no Tab stop at all.
      */
     void Shell::_focus_adjacent_tab_stop(bool backward)
@@ -532,7 +534,7 @@ namespace fl7::gui {
     /**
      * Returns the nearest focusable face in the given direction from the
      * currently focused face, among `top_level`'s own Tab stops (see
-     * Face::_collect_tab_stops()), by on-screen geometry, or `nullptr` if
+     * `Face::_collect_tab_stops()`), by on-screen geometry, or `nullptr` if
      * there's no usable candidate. Without a usable starting point (no
      * current focus, or an invisible one), picks the outermost candidate in
      * that direction instead (topmost for Up, bottommost for Down, and so
