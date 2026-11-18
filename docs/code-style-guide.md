@@ -146,7 +146,10 @@ This can make the class interface easier to read and understand.
   Use whichever of those actually fits instead. Semicolons themselves should also be used only rarely.
 - Avoid code syntax in comment prose; describe things in plain words instead (e.g., &ldquo;the size of the face&rdquo; rather than &ldquo;the `get_size()` of the `Face`&rdquo;), so comments don't need to change whenever an unrelated implementation detail does.
   If a code reference is unavoidable, use backticks around it.
-- This extends to type names and keywords too: say &ldquo;a collection&rdquo; rather than &ldquo;a `Collection`&rdquo;, or &ldquo;null&rdquo;/&ldquo;NULL&rdquo; rather than &ldquo;`nullptr`&rdquo;, whenever the exact identifier isn't actually what the reader would need to go look up. Reserve backticks for an actual pointer to a specific symbol (e.g., &ldquo;see `_is_focusable()`&rdquo;). Backticks are great at marking a technical identifier as such, but they also break up a human reader's flow, so use them only where that's worth it.
+- This extends to type names and keywords too: say &ldquo;a collection&rdquo; rather than &ldquo;a `Collection`&rdquo;, or &ldquo;null&rdquo;/&ldquo;NULL&rdquo; rather than &ldquo;`nullptr`&rdquo;, whenever the exact identifier isn't actually what the reader would need to go look up.
+  The same goes for a parameter name that's already an ordinary word (style, key, state, overlay, ...): just use it as prose.
+  Reserve backticks for an actual pointer to a specific symbol (e.g., &ldquo;see `_is_focusable()`&rdquo;) or for telling apart two different senses of the same word appearing close together.
+  Backticks are great at marking a technical identifier as such, but they also break up a human reader's flow, so use them only where that's worth it.
 
 ### Doc Comments (`/** ... */`)
 
