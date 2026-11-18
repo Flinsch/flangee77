@@ -150,6 +150,8 @@ This can make the class interface easier to read and understand.
   The same goes for a parameter name that's already an ordinary word (style, key, state, overlay, ...): just use it as prose.
   Reserve backticks for an actual pointer to a specific symbol (e.g., &ldquo;see `_is_focusable()`&rdquo;) or for telling apart two different senses of the same word appearing close together.
   Backticks are great at marking a technical identifier as such, but they also break up a human reader's flow, so use them only where that's worth it.
+- This isn't about whether the word happens to look ordinary, though: naming a specific value to state a precise, checkable fact (e.g., contrasting two exact enum values, `Baseline` vs. `Middle`) still calls for backticks, even though both read as plain English words, because the exact spelling is the point, not just the general idea.
+  Lowercasing into plain prose (baseline, middle) is a fine alternative there instead, but don't leave a PascalCase name bare without either.
 
 ### Doc Comments (`/** ... */`)
 
