@@ -157,6 +157,10 @@ This can make the class interface easier to read and understand.
 
 - A function's doc comment is its **public contract**: describe *what* it does/returns and, briefly, *why*, at the level a caller needs, not *how* it's implemented.
   One or two sentences is usually enough. Reserve more for something genuinely non-obvious.
+- The same &ldquo;contract, not implementation&rdquo; framing also means that a `public` class's or function's doc comment shouldn't reference a `private`/`protected` member or nested type (a backing field, a helper method, an internal composition detail, ...) just to explain *how* something works:
+  a caller of the public interface has no reason to know about it, or look it up.
+  Point at another `public` member or type instead, or simply describe the behavior in prose without naming the underlying symbol.
+  Exceptions exist, but they should stay rare, not the default.
 - If describing the &ldquo;how&rdquo; would take several clauses (exact formulas, intermediate values, every related method &ldquo;for completeness&rdquo;), that detail doesn't belong in the doc comment at all (see inline comments below).
 - When a function has both a header declaration and an out-of-line `.cpp` definition, its doc comment is **one piece of text duplicated in two places**, not two independently maintained comments:
   - The wording must match **verbatim** between declaration and definition.
