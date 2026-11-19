@@ -35,16 +35,15 @@ namespace fl7::gui::render {
  * implementation (see `DefaultRenderer`) owns the tree traversal (order/strategy,
  * e.g., back-to-front for transparency, front-to-back with depth/stencil early-out
  * for opaque content, render-to-texture-per-face caching, ...) and the actual
- * drawing primitives (`_draw_rect_impl` etc.). How a *single* face is structured
- * (e.g., background before selection highlight before text before caret, always
- * back-to-front) is fixed and backend-agnostic, though: see `_draw_face`, which
- * delegates to per-aspect helpers (see `BackgroundHelper`/`ImageHelper`/
- * `SelectionHelper`/`TextHelper`/`CaretHelper`) that only ever talk to this
- * class's own public drawing methods, so that knowledge is written once here,
- * not per backend.
- * `Face`/`Shell` themselves know nothing about drawing at all, they only expose
- * read-only structure (position, size, visibility, children, etc.) for a renderer
- * to look at.
+ * drawing primitives. How a *single* face is structured (e.g., background before
+ * selection highlight before text before caret, always back-to-front) is fixed
+ * and backend-agnostic, though, delegating to per-aspect helpers (see
+ * `BackgroundHelper`, `ImageHelper`, `SelectionHelper`, `TextHelper`, or
+ * `CaretHelper`) that only ever talk to this class's own public drawing methods,
+ * so that knowledge is written once here, not per backend.
+ * `Face` and `Shell` themselves know nothing about drawing at all, they only
+ * expose read-only structure (position, size, visibility, children, etc.) for a
+ * renderer to look at.
  */
 class AbstractRenderer
 {
@@ -97,7 +96,7 @@ public:
 
     /**
      * Begins a new frame. If you only call `draw_rect`, `draw_text`, etc.
-     * occasionally, it is not necessary to call `begin_frame`/`end_frame` manually.
+     * occasionally, it is not necessary to call `begin_frame` or `end_frame` manually.
      * The renderer will manage this internally.
      *
      * For greater convenience, the RAII helper `ScopedFrame` should be used via
@@ -108,7 +107,7 @@ public:
     /**
      * Ends the current frame, submitting any queued/batched geometry.
      *
-     * For greater convenience, the RAII helper `ScopedFrame` should be used`via
+     * For greater convenience, the RAII helper `ScopedFrame` should be used via
      * `begin_scoped_frame`, which ultimately calls `end_frame` automatically.
      */
     void end_frame();

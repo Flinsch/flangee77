@@ -19,18 +19,19 @@ class AbstractRenderer;
 
 
 /**
- * Knows how to draw a HasBackground face's background: a 9-sliced NineSliceChrome
- * sprite if Style::chrome is set, else a flat Style::background_color rect, over
- * the face's full bounds. Talks only to AbstractRenderer's public
+ * Knows how to draw a `HasBackground` face's background: a 9-sliced `NineSliceChrome`
+ * sprite if `Style::chrome` is set, else a flat `Style::background_color` rect,
+ * over the face's full bounds. Talks only to `AbstractRenderer`'s public
  * (backend-agnostic) drawing primitives, so this is shared by every
- * AbstractRenderer implementation, not reimplemented per backend.
+ * `AbstractRenderer` implementation, not reimplemented per backend.
  */
 class BackgroundHelper
 {
 
 public:
     /**
-     * Draws face's background at absolute_position via renderer.
+     * Lets the given renderer draw the given face's background at the specified
+     * absolute position.
      */
     void draw(AbstractRenderer* renderer, const Face& face, ml7::Vector2f absolute_position);
 

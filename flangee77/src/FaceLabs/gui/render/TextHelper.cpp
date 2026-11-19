@@ -12,9 +12,9 @@ namespace fl7::gui::render {
 
 
     /**
-     * Draws text at absolute_position - text_scroll_offset, laid out against
-     * text_box_size, styled per face's effective style, via renderer (see
-     * HasText::get_text_scroll_offset()/get_text_box_size()).
+     * Lets the given renderer draw the specified text at `absolute_position - text_scroll_offset`,
+     * laid out against the specified text-box size, styled per the given face's
+     * effective style.
      */
     void TextHelper::draw(AbstractRenderer* renderer, cl7::u32string_view text, const Face& face, ml7::Vector2f absolute_position, ml7::Vector2f text_scroll_offset, ml7::Vector2f text_box_size)
     {

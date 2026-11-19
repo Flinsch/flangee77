@@ -18,14 +18,11 @@ namespace fl7::gui::render {
 
 
     /**
-     * Draws face's selection highlight (if any) against `text`, at
-     * absolute_position - text_scroll_offset, laid out against text_box_size,
-     * styled per face's effective style, via renderer (see
-     * HasText::get_text_scroll_offset()/get_text_box_size()). One rect per line
-     * the selection actually spans (see fonts::TextLayout::lay_out_box()),
-     * rather than assuming there's only ever the one, now that text may have
-     * grown to more than one line (see gui::faces::TextField's multiline
-     * support).
+     * Lets the given renderer draw the given face's selection highlight (if any)
+     * against the specified text, at `absolute_position - text_scroll_offset`, laid
+     * out against the specified text-box size, styled per the face's effective
+     * style. One rect per line the selection actually spans, rather than assuming
+     * there's only ever the one, now that text may have grown to more than one line.
      */
     void SelectionHelper::draw(AbstractRenderer* renderer, cl7::u32string_view text, const Face& face, ml7::Vector2f absolute_position, ml7::Vector2f text_scroll_offset, ml7::Vector2f text_box_size)
     {

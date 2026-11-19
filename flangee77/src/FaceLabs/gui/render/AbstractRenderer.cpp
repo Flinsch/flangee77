@@ -19,7 +19,7 @@ namespace fl7::gui::render {
 
     /**
      * Begins a new frame. If you only call `draw_rect`, `draw_text`, etc.
-     * occasionally, it is not necessary to call `begin_frame`/`end_frame` manually.
+     * occasionally, it is not necessary to call `begin_frame` or `end_frame` manually.
      * The renderer will manage this internally.
      *
      * For greater convenience, the RAII helper `ScopedFrame` should be used via
@@ -36,7 +36,7 @@ namespace fl7::gui::render {
     /**
      * Ends the current frame, submitting any queued/batched geometry.
      *
-     * For greater convenience, the RAII helper `ScopedFrame` should be used`via
+     * For greater convenience, the RAII helper `ScopedFrame` should be used via
      * `begin_scoped_frame`, which ultimately calls `end_frame` automatically.
      */
     void AbstractRenderer::end_frame()

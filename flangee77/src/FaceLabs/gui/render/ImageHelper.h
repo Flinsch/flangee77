@@ -28,8 +28,8 @@ class ImageHelper
 
 public:
     /**
-     * Draws image within the box at box_position/box_size, per scale_mode
-     * (see HasImage::get_image_scale_mode()).
+     * Lets the given renderer draw the given image within the specified box, per
+     * the specified scale mode.
      */
     void draw(AbstractRenderer* renderer, const Image& image, ml7::Vector2f box_position, ml7::Vector2f box_size, ImageScaleMode scale_mode);
 

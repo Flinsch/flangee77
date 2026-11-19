@@ -15,7 +15,8 @@ namespace fl7::gui::render {
 
 
     /**
-     * Draws face's background at absolute_position via renderer.
+     * Lets the given renderer draw the given face's background at the specified
+     * absolute position.
      */
     void BackgroundHelper::draw(AbstractRenderer* renderer, const Face& face, ml7::Vector2f absolute_position)
     {
