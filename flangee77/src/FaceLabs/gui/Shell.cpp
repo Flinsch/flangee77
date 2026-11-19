@@ -202,14 +202,14 @@ namespace fl7::gui {
      * within the current top-level face (the focused face's own top-level
      * ancestor, or, with nothing currently focused, the topmost one), by
      * on-screen geometry, unlike the linear Tab/Shift+Tab (see `update()`).
-     * With `force` false, a focused face that consumes the arrow for itself
-     * (see `Face::_consumes_arrow()`, e.g. a text caret) keeps it; with
-     * `force` true, only a "hard" consumer (e.g. a list with somewhere left
-     * to go) still keeps it. Does nothing if the current top-level face has
-     * arrow navigation disabled (see `Face::get_arrow_navigation_enabled()`),
-     * or has no focusable face at all. Called automatically for a plain
-     * arrow key press (see `update()`); exposed publicly so other input (a
-     * gamepad's d-pad, say) can drive the same navigation manually.
+     * With `force` false, a focused face that wants the arrow for itself
+     * (e.g., a text caret) keeps it; with `force` true, only a "hard" consumer
+     * (e.g., a list with somewhere left to go) still keeps it. Does nothing if
+     * the current top-level face has arrow navigation disabled (see
+     * `Face::get_arrow_navigation_enabled()`), or has no focusable face at
+     * all. Called automatically for a plain arrow key press (see `update()`);
+     * exposed publicly so other input (a gamepad's d-pad, say) can drive the
+     * same navigation manually.
      */
     void Shell::focus_toward(ArrowDirection dir, bool force)
     {
@@ -253,12 +253,12 @@ namespace fl7::gui {
 
     /**
      * Moves focus directly to the specified face (or, with `nullptr`, clears it),
-     * the same way a click or Tab/arrow navigation would: fires
-     * `_on_focus_lost()`/`_on_focus_gained()` as needed, a no-op if `face` is already
-     * the focused face. Exposed for a face that needs to hand focus back to itself
-     * (or elsewhere) of its own accord, outside of any direct click on it (e.g.,
-     * `faces::DropDown`, once its popup list closes: actually clicking into the
-     * popup unavoidably focuses it first instead, see `update()`'s mouse handling).
+     * the same way a click or Tab/arrow navigation would, notifying the old and
+     * new face as usual; a no-op if `face` is already the focused face. Exposed
+     * for a face that needs to hand focus back to itself (or elsewhere) of its
+     * own accord, outside of any direct click on it (e.g., `faces::DropDown`,
+     * once its popup list closes: actually clicking into the popup unavoidably
+     * focuses it first instead, see `update()`'s mouse handling).
      */
     void Shell::set_focus(Face* face)
     {
@@ -269,7 +269,7 @@ namespace fl7::gui {
      * Registers `popup` (which must already be one of this shell's own top-level
      * faces, see `add_face()`) as a popup owned by `owner`, bringing it to the front
      * of the Z-order (see `update()`) and keeping it there every time this is called
-     * again, e.g. on every re-open: without this, a popup that was only ever
+     * again, e.g., on every re-open: without this, a popup that was only ever
      * created once and hidden/shown again afterwards (this shell has no way to
      * remove a top-level face at all, see `close_popup()`) would stay wherever it
      * first ended up in the Z-order, even once some unrelated face has since been
@@ -397,7 +397,7 @@ namespace fl7::gui {
         // focused face falls within neither the subtree of, nor the subtree of
         // its own owner: a plain click/Tab/arrow move away from both closes it,
         // same as landing back within the popup's own content, or back on its
-        // owner (e.g. to toggle it closed again), does not.
+        // owner (e.g., to toggle it closed again), does not.
         const auto is_within = [](Face* ancestor, Face* f) {
             for (; f; f = f->get_parent())
                 if (f == ancestor)
@@ -500,7 +500,7 @@ namespace fl7::gui {
         const auto it = std::ranges::find(tab_stops, _focused_face);
 
         size_t next_index;
-        if (it == tab_stops.end()) // The focused face (e.g. set via a click) isn't itself a Tab stop.
+        if (it == tab_stops.end()) // The focused face (e.g., set via a click) isn't itself a Tab stop.
             next_index = backward ? tab_stops.size() - 1 : 0;
         else
         {

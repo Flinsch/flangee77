@@ -72,11 +72,10 @@ public:
     // #############################################################################
 
     /**
-     * Returns the keyboard this shell routes input from, e.g. so a focused face can
-     * query modifier key state (Shift, Ctrl, ...) from within its own
-     * `_on_key_down()`/`_on_mouse_drag()` (see `TextField`'s Shift-extended selection
-     * and drag-select) instead of every such interaction needing its own dedicated
-     * parameter.
+     * Returns the keyboard this shell routes input from, e.g., so a focused
+     * face can query modifier key state (Shift, Ctrl, ...) while handling its
+     * own input (see `TextField`'s Shift-extended selection and drag-select)
+     * instead of every such interaction needing its own dedicated parameter.
      */
     const xl7::input::Keyboard* get_keyboard() const { return _keyboard; }
 
@@ -111,11 +110,10 @@ public:
 
     /**
      * Returns the mouse's current absolute (screen) position, as of the most
-     * recent `update()`. Meant for a face whose `_requires_own_bounds_for_hover()`
-     * is true, to check whether the pointer is really within its own bounds,
-     * not just somewhere over whatever it's proxying its hovered state from
-     * (see `Face::get_effective_style()`); most faces need `get_hovered_face()`
-     * instead, not this.
+     * recent `update()`. Meant for a face that needs to check the pointer against
+     * its own bounds itself, rather than relying on whatever it's proxying its
+     * hovered state from (see `Face::get_effective_style()`); most faces need
+     * `get_hovered_face()` instead, not this.
      */
     ml7::Vector2f get_mouse_position() const { return _mouse_position; }
 
@@ -155,14 +153,14 @@ public:
      * within the current top-level face (the focused face's own top-level
      * ancestor, or, with nothing currently focused, the topmost one), by
      * on-screen geometry, unlike the linear Tab/Shift+Tab (see `update()`).
-     * With `force` false, a focused face that consumes the arrow for itself
-     * (see `Face::_consumes_arrow()`, e.g. a text caret) keeps it; with
-     * `force` true, only a "hard" consumer (e.g. a list with somewhere left
-     * to go) still keeps it. Does nothing if the current top-level face has
-     * arrow navigation disabled (see `Face::get_arrow_navigation_enabled()`),
-     * or has no focusable face at all. Called automatically for a plain
-     * arrow key press (see `update()`); exposed publicly so other input (a
-     * gamepad's d-pad, say) can drive the same navigation manually.
+     * With `force` false, a focused face that wants the arrow for itself
+     * (e.g., a text caret) keeps it; with `force` true, only a "hard" consumer
+     * (e.g., a list with somewhere left to go) still keeps it. Does nothing if
+     * the current top-level face has arrow navigation disabled (see
+     * `Face::get_arrow_navigation_enabled()`), or has no focusable face at
+     * all. Called automatically for a plain arrow key press (see `update()`);
+     * exposed publicly so other input (a gamepad's d-pad, say) can drive the
+     * same navigation manually.
      */
     void focus_toward(ArrowDirection dir, bool force = false);
 
@@ -185,12 +183,12 @@ public:
 
     /**
      * Moves focus directly to the specified face (or, with `nullptr`, clears it),
-     * the same way a click or Tab/arrow navigation would: fires
-     * `_on_focus_lost()`/`_on_focus_gained()` as needed, a no-op if `face` is already
-     * the focused face. Exposed for a face that needs to hand focus back to itself
-     * (or elsewhere) of its own accord, outside of any direct click on it (e.g.,
-     * `faces::DropDown`, once its popup list closes: actually clicking into the
-     * popup unavoidably focuses it first instead, see `update()`'s mouse handling).
+     * the same way a click or Tab/arrow navigation would, notifying the old and
+     * new face as usual; a no-op if `face` is already the focused face. Exposed
+     * for a face that needs to hand focus back to itself (or elsewhere) of its
+     * own accord, outside of any direct click on it (e.g., `faces::DropDown`,
+     * once its popup list closes: actually clicking into the popup unavoidably
+     * focuses it first instead, see `update()`'s mouse handling).
      */
     void set_focus(Face* face);
 
@@ -198,7 +196,7 @@ public:
      * Registers `popup` (which must already be one of this shell's own top-level
      * faces, see `add_face()`) as a popup owned by `owner`, bringing it to the front
      * of the Z-order (see `update()`) and keeping it there every time this is called
-     * again, e.g. on every re-open: without this, a popup that was only ever
+     * again, e.g., on every re-open: without this, a popup that was only ever
      * created once and hidden/shown again afterwards (this shell has no way to
      * remove a top-level face at all, see `close_popup()`) would stay wherever it
      * first ended up in the Z-order, even once some unrelated face has since been
