@@ -52,16 +52,16 @@ namespace fl7::gui::layout {
 
     /**
      * Fits a child's own preferred size within its cell, along a single axis,
-     * per anchor's `near_flag` and `far_flag`; see this class's own doc comment and
-     * this method's own declaration (BoxLayout.h) for the exact rules.
+     * never below `minimum`, per anchor's `near_flag` and `far_flag`.
      */
-    void BoxLayout::_fit_in_cell(Anchor anchor, Anchor near_flag, Anchor far_flag, float cell_position, float cell_size, float preferred, float& out_position, float& out_size)
+    void BoxLayout::_fit_in_cell(Anchor anchor, Anchor near_flag, Anchor far_flag, float cell_position, float cell_size, float preferred, float minimum, float& out_position, float& out_size)
     {
         if (cell_size <= preferred)
         {
-            // No slack to work with either way: just fills the cell.
+            // No slack to work with either way: shrinks to the cell, but never
+            // below the child's own minimum size, even if that overflows it.
             out_position = cell_position;
-            out_size = cell_size;
+            out_size = std::max(cell_size, minimum);
             return;
         }
 
@@ -158,8 +158,8 @@ namespace fl7::gui::layout {
 
             // Fits the child's own preferred size within its cell, per its own
             // anchor, independently per axis; see this class's own doc comment.
-            _fit_in_cell(anchor, main_near_flag, main_far_flag, offset, cell_main_size, preferred_size[axis], position[axis], size[axis]);
-            _fit_in_cell(anchor, cross_near_flag, cross_far_flag, padding_cross_near, cross_available, preferred_size[cross_axis], position[cross_axis], size[cross_axis]);
+            _fit_in_cell(anchor, main_near_flag, main_far_flag, offset, cell_main_size, preferred_size[axis], minimum_size[axis], position[axis], size[axis]);
+            _fit_in_cell(anchor, cross_near_flag, cross_far_flag, padding_cross_near, cross_available, preferred_size[cross_axis], minimum_size[cross_axis], position[cross_axis], size[cross_axis]);
 
             if (position != child.get_position())
                 child.set_position(position);

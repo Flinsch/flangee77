@@ -44,6 +44,11 @@ namespace fl7::gui::layout {
  * this layout's own size, therefore needs 0 explicitly set on every one of them
  * (see `set_stretch()`), not just left at the default.
  *
+ * None of this ever shrinks a child past its own effective minimum size, though:
+ * once a cell (on either axis) becomes smaller than that, the child keeps its
+ * minimum size instead and simply overflows the cell, and possibly this layout's
+ * own bounds, rather than shrinking further or distorting its content.
+ *
  * Each child's own `get_effective_preferred_size()` is re-queried live on every
  * `perform()` call, not cached here: it can genuinely change over time (e.g.,
  * `faces::Label`'s, after its text changes). Any face type whose own calculation is
@@ -183,10 +188,9 @@ private:
 
     /**
      * Fits a child's own preferred size within its cell, along a single axis,
-     * per anchor's `near_flag` and `far_flag`; see this class's own doc comment and
-     * this method's own declaration (BoxLayout.h) for the exact rules.
+     * never below `minimum`, per anchor's `near_flag` and `far_flag`.
      */
-    static void _fit_in_cell(Anchor anchor, Anchor near_flag, Anchor far_flag, float cell_position, float cell_size, float preferred, float& out_position, float& out_size);
+    static void _fit_in_cell(Anchor anchor, Anchor near_flag, Anchor far_flag, float cell_position, float cell_size, float preferred, float minimum, float& out_position, float& out_size);
 
 
 
