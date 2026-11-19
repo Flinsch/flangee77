@@ -9,10 +9,11 @@ namespace fl7::gui {
 
 /**
  * Interface: opts a face into having a persistent, semantic "checked" value
- * (CheckBox, RadioButton, ...), as opposed to the transient, Shell-tracked
- * interaction states (hovered/pressed/focused, see Theme::State) that apply
- * to any face uniformly. Queried by Face::get_effective_style() to resolve
- * the "checked" theme overlay (see ThemeLevel), applied before those.
+ * (`faces::CheckBox`, `faces::RadioButton`, ...), as opposed to the transient,
+ * `Shell`-tracked interaction states (hovered/pressed/focused, see
+ * `Theme::State`) that apply to any face uniformly. Queried by
+ * `Face::get_effective_style()` to resolve the "checked" theme overlay (see
+ * `ThemeLevel`), applied before those.
  */
 class HasCheckedState
 {

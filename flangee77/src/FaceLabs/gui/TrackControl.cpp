@@ -13,8 +13,8 @@ namespace fl7::gui {
     // #############################################################################
 
     /**
-     * Sets this track's value, clamped to [get_min(), get_max()], unless already at
-     * that (clamped) value. Emits the "changed" signal (with the new value) when
+     * Sets this track's value, clamped to [`get_min()`, `get_max()`], unless already
+     * at that (clamped) value. Emits the "changed" signal (with the new value) when
      * actually changed.
      */
     void TrackControl::set_value(float value)
@@ -57,9 +57,9 @@ namespace fl7::gui {
     /**
      * Constructs a track with the given orientation, initial (clamped) value, and
      * min/max. A subclass must still add its own handle child (via the inherited
-     * add_child(), same as any other Compound) and expose it via _get_handle()
-     * before this face is actually sized/used. See Slider's constructor for the
-     * pattern, for example.
+     * `add_child()`, same as any other `Compound`) and expose it via `_get_handle()`
+     * before this face is actually sized/used. See `faces::Slider`'s constructor for
+     * the pattern, for example.
      */
     TrackControl::TrackControl(Orientation orientation, float value, float min, float max)
         : _orientation(orientation)
@@ -79,9 +79,9 @@ namespace fl7::gui {
     /**
      * Returns the handle's size along the main axis (the track's own length).
      * Default: the track's own cross-axis size, i.e., a fixed square handle
-     * (Slider's look). Override for a handle whose length is itself meaningful,
-     * e.g., ScrollBar: proportional to how much of some larger content is currently
-     * visible.
+     * (`faces::Slider`'s look). Override for a handle whose length is itself
+     * meaningful, e.g., `faces::ScrollBar`: proportional to how much of some larger
+     * content is currently visible.
      */
     float TrackControl::_get_handle_main_size() const
     {
@@ -96,8 +96,8 @@ namespace fl7::gui {
 
     /**
      * Resizes/repositions the handle for the current size/value. Also needed
-     * whenever a subclass's own _get_handle_main_size() input changes (see
-     * ScrollBar::set_visible_fraction()).
+     * whenever a subclass's own `_get_handle_main_size()` input changes (see
+     * `faces::ScrollBar::set_visible_fraction()`).
      */
     void TrackControl::_update_handle()
     {
@@ -128,7 +128,7 @@ namespace fl7::gui {
     /**
      * Jumps the handle to the clicked position, unless the click actually landed
      * on the handle itself, in which case this just grabs it in place (see
-     * _dragging_handle) instead, the same way grabbing any other GUI's scrollbar
+     * `_dragging_handle`) instead, the same way grabbing any other GUI's scrollbar
      * thumb/slider handle doesn't itself move it.
      */
     void TrackControl::_on_mouse_down(xl7::input::MouseButton button, ml7::Vector2f local_position)
@@ -146,7 +146,7 @@ namespace fl7::gui {
 
     /**
      * Drags the handle to wherever the cursor now is, or, if the handle itself was
-     * what got grabbed (see _dragging_handle), moves it by the cursor's own delta
+     * what got grabbed (see `_dragging_handle`), moves it by the cursor's own delta
      * instead, preserving wherever it was grabbed.
      */
     void TrackControl::_on_mouse_drag(ml7::Vector2f delta, ml7::Vector2f local_position)
@@ -163,7 +163,7 @@ namespace fl7::gui {
     }
 
     /**
-     * Left/Down/Right/Up nudge the value by get_step(); Home/End jump to the min/max.
+     * Left/Down/Right/Up nudge the value by `get_step()`; Home/End jump to the min/max.
      */
     void TrackControl::_on_key_down(xl7::input::Key key)
     {
@@ -195,7 +195,7 @@ namespace fl7::gui {
     }
 
     /**
-     * Nudges the value by get_step() per wheel notch, while hovered or bubbled up to. Always consumes.
+     * Nudges the value by `get_step()` per wheel notch, while hovered or bubbled up to. Always consumes.
      */
     bool TrackControl::_on_mouse_wheel(int delta)
     {

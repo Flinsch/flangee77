@@ -13,13 +13,14 @@ namespace fl7::gui {
 
 /**
  * Shared base for a track with a draggable handle representing a value in
- * [get_min(), get_max()] (see Slider, ScrollBar): owns the value/step model, the
- * click-to-jump/drag-to-follow/keyboard-nudge interaction, and the handle's
- * size/position along the track, all generically over Orientation. This face itself
- * is the track (see HasBackground): a concrete subclass supplies its own themed
- * "handle" child (see _get_handle()) and, if its handle isn't a fixed square (the
- * default, see _get_handle_main_size()), how big that handle actually is (e.g.,
- * ScrollBar: proportional to how much of some larger content is currently visible).
+ * [`get_min()`, `get_max()`] (see `faces::Slider`, `faces::ScrollBar`): owns the
+ * value/step model, the click-to-jump/drag-to-follow/keyboard-nudge interaction,
+ * and the handle's size/position along the track, all generically over
+ * `Orientation`. This face itself is the track (see `HasBackground`): a concrete
+ * subclass supplies its own themed "handle" child (see `_get_handle()`) and, if
+ * its handle isn't a fixed square (the default, see `_get_handle_main_size()`),
+ * how big that handle actually is (e.g., `faces::ScrollBar`: proportional to how
+ * much of some larger content is currently visible).
  */
 class TrackControl
     : public Compound
@@ -55,8 +56,8 @@ public:
     float get_value() const { return _value; }
 
     /**
-     * Sets this track's value, clamped to [get_min(), get_max()], unless already at
-     * that (clamped) value. Emits the "changed" signal (with the new value) when
+     * Sets this track's value, clamped to [`get_min()`, `get_max()`], unless already
+     * at that (clamped) value. Emits the "changed" signal (with the new value) when
      * actually changed.
      */
     void set_value(float value);
@@ -93,9 +94,9 @@ protected:
     /**
      * Constructs a track with the given orientation, initial (clamped) value, and
      * min/max. A subclass must still add its own handle child (via the inherited
-     * add_child(), same as any other Compound) and expose it via _get_handle()
-     * before this face is actually sized/used. See Slider's constructor for the
-     * pattern, for example.
+     * `add_child()`, same as any other `Compound`) and expose it via `_get_handle()`
+     * before this face is actually sized/used. See `faces::Slider`'s constructor for
+     * the pattern, for example.
      */
     TrackControl(Orientation orientation, float value, float min, float max);
 
@@ -107,18 +108,18 @@ protected:
 
     /**
      * Returns this track's handle child, for the shared logic below to size/
-     * position it against. A plain Face& (not, say, a HasBackground&): this class
-     * only ever moves/resizes it, drawing is entirely up to whatever the concrete
-     * handle type itself opts into (see Slider::Handle).
+     * position it against. A plain `Face&` (not, say, a `HasBackground&`): this
+     * class only ever moves/resizes it, drawing is entirely up to whatever the
+     * concrete handle type itself opts into (see `faces::Slider::Handle`).
      */
     virtual Face& _get_handle() = 0;
 
     /**
      * Returns the handle's size along the main axis (the track's own length).
      * Default: the track's own cross-axis size, i.e., a fixed square handle
-     * (Slider's look). Override for a handle whose length is itself meaningful,
-     * e.g., ScrollBar: proportional to how much of some larger content is currently
-     * visible.
+     * (`faces::Slider`'s look). Override for a handle whose length is itself
+     * meaningful, e.g., `faces::ScrollBar`: proportional to how much of some larger
+     * content is currently visible.
      */
     virtual float _get_handle_main_size() const;
 
@@ -128,19 +129,19 @@ protected:
     // Helpers
     // #############################################################################
 
-    /** Returns size's component along this track's main axis (x if Horizontal, y if Vertical). */
+    /** Returns size's component along this track's main axis (x if `Horizontal`, y if `Vertical`). */
     float _main(ml7::Vector2f size) const { return _orientation == Orientation::Horizontal ? size.x : size.y; }
 
-    /** Returns size's component along this track's cross axis (the opposite of _main()). */
+    /** Returns size's component along this track's cross axis (the opposite of `_main()`). */
     float _cross(ml7::Vector2f size) const { return _orientation == Orientation::Horizontal ? size.y : size.x; }
 
-    /** Builds a Vector2f from a main-axis and a cross-axis component, placed according to this track's orientation. */
+    /** Builds an `ml7::Vector2f` from a main-axis and a cross-axis component, placed according to this track's orientation. */
     ml7::Vector2f _make_vector(float main, float cross) const { return _orientation == Orientation::Horizontal ? ml7::Vector2f{main, cross} : ml7::Vector2f{cross, main}; }
 
     /**
      * Resizes/repositions the handle for the current size/value. Also needed
-     * whenever a subclass's own _get_handle_main_size() input changes (see
-     * ScrollBar::set_visible_fraction()).
+     * whenever a subclass's own `_get_handle_main_size()` input changes (see
+     * `faces::ScrollBar::set_visible_fraction()`).
      */
     void _update_handle();
 
@@ -156,29 +157,29 @@ protected:
     /**
      * Jumps the handle to the clicked position, unless the click actually landed
      * on the handle itself, in which case this just grabs it in place (see
-     * _dragging_handle) instead, the same way grabbing any other GUI's scrollbar
+     * `_dragging_handle`) instead, the same way grabbing any other GUI's scrollbar
      * thumb/slider handle doesn't itself move it.
      */
     void _on_mouse_down(xl7::input::MouseButton button, ml7::Vector2f local_position) override;
 
     /**
      * Drags the handle to wherever the cursor now is, or, if the handle itself was
-     * what got grabbed (see _dragging_handle), moves it by the cursor's own delta
+     * what got grabbed (see `_dragging_handle`), moves it by the cursor's own delta
      * instead, preserving wherever it was grabbed.
      */
     void _on_mouse_drag(ml7::Vector2f delta, ml7::Vector2f local_position) override;
 
-    /** Left/Down/Right/Up nudge the value by get_step(); Home/End jump to the min/max. */
+    /** Left/Down/Right/Up nudge the value by `get_step()`; Home/End jump to the min/max. */
     void _on_key_down(xl7::input::Key key) override;
 
-    /** Nudges the value by get_step() per wheel notch, while hovered or bubbled up to. Always consumes. */
+    /** Nudges the value by `get_step()` per wheel notch, while hovered or bubbled up to. Always consumes. */
     bool _on_mouse_wheel(int delta) override;
 
-    /** A TrackControl is an interactive leaf control, so it's a Tab stop. */
+    /** A `TrackControl` is an interactive leaf control, so it's a Tab stop. */
     bool _is_focusable() const override { return true; }
 
     /**
-     * Consumes every arrow direction (hard): _on_key_down() above already
+     * Consumes every arrow direction (hard): `_on_key_down()` above already
      * nudges the value on Left/Down/Right/Up uniformly, regardless of this
      * track's own orientation, so a focused slider/scrollbar never also
      * loses focus to the very same keypress. Tab/Shift+Tab is the way off
@@ -220,7 +221,7 @@ private:
 
     /**
      * Whether the gesture currently in progress (if any) started with a
-     * mouse-down directly on the handle, see _on_mouse_down()/_on_mouse_drag():
+     * mouse-down directly on the handle, see `_on_mouse_down()` or `_on_mouse_drag()`:
      * that grabs the handle in place (no immediate jump) and then, while dragging,
      * moves it by the cursor's own delta, preserving wherever it was grabbed,
      * rather than snapping its center to the cursor the way a plain track

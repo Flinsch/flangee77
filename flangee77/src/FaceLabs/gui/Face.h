@@ -252,7 +252,7 @@ public:
      * Returns this face's effective style, resolved in order: this face's own
      * override, if set; else its own role resolved against the owning shell's
      * theme (using checked/hovered/pressed/focused state, see `Theme::State`,
-     * possibly redirected via `_get_interaction_state_proxy()`/
+     * possibly redirected via `_get_interaction_state_proxy()` or
      * `_requires_own_bounds_for_hover()`); else, only for a face with no themed
      * role of its own (see `_get_theme_key()`), the nearest ancestor's own
      * explicit override; else a default-constructed style as a last resort. A
@@ -364,20 +364,21 @@ protected:
     /**
      * Returns whether this face is a valid Tab/Shift+Tab stop (see
      * `Shell::update()`). Default: false. Override true in a concrete
-     * interactive leaf control (`Button`, `CheckBox`, `RadioButton`, `TextField`,
-     * `TrackControl`, ...): a passive decoration or a plain layout container
-     * (`Panel`, `Label`, a disabled glyph owned by one of the above, ...) has
-     * nothing to type into or activate, so it stays out of the Tab order.
+     * interactive leaf control (`faces::Button`, `faces::CheckBox`,
+     * `faces::RadioButton`, `faces::TextField`, `TrackControl`, ...): a passive
+     * decoration or a plain layout container (`faces::Panel`, `faces::Label`, a
+     * disabled glyph owned by one of the above, ...) has nothing to type into or
+     * activate, so it stays out of the Tab order.
      */
     virtual bool _is_focusable() const { return false; }
 
     /**
      * Returns whether `_on_click()` meaningfully does something for this face (see
      * `Shell::click_focus()`). Default: false. Override true in a concrete face type
-     * that overrides `_on_click()` to actually do something (`Button`, `CheckBox`,
-     * `RadioButton`, ...): a face that doesn't (`TrackControl`, `TextField`, a plain
-     * `Panel`, ...) has nothing for Enter/Space (or a gamepad's "confirm" button) to
-     * trigger.
+     * that overrides `_on_click()` to actually do something (`faces::Button`,
+     * `faces::CheckBox`, `faces::RadioButton`, ...): a face that doesn't
+     * (`TrackControl`, `faces::TextField`, a plain `faces::Panel`, ...) has nothing
+     * for Enter/Space (or a gamepad's "confirm" button) to trigger.
      */
     virtual bool _is_clickable() const { return false; }
 
@@ -604,9 +605,9 @@ private:
     ml7::Vector2f _position;
     ml7::Vector2f _size;
 
-    /** Explicit override; see `get_preferred_size()`/`set_preferred_size()`. */
+    /** Explicit override; see `get_preferred_size()` or `set_preferred_size()`. */
     ml7::Vector2f _preferred_size;
-    /** Explicit override; see `get_minimum_size()`/`set_minimum_size()`. */
+    /** Explicit override; see `get_minimum_size()` or `set_minimum_size()`. */
     ml7::Vector2f _minimum_size;
 
     Anchor _anchor = Anchor::Left | Anchor::Top;

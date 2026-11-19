@@ -12,7 +12,7 @@ namespace fl7::gui {
 
 
 /**
- * Ties together an arbitrary set of faces::RadioButton instances so that checking
+ * Ties together an arbitrary set of `faces::RadioButton` instances so that checking
  * one unchecks whichever other one (if any) was previously checked, deliberately
  * independent of the Face tree (unlike, e.g., some other toolkits' "same parent
  * container" grouping). Doesn't track its full membership, only whichever single
@@ -51,17 +51,17 @@ private:
     // #############################################################################
 
     /**
-     * Called by RadioButton::set_checked(true): remembers `button` as the newly
-     * checked member, unchecking whichever other one was previously checked (if
-     * any).
+     * Called by `faces::RadioButton::set_checked(true)`: remembers `button` as the
+     * newly checked member, unchecking whichever other one was previously checked
+     * (if any).
      */
     void _notify_checked(faces::RadioButton* button);
 
     /**
      * Forgets `button` as the checked member, if it currently is one. Called on an
-     * explicit uncheck (RadioButton::set_checked(false)) and on a checked member's
-     * destruction, so this group never keeps a dangling pointer or a stale "checked"
-     * bookkeeping entry.
+     * explicit uncheck (`faces::RadioButton::set_checked(false)`) and on a checked
+     * member's destruction, so this group never keeps a dangling pointer or a stale
+     * "checked" bookkeeping entry.
      */
     void _forget(faces::RadioButton* button);
 

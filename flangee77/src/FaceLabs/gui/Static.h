@@ -9,11 +9,11 @@ namespace fl7::gui {
 
 
 /**
- * Taxonomic base for display-only, non-interactive leaf faces (Label,
- * PictureBox, ProgressBar, Separator). Purely a marker for now, no new
- * members. Still inherits Face's input-event hooks as no-op defaults: a
- * Static face is free to override them (e.g. a hover tooltip), it just
- * usually won't.
+ * Taxonomic base for display-only, non-interactive leaf faces (`faces::Label`,
+ * `faces::PictureBox`, a possible future `faces::ProgressBar`/`faces::Separator`).
+ * Purely a marker for now, no new members. Still inherits `Face`'s input-event
+ * hooks as no-op defaults: a `Static` face is free to override them (e.g. a
+ * hover tooltip), it just usually won't.
  */
 class Static
     : public Face

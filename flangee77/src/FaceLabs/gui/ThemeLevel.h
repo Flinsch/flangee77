@@ -50,16 +50,16 @@ struct ThemeLevel
      * Independent, not mutually exclusive (a face can be checked and hovered and
      * pressed and focused all at once) per-state overlays, applied on top of the
      * fields above once this level's fields have already been resolved (see
-     * Theme::resolve()), in this fixed priority order: checked, then hovered, then
+     * `Theme::resolve()`), in this fixed priority order: checked, then hovered, then
      * pressed, then focused (each later one's set fields winning over the earlier
      * ones'). checked comes first (rather than alongside the transient
      * hovered/pressed/focused trio) because it's a persistent, semantic value (see
-     * HasCheckedState), not a passing interaction: momentary feedback should tint
+     * `HasCheckedState`), not a passing interaction: momentary feedback should tint
      * whichever (checked or unchecked) look is currently in effect, not replace it.
      * Only the fields directly above are ever consulted from an overlay: an
      * overlay's own nested checked/hovered/pressed/focused pointers, if it had any,
      * are never applied. One level of nesting is all that's meaningful. A
-     * unique_ptr (not optional) only because ThemeLevel refers to itself here.
+     * unique_ptr (not optional) only because `ThemeLevel` refers to itself here.
      */
     std::unique_ptr<ThemeLevel> checked;
     std::unique_ptr<ThemeLevel> hovered;

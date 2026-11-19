@@ -23,8 +23,7 @@ namespace fl7::gui {
      * descendants') callback (_on_click() etc.), which would destroy it mid-call,
      * while one of its own member functions is still running. Clears whichever of
      * the owning Shell's hovered/pressed/focused face (if any) falls within the
-     * removed subtree first, so it's never left dangling (see
-     * Shell::_handle_face_removed()).
+     * removed subtree first, so it's never left dangling.
      */
     void Collection::remove_child(Face& child)
     {
@@ -49,7 +48,7 @@ namespace fl7::gui {
      * Finds the topmost face containing the given absolute (screen) point: children
      * first (most-recently-added/topmost first), falling back to this collection
      * itself if none of them are hit. Children are tested at the scroll offset,
-     * away from where they would otherwise be, same as they they are drawn:
+     * away from where they would otherwise be, same as they are drawn:
      * scrolling moves where a child effectively is, for every purpose, not just
      * visually.
      */
@@ -105,7 +104,7 @@ namespace fl7::gui {
     // #############################################################################
 
     /**
-     * Adds the specified face as a child of this Collection.
+     * Adds the specified face as a child of this collection.
      */
     void Collection::_add_child(std::unique_ptr<Face> child)
     {

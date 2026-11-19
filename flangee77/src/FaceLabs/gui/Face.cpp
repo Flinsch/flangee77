@@ -100,7 +100,7 @@ namespace fl7::gui {
      * Returns this face's effective style, resolved in order: this face's own
      * override, if set; else its own role resolved against the owning shell's
      * theme (using checked/hovered/pressed/focused state, see `Theme::State`,
-     * possibly redirected via `_get_interaction_state_proxy()`/
+     * possibly redirected via `_get_interaction_state_proxy()` or
      * `_requires_own_bounds_for_hover()`); else, only for a face with no themed
      * role of its own (see `_get_theme_key()`), the nearest ancestor's own
      * explicit override; else a default-constructed style as a last resort. A

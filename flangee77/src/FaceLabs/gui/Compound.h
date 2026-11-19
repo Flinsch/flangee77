@@ -9,16 +9,17 @@ namespace fl7::gui {
 
 
 /**
- * A Collection with fixed, widget-specific internal composition (e.g.
- * ComboBox = TextField + Button + Popup; ScrollBar = track + thumb; Window/
- * Frame/Dialog = title bar + content area + buttons). Deliberately does
- * *not* re-expose add_child publicly like Container does: a concrete
- * Compound subclass builds its own fixed internal parts (via the inherited
- * protected add_child, in its own constructor), and a caller can't add
- * arbitrary children onto it directly. If a Compound wants to accept
- * arbitrary caller content too (e.g. Window's content area), it should
- * expose that narrowly and by name (e.g. get_content_area()), not via a
- * generic public add_child.
+ * A Collection with fixed, widget-specific internal composition (e.g.,
+ * `DropDown` = `Label` + `Button` + `ListBox` popup; `ScrollBar` = track +
+ * thumb; `Frame` = title bar + content area + close `Button`; a possible
+ * future `GroupBox` = framed `Panel` + `Label`). Deliberately does *not*
+ * re-expose `add_child` publicly like `Container` does: a concrete
+ * `Compound` subclass builds its own fixed internal parts (via the inherited
+ * protected `add_child`, in its own constructor), and a caller can't add
+ * arbitrary children onto it directly. If a `Compound` wants to accept
+ * arbitrary caller content too (e.g., `Window`'s content area), it should
+ * expose that narrowly and by name (e.g., `get_content_area()`), not via a
+ * generic public `add_child`.
  */
 class Compound
     : public Collection

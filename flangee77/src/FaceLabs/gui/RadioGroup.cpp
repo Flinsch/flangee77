@@ -13,9 +13,9 @@ namespace fl7::gui {
     // #############################################################################
 
     /**
-     * Called by RadioButton::set_checked(true): remembers `button` as the newly
-     * checked member, unchecking whichever other one was previously checked (if
-     * any).
+     * Called by `faces::RadioButton::set_checked(true)`: remembers `button` as the
+     * newly checked member, unchecking whichever other one was previously checked
+     * (if any).
      */
     void RadioGroup::_notify_checked(faces::RadioButton* button)
     {
@@ -31,9 +31,9 @@ namespace fl7::gui {
 
     /**
      * Forgets `button` as the checked member, if it currently is one. Called on an
-     * explicit uncheck (RadioButton::set_checked(false)) and on a checked member's
-     * destruction, so this group never keeps a dangling pointer or a stale "checked"
-     * bookkeeping entry.
+     * explicit uncheck (`faces::RadioButton::set_checked(false)`) and on a checked
+     * member's destruction, so this group never keeps a dangling pointer or a stale
+     * "checked" bookkeeping entry.
      */
     void RadioGroup::_forget(faces::RadioButton* button)
     {

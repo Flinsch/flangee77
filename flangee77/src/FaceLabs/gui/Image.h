@@ -12,8 +12,8 @@ namespace fl7::gui {
 
 
 /**
- * A texture region to be displayed as-is (see HasImage/faces::PictureBox).
- * Same basic shape as fonts::Icon, minus the glyph-layout-specific fields
+ * A texture region to be displayed as-is (see `HasImage` or `faces::PictureBox`).
+ * Same basic shape as `fonts::Icon`, minus the glyph-layout-specific fields
  * (baseline offset, layout advance) that don't apply outside of text.
  */
 struct Image
@@ -27,8 +27,8 @@ struct Image
 
     /**
      * The image's native (unscaled) size, in pixels. Needed by
-     * ImageScaleMode::Zoom/Center to know the image's own aspect ratio/size;
-     * ignored by Stretch.
+     * `ImageScaleMode::Zoom` or `Center` to know the image's own aspect ratio/size;
+     * ignored by `Stretch`.
      */
     ml7::Vector2f native_size{0.0f, 0.0f};
 

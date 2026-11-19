@@ -14,16 +14,16 @@ namespace fl7::gui {
 
 
 /**
- * A Collection with arbitrary, publicly addable children (e.g., `Panel`,
- * `GroupBox`), optionally arranged by a pluggable layout (see
- * `layout::Layout`/`set_layout()`). With none attached (the default), children just
- * keep whatever position/size they're explicitly given, shifted inward by this
- * container's own effective padding (see `get_scroll_offset()`). Once a layout is
- * attached, this container's own `Style::padding` stops applying altogether instead
- * (see `_applies_own_padding()`): neither that child shift nor its own reported
- * preferred/minimum size (see `Face::get_effective_preferred_size()`/`get_effective_minimum_size()`),
- * the layout itself owns that space instead, if it has its own, separate concept of
- * it (e.g., `layout::BoxLayout::get_padding()`).
+ * A Collection with arbitrary, publicly addable children (e.g., `Panel`, `GroupBox`),
+ * optionally arranged by a pluggable layout (see `layout::Layout` or `set_layout()`).
+ * With none attached (the default), children just keep whatever position/size they're
+ * explicitly given, shifted inward by this container's own effective padding (see
+ * `get_scroll_offset()`). Once a layout is attached, this container's own
+ * `Style::padding` stops applying altogether instead (see `_applies_own_padding()`):
+ * neither that child shift nor its own reported preferred/minimum size (see
+ * `Face::get_effective_preferred_size()` or `get_effective_minimum_size()`), the
+ * layout itself owns that space instead, if it has its own, separate concept of it
+ * (e.g., `layout::BoxLayout::get_padding()`).
  */
 class Container
     : public Collection
@@ -45,14 +45,14 @@ public:
     // Properties
     // #############################################################################
 
-    /** Returns this container's layout, or nullptr if none is set; see set_layout(). */
+    /** Returns this container's layout, or nullptr if none is set; see `set_layout()`. */
     layout::Layout* get_layout() const { return _layout.get(); }
 
     /**
      * Constructs a new layout of the specified type in place, replacing any
      * previously set one, and performs it once immediately against this
      * container's current children. Thereafter kept in sync automatically:
-     * see add_child()/remove_child() below and _on_size_changed().
+     * see `add_child()` or `remove_child()` below and `_on_size_changed()`.
      */
     template <class TLayout, class... Args>
         requires(std::derived_from<TLayout, layout::Layout>)
@@ -66,7 +66,7 @@ public:
     }
 
     /**
-     * Clears a previously set layout (see set_layout()): children keep
+     * Clears a previously set layout (see `set_layout()`): children keep
      * whatever position/size they currently have, unmanaged from here on.
      */
     void clear_layout() { _layout.reset(); }
@@ -95,7 +95,7 @@ public:
 
     /**
      * Constructs a new child Face of the specified type in place, adds it,
-     * re-performs this container's layout (if any; see set_layout()), and
+     * re-performs this container's layout (if any; see `set_layout()`), and
      * returns a reference to the new child.
      */
     template <class TFace, class... Args>
@@ -109,8 +109,8 @@ public:
     }
 
     /**
-     * Removes the specified child (see Collection::remove_child()), then
-     * re-performs this container's layout (if any; see set_layout()).
+     * Removes the specified child (see `Collection::remove_child()`), then
+     * re-performs this container's layout (if any; see `set_layout()`).
      */
     void remove_child(Face& child)
     {
@@ -127,7 +127,7 @@ protected:
     // Face Implementations
     // #############################################################################
 
-    /** Re-performs this container's layout (if any; see set_layout()). */
+    /** Re-performs this container's layout (if any; see `set_layout()`). */
     void _on_size_changed(ml7::Vector2f old_size, ml7::Vector2f new_size) override
     {
         if (_layout)

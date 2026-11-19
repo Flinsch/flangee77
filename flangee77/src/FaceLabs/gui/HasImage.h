@@ -10,7 +10,7 @@ namespace fl7::gui {
 
 
 /**
- * How a HasImage face's image (see HasImage::get_image()) is fit into its own
+ * How a `HasImage` face's image (see `HasImage::get_image()`) is fit into its own
  * bounds.
  */
 enum struct ImageScaleMode
@@ -19,7 +19,7 @@ enum struct ImageScaleMode
     Stretch,
     /** Scales the image uniformly (preserving its own aspect ratio) to fit entirely within the face's own bounds, centered; letterboxed on whichever axis has room left over. */
     Zoom,
-    /** Draws the image at its own native size, centered: clipped (see AbstractRenderer::_draw_face()) if larger than the face's own bounds, letterboxed if smaller. */
+    /** Draws the image at its own native size, centered: clipped (see `render::AbstractRenderer::_draw_face()`) if larger than the face's own bounds, letterboxed if smaller. */
     Center,
 }; // enum struct ImageScaleMode
 
@@ -37,7 +37,7 @@ public:
     /** Returns the image to display, or nullptr if none is currently set. */
     virtual const Image* get_image() const = 0;
 
-    /** Returns how get_image() (if any) is fit into this face's own bounds; see ImageScaleMode. Default: Stretch. */
+    /** Returns how `get_image()` (if any) is fit into this face's own bounds; see `ImageScaleMode`. Default: `Stretch`. */
     virtual ImageScaleMode get_image_scale_mode() const { return ImageScaleMode::Stretch; }
 
 }; // class HasImage

@@ -43,9 +43,9 @@ public:
     /**
      * Returns this collection's children offset: an additional translation
      * applied to every child's effective (both hit-tested and rendered)
-     * position, on top of its own, ordinary parent-relative get_position().
+     * position, on top of its own, ordinary parent-relative `get_position()`.
      * Default: {0, 0} (no offset). A scrollable collection (see
-     * faces::ScrollPanel) overrides this to implement scrolling, without
+     * `faces::ScrollPanel`) overrides this to implement scrolling, without
      * either rendering or hit-testing needing to know anything about
      * scrolling specifically: they just always honor whatever offset a
      * collection reports.
@@ -61,11 +61,11 @@ public:
 
     /**
      * Returns whether this collection clips its children to its own bounds when
-     * rendering (see AbstractRenderer::push_clip_rect). Default: true. A child that
+     * rendering (see `render::AbstractRenderer::push_clip_rect`). Default: true. A child that
      * straddles the clip edge is cut off, not hidden outright. Content that must
      * deliberately escape its logical owner's bounds (a tooltip, a dropdown popup,
-     * etc.) should be a separate top-level Shell face instead of a nested child
-     * here, so opting out via set_clip_children(false) should be rare.
+     * etc.) should be a separate top-level `Shell` face instead of a nested child
+     * here, so opting out via `set_clip_children(false)` should be rare.
      */
     bool clips_children() const { return _clips_children; }
 
@@ -86,7 +86,7 @@ protected:
     /**
      * Constructs a new child Face of the specified type in place, adds it,
      * and returns a reference to it. Protected: whether/how this is exposed
-     * publicly is up to the concrete subclass (see Container/Compound).
+     * publicly is up to the concrete subclass (see `Container` or `Compound`).
      */
     template <class TFace, class... Args>
         requires(std::derived_from<TFace, Face>)
@@ -106,8 +106,7 @@ protected:
      * descendants') callback (_on_click() etc.), which would destroy it mid-call,
      * while one of its own member functions is still running. Clears whichever of
      * the owning Shell's hovered/pressed/focused face (if any) falls within the
-     * removed subtree first, so it's never left dangling (see
-     * Shell::_handle_face_removed()).
+     * removed subtree first, so it's never left dangling.
      */
     void remove_child(Face& child);
 
@@ -121,7 +120,7 @@ protected:
      * Finds the topmost face containing the given absolute (screen) point: children
      * first (most-recently-added/topmost first), falling back to this collection
      * itself if none of them are hit. Children are tested at the scroll offset,
-     * away from where they would otherwise be, same as they they are drawn:
+     * away from where they would otherwise be, same as they are drawn:
      * scrolling moves where a child effectively is, for every purpose, not just
      * visually.
      */
@@ -142,7 +141,7 @@ private:
     // #############################################################################
 
     /**
-     * Adds the specified face as a child of this Collection.
+     * Adds the specified face as a child of this collection.
      */
     void _add_child(std::unique_ptr<Face> child);
 

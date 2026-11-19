@@ -8,9 +8,9 @@ namespace fl7::gui {
 
 /**
  * A scroll bar's visibility, independent of whether its own axis (or, for a
- * single-axis scroller like faces::TextField, the only axis there is) is
+ * single-axis scroller like `faces::TextField`, the only axis there is) is
  * actually scrollable/overflowing at all. Shared by every face that offers
- * this choice (see faces::ScrollPanel, faces::TextField), rather than each
+ * this choice (see `faces::ScrollPanel`, `faces::TextField`), rather than each
  * redeclaring its own, identical enum.
  */
 enum struct ScrollBarVisibility
