@@ -415,12 +415,15 @@ namespace helloworld {
         auto& panel = frame.get_content_area().add_child<fl7::gui::faces::ScrollPanel>();
         panel.set_size({180.0f, 120.0f});
         panel.set_preferred_size({180.0f, 120.0f});
-        // Left at the default stretch (1, see BoxLayout) and given Top+Bottom
-        // anchor (fills its own main-axis cell): the one element in this stack
-        // that actually grows/shrinks with the frame, demoing both stretch
-        // (gets 100% of whatever's left over, since every sibling below is
-        // explicitly pinned to 0) and anchor (Top+Bottom = fill) together.
-        panel.set_anchor(fl7::gui::Anchor::Left | fl7::gui::Anchor::Top | fl7::gui::Anchor::Bottom);
+        // Left at the default stretch (1, see BoxLayout) and given Top+Bottom+
+        // Right anchor (fills its own main-axis cell and the full cross-axis
+        // width): the one element in this stack that actually grows/shrinks
+        // with the frame along its main axis, demoing both stretch (gets 100%
+        // of whatever's left over, since every sibling below is explicitly
+        // pinned to 0) and anchor (Top+Bottom = fill) together; Right alone
+        // (shared by every sibling below too) is what keeps it, and them,
+        // flush to the content area's own (possibly resized) width.
+        panel.set_anchor(fl7::gui::Anchor::Left | fl7::gui::Anchor::Top | fl7::gui::Anchor::Bottom | fl7::gui::Anchor::Right);
         // Three times taller than the panel's own (viewport) size, to demo
         // actually scrolling via its built-in scroll bars, not just clipping.
         panel.set_content_size({180.0f, 360.0f});
@@ -440,6 +443,9 @@ namespace helloworld {
         auto& button = frame.get_content_area().add_child<fl7::gui::faces::Button>(U"Click me");
         button.set_size({100.0f, 36.0f}); // +6: offsets its own now-inset text (see Style::padding).
         button.set_preferred_size({100.0f, 36.0f});
+        // Right anchor: stays pinned to its own fixed height (stretch 0, no
+        // Bottom), but still stretches to the content area's own width.
+        button.set_anchor(fl7::gui::Anchor::Left | fl7::gui::Anchor::Top | fl7::gui::Anchor::Right);
         button.get_clicked().connect([&button]() {
             LOG_INFO(u8"Button clicked!");
             button.set_text(button.get_text() == U"Click me" ? U"Clicked!" : U"Click me");
@@ -448,6 +454,7 @@ namespace helloworld {
         auto& checkbox = frame.get_content_area().add_child<fl7::gui::faces::CheckBox>(false, U"Enable extra sparkle");
         checkbox.set_size({180.0f, 26.0f}); // +6: offsets its own now-inset caption text (see Style::padding).
         checkbox.set_preferred_size({180.0f, 26.0f});
+        checkbox.set_anchor(fl7::gui::Anchor::Left | fl7::gui::Anchor::Top | fl7::gui::Anchor::Right);
         checkbox.get_changed().connect([](bool checked) {
             LOG_INFO(checked ? u8"CheckBox checked." : u8"CheckBox unchecked.");
         });
@@ -455,6 +462,7 @@ namespace helloworld {
         auto& radio_button_1 = frame.get_content_area().add_child<fl7::gui::faces::RadioButton>(&_gui_radio_group, true, U"Option A");
         radio_button_1.set_size({180.0f, 26.0f}); // +6: offsets its own now-inset caption text (see Style::padding).
         radio_button_1.set_preferred_size({180.0f, 26.0f});
+        radio_button_1.set_anchor(fl7::gui::Anchor::Left | fl7::gui::Anchor::Top | fl7::gui::Anchor::Right);
         radio_button_1.get_changed().connect([](bool checked) {
             LOG_INFO(checked ? u8"RadioButton 1 checked." : u8"RadioButton 1 unchecked.");
         });
@@ -462,6 +470,7 @@ namespace helloworld {
         auto& radio_button_2 = frame.get_content_area().add_child<fl7::gui::faces::RadioButton>(&_gui_radio_group, false, U"Option B");
         radio_button_2.set_size({180.0f, 26.0f}); // +6: offsets its own now-inset caption text (see Style::padding).
         radio_button_2.set_preferred_size({180.0f, 26.0f});
+        radio_button_2.set_anchor(fl7::gui::Anchor::Left | fl7::gui::Anchor::Top | fl7::gui::Anchor::Right);
         radio_button_2.get_changed().connect([](bool checked) {
             LOG_INFO(checked ? u8"RadioButton 2 checked." : u8"RadioButton 2 unchecked.");
         });
@@ -469,6 +478,7 @@ namespace helloworld {
         auto& text_field = frame.get_content_area().add_child<fl7::gui::faces::TextField>(U"Edit me");
         text_field.set_size({180.0f, 30.0f}); // +6: offsets its own now-narrowed text box (see Style::padding).
         text_field.set_preferred_size({180.0f, 30.0f});
+        text_field.set_anchor(fl7::gui::Anchor::Left | fl7::gui::Anchor::Top | fl7::gui::Anchor::Right);
         text_field.get_changed().connect([](const cl7::u32string& text) {
             LOG_INFO(u8"TextField changed.");
         });
@@ -476,6 +486,7 @@ namespace helloworld {
         auto& slider = frame.get_content_area().add_child<fl7::gui::faces::Slider>(fl7::gui::TrackControl::Orientation::Horizontal, 0.5f);
         slider.set_size({180.0f, 24.0f});
         slider.set_preferred_size({180.0f, 24.0f});
+        slider.set_anchor(fl7::gui::Anchor::Left | fl7::gui::Anchor::Top | fl7::gui::Anchor::Right);
         slider.get_changed().connect([](float value) {
             LOG_INFO(u8"Slider changed: " + cl7::to_string(value));
         });
@@ -487,6 +498,7 @@ namespace helloworld {
         auto& remove_checkbox_button = frame.get_content_area().add_child<fl7::gui::faces::Button>(U"Remove checkbox");
         remove_checkbox_button.set_size({180.0f, 30.0f}); // +6: offsets its own now-inset text (see Style::padding).
         remove_checkbox_button.set_preferred_size({180.0f, 30.0f});
+        remove_checkbox_button.set_anchor(fl7::gui::Anchor::Left | fl7::gui::Anchor::Top | fl7::gui::Anchor::Right);
         remove_checkbox_button.get_clicked().connect([&frame, &checkbox, &remove_checkbox_button]() {
             LOG_INFO(u8"Removing CheckBox face...");
             // Also dogfoods BoxLayout reacting to remove_child(): every face
