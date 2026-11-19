@@ -182,7 +182,7 @@ Friends</h2></td></tr>
 <tr class="memitem:a69a5488554949e47f3c9fc25d4c36e34" id="r_a69a5488554949e47f3c9fc25d4c36e34"><td class="memItemLeft" align="right" valign="top">class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a69a5488554949e47f3c9fc25d4c36e34">faces::RadioButton</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Ties together an arbitrary set of <a class="el" href="../../dd/d2d/classfl7_1_1gui_1_1faces_1_1RadioButton.html">faces::RadioButton</a> instances so that checking one unchecks whichever other one (if any) was previously checked, deliberately independent of the <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a> tree (unlike, e.g., some other toolkits' "same parent
+<div class="textblock"><p>Ties together an arbitrary set of <span class="tt"><a class="el" href="../../dd/d2d/classfl7_1_1gui_1_1faces_1_1RadioButton.html">faces::RadioButton</a></span> instances so that checking one unchecks whichever other one (if any) was previously checked, deliberately independent of the <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a> tree (unlike, e.g., some other toolkits' "same parent
 container" grouping). Doesn't track its full membership, only whichever single member is currently checked (if any): enough to enforce mutual exclusion without needing to enumerate the group otherwise. </p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a171e8978c3f447253b5ab326811dc529" name="a171e8978c3f447253b5ab326811dc529"></a>
@@ -308,7 +308,7 @@ container" grouping). Doesn't track its full membership, only whichever single m
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Forgets <span class="tt">button</span> as the checked member, if it currently is one. Called on an explicit uncheck (RadioButton::set_checked(false)) and on a checked member's destruction, so this group never keeps a dangling pointer or a stale "checked" bookkeeping entry. </p>
+<p>Forgets <span class="tt">button</span> as the checked member, if it currently is one. Called on an explicit uncheck (<span class="tt">faces::RadioButton::set_checked(false)</span>) and on a checked member's destruction, so this group never keeps a dangling pointer or a stale "checked" bookkeeping entry. </p>
 
 </div>
 </div>
@@ -334,7 +334,7 @@ container" grouping). Doesn't track its full membership, only whichever single m
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Called by RadioButton::set_checked(true): remembers <span class="tt">button</span> as the newly checked member, unchecking whichever other one was previously checked (if any). </p>
+<p>Called by <span class="tt">faces::RadioButton::set_checked(true)</span>: remembers <span class="tt">button</span> as the newly checked member, unchecking whichever other one was previously checked (if any). </p>
 
 </div>
 </div>

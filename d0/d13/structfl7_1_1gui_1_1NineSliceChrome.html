@@ -108,7 +108,7 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a8e7a3cb86e53e2ef2f50595cc70f8008" id="r_a8e7a3cb86e53e2ef2f50595cc70f8008"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8e7a3cb86e53e2ef2f50595cc70f8008">inset_bottom</a> = 0.0f</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>A 9-slice-able chrome sprite: a rect within a texture (uv_min/uv_max, its native pixel size given by sprite_size), subdivided into a 3x3 grid via four insets (in the sprite's own pixel space, not normalized UV, for easier authoring). When drawn (see <a class="el" href="../../d3/d11/classfl7_1_1gui_1_1render_1_1BackgroundHelper.html">render::BackgroundHelper</a>) onto an arbitrarily sized destination rect, corners are placed at native size, edges stretch along their one free axis, and the center stretches along both: the classic 9-slice/9-patch technique for scaling chrome (window/panel backgrounds, button skins, etc.) without distorting borders or corners. </p>
+<div class="textblock"><p>A 9-slice-able chrome sprite: a rect within a texture (uv_min/uv_max, its native pixel size given by sprite_size), subdivided into a 3x3 grid via four insets (in the sprite's own pixel space, not normalized UV, for easier authoring). When drawn (see <span class="tt"><a class="el" href="../../d3/d11/classfl7_1_1gui_1_1render_1_1BackgroundHelper.html">render::BackgroundHelper</a></span>) onto an arbitrarily sized destination rect, corners are placed at native size, edges stretch along their one free axis, and the center stretches along both: the classic 9-slice/9-patch technique for scaling chrome (window/panel backgrounds, button skins, etc.) without distorting borders or corners. </p>
 </div><a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">Member Data Documentation</h2>
 <a id="a8e7a3cb86e53e2ef2f50595cc70f8008" name="a8e7a3cb86e53e2ef2f50595cc70f8008"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8e7a3cb86e53e2ef2f50595cc70f8008">&#9670;&#160;</a></span>inset_bottom</h2>
@@ -181,7 +181,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The sprite's native (unscaled) size, in pixels. Needed to convert the pixel-space insets below into fractions of uv_min/uv_max, and to size the corners/edges on screen at native (unstretched) resolution. </p>
+<p>The sprite's native (unscaled) size, in pixels. Needed to convert the pixel-space insets below into fractions of <span class="tt"><a class="el" href="#a8b3ab81bd8e3f566159078c73d54f27f">uv_min</a></span> and <span class="tt"><a class="el" href="#aa15fbef824898e9ad5ec203c53c9d5d8">uv_max</a></span>, and to size the corners/edges on screen at native (unstretched) resolution. </p>
 
 </div>
 </div>

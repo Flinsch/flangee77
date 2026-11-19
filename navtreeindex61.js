@@ -1,5 +1,7 @@
 var NAVTREEINDEX61 =
 {
+"dc/def/structml7_1_1Ray2.html#a61c34a01f4d6fd5d725d754ca376d271":[5,0,4,20,18],
+"dc/def/structml7_1_1Ray2.html#a61c34a01f4d6fd5d725d754ca376d271":[7,0,4,20,18],
 "dc/def/structml7_1_1Ray2.html#a694d0a1ab9a101cbbd1942161571a15d":[5,0,4,20,3],
 "dc/def/structml7_1_1Ray2.html#a694d0a1ab9a101cbbd1942161571a15d":[7,0,4,20,3],
 "dc/def/structml7_1_1Ray2.html#a7d3219884c1afd88caf6467245b2a932":[5,0,4,20,11],
@@ -247,7 +249,5 @@ var NAVTREEINDEX61 =
 "dd/d06/structxl7_1_1graphics_1_1meshes_1_1IndexBufferDesc.html#a799f7fe630df49d4595f36b2d61a1a1c":[7,0,8,1,2,4,3],
 "dd/d06/structxl7_1_1graphics_1_1meshes_1_1IndexBufferDesc.html#aad8c48944e024b03080d7622e83f60e8":[5,0,8,2,2,4,1],
 "dd/d06/structxl7_1_1graphics_1_1meshes_1_1IndexBufferDesc.html#aad8c48944e024b03080d7622e83f60e8":[7,0,8,1,2,4,1],
-"dd/d07/direct3d11_2mappings_8h.html":[8,0,7,1,1,0,9],
-"dd/d07/direct3d11_2mappings_8h_source.html":[8,0,7,1,1,0,9],
-"dd/d07/structtl7_1_1reporting_1_1Reporter_1_1ListenerEntry.html":[5,0,7,2,2,0]
+"dd/d07/direct3d11_2mappings_8h.html":[8,0,7,1,1,0,9]
 };

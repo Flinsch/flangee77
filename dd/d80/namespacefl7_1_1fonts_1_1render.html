@@ -136,7 +136,7 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The actual (non-template) parsing implementation, see parse_markup above. </p>
+<p>The actual (non-template) parsing implementation, see <span class="tt"><a class="el" href="#a78cdb70c44ae21ffa3f4b79a147e001b">parse_markup</a></span> above. </p>
 
 </div>
 </div>
@@ -167,14 +167,14 @@ template&lt;<a class="el" href="../../db/d97/conceptcl7_1_1any__string__view__li
 </div><div class="memdoc">
 <p>Parses a small, closed set of inline markup tags out of <span class="tt">text</span>:</p>
 <ul>
-<li>[b]bold[/b] <a class="el" href="../../de/d34/structfl7_1_1fonts_1_1GlyphStyle.html#ab6328693eb46e9654c4fda027c3f7c60">GlyphStyle::weight</a> = 1 (or <span class="tt">[b=1.5]</span> for a custom value)</li>
-<li>[i]italic[/i] <a class="el" href="../../de/d34/structfl7_1_1fonts_1_1GlyphStyle.html#aba9d373ab5364ba5281ff6917b537f37">GlyphStyle::italic_intensity</a> = 1 (or <span class="tt">[i=0.5]</span>)</li>
-<li>[color=#RRGGBB]text[/color] <a class="el" href="../../de/d34/structfl7_1_1fonts_1_1GlyphStyle.html#abd0013340c68ae0da6525adc850e1015">GlyphStyle::text_color</a> (also accepts #RRGGBBAA)</li>
-<li>[outline=#RRGGBB]text[/outline] <a class="el" href="../../de/d34/structfl7_1_1fonts_1_1GlyphStyle.html#aaa898f5414868e04bb106d49d1f00f7f">GlyphStyle::outline_color</a>, with a default outline_width (also accepts #RRGGBBAA)</li>
-<li>[outline-width]text[/outline-width] <a class="el" href="../../de/d34/structfl7_1_1fonts_1_1GlyphStyle.html#a72bbbd81b5354c2c6ab62a63f19b0a67">GlyphStyle::outline_width</a> = 1 (or <span class="tt">[outline-width=2.5]</span> for a custom value); independent of and nestable with [outline], same as [b]/[i] nest with [color]</li>
-<li>[icon=name] an inline <a class="el" href="../../d8/d05/structfl7_1_1fonts_1_1Icon.html">Icon</a>, looked up by exact name in <span class="tt">icons</span> (no closing tag)</li>
+<li>[b]bold[/b] <span class="tt"><a class="el" href="../../de/d34/structfl7_1_1fonts_1_1GlyphStyle.html#ab6328693eb46e9654c4fda027c3f7c60">GlyphStyle::weight</a></span> = 1 (or <span class="tt">[b=1.5]</span> for a custom value)</li>
+<li>[i]italic[/i] <span class="tt"><a class="el" href="../../de/d34/structfl7_1_1fonts_1_1GlyphStyle.html#aba9d373ab5364ba5281ff6917b537f37">GlyphStyle::italic_intensity</a></span> = 1 (or <span class="tt">[i=0.5]</span>)</li>
+<li>[color=#RRGGBB]text[/color] <span class="tt"><a class="el" href="../../de/d34/structfl7_1_1fonts_1_1GlyphStyle.html#abd0013340c68ae0da6525adc850e1015">GlyphStyle::text_color</a></span> (also accepts #RRGGBBAA)</li>
+<li>[outline=#RRGGBB]text[/outline] <span class="tt"><a class="el" href="../../de/d34/structfl7_1_1fonts_1_1GlyphStyle.html#aaa898f5414868e04bb106d49d1f00f7f">GlyphStyle::outline_color</a></span>, with a default outline_width (also accepts #RRGGBBAA)</li>
+<li>[outline-width]text[/outline-width] <span class="tt"><a class="el" href="../../de/d34/structfl7_1_1fonts_1_1GlyphStyle.html#a72bbbd81b5354c2c6ab62a63f19b0a67">GlyphStyle::outline_width</a></span> = 1 (or <span class="tt">[outline-width=2.5]</span> for a custom value); independent of and nestable with [outline], same as [b]/[i] nest with [color]</li>
+<li>[icon=name] an inline <span class="tt"><a class="el" href="../../d8/d05/structfl7_1_1fonts_1_1Icon.html">Icon</a></span>, looked up by exact name in <span class="tt">icons</span> (no closing tag)</li>
 </ul>
-<p>Tags may be nested to arbitrary depth; the effective style at any point is the merge of all currently-open tags on top of <span class="tt">base_style</span>'s (inherited) <a class="el" href="../../de/d34/structfl7_1_1fonts_1_1GlyphStyle.html">GlyphStyle</a>, e.g., <span class="tt">[b][color=#ff0000]bold red[/color] just bold[/b]</span> works as expected. <span class="tt">base_style</span> is only used for this seeding, it is not otherwise modified or consulted.</p>
+<p>Tags may be nested to arbitrary depth; the effective style at any point is the merge of all currently-open tags on top of <span class="tt">base_style</span>'s (inherited) <span class="tt"><a class="el" href="../../de/d34/structfl7_1_1fonts_1_1GlyphStyle.html">GlyphStyle</a></span>, e.g., <span class="tt">[b][color=#ff0000]bold red[/color] just bold[/b]</span> works as expected. <span class="tt">base_style</span> is only used for this seeding, it is not otherwise modified or consulted.</p>
 <p>The grammar is deliberately strict and closed: anything that doesn't exactly match one of the tags above: an unknown tag name, a malformed/missing attribute, a stray or mismatched closing tag, or an unresolved icon name, these are left in the output as literal text, unchanged (including their brackets). This means arbitrary game-UI text containing bracketed key hints (e.g., "[E] Interact") passes through untouched, with no escaping needed.</p>
 <p><a class="el" href="../../d8/d05/structfl7_1_1fonts_1_1Icon.html">Icon</a> positions in the returned (stripped) text use U+FFFC (OBJECT REPLACEMENT CHARACTER) as their placeholder code point. </p>
 

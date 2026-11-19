@@ -258,7 +258,7 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a9a8f64836849a11f52098ec1af8cb1a6" id="r_a9a8f64836849a11f52098ec1af8cb1a6"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="../../d5/d1e/classfl7_1_1gui_1_1layout_1_1Layout.html">layout::Layout</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9a8f64836849a11f52098ec1af8cb1a6">_layout</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>A <a class="el" href="../../d4/de7/classfl7_1_1gui_1_1Collection.html">Collection</a> with arbitrary, publicly addable children (e.g., <span class="tt">Panel</span>, <span class="tt">GroupBox</span>), optionally arranged by a pluggable layout (see <span class="tt"><a class="el" href="../../d5/d1e/classfl7_1_1gui_1_1layout_1_1Layout.html">layout::Layout</a></span>/<span class="tt"><a class="el" href="#a3c8e995da93504b13f72c8acceeaaa82">set_layout()</a></span>). With none attached (the default), children just keep whatever position/size they're explicitly given, shifted inward by this container's own effective padding (see <span class="tt"><a class="el" href="#a5d4b5ef865dd16e3801caeee9b9f242f">get_scroll_offset()</a></span>). Once a layout is attached, this container's own <span class="tt"><a class="el" href="../../dd/d02/structfl7_1_1gui_1_1Style.html#a9befece0b0d852fcd3f1762fd9e084c5">Style::padding</a></span> stops applying altogether instead (see <span class="tt"><a class="el" href="#adb653a5bb3be5f89881ed3a6096b59bb">_applies_own_padding()</a></span>): neither that child shift nor its own reported preferred/minimum size (see <span class="tt"><a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html#a1ca02aca7b85bbf5d0e90b4883d09b5f">Face::get_effective_preferred_size()</a></span>/<span class="tt"><a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html#ac39e3f99564bd639ee89f9de42f5db46">get_effective_minimum_size()</a></span>), the layout itself owns that space instead, if it has its own, separate concept of it (e.g., <span class="tt"><a class="el" href="../../de/d3a/classfl7_1_1gui_1_1layout_1_1BoxLayout.html#a746fd7f1dbac86611200427c8816fa74">layout::BoxLayout::get_padding()</a></span>). </p>
+<div class="textblock"><p>A <a class="el" href="../../d4/de7/classfl7_1_1gui_1_1Collection.html">Collection</a> with arbitrary, publicly addable children (e.g., <span class="tt">Panel</span>, <span class="tt">GroupBox</span>), optionally arranged by a pluggable layout (see <span class="tt"><a class="el" href="../../d5/d1e/classfl7_1_1gui_1_1layout_1_1Layout.html">layout::Layout</a></span> or <span class="tt"><a class="el" href="#a3c8e995da93504b13f72c8acceeaaa82">set_layout()</a></span>). With none attached (the default), children just keep whatever position/size they're explicitly given, shifted inward by this container's own effective padding (see <span class="tt"><a class="el" href="#a5d4b5ef865dd16e3801caeee9b9f242f">get_scroll_offset()</a></span>). Once a layout is attached, this container's own <span class="tt"><a class="el" href="../../dd/d02/structfl7_1_1gui_1_1Style.html#a9befece0b0d852fcd3f1762fd9e084c5">Style::padding</a></span> stops applying altogether instead (see <span class="tt"><a class="el" href="#adb653a5bb3be5f89881ed3a6096b59bb">_applies_own_padding()</a></span>): neither that child shift nor its own reported preferred/minimum size (see <span class="tt"><a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html#a1ca02aca7b85bbf5d0e90b4883d09b5f">Face::get_effective_preferred_size()</a></span> or <span class="tt"><a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html#ac39e3f99564bd639ee89f9de42f5db46">get_effective_minimum_size()</a></span>), the layout itself owns that space instead, if it has its own, separate concept of it (e.g., <span class="tt"><a class="el" href="../../de/d3a/classfl7_1_1gui_1_1layout_1_1BoxLayout.html#a746fd7f1dbac86611200427c8816fa74">layout::BoxLayout::get_padding()</a></span>). </p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a4c8fd2dbc147ad1de007a92a18b604c6" name="a4c8fd2dbc147ad1de007a92a18b604c6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4c8fd2dbc147ad1de007a92a18b604c6">&#9670;&#160;</a></span>Container() <span class="overload">[1/3]</span></h2>
@@ -471,7 +471,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Re-performs this container's layout (if any; see <a class="el" href="#a3c8e995da93504b13f72c8acceeaaa82">set_layout()</a>). </p>
+<p>Re-performs this container's layout (if any; see <span class="tt"><a class="el" href="#a3c8e995da93504b13f72c8acceeaaa82">set_layout()</a></span>). </p>
 
 <p>Reimplemented from <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html#a9866e132198a7de7a47e02e7347abe48">fl7::gui::Face</a>.</p>
 
@@ -502,7 +502,7 @@ requires (std::derived_from&lt;TFace, <a class="el" href="../../d9/d1a/classfl7_
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Constructs a new child <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a> of the specified type in place, adds it, re-performs this container's layout (if any; see <a class="el" href="#a3c8e995da93504b13f72c8acceeaaa82">set_layout()</a>), and returns a reference to the new child. </p>
+<p>Constructs a new child <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a> of the specified type in place, adds it, re-performs this container's layout (if any; see <span class="tt"><a class="el" href="#a3c8e995da93504b13f72c8acceeaaa82">set_layout()</a></span>), and returns a reference to the new child. </p>
 
 </div>
 </div>
@@ -528,7 +528,7 @@ requires (std::derived_from&lt;TFace, <a class="el" href="../../d9/d1a/classfl7_
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Clears a previously set layout (see <a class="el" href="#a3c8e995da93504b13f72c8acceeaaa82">set_layout()</a>): children keep whatever position/size they currently have, unmanaged from here on. </p>
+<p>Clears a previously set layout (see <span class="tt"><a class="el" href="#a3c8e995da93504b13f72c8acceeaaa82">set_layout()</a></span>): children keep whatever position/size they currently have, unmanaged from here on. </p>
 
 </div>
 </div>
@@ -554,7 +554,7 @@ requires (std::derived_from&lt;TFace, <a class="el" href="../../d9/d1a/classfl7_
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Returns this container's layout, or nullptr if none is set; see <a class="el" href="#a3c8e995da93504b13f72c8acceeaaa82">set_layout()</a>. </p>
+<p>Returns this container's layout, or nullptr if none is set; see <span class="tt"><a class="el" href="#a3c8e995da93504b13f72c8acceeaaa82">set_layout()</a></span>. </p>
 
 </div>
 </div>
@@ -660,7 +660,7 @@ requires (std::derived_from&lt;TFace, <a class="el" href="../../d9/d1a/classfl7_
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Removes the specified child (see <a class="el" href="../../d4/de7/classfl7_1_1gui_1_1Collection.html#a03d9dd7945a9461765107b57a21cd0ce">Collection::remove_child()</a>), then re-performs this container's layout (if any; see <a class="el" href="#a3c8e995da93504b13f72c8acceeaaa82">set_layout()</a>). </p>
+<p>Removes the specified child (see <span class="tt"><a class="el" href="../../d4/de7/classfl7_1_1gui_1_1Collection.html#a03d9dd7945a9461765107b57a21cd0ce">Collection::remove_child()</a></span>), then re-performs this container's layout (if any; see <span class="tt"><a class="el" href="#a3c8e995da93504b13f72c8acceeaaa82">set_layout()</a></span>). </p>
 
 </div>
 </div>
@@ -689,7 +689,7 @@ requires (std::derived_from&lt;TLayout, <a class="el" href="../../d5/d1e/classfl
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Constructs a new layout of the specified type in place, replacing any previously set one, and performs it once immediately against this container's current children. Thereafter kept in sync automatically: see <a class="el" href="#a07a865e38cfd6bf3654f7bab50fc45a1">add_child()</a>/remove_child() below and <a class="el" href="#a9196d8921f9b1915c8398c8a3e7334aa">_on_size_changed()</a>. </p>
+<p>Constructs a new layout of the specified type in place, replacing any previously set one, and performs it once immediately against this container's current children. Thereafter kept in sync automatically: see <span class="tt"><a class="el" href="#a07a865e38cfd6bf3654f7bab50fc45a1">add_child()</a></span> or <span class="tt"><a class="el" href="#ab4c6a034ca4238ec46a912994f29b1fb">remove_child()</a></span> below and <span class="tt"><a class="el" href="#a9196d8921f9b1915c8398c8a3e7334aa">_on_size_changed()</a></span>. </p>
 
 </div>
 </div>

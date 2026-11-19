@@ -338,8 +338,8 @@ Static Private Attributes</h2></td></tr>
 <tr class="memitem:a7c46e8dd1372d3513596c2de149b9e3f" id="r_a7c46e8dd1372d3513596c2de149b9e3f"><td class="memItemLeft" align="right" valign="top">static constexpr float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7c46e8dd1372d3513596c2de149b9e3f">SCROLLBAR_THICKNESS</a> = 16.0f</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>A Panel-like background/border chrome around an internal, always-present vertical and horizontal <a class="el" href="../../d2/d8a/classfl7_1_1gui_1_1faces_1_1ScrollBar.html">ScrollBar</a> plus an arbitrary, publicly addable content area (see <a class="el" href="#a774902676b6bce824aa0a4127305289d">get_content_area()</a>, the only place a caller can actually add children, same as <a class="el" href="../../db/d0d/classfl7_1_1gui_1_1faces_1_1Window.html">Window</a>'s), whose content is allowed to be larger than its own (viewport) bounds: scrolled into view via <a class="el" href="#a774e2b4e1784beb4b7a9dc7a113cc9ea">get_scroll_position()</a>/set_scroll_position(), clamped to <a class="el" href="#acb66d23c420db2f693e11b6290bf0aff">get_content_size()</a> (set explicitly by the caller: there's no layout system yet to compute a content size from the children themselves, see <a class="el" href="../../dd/d69/classfl7_1_1gui_1_1Container.html">Container</a>). Overflowing content is still clipped to the content area's own bounds regardless (see <a class="el" href="../../d4/de7/classfl7_1_1gui_1_1Collection.html#a2b6cc62bc581086ef0f5d374edfbb854">Collection::clips_children()</a>). Also scrolls vertically on its own, by <a class="el" href="#a8fd332372991312aabc3319099d567e7">get_wheel_step()</a> per wheel notch, while hovered (or bubbled up to from a child that doesn't itself want the wheel (e.g., a <a class="el" href="../../d3/dd8/classfl7_1_1gui_1_1faces_1_1Label.html">Label</a>), but not one that does (e.g., a <a class="el" href="../../d5/d35/classfl7_1_1gui_1_1faces_1_1Slider.html">Slider</a>); see <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html#a78cdef3a564cae1081463d345cce96f6">Face::_on_mouse_wheel()</a>).</p>
-<p>Both scroll bars are always instantiated, but each can be independently disabled (see <a class="el" href="#a7344a8434f8cddb4f100321c9d75825f">set_vertical_scroll_enabled()</a>/set_horizontal_scroll_enabled()) and each has its own, independent visibility mode (see <a class="el" href="../../d5/d56/namespacefl7_1_1gui.html#a30fe03b96f3682e72e7438fd4bcce1cc">ScrollBarVisibility</a>). </p>
+<div class="textblock"><p>A <span class="tt"><a class="el" href="../../da/d45/classfl7_1_1gui_1_1faces_1_1Panel.html">Panel</a></span>-like background/border chrome around an internal, always-present vertical and horizontal <span class="tt"><a class="el" href="../../d2/d8a/classfl7_1_1gui_1_1faces_1_1ScrollBar.html">ScrollBar</a></span> plus an arbitrary, publicly addable content area (see <span class="tt"><a class="el" href="#a774902676b6bce824aa0a4127305289d">get_content_area()</a></span>, the only place a caller can actually add children, same as <span class="tt"><a class="el" href="../../db/d0d/classfl7_1_1gui_1_1faces_1_1Window.html">Window</a></span>'s), whose content is allowed to be larger than its own (viewport) bounds: scrolled into view via <span class="tt"><a class="el" href="#a774e2b4e1784beb4b7a9dc7a113cc9ea">get_scroll_position()</a></span> or <span class="tt"><a class="el" href="#afdaf57564c12c9b509d769514defebcb">set_scroll_position()</a></span>, clamped to <span class="tt"><a class="el" href="#acb66d23c420db2f693e11b6290bf0aff">get_content_size()</a></span> (set explicitly by the caller: there's no layout system yet to compute a content size from the children themselves, see <span class="tt"><a class="el" href="../../dd/d69/classfl7_1_1gui_1_1Container.html">Container</a></span>). Overflowing content is still clipped to the content area's own bounds regardless (see <span class="tt"><a class="el" href="../../d4/de7/classfl7_1_1gui_1_1Collection.html#a2b6cc62bc581086ef0f5d374edfbb854">Collection::clips_children()</a></span>). Also scrolls vertically on its own, by <span class="tt"><a class="el" href="#a8fd332372991312aabc3319099d567e7">get_wheel_step()</a></span> per wheel notch, while hovered (or bubbled up to from a child that doesn't itself want the wheel, e.g. a <span class="tt"><a class="el" href="../../d3/dd8/classfl7_1_1gui_1_1faces_1_1Label.html">Label</a></span>, but not one that does, e.g. a <span class="tt"><a class="el" href="../../d5/d35/classfl7_1_1gui_1_1faces_1_1Slider.html">Slider</a></span>).</p>
+<p>Both scroll bars are always instantiated, but each can be independently disabled (see <span class="tt"><a class="el" href="#a7344a8434f8cddb4f100321c9d75825f">set_vertical_scroll_enabled()</a></span> or <span class="tt"><a class="el" href="#a208a41ad7e710eaf0d2ad25ae91d5292">set_horizontal_scroll_enabled()</a></span>) and each has its own, independent visibility mode (see <span class="tt"><a class="el" href="../../d5/d56/namespacefl7_1_1gui.html#a30fe03b96f3682e72e7438fd4bcce1cc">ScrollBarVisibility</a></span>). </p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ab5a81f07ed9574b9949d7a844cb5e44e" name="ab5a81f07ed9574b9949d7a844cb5e44e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab5a81f07ed9574b9949d7a844cb5e44e">&#9670;&#160;</a></span>ScrollPanel() <span class="overload">[1/3]</span></h2>
@@ -456,7 +456,7 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Clamps and applies a new scroll position: syncs the content area and both scroll bars, emitting <a class="el" href="#a7571bba80c4c97c6be1556522207218f">get_scroll_changed()</a> only if it actually changed. </p>
+<p>Clamps and applies a new scroll position: syncs the content area and both scroll bars, emitting the "scroll changed" signal only if it actually changed. </p>
 
 </div>
 </div>
@@ -482,7 +482,7 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Clamps a scroll position to [0, <a class="el" href="#acb66d23c420db2f693e11b6290bf0aff">get_content_size()</a> - (viewport size)] per axis (never negative), or to [0, 0] on an axis that's currently disabled. </p>
+<p>Clamps a scroll position to [0, <span class="tt"><a class="el" href="#acb66d23c420db2f693e11b6290bf0aff">get_content_size()</a></span> - (viewport size)] per axis (never negative), or to [0, 0] on an axis that's currently disabled. </p>
 
 </div>
 </div>
@@ -536,7 +536,7 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Positions/sizes the content area and both scroll bars for this panel's own current size, and resolves each scroll bar's actual shown/hidden state (see <a class="el" href="../../d5/d56/namespacefl7_1_1gui.html#a30fe03b96f3682e72e7438fd4bcce1cc">ScrollBarVisibility</a>) and enabled state (shown and its own axis is enabled) for this pass. Auto visibility is resolved against each axis's own full-size overflow first, then re-checked once more for whichever axis wasn't needed on its own, against the viewport as actually reduced by the other axis's scroll bar (if that one did end up shown): sufficient to converge for exactly two axes. </p>
+<p>Positions/sizes the content area and both scroll bars for this panel's own current size, and resolves each scroll bar's actual shown/hidden state (see <span class="tt"><a class="el" href="../../d5/d56/namespacefl7_1_1gui.html#a30fe03b96f3682e72e7438fd4bcce1cc">ScrollBarVisibility</a></span>) and enabled state (shown and its own axis is enabled) for this pass. Auto visibility is resolved against each axis's own full-size overflow first, then re-checked once more for whichever axis wasn't needed on its own, against the viewport as actually reduced by the other axis's scroll bar (if that one did end up shown): sufficient to converge for exactly two axes. </p>
 
 </div>
 </div>
@@ -562,7 +562,7 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Scrolls vertically by <a class="el" href="#a8fd332372991312aabc3319099d567e7">get_wheel_step()</a> per wheel notch. Always consumes. </p>
+<p>Scrolls vertically by <span class="tt"><a class="el" href="#a8fd332372991312aabc3319099d567e7">get_wheel_step()</a></span> per wheel notch. Always consumes. </p>
 
 <p>Reimplemented from <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html#a78cdef3a564cae1081463d345cce96f6">fl7::gui::Face</a>.</p>
 
@@ -622,7 +622,7 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Re-runs <a class="el" href="#acf0e829f6bd07c4ecd8cf94020811b87">_layout()</a>, <a class="el" href="#ace07a20b247666de562f8b28ca419114">_update_scroll_bars()</a>, and re-clamps/re-applies the current scroll position to them, in that order. Needed whenever anything any of them depend on changes: this panel's own size, its content size, either axis's enabled state, or either scroll bar's visibility mode. </p>
+<p>Re-runs <span class="tt"><a class="el" href="#acf0e829f6bd07c4ecd8cf94020811b87">_layout()</a></span>, <span class="tt"><a class="el" href="#ace07a20b247666de562f8b28ca419114">_update_scroll_bars()</a></span>, and re-clamps/re-applies the current scroll position to them, in that order. Needed whenever anything any of them depend on changes: this panel's own size, its content size, either axis's enabled state, or either scroll bar's visibility mode. </p>
 
 </div>
 </div>
@@ -752,7 +752,7 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Returns this panel's horizontal scroll bar's visibility mode; see <a class="el" href="#a4faf9ab09813a56f2b94b11a77e45d70">set_horizontal_scroll_bar_visibility()</a>. </p>
+<p>Returns this panel's horizontal scroll bar's visibility mode; see <span class="tt"><a class="el" href="#a4faf9ab09813a56f2b94b11a77e45d70">set_horizontal_scroll_bar_visibility()</a></span>. </p>
 
 </div>
 </div>
@@ -778,7 +778,7 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Returns whether this panel's content can currently be scrolled horizontally at all; see <a class="el" href="#a208a41ad7e710eaf0d2ad25ae91d5292">set_horizontal_scroll_enabled()</a>. </p>
+<p>Returns whether this panel's content can currently be scrolled horizontally at all; see <span class="tt"><a class="el" href="#a208a41ad7e710eaf0d2ad25ae91d5292">set_horizontal_scroll_enabled()</a></span>. </p>
 
 </div>
 </div>
@@ -804,7 +804,7 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Returns the signal emitted (with the new position) whenever this panel's scroll position actually changes, regardless of what changed it (<a class="el" href="#afdaf57564c12c9b509d769514defebcb">set_scroll_position()</a>, <a class="el" href="#a4c82d4da557a3d6ff924adb927eef93b">set_content_size()</a> re-clamping it, a resize, the mouse wheel, or either scroll bar). </p>
+<p>Returns the signal emitted (with the new position) whenever this panel's scroll position actually changes, regardless of what changed it (<span class="tt"><a class="el" href="#afdaf57564c12c9b509d769514defebcb">set_scroll_position()</a></span>, <span class="tt"><a class="el" href="#a4c82d4da557a3d6ff924adb927eef93b">set_content_size()</a></span> re-clamping it, a resize, the mouse wheel, or either scroll bar). </p>
 
 </div>
 </div>
@@ -856,7 +856,7 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Returns this panel's vertical scroll bar's visibility mode; see <a class="el" href="#ac2c2776e9726a3c0953d9719ffc1772c">set_vertical_scroll_bar_visibility()</a>. </p>
+<p>Returns this panel's vertical scroll bar's visibility mode; see <span class="tt"><a class="el" href="#ac2c2776e9726a3c0953d9719ffc1772c">set_vertical_scroll_bar_visibility()</a></span>. </p>
 
 </div>
 </div>
@@ -882,7 +882,7 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Returns whether this panel's content can currently be scrolled vertically at all; see <a class="el" href="#a7344a8434f8cddb4f100321c9d75825f">set_vertical_scroll_enabled()</a>. </p>
+<p>Returns whether this panel's content can currently be scrolled vertically at all; see <span class="tt"><a class="el" href="#a7344a8434f8cddb4f100321c9d75825f">set_vertical_scroll_enabled()</a></span>. </p>
 
 </div>
 </div>
@@ -908,7 +908,7 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Returns the amount the mouse wheel scrolls (vertically) per notch, while hovered or bubbled up to (see <a class="el" href="#aa04bb452fb48c4eb72cbf473e66c745d">_on_mouse_wheel()</a>); also both scroll bars' own step. </p>
+<p>Returns the amount the mouse wheel scrolls (vertically) per notch, while hovered or bubbled up to; also both scroll bars' own step. </p>
 
 </div>
 </div>
@@ -976,7 +976,7 @@ Static Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Sets this panel's content size, re-clamping (and, if that actually changes it, see <a class="el" href="#a7571bba80c4c97c6be1556522207218f">get_scroll_changed()</a>) the current scroll position to it. </p>
+<p>Sets this panel's content size, re-clamping the current scroll position to it (emitting the "scroll changed" signal if that actually changes it). </p>
 
 </div>
 </div>
@@ -994,7 +994,7 @@ Static Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Sets this panel's horizontal scroll bar's visibility mode. Auto shows it only while the content actually overflows horizontally, accounting for whichever other scroll bar ends up shown too, since showing one reduces the viewport (and therefore how much room the other axis's content actually has) available to the other axis. </p>
+<p>Sets this panel's horizontal scroll bar's visibility mode. <span class="tt">Auto</span> shows it only while the content actually overflows horizontally, accounting for whichever other scroll bar ends up shown too, since showing one reduces the viewport (and therefore how much room the other axis's content actually has) available to the other axis. </p>
 
 </div>
 </div>
@@ -1012,7 +1012,7 @@ Static Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Sets whether this panel's content can be scrolled horizontally at all. While disabled, the horizontal scroll position stays clamped to 0 regardless of content size, and the horizontal scroll bar is disabled (however its own visibility is configured; see <a class="el" href="#a4faf9ab09813a56f2b94b11a77e45d70">set_horizontal_scroll_bar_visibility()</a>), since there would be nothing for it to do. </p>
+<p>Sets whether this panel's content can be scrolled horizontally at all. While disabled, the horizontal scroll position stays clamped to 0 regardless of content size, and the horizontal scroll bar is disabled (however its own visibility is configured; see <span class="tt"><a class="el" href="#a4faf9ab09813a56f2b94b11a77e45d70">set_horizontal_scroll_bar_visibility()</a></span>), since there would be nothing for it to do. </p>
 
 </div>
 </div>
@@ -1030,7 +1030,7 @@ Static Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Sets this panel's scroll position, clamped to [0, <a class="el" href="#acb66d23c420db2f693e11b6290bf0aff">get_content_size()</a> - (viewport size)] per axis (never negative), unless already at that (clamped) position. </p>
+<p>Sets this panel's scroll position, clamped to [0, <span class="tt"><a class="el" href="#acb66d23c420db2f693e11b6290bf0aff">get_content_size()</a></span> - (viewport size)] per axis (never negative), unless already at that (clamped) position. </p>
 
 </div>
 </div>
@@ -1048,7 +1048,7 @@ Static Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Sets this panel's vertical scroll bar's visibility mode. Auto shows it only while the content actually overflows vertically, accounting for whichever other scroll bar ends up shown too, since showing one reduces the viewport (and therefore how much room the other axis's content actually has) available to the other axis. </p>
+<p>Sets this panel's vertical scroll bar's visibility mode. <span class="tt">Auto</span> shows it only while the content actually overflows vertically, accounting for whichever other scroll bar ends up shown too, since showing one reduces the viewport (and therefore how much room the other axis's content actually has) available to the other axis. </p>
 
 </div>
 </div>
@@ -1066,7 +1066,7 @@ Static Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Sets whether this panel's content can be scrolled vertically at all. While disabled, the vertical scroll position stays clamped to 0 regardless of content size, and the vertical scroll bar is disabled (however its own visibility is configured; see <a class="el" href="#ac2c2776e9726a3c0953d9719ffc1772c">set_vertical_scroll_bar_visibility()</a>), since there would be nothing for it to do. </p>
+<p>Sets whether this panel's content can be scrolled vertically at all. While disabled, the vertical scroll position stays clamped to 0 regardless of content size, and the vertical scroll bar is disabled (however its own visibility is configured; see <span class="tt"><a class="el" href="#ac2c2776e9726a3c0953d9719ffc1772c">set_vertical_scroll_bar_visibility()</a></span>), since there would be nothing for it to do. </p>
 
 </div>
 </div>
@@ -1108,7 +1108,7 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Non-owning: actually owned (as a child) by the inherited <a class="el" href="../../d4/de7/classfl7_1_1gui_1_1Collection.html">Collection</a>. </p>
+<p>Non-owning: actually owned (as a child) by the inherited <span class="tt"><a class="el" href="../../d4/de7/classfl7_1_1gui_1_1Collection.html">Collection</a></span>. </p>
 
 </div>
 </div>
@@ -1153,7 +1153,7 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Non-owning: actually owned (as a child) by the inherited <a class="el" href="../../d4/de7/classfl7_1_1gui_1_1Collection.html">Collection</a>. </p>
+<p>Non-owning: actually owned (as a child) by the inherited <span class="tt"><a class="el" href="../../d4/de7/classfl7_1_1gui_1_1Collection.html">Collection</a></span>. </p>
 
 </div>
 </div>
@@ -1264,7 +1264,7 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Non-owning: actually owned (as a child) by the inherited <a class="el" href="../../d4/de7/classfl7_1_1gui_1_1Collection.html">Collection</a>. </p>
+<p>Non-owning: actually owned (as a child) by the inherited <span class="tt"><a class="el" href="../../d4/de7/classfl7_1_1gui_1_1Collection.html">Collection</a></span>. </p>
 
 </div>
 </div>

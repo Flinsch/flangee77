@@ -291,7 +291,7 @@ Static Private Attributes</h2></td></tr>
 <tr class="memitem:a52cd866e86a0b6d2a74f278e13a89953" id="r_a52cd866e86a0b6d2a74f278e13a89953"><td class="memItemLeft" align="right" valign="top">static constexpr float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a52cd866e86a0b6d2a74f278e13a89953">CAPTION_GAP</a> = 6.0f</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>A togglable box with a persistent checked/unchecked value (see <a class="el" href="../../d9/db9/classfl7_1_1gui_1_1HasCheckedState.html">HasCheckedState</a>) and an optional caption to its right. Internally a small fixed composition (see <a class="el" href="../../d0/d93/classfl7_1_1gui_1_1Compound.html">Compound</a>): a passive "box" glyph (see <a class="el" href="../../d7/dfc/classfl7_1_1gui_1_1faces_1_1CheckBox_1_1Box.html">Box</a>) sized to this face's own height and a <a class="el" href="../../d3/dd8/classfl7_1_1gui_1_1faces_1_1Label.html">Label</a> filling the remaining width for the caption. Both are disabled (see <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html#aefb737528c9e4eb6c6408b98f1230df0">Face::set_enabled</a>), so a click or hover anywhere across box+caption always resolves to this <a class="el" href="../../d0/d8b/classfl7_1_1gui_1_1faces_1_1CheckBox.html">CheckBox</a> as a whole, never to either part individually. </p>
+<div class="textblock"><p>A togglable box with a persistent checked/unchecked value (see <span class="tt"><a class="el" href="../../d9/db9/classfl7_1_1gui_1_1HasCheckedState.html">HasCheckedState</a></span>) and an optional caption to its right. Internally a small fixed composition (see <span class="tt"><a class="el" href="../../d0/d93/classfl7_1_1gui_1_1Compound.html">Compound</a></span>): a passive "box" glyph sized to this face's own height and a <span class="tt"><a class="el" href="../../d3/dd8/classfl7_1_1gui_1_1faces_1_1Label.html">Label</a></span> filling the remaining width for the caption. Both are disabled (see <span class="tt"><a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html#aefb737528c9e4eb6c6408b98f1230df0">Face::set_enabled</a></span>), so a click or hover anywhere across box+caption always resolves to this <span class="tt"><a class="el" href="../../d0/d8b/classfl7_1_1gui_1_1faces_1_1CheckBox.html">CheckBox</a></span> as a whole, never to either part individually. </p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a9f43b9b127c53b75d291cc7e056d23cd" name="a9f43b9b127c53b75d291cc7e056d23cd"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9f43b9b127c53b75d291cc7e056d23cd">&#9670;&#160;</a></span>CheckBox() <span class="overload">[1/3]</span></h2>
@@ -420,7 +420,7 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Returns the box glyph (square, side = caption height) plus, only if there actually is a caption to separate it from, the gap plus the caption's own natural (unwrapped) minimum size, side by side; see <a class="el" href="#a99ec6bba07847d16f7f875f5ed4bc764">_on_size_changed()</a> for the matching actual layout. </p>
+<p>Returns the box glyph (square, side = caption height) plus, only if there actually is a caption to separate it from, the gap plus the caption's own natural (unwrapped) minimum size, side by side; see <span class="tt"><a class="el" href="#a99ec6bba07847d16f7f875f5ed4bc764">_on_size_changed()</a></span> for the matching actual layout. </p>
 
 <p>Reimplemented from <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html#af740f74d08c785ef76ef46a77d0ec530">fl7::gui::Face</a>.</p>
 
@@ -448,7 +448,7 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Returns the box glyph (square, side = caption height) plus, only if there actually is a caption to separate it from, the gap plus the caption's own natural (unwrapped) preferred size, side by side; see <a class="el" href="#a99ec6bba07847d16f7f875f5ed4bc764">_on_size_changed()</a> for the matching actual layout. </p>
+<p>Returns the box glyph (square, side = caption height) plus, only if there actually is a caption to separate it from, the gap plus the caption's own natural (unwrapped) preferred size, side by side; see <span class="tt"><a class="el" href="#a99ec6bba07847d16f7f875f5ed4bc764">_on_size_changed()</a></span> for the matching actual layout. </p>
 
 <p>Reimplemented from <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html#a0bf7f9b89fb34633392b25502d8efc8f">fl7::gui::Face</a>.</p>
 
@@ -476,7 +476,7 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>A <a class="el" href="../../d0/d8b/classfl7_1_1gui_1_1faces_1_1CheckBox.html">CheckBox</a>'s <a class="el" href="#a411f8ebdd148252b5562821f4e72068a">_on_click()</a> meaningfully does something, so Enter/Space (or a gamepad's "confirm" button) can activate it while focused. </p>
+<p>A <span class="tt"><a class="el" href="../../d0/d8b/classfl7_1_1gui_1_1faces_1_1CheckBox.html">CheckBox</a></span>'s <span class="tt"><a class="el" href="#a411f8ebdd148252b5562821f4e72068a">_on_click()</a></span> meaningfully does something, so Enter/Space (or a gamepad's "confirm" button) can activate it while focused. </p>
 
 <p>Reimplemented from <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html#a580e43c600b09842f7eea72489327692">fl7::gui::Face</a>.</p>
 
@@ -765,7 +765,7 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Non-owning: actually owned (as a child) by the inherited <a class="el" href="../../d4/de7/classfl7_1_1gui_1_1Collection.html">Collection</a>. </p>
+<p>Non-owning: actually owned (as a child) by the inherited <span class="tt"><a class="el" href="../../d4/de7/classfl7_1_1gui_1_1Collection.html">Collection</a></span>. </p>
 
 </div>
 </div>
@@ -832,7 +832,7 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Non-owning: actually owned (as a child) by the inherited <a class="el" href="../../d4/de7/classfl7_1_1gui_1_1Collection.html">Collection</a>. </p>
+<p>Non-owning: actually owned (as a child) by the inherited <span class="tt"><a class="el" href="../../d4/de7/classfl7_1_1gui_1_1Collection.html">Collection</a></span>. </p>
 
 </div>
 </div>
@@ -855,7 +855,7 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Horizontal gap between the box glyph and the caption; see <a class="el" href="#a99ec6bba07847d16f7f875f5ed4bc764">_on_size_changed()</a>. </p>
+<p>Horizontal gap between the box glyph and the caption; see <span class="tt"><a class="el" href="#a99ec6bba07847d16f7f875f5ed4bc764">_on_size_changed()</a></span>. </p>
 
 </div>
 </div>

@@ -274,13 +274,13 @@ Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>How a <a class="el" href="../../d3/dd8/classfl7_1_1gui_1_1HasImage.html">HasImage</a> face's image (see <a class="el" href="../../d3/dd8/classfl7_1_1gui_1_1HasImage.html#a38613ff3f4ce105c21f35725f8d2bae1">HasImage::get_image()</a>) is fit into its own bounds. </p>
+<p>How a <span class="tt"><a class="el" href="../../d3/dd8/classfl7_1_1gui_1_1HasImage.html">HasImage</a></span> face's image (see <span class="tt"><a class="el" href="../../d3/dd8/classfl7_1_1gui_1_1HasImage.html#a38613ff3f4ce105c21f35725f8d2bae1">HasImage::get_image()</a></span>) is fit into its own bounds. </p>
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a4bd2852d89f09eda429237a441371a04afbb09a82eafab60150d0996e8fe46560" name="a4bd2852d89f09eda429237a441371a04afbb09a82eafab60150d0996e8fe46560"></a>Stretch&#160;</td><td class="fielddoc"><p>Stretches the image to exactly fill the face's own bounds, distorting its aspect ratio if necessary. </p>
 </td></tr>
 <tr><td class="fieldname"><a id="a4bd2852d89f09eda429237a441371a04a4252b72e6ebcd4d4b4c2e46a786f03d2" name="a4bd2852d89f09eda429237a441371a04a4252b72e6ebcd4d4b4c2e46a786f03d2"></a>Zoom&#160;</td><td class="fielddoc"><p>Scales the image uniformly (preserving its own aspect ratio) to fit entirely within the face's own bounds, centered; letterboxed on whichever axis has room left over. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a4bd2852d89f09eda429237a441371a04a4f1f6016fc9f3f2353c0cc7c67b292bd" name="a4bd2852d89f09eda429237a441371a04a4f1f6016fc9f3f2353c0cc7c67b292bd"></a>Center&#160;</td><td class="fielddoc"><p>Draws the image at its own native size, centered: clipped (see AbstractRenderer::_draw_face()) if larger than the face's own bounds, letterboxed if smaller. </p>
+<tr><td class="fieldname"><a id="a4bd2852d89f09eda429237a441371a04a4f1f6016fc9f3f2353c0cc7c67b292bd" name="a4bd2852d89f09eda429237a441371a04a4f1f6016fc9f3f2353c0cc7c67b292bd"></a>Center&#160;</td><td class="fielddoc"><p>Draws the image at its own native size, centered: clipped (see <span class="tt"><a class="el" href="../../dc/d83/classfl7_1_1gui_1_1render_1_1AbstractRenderer.html#a6795105e41862e37998d609b3ca3235f">render::AbstractRenderer::_draw_face()</a></span>) if larger than the face's own bounds, letterboxed if smaller. </p>
 </td></tr>
 </table>
 
@@ -305,7 +305,7 @@ Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>A scroll bar's visibility, independent of whether its own axis (or, for a single-axis scroller like <a class="el" href="../../d7/dc8/classfl7_1_1gui_1_1faces_1_1TextField.html">faces::TextField</a>, the only axis there is) is actually scrollable/overflowing at all. Shared by every face that offers this choice (see <a class="el" href="../../d8/d18/classfl7_1_1gui_1_1faces_1_1ScrollPanel.html">faces::ScrollPanel</a>, <a class="el" href="../../d7/dc8/classfl7_1_1gui_1_1faces_1_1TextField.html">faces::TextField</a>), rather than each redeclaring its own, identical enum. </p>
+<p>A scroll bar's visibility, independent of whether its own axis (or, for a single-axis scroller like <span class="tt"><a class="el" href="../../d7/dc8/classfl7_1_1gui_1_1faces_1_1TextField.html">faces::TextField</a></span>, the only axis there is) is actually scrollable/overflowing at all. Shared by every face that offers this choice (see <span class="tt"><a class="el" href="../../d8/d18/classfl7_1_1gui_1_1faces_1_1ScrollPanel.html">faces::ScrollPanel</a></span>, <span class="tt"><a class="el" href="../../d7/dc8/classfl7_1_1gui_1_1faces_1_1TextField.html">faces::TextField</a></span>), rather than each redeclaring its own, identical enum. </p>
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a30fe03b96f3682e72e7438fd4bcce1cca68eec46437c384d8dad18d5464ebc35c" name="a30fe03b96f3682e72e7438fd4bcce1cca68eec46437c384d8dad18d5464ebc35c"></a>Always&#160;</td><td class="fielddoc"><p>Shows the scroll bar unconditionally (even while its own axis doesn't actually overflow, in which case it just sits there inert, full-range, nothing to drag). </p>
 </td></tr>

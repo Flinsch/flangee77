@@ -105,7 +105,7 @@ Private Member Functions</h2></td></tr>
 <tr class="memitem:aab4df24fa18b1a9e032d8c924cf60a00" id="r_aab4df24fa18b1a9e032d8c924cf60a00"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aab4df24fa18b1a9e032d8c924cf60a00">_draw_chrome</a> (<a class="el" href="../../dc/d83/classfl7_1_1gui_1_1render_1_1AbstractRenderer.html">AbstractRenderer</a> *renderer, const <a class="el" href="../../d0/d13/structfl7_1_1gui_1_1NineSliceChrome.html">NineSliceChrome</a> &amp;chrome, <a class="el" href="../../d3/d53/namespaceml7.html#add70e3ce89c6f3e39fa3a52d54713255">ml7::Vector2f</a> absolute_position, <a class="el" href="../../d3/d53/namespaceml7.html#add70e3ce89c6f3e39fa3a52d54713255">ml7::Vector2f</a> size)</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Knows how to draw a <a class="el" href="../../db/d13/classfl7_1_1gui_1_1HasBackground.html">HasBackground</a> face's background: a 9-sliced <a class="el" href="../../d0/d13/structfl7_1_1gui_1_1NineSliceChrome.html">NineSliceChrome</a> sprite if <a class="el" href="../../dd/d02/structfl7_1_1gui_1_1Style.html#af0a8bf2ed20e26a4011584833e337185">Style::chrome</a> is set, else a flat <a class="el" href="../../dd/d02/structfl7_1_1gui_1_1Style.html#a9dbc69df68f16e45bc467f72560056c9">Style::background_color</a> rect, over the face's full bounds. Talks only to <a class="el" href="../../dc/d83/classfl7_1_1gui_1_1render_1_1AbstractRenderer.html">AbstractRenderer</a>'s public (backend-agnostic) drawing primitives, so this is shared by every <a class="el" href="../../dc/d83/classfl7_1_1gui_1_1render_1_1AbstractRenderer.html">AbstractRenderer</a> implementation, not reimplemented per backend. </p>
+<div class="textblock"><p>Knows how to draw a <span class="tt"><a class="el" href="../../db/d13/classfl7_1_1gui_1_1HasBackground.html">HasBackground</a></span> face's background: a 9-sliced <span class="tt"><a class="el" href="../../d0/d13/structfl7_1_1gui_1_1NineSliceChrome.html">NineSliceChrome</a></span> sprite if <span class="tt"><a class="el" href="../../dd/d02/structfl7_1_1gui_1_1Style.html#af0a8bf2ed20e26a4011584833e337185">Style::chrome</a></span> is set, else a flat <span class="tt"><a class="el" href="../../dd/d02/structfl7_1_1gui_1_1Style.html#a9dbc69df68f16e45bc467f72560056c9">Style::background_color</a></span> rect, over the face's full bounds. Talks only to <span class="tt"><a class="el" href="../../dc/d83/classfl7_1_1gui_1_1render_1_1AbstractRenderer.html">AbstractRenderer</a></span>'s public (backend-agnostic) drawing primitives, so this is shared by every <span class="tt"><a class="el" href="../../dc/d83/classfl7_1_1gui_1_1render_1_1AbstractRenderer.html">AbstractRenderer</a></span> implementation, not reimplemented per backend. </p>
 </div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
 <a id="aab4df24fa18b1a9e032d8c924cf60a00" name="aab4df24fa18b1a9e032d8c924cf60a00"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aab4df24fa18b1a9e032d8c924cf60a00">&#9670;&#160;</a></span>_draw_chrome()</h2>
@@ -170,7 +170,7 @@ Private Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Draws face's background at absolute_position via renderer. </p>
+<p>Lets the given renderer draw the given face's background at the specified absolute position. </p>
 
 </div>
 </div>

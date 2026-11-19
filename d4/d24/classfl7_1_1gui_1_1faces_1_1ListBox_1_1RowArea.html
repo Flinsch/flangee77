@@ -309,7 +309,7 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:af76da403c91e539544dcde8d9bb10d21" id="r_af76da403c91e539544dcde8d9bb10d21"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d6/d18/classfl7_1_1gui_1_1faces_1_1ListBox.html#a60fb60c569f3f993c113afcc2ab9569b">ListBox</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af76da403c91e539544dcde8d9bb10d21">_owner</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Spans every row at once (see <a class="el" href="../../d6/d18/classfl7_1_1gui_1_1faces_1_1ListBox.html#a53d8b9ce0da397afb6e5f97cbc7e9a61">ListBox::_relayout_rows()</a>): the one face that's actually hit-tested/focused for the whole list, so a click anywhere in a row (its disabled content <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a> included) selects that row, and arrow-key navigation only needs this single face to hold the focus, rather than each (otherwise disabled) row needing to be its own focusable <a class="el" href="../../df/d2b/classfl7_1_1gui_1_1Control.html">Control</a>. </p>
+<div class="textblock"><p>Spans every row at once (see <span class="tt"><a class="el" href="../../d6/d18/classfl7_1_1gui_1_1faces_1_1ListBox.html#a53d8b9ce0da397afb6e5f97cbc7e9a61">ListBox::_relayout_rows()</a></span>): the one face that's actually hit-tested/focused for the whole list, so a click anywhere in a row (its disabled content <span class="tt"><a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a></span> included) selects that row, and arrow-key navigation only needs this single face to hold the focus, rather than each (otherwise disabled) row needing to be its own focusable <span class="tt"><a class="el" href="../../df/d2b/classfl7_1_1gui_1_1Control.html">Control</a></span>. </p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a399f514108ccce135d092ef38819407a" name="a399f514108ccce135d092ef38819407a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a399f514108ccce135d092ef38819407a">&#9670;&#160;</a></span>RowArea()</h2>
@@ -359,7 +359,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Consumes Up/Down (hard) while the selection still has somewhere to go in that direction (from no selection, either arrow enters the list), so plain arrow-key focus navigation yields to <a class="el" href="#ab8c19362109f78b3a840253e6d5cd082">_on_key_down()</a> moving the selection instead; yields back once at either end. The horizontal arrows always stay free. </p>
+<p>Consumes Up/Down (hard) while the selection still has somewhere to go in that direction (from no selection, either arrow enters the list), so plain arrow-key focus navigation yields to <span class="tt"><a class="el" href="#ab8c19362109f78b3a840253e6d5cd082">_on_key_down()</a></span> moving the selection instead; yields back once at either end. The horizontal arrows always stay free. </p>
 
 <p>Reimplemented from <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html#a317b2937735edb98a4695428766a87da">fl7::gui::Face</a>.</p>
 
@@ -473,7 +473,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Selects whichever row the click's (local) vertical position falls into, if any (an out-of-range index, e.g. a click below the last row, is silently ignored, see <a class="el" href="../../d6/d18/classfl7_1_1gui_1_1faces_1_1ListBox.html#a755334e68712a7637dddc4bd8f9450ef">set_selected_index()</a>). Ctrl-clicking the already-selected row clears the selection instead (see <a class="el" href="#a6f06dc9be8cca3e2f9a149739f71500a">_is_ctrl_down()</a>). </p>
+<p>Selects whichever row the click's (local) vertical position falls into, if any (an out-of-range index, e.g. a click below the last row, is silently ignored, see <span class="tt"><a class="el" href="../../d6/d18/classfl7_1_1gui_1_1faces_1_1ListBox.html#a755334e68712a7637dddc4bd8f9450ef">set_selected_index()</a></span>). Ctrl-clicking the already-selected row clears the selection instead (see <span class="tt"><a class="el" href="#a6f06dc9be8cca3e2f9a149739f71500a">_is_ctrl_down()</a></span>). </p>
 
 <p>Reimplemented from <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html#af169922cd19e4a90bed5190cd8d69943">fl7::gui::Face</a>.</p>
 

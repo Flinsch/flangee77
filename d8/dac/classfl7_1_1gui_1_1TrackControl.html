@@ -297,7 +297,7 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a57842e9ac08822b992722414922c922f" id="r_a57842e9ac08822b992722414922c922f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d3/d7e/classcl7_1_1behavioral_1_1Signal.html">cl7::behavioral::Signal</a>&lt; float &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a57842e9ac08822b992722414922c922f">_changed</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Shared base for a track with a draggable handle representing a value in [<a class="el" href="#a0917e717e32039092ff530cd6c0a803c">get_min()</a>, <a class="el" href="#afd6283068e46ac3efe55f4fd3e7ee5d3">get_max()</a>] (see Slider, ScrollBar): owns the value/step model, the click-to-jump/drag-to-follow/keyboard-nudge interaction, and the handle's size/position along the track, all generically over <a class="el" href="#a064cd4f47a753a2872770d40af4a012b">Orientation</a>. This face itself is the track (see <a class="el" href="../../db/d13/classfl7_1_1gui_1_1HasBackground.html">HasBackground</a>): a concrete subclass supplies its own themed "handle" child (see <a class="el" href="#a84f16487c5a8caa2c0998de22da1fa85">_get_handle()</a>) and, if its handle isn't a fixed square (the default, see <a class="el" href="#abf4e84c6b4ba8614029aaf38728e8d4b">_get_handle_main_size()</a>), how big that handle actually is (e.g., ScrollBar: proportional to how much of some larger content is currently visible). </p>
+<div class="textblock"><p>Shared base for a track with a draggable handle representing a value in [<span class="tt"><a class="el" href="#a0917e717e32039092ff530cd6c0a803c">get_min()</a></span>, <span class="tt"><a class="el" href="#afd6283068e46ac3efe55f4fd3e7ee5d3">get_max()</a></span>] (see <span class="tt"><a class="el" href="../../d5/d35/classfl7_1_1gui_1_1faces_1_1Slider.html">faces::Slider</a></span>, <span class="tt"><a class="el" href="../../d2/d8a/classfl7_1_1gui_1_1faces_1_1ScrollBar.html">faces::ScrollBar</a></span>): owns the value/step model, the click-to-jump/drag-to-follow/keyboard-nudge interaction, and the handle's size/position along the track, all generically over <span class="tt"><a class="el" href="#a064cd4f47a753a2872770d40af4a012b">Orientation</a></span>. This face itself is the track (see <span class="tt"><a class="el" href="../../db/d13/classfl7_1_1gui_1_1HasBackground.html">HasBackground</a></span>): a concrete subclass supplies its own themed "handle" child (see <span class="tt"><a class="el" href="#a84f16487c5a8caa2c0998de22da1fa85">_get_handle()</a></span>) and, if its handle isn't a fixed square (the default, see <span class="tt"><a class="el" href="#abf4e84c6b4ba8614029aaf38728e8d4b">_get_handle_main_size()</a></span>), how big that handle actually is (e.g., <span class="tt"><a class="el" href="../../d2/d8a/classfl7_1_1gui_1_1faces_1_1ScrollBar.html">faces::ScrollBar</a></span>: proportional to how much of some larger content is currently visible). </p>
 </div><a name="doc-enum-members" id="doc-enum-members"></a><h2 id="header-doc-enum-members" class="groupheader">Member Enumeration Documentation</h2>
 <a id="a064cd4f47a753a2872770d40af4a012b" name="a064cd4f47a753a2872770d40af4a012b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a064cd4f47a753a2872770d40af4a012b">&#9670;&#160;</a></span>Orientation</h2>
@@ -437,7 +437,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Constructs a track with the given orientation, initial (clamped) value, and min/max. A subclass must still add its own handle child (via the inherited <a class="el" href="../../d4/de7/classfl7_1_1gui_1_1Collection.html#a9b6bb179d97f1379ce9dcd028d76db00">add_child()</a>, same as any other <a class="el" href="../../d0/d93/classfl7_1_1gui_1_1Compound.html">Compound</a>) and expose it via <a class="el" href="#a84f16487c5a8caa2c0998de22da1fa85">_get_handle()</a> before this face is actually sized/used. See Slider's constructor for the pattern, for example. </p>
+<p>Constructs a track with the given orientation, initial (clamped) value, and min/max. A subclass must still add its own handle child (via the inherited <span class="tt"><a class="el" href="../../d4/de7/classfl7_1_1gui_1_1Collection.html#a9b6bb179d97f1379ce9dcd028d76db00">add_child()</a></span>, same as any other <span class="tt"><a class="el" href="../../d0/d93/classfl7_1_1gui_1_1Compound.html">Compound</a></span>) and expose it via <span class="tt"><a class="el" href="#a84f16487c5a8caa2c0998de22da1fa85">_get_handle()</a></span> before this face is actually sized/used. See <span class="tt"><a class="el" href="../../d5/d35/classfl7_1_1gui_1_1faces_1_1Slider.html">faces::Slider</a></span>'s constructor for the pattern, for example. </p>
 
 </div>
 </div>
@@ -464,7 +464,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Consumes every arrow direction (hard): <a class="el" href="#a7f8b90670fd8409e41c68653115a6b89">_on_key_down()</a> above already nudges the value on Left/Down/Right/Up uniformly, regardless of this track's own orientation, so a focused slider/scrollbar never also loses focus to the very same keypress. Tab/Shift+Tab is the way off it. </p>
+<p>Consumes every arrow direction (hard): <span class="tt"><a class="el" href="#a7f8b90670fd8409e41c68653115a6b89">_on_key_down()</a></span> above already nudges the value on Left/Down/Right/Up uniformly, regardless of this track's own orientation, so a focused slider/scrollbar never also loses focus to the very same keypress. Tab/Shift+Tab is the way off it. </p>
 
 <p>Reimplemented from <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html#a317b2937735edb98a4695428766a87da">fl7::gui::Face</a>.</p>
 
@@ -492,7 +492,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Returns size's component along this track's cross axis (the opposite of <a class="el" href="#aff42b742ecba0d23b95f679e2f60d70e">_main()</a>). </p>
+<p>Returns size's component along this track's cross axis (the opposite of <span class="tt"><a class="el" href="#aff42b742ecba0d23b95f679e2f60d70e">_main()</a></span>). </p>
 
 </div>
 </div>
@@ -518,7 +518,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Returns this track's handle child, for the shared logic below to size/ position it against. A plain <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a>&amp; (not, say, a <a class="el" href="../../db/d13/classfl7_1_1gui_1_1HasBackground.html">HasBackground</a>&amp;): this class only ever moves/resizes it, drawing is entirely up to whatever the concrete handle type itself opts into (see Slider::Handle). </p>
+<p>Returns this track's handle child, for the shared logic below to size/ position it against. A plain <span class="tt"><a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a>&amp;</span> (not, say, a <span class="tt"><a class="el" href="../../db/d13/classfl7_1_1gui_1_1HasBackground.html">HasBackground</a>&amp;</span>): this class only ever moves/resizes it, drawing is entirely up to whatever the concrete handle type itself opts into (see <span class="tt"><a class="el" href="../../dd/dd6/classfl7_1_1gui_1_1faces_1_1Slider_1_1Handle.html">faces::Slider::Handle</a></span>). </p>
 
 <p>Implemented in <a class="el" href="../../d5/d35/classfl7_1_1gui_1_1faces_1_1Slider.html#a969ff65d4feca0636fa9234a5a906242">fl7::gui::faces::Slider</a>.</p>
 
@@ -546,7 +546,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Returns the handle's size along the main axis (the track's own length). Default: the track's own cross-axis size, i.e., a fixed square handle (Slider's look). Override for a handle whose length is itself meaningful, e.g., ScrollBar: proportional to how much of some larger content is currently visible. </p>
+<p>Returns the handle's size along the main axis (the track's own length). Default: the track's own cross-axis size, i.e., a fixed square handle (<span class="tt"><a class="el" href="../../d5/d35/classfl7_1_1gui_1_1faces_1_1Slider.html">faces::Slider</a></span>'s look). Override for a handle whose length is itself meaningful, e.g., <span class="tt"><a class="el" href="../../d2/d8a/classfl7_1_1gui_1_1faces_1_1ScrollBar.html">faces::ScrollBar</a></span>: proportional to how much of some larger content is currently visible. </p>
 
 <p>Reimplemented in <a class="el" href="../../d5/d35/classfl7_1_1gui_1_1faces_1_1Slider.html#ab05cd0f6e5be472916374f795b6b7463">fl7::gui::faces::Slider</a>.</p>
 
@@ -600,7 +600,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>A <a class="el" href="../../d8/dac/classfl7_1_1gui_1_1TrackControl.html">TrackControl</a> is an interactive leaf control, so it's a Tab stop. </p>
+<p>A <span class="tt"><a class="el" href="../../d8/dac/classfl7_1_1gui_1_1TrackControl.html">TrackControl</a></span> is an interactive leaf control, so it's a Tab stop. </p>
 
 <p>Reimplemented from <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html#a49a890596f79ab1d3b1b5c38d4052c42">fl7::gui::Face</a>.</p>
 
@@ -628,7 +628,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Returns size's component along this track's main axis (x if Horizontal, y if Vertical). </p>
+<p>Returns size's component along this track's main axis (x if <span class="tt">Horizontal</span>, y if <span class="tt">Vertical</span>). </p>
 
 </div>
 </div>
@@ -658,7 +658,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Builds a Vector2f from a main-axis and a cross-axis component, placed according to this track's orientation. </p>
+<p>Builds an <span class="tt"><a class="el" href="../../d3/d53/namespaceml7.html#add70e3ce89c6f3e39fa3a52d54713255">ml7::Vector2f</a></span> from a main-axis and a cross-axis component, placed according to this track's orientation. </p>
 
 </div>
 </div>
@@ -684,7 +684,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Left/Down/Right/Up nudge the value by <a class="el" href="#a67c138648ea4289ae682ac7912d15135">get_step()</a>; Home/End jump to the min/max. </p>
+<p>Left/Down/Right/Up nudge the value by <span class="tt"><a class="el" href="#a67c138648ea4289ae682ac7912d15135">get_step()</a></span>; Home/End jump to the min/max. </p>
 
 <p>Reimplemented from <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html#a4749ea1564f3b26c7d72e3914e050531">fl7::gui::Face</a>.</p>
 
@@ -716,7 +716,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Jumps the handle to the clicked position, unless the click actually landed on the handle itself, in which case this just grabs it in place (see _dragging_handle) instead, the same way grabbing any other GUI's scrollbar thumb/slider handle doesn't itself move it. </p>
+<p>Jumps the handle to the clicked position, unless the click actually landed on the handle itself, in which case this just grabs it in place (see <span class="tt"><a class="el" href="#aa65c080b9fdc3d1bed395c361709542f">_dragging_handle</a></span>) instead, the same way grabbing any other GUI's scrollbar thumb/slider handle doesn't itself move it. </p>
 
 <p>Reimplemented from <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html#af169922cd19e4a90bed5190cd8d69943">fl7::gui::Face</a>.</p>
 
@@ -748,7 +748,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Drags the handle to wherever the cursor now is, or, if the handle itself was what got grabbed (see _dragging_handle), moves it by the cursor's own delta instead, preserving wherever it was grabbed. </p>
+<p>Drags the handle to wherever the cursor now is, or, if the handle itself was what got grabbed (see <span class="tt"><a class="el" href="#aa65c080b9fdc3d1bed395c361709542f">_dragging_handle</a></span>), moves it by the cursor's own delta instead, preserving wherever it was grabbed. </p>
 
 <p>Reimplemented from <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html#af16e7e80f64342ddb418ae955e98f621">fl7::gui::Face</a>.</p>
 
@@ -776,7 +776,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Nudges the value by <a class="el" href="#a67c138648ea4289ae682ac7912d15135">get_step()</a> per wheel notch, while hovered or bubbled up to. Always consumes. </p>
+<p>Nudges the value by <span class="tt"><a class="el" href="#a67c138648ea4289ae682ac7912d15135">get_step()</a></span> per wheel notch, while hovered or bubbled up to. Always consumes. </p>
 
 <p>Reimplemented from <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html#a78cdef3a564cae1081463d345cce96f6">fl7::gui::Face</a>.</p>
 
@@ -862,7 +862,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Resizes/repositions the handle for the current size/value. Also needed whenever a subclass's own <a class="el" href="#abf4e84c6b4ba8614029aaf38728e8d4b">_get_handle_main_size()</a> input changes (see ScrollBar::set_visible_fraction()). </p>
+<p>Resizes/repositions the handle for the current size/value. Also needed whenever a subclass's own <span class="tt"><a class="el" href="#abf4e84c6b4ba8614029aaf38728e8d4b">_get_handle_main_size()</a></span> input changes (see <span class="tt"><a class="el" href="../../d2/d8a/classfl7_1_1gui_1_1faces_1_1ScrollBar.html#afeb88bb1ee502428e5677d885b21ed71">faces::ScrollBar::set_visible_fraction()</a></span>). </p>
 
 </div>
 </div>
@@ -1160,7 +1160,7 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Sets this track's value, clamped to [<a class="el" href="#a0917e717e32039092ff530cd6c0a803c">get_min()</a>, <a class="el" href="#afd6283068e46ac3efe55f4fd3e7ee5d3">get_max()</a>], unless already at that (clamped) value. Emits the "changed" signal (with the new value) when actually changed. </p>
+<p>Sets this track's value, clamped to [<span class="tt"><a class="el" href="#a0917e717e32039092ff530cd6c0a803c">get_min()</a></span>, <span class="tt"><a class="el" href="#afd6283068e46ac3efe55f4fd3e7ee5d3">get_max()</a></span>], unless already at that (clamped) value. Emits the "changed" signal (with the new value) when actually changed. </p>
 
 </div>
 </div>
@@ -1206,7 +1206,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Whether the gesture currently in progress (if any) started with a mouse-down directly on the handle, see <a class="el" href="#aa22abadd62edbbcfad5ad2afd01875c6">_on_mouse_down()</a>/_on_mouse_drag(): that grabs the handle in place (no immediate jump) and then, while dragging, moves it by the cursor's own delta, preserving wherever it was grabbed, rather than snapping its center to the cursor the way a plain track click/drag does. </p>
+<p>Whether the gesture currently in progress (if any) started with a mouse-down directly on the handle, see <span class="tt"><a class="el" href="#aa22abadd62edbbcfad5ad2afd01875c6">_on_mouse_down()</a></span> or <span class="tt"><a class="el" href="#ac3e049b96c0b70ad25954589596f94d6">_on_mouse_drag()</a></span>: that grabs the handle in place (no immediate jump) and then, while dragging, moves it by the cursor's own delta, preserving wherever it was grabbed, rather than snapping its center to the cursor the way a plain track click/drag does. </p>
 
 </div>
 </div>

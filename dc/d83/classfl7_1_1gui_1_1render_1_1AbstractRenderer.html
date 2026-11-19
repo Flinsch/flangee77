@@ -133,6 +133,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a38362eb4b98278a775566203a9043d01" id="r_a38362eb4b98278a775566203a9043d01"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a38362eb4b98278a775566203a9043d01">~AbstractRenderer</a> ()=default</td></tr>
 <tr class="memitem:ab6e944c0a55a7d248af46fc7526e3fe3" id="r_ab6e944c0a55a7d248af46fc7526e3fe3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d9/dc1/classfl7_1_1gui_1_1render_1_1AbstractRenderer_1_1ScopedFrame.html">ScopedFrame</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab6e944c0a55a7d248af46fc7526e3fe3">begin_scoped_frame</a> ()</td></tr>
 <tr class="memitem:a186bf9de02bec97d66814a318ca27085" id="r_a186bf9de02bec97d66814a318ca27085"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a186bf9de02bec97d66814a318ca27085">begin_frame</a> ()</td></tr>
+<tr class="memitem:a336de51a3617f558a8d5ff04e140e159" id="r_a336de51a3617f558a8d5ff04e140e159"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a336de51a3617f558a8d5ff04e140e159">end_frame</a> ()</td></tr>
 <tr class="memitem:a08909d0c382e3be97e31ee3f4516af8d" id="r_a08909d0c382e3be97e31ee3f4516af8d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a08909d0c382e3be97e31ee3f4516af8d">render_faces</a> (const std::vector&lt; std::unique_ptr&lt; <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a> &gt; &gt; &amp;top_level_faces)</td></tr>
 <tr class="memitem:a8ff351d988a3dfdc151cf9e828899ed7" id="r_a8ff351d988a3dfdc151cf9e828899ed7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8ff351d988a3dfdc151cf9e828899ed7">draw_rect</a> (<a class="el" href="../../d3/d53/namespaceml7.html#add70e3ce89c6f3e39fa3a52d54713255">ml7::Vector2f</a> position_min, <a class="el" href="../../d3/d53/namespaceml7.html#add70e3ce89c6f3e39fa3a52d54713255">ml7::Vector2f</a> position_max, const <a class="el" href="../../de/df3/structxl7_1_1graphics_1_1Color.html">xl7::graphics::Color</a> &amp;color)</td></tr>
 <tr class="memitem:ac5f7db75672419e4e5fd70e4e3521e2f" id="r_ac5f7db75672419e4e5fd70e4e3521e2f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac5f7db75672419e4e5fd70e4e3521e2f">draw_textured_rect</a> (<a class="el" href="../../d3/d53/namespaceml7.html#add70e3ce89c6f3e39fa3a52d54713255">ml7::Vector2f</a> position_min, <a class="el" href="../../d3/d53/namespaceml7.html#add70e3ce89c6f3e39fa3a52d54713255">ml7::Vector2f</a> position_max, xl7::graphics::textures::Texture2D::Id texture_id, <a class="el" href="../../d3/d53/namespaceml7.html#add70e3ce89c6f3e39fa3a52d54713255">ml7::Vector2f</a> uv_min, <a class="el" href="../../d3/d53/namespaceml7.html#add70e3ce89c6f3e39fa3a52d54713255">ml7::Vector2f</a> uv_max, const <a class="el" href="../../de/df3/structxl7_1_1graphics_1_1Color.html">xl7::graphics::Color</a> &amp;tint)</td></tr>
@@ -167,7 +168,7 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a15f5569bdc27ee2b1b0fd255fe00a20a" id="r_a15f5569bdc27ee2b1b0fd255fe00a20a"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a15f5569bdc27ee2b1b0fd255fe00a20a">_frame_depth</a> = 0</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Abstract drawing/rendering interface for a whole <span class="tt"><a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a></span> tree. A concrete implementation (see <span class="tt"><a class="el" href="../../d8/d87/classfl7_1_1gui_1_1render_1_1DefaultRenderer.html">DefaultRenderer</a></span>) owns the tree traversal (order/strategy, e.g., back-to-front for transparency, front-to-back with depth/stencil early-out for opaque content, render-to-texture-per-face caching, ...) and the actual drawing primitives (<span class="tt"><a class="el" href="#a44b7438c72faecd29b0f409c1af1911b">_draw_rect_impl</a></span> etc.). How a <em>single</em> face is structured (e.g., background before selection highlight before text before caret, always back-to-front) is fixed and backend-agnostic, though: see <span class="tt"><a class="el" href="#a6795105e41862e37998d609b3ca3235f">_draw_face</a></span>, which delegates to per-aspect helpers (see <span class="tt"><a class="el" href="../../d3/d11/classfl7_1_1gui_1_1render_1_1BackgroundHelper.html">BackgroundHelper</a></span>/<span class="tt"><a class="el" href="../../d0/da8/classfl7_1_1gui_1_1render_1_1ImageHelper.html">ImageHelper</a></span>/ <span class="tt"><a class="el" href="../../db/d3f/classfl7_1_1gui_1_1render_1_1SelectionHelper.html">SelectionHelper</a></span>/<span class="tt"><a class="el" href="../../d1/d12/classfl7_1_1gui_1_1render_1_1TextHelper.html">TextHelper</a></span>/<span class="tt"><a class="el" href="../../dd/d83/classfl7_1_1gui_1_1render_1_1CaretHelper.html">CaretHelper</a></span>) that only ever talk to this class's own public drawing methods, so that knowledge is written once here, not per backend. <span class="tt"><a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a></span>/<span class="tt"><a class="el" href="../../d6/d9c/classfl7_1_1gui_1_1Shell.html">Shell</a></span> themselves know nothing about drawing at all, they only expose read-only structure (position, size, visibility, children, etc.) for a renderer to look at. </p>
+<div class="textblock"><p>Abstract drawing/rendering interface for a whole <span class="tt"><a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a></span> tree. A concrete implementation (see <span class="tt"><a class="el" href="../../d8/d87/classfl7_1_1gui_1_1render_1_1DefaultRenderer.html">DefaultRenderer</a></span>) owns the tree traversal (order/strategy, e.g., back-to-front for transparency, front-to-back with depth/stencil early-out for opaque content, render-to-texture-per-face caching, ...) and the actual drawing primitives. How a <em>single</em> face is structured (e.g., background before selection highlight before text before caret, always back-to-front) is fixed and backend-agnostic, though, delegating to per-aspect helpers (see <span class="tt"><a class="el" href="../../d3/d11/classfl7_1_1gui_1_1render_1_1BackgroundHelper.html">BackgroundHelper</a></span>, <span class="tt"><a class="el" href="../../d0/da8/classfl7_1_1gui_1_1render_1_1ImageHelper.html">ImageHelper</a></span>, <span class="tt"><a class="el" href="../../db/d3f/classfl7_1_1gui_1_1render_1_1SelectionHelper.html">SelectionHelper</a></span>, <span class="tt"><a class="el" href="../../d1/d12/classfl7_1_1gui_1_1render_1_1TextHelper.html">TextHelper</a></span>, or <span class="tt"><a class="el" href="../../dd/d83/classfl7_1_1gui_1_1render_1_1CaretHelper.html">CaretHelper</a></span>) that only ever talk to this class's own public drawing methods, so that knowledge is written once here, not per backend. <span class="tt"><a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a></span> and <span class="tt"><a class="el" href="../../d6/d9c/classfl7_1_1gui_1_1Shell.html">Shell</a></span> themselves know nothing about drawing at all, they only expose read-only structure (position, size, visibility, children, etc.) for a renderer to look at. </p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a38362eb4b98278a775566203a9043d01" name="a38362eb4b98278a775566203a9043d01"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a38362eb4b98278a775566203a9043d01">&#9670;&#160;</a></span>~AbstractRenderer()</h2>
@@ -552,7 +553,7 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Begins a new frame. If you only call <span class="tt"><a class="el" href="#a8ff351d988a3dfdc151cf9e828899ed7">draw_rect</a></span>, <span class="tt"><a class="el" href="#aa69fbbd907cda1af3b8e98525ebde436">draw_text</a></span>, etc. occasionally, it is not necessary to call <span class="tt"><a class="el" href="#a186bf9de02bec97d66814a318ca27085">begin_frame</a></span>/<span class="tt">end_frame</span> manually. The renderer will manage this internally.</p>
+<p>Begins a new frame. If you only call <span class="tt"><a class="el" href="#a8ff351d988a3dfdc151cf9e828899ed7">draw_rect</a></span>, <span class="tt"><a class="el" href="#aa69fbbd907cda1af3b8e98525ebde436">draw_text</a></span>, etc. occasionally, it is not necessary to call <span class="tt"><a class="el" href="#a186bf9de02bec97d66814a318ca27085">begin_frame</a></span> or <span class="tt"><a class="el" href="#a336de51a3617f558a8d5ff04e140e159">end_frame</a></span> manually. The renderer will manage this internally.</p>
 <p>For greater convenience, the RAII helper <span class="tt"><a class="el" href="../../d9/dc1/classfl7_1_1gui_1_1render_1_1AbstractRenderer_1_1ScopedFrame.html">ScopedFrame</a></span> should be used via <span class="tt"><a class="el" href="#ab6e944c0a55a7d248af46fc7526e3fe3">begin_scoped_frame</a></span>. </p>
 
 </div>
@@ -579,7 +580,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Creates a new <span class="tt"><a class="el" href="../../d9/dc1/classfl7_1_1gui_1_1render_1_1AbstractRenderer_1_1ScopedFrame.html">ScopedFrame</a></span> object to manage a frame in a scoped way. The returned <span class="tt"><a class="el" href="../../d9/dc1/classfl7_1_1gui_1_1render_1_1AbstractRenderer_1_1ScopedFrame.html">ScopedFrame</a></span> object will automatically call <span class="tt">end_frame</span> when it goes out of scope. </p>
+<p>Creates a new <span class="tt"><a class="el" href="../../d9/dc1/classfl7_1_1gui_1_1render_1_1AbstractRenderer_1_1ScopedFrame.html">ScopedFrame</a></span> object to manage a frame in a scoped way. The returned <span class="tt"><a class="el" href="../../d9/dc1/classfl7_1_1gui_1_1render_1_1AbstractRenderer_1_1ScopedFrame.html">ScopedFrame</a></span> object will automatically call <span class="tt"><a class="el" href="#a336de51a3617f558a8d5ff04e140e159">end_frame</a></span> when it goes out of scope. </p>
 
 </div>
 </div>
@@ -721,6 +722,25 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a336de51a3617f558a8d5ff04e140e159" name="a336de51a3617f558a8d5ff04e140e159"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a336de51a3617f558a8d5ff04e140e159">&#9670;&#160;</a></span>end_frame()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void fl7::gui::render::AbstractRenderer::end_frame </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Ends the current frame, submitting any queued/batched geometry.</p>
+<p>For greater convenience, the RAII helper <span class="tt"><a class="el" href="../../d9/dc1/classfl7_1_1gui_1_1render_1_1AbstractRenderer_1_1ScopedFrame.html">ScopedFrame</a></span> should be used via <span class="tt"><a class="el" href="#ab6e944c0a55a7d248af46fc7526e3fe3">begin_scoped_frame</a></span>, which ultimately calls <span class="tt"><a class="el" href="#a336de51a3617f558a8d5ff04e140e159">end_frame</a></span> automatically. </p>
+
+</div>
+</div>
 <a id="a4e6ef7ad8d4c1cdb850fa265b7cb7269" name="a4e6ef7ad8d4c1cdb850fa265b7cb7269"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4e6ef7ad8d4c1cdb850fa265b7cb7269">&#9670;&#160;</a></span>pop_clip_rect()</h2>
 
@@ -775,15 +795,7 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Ends the current frame, submitting any queued/batched geometry.</p>
-<p>For greater convenience, the RAII helper <span class="tt"><a class="el" href="../../d9/dc1/classfl7_1_1gui_1_1render_1_1AbstractRenderer_1_1ScopedFrame.html">ScopedFrame</a></span> should be used<span class="tt">via
-   </span>begin_scoped_frame<span class="tt">, which ultimately calls </span>end_frame` automatically. */ void end_frame();</p>
-<p>/** Renders the given top-level faces (and, transitively, their descendants) as a complete frame. This is the single entry point through which a shell gets its faces drawn. Traversal order/strategy is entirely up to the concrete renderer.</p>
-<p>Ends the current frame, submitting any queued/batched geometry.</p>
-<p>For greater convenience, the RAII helper <span class="tt"><a class="el" href="../../d9/dc1/classfl7_1_1gui_1_1render_1_1AbstractRenderer_1_1ScopedFrame.html">ScopedFrame</a></span> should be used<span class="tt">via
-   </span>begin_scoped_frame<span class="tt">, which ultimately calls </span>end_frame` automatically. */ void AbstractRenderer::end_frame() { assert(_frame_depth &gt; 0); if (_frame_depth == 0) return;</p>
-<p>if (&ndash;_frame_depth == 0) <a class="el" href="#a8367c116d168b56e4902929496aaa132">_end_frame_impl()</a>; }</p>
-<p>/** Renders the given top-level faces (and, transitively, their descendants) as a complete frame. This is the single entry point through which a shell gets its faces drawn. Traversal order/strategy is entirely up to the concrete renderer. </p>
+<p>Renders the given top-level faces (and, transitively, their descendants) as a complete frame. This is the single entry point through which a shell gets its faces drawn. Traversal order/strategy is entirely up to the concrete renderer. </p>
 
 </div>
 </div>

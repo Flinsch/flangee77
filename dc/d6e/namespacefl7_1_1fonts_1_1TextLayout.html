@@ -287,7 +287,7 @@ template&lt;<a class="el" href="../../db/d97/conceptcl7_1_1any__string__view__li
       </table>
 </div><div class="memdoc">
 <p>Locates where the code point at <span class="tt">codepoint_index</span> (clamped to <span class="tt">codepoints.size()</span>) would end up if <span class="tt">codepoints</span> were drawn via <span class="tt">AbstractRenderer::draw_text_in_box()</span> against the same font, text style, box position, and box size (see <span class="tt"><a class="el" href="#ab7df201ab9a75eb63d45cded352e2319">lay_out_box()</a></span>): the line it falls on and the horizontal advance into that line, combined into a single absolute position (the top-left corner of a one-line-tall rect around it), plus that line's own height. For an index sitting exactly on a line break (word-wrap or explicit), this is the START of the following line, not the end of the one before it, same as a caret naturally continues there.</p>
-<p>Meant for <span class="tt"><a class="el" href="../../dd/d83/classfl7_1_1gui_1_1render_1_1CaretHelper.html">gui::render::CaretHelper</a></span> to position a caret rect against text that may since have grown to more than one line (see <span class="tt"><a class="el" href="../../d7/dc8/classfl7_1_1gui_1_1faces_1_1TextField.html">gui::faces::TextField</a></span>'s own multiline support). </p>
+<p>Meant for <span class="tt"><a class="el" href="../../dd/d83/classfl7_1_1gui_1_1render_1_1CaretHelper.html">gui::render::CaretHelper</a></span> to position a caret rect against text that may since have grown to more than one line (see <span class="tt"><a class="el" href="../../d7/dc8/classfl7_1_1gui_1_1faces_1_1TextField.html">gui::faces::TextField</a></span>'s own multi-line support). </p>
 
 </div>
 </div>

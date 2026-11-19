@@ -1,5 +1,7 @@
 var NAVTREEINDEX74 =
 {
+"df/d95/classdl7_1_1syntax_1_1DirectAstBuilder.html#ae835818ce00e45c0d7728d818c03d4e8":[5,0,2,4,9,2],
+"df/d95/classdl7_1_1syntax_1_1DirectAstBuilder.html#ae835818ce00e45c0d7728d818c03d4e8":[7,0,2,4,9,2],
 "df/d98/AbstractStage_8h.html":[8,0,7,1,3,2],
 "df/d98/AbstractStage_8h_source.html":[8,0,7,1,3,2],
 "df/d9b/structcl7_1_1detail_1_1__is__any__string__view.html":[5,0,1,4,2],
@@ -247,7 +249,5 @@ var NAVTREEINDEX74 =
 "df/dd2/classdl7_1_1xml_1_1Text.html#ac8281c00d395ea73502e6bbc7189d10b":[7,0,2,6,7,7],
 "df/dd2/classdl7_1_1xml_1_1Text.html#acb8a6833ab43d55575d457f320cb9c69":[5,0,2,6,7,14],
 "df/dd2/classdl7_1_1xml_1_1Text.html#acb8a6833ab43d55575d457f320cb9c69":[7,0,2,6,7,14],
-"df/dd2/classdl7_1_1xml_1_1Text.html#ae79bc47965a99009b519f7d8c64df4c7":[5,0,2,6,7,13],
-"df/dd2/classdl7_1_1xml_1_1Text.html#ae79bc47965a99009b519f7d8c64df4c7":[7,0,2,6,7,13],
-"df/dd2/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1shaders_1_1PixelShaderImpl_1_1Attorney.html":[5,0,8,2,1,0,3,3,0]
+"df/dd2/classdl7_1_1xml_1_1Text.html#ae79bc47965a99009b519f7d8c64df4c7":[5,0,2,6,7,13]
 };

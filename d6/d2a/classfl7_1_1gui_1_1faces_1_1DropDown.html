@@ -339,10 +339,8 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:aee98d4db6a136dfb15033f696603153f" id="r_aee98d4db6a136dfb15033f696603153f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d3/d7e/classcl7_1_1behavioral_1_1Signal.html">cl7::behavioral::Signal</a>&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aee98d4db6a136dfb15033f696603153f">_selection_changed</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>A closed, non-editable selection widget (like an HTML &lt;select&gt;): shows the currently selected item's text plus a trailing arrow glyph, and, while clicked/ Enter/Space-activated open, a popup list of all items to choose from (see <a class="el" href="#ac35c89b85e380f1894eda1370aaffa54">add_item()</a>). Unlike an editable combo box, there's no free-text entry, so the selection is always exactly one of the added items, or none.</p>
-<p>Internally a small fixed composition (see <a class="el" href="../../d0/d93/classfl7_1_1gui_1_1Compound.html">Compound</a>), same as <a class="el" href="../../d2/d8a/classfl7_1_1gui_1_1faces_1_1ScrollBar.html">ScrollBar</a>'s own track + buttons: a disabled <a class="el" href="../../d3/dd8/classfl7_1_1gui_1_1faces_1_1Label.html">Label</a> for the current text (so a click/hover over it resolves to this <a class="el" href="../../d6/d2a/classfl7_1_1gui_1_1faces_1_1DropDown.html">DropDown</a> as a whole, same trick as <a class="el" href="../../d0/d8b/classfl7_1_1gui_1_1faces_1_1CheckBox.html">CheckBox</a>'s caption) and a genuinely interactive trailing <a class="el" href="../../d8/ddc/classfl7_1_1gui_1_1faces_1_1Button.html">Button</a> of its own (an arrow glyph), which opens/closes the popup just like clicking the text part does, but keeps its own distinct hovered/pressed look (and its own Tab stop/Enter-Space activation) while actually being clicked/focused specifically.</p>
-<p>The popup is a separate top-level <a class="el" href="../../d6/d9c/classfl7_1_1gui_1_1Shell.html">Shell</a> face (see <a class="el" href="../../d4/de7/classfl7_1_1gui_1_1Collection.html#a2b6cc62bc581086ef0f5d374edfbb854">Collection::clips_children()</a>'s doc comment on why: it must be free to escape this <a class="el" href="../../d6/d2a/classfl7_1_1gui_1_1faces_1_1DropDown.html">DropDown</a>'s own logical owner's bounds), created lazily on first open and simply hidden/shown again afterwards, never destroyed again (<a class="el" href="../../d6/d9c/classfl7_1_1gui_1_1Shell.html">Shell</a> has no way to remove a top-level face at all, same as, say, a <a class="el" href="../../db/d0d/classfl7_1_1gui_1_1faces_1_1Window.html">Window</a>); see <a class="el" href="../../d6/d9c/classfl7_1_1gui_1_1Shell.html#a29cc7e6e5e1902ccfedf2e271e3b47f1">Shell::open_popup()</a>/close_popup() for how its Z-order/auto-close-on-focus-elsewhere is kept in order regardless. Note: _arrow_button being its own genuine Tab stop (same as any other <a class="el" href="../../df/d2b/classfl7_1_1gui_1_1Control.html">Control</a>) means it, not just this <a class="el" href="../../d6/d2a/classfl7_1_1gui_1_1faces_1_1DropDown.html">DropDown</a> itself, can end up focused. Only while THIS <a class="el" href="../../d6/d2a/classfl7_1_1gui_1_1faces_1_1DropDown.html">DropDown</a> itself is the focused face do Escape/Up/Down actually move the popup's selection (see <a class="el" href="#a5cd54d4d56c12168124e679febe7c89d">_on_key_down()</a>/_consumes_arrow()); while _arrow_button specifically holds focus instead, only Enter/Space (toggling it via its own <a class="el" href="#a0d60b342b17c9c70888239b64df8d3ba">_on_click()</a>, same as any <a class="el" href="../../d8/ddc/classfl7_1_1gui_1_1faces_1_1Button.html">Button</a>) does anything.</p>
-<p>Keyboard focus never moves onto the popup itself, though: arrow keys always move its selection from whichever of the two above actually holds focus instead, so a stray click into the popup list (which <a class="el" href="../../d6/d9c/classfl7_1_1gui_1_1Shell.html">Shell</a>'s normal mouse handling cannot help but focus, see <a class="el" href="#a59bb6ecc2a9aef68d1c6d22e2f91d40d">_on_popup_selection_changed()</a>) hands focus right back here afterwards, never leaving it on the popup. </p>
+<div class="textblock"><p>A closed, non-editable selection widget (like an HTML &lt;select&gt;): shows the currently selected item's text plus a trailing arrow glyph, and, while clicked/Enter/Space-activated open, a popup list of all items to choose from (see <span class="tt"><a class="el" href="#ac35c89b85e380f1894eda1370aaffa54">add_item()</a></span>). Unlike an editable combo box, there's no free-text entry, so the selection is always exactly one of the added items, or none.</p>
+<p>The trailing arrow glyph is its own genuine Tab stop and can end up focused in its own right, with its own distinct hovered/pressed look; either way, Enter/Space toggles the popup open/closed, same as clicking does. While the drop-down itself holds focus, Up/Down/Escape additionally move the popup's selection or close it. Keyboard focus never lands on the popup list itself: a stray click into it hands focus straight back to this drop-down once the popup closes again. </p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a25f4644b19147db6d75132d0451adaad" name="a25f4644b19147db6d75132d0451adaad"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a25f4644b19147db6d75132d0451adaad">&#9670;&#160;</a></span>DropDown() <span class="overload">[1/3]</span></h2>
@@ -513,7 +511,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Creates the popup list (a separate top-level <a class="el" href="../../d6/d9c/classfl7_1_1gui_1_1Shell.html">Shell</a> face, see the class doc comment), populated from _items, unless it already exists. </p>
+<p>Creates the popup list (a separate top-level <span class="tt"><a class="el" href="../../d6/d9c/classfl7_1_1gui_1_1Shell.html">Shell</a></span> face, see the class doc comment), populated from <span class="tt"><a class="el" href="#a3309948a581b84826925f493a2276d0d">_items</a></span>, unless it already exists. </p>
 
 </div>
 </div>
@@ -567,7 +565,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>A <a class="el" href="../../d6/d2a/classfl7_1_1gui_1_1faces_1_1DropDown.html">DropDown</a>'s <a class="el" href="#a0d60b342b17c9c70888239b64df8d3ba">_on_click()</a> meaningfully does something, so Enter/Space (or a gamepad's "confirm" button) can activate it while focused. </p>
+<p>A <span class="tt"><a class="el" href="../../d6/d2a/classfl7_1_1gui_1_1faces_1_1DropDown.html">DropDown</a></span>'s <span class="tt"><a class="el" href="#a0d60b342b17c9c70888239b64df8d3ba">_on_click()</a></span> meaningfully does something, so Enter/Space (or a gamepad's "confirm" button) can activate it while focused. </p>
 
 <p>Reimplemented from <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html#a580e43c600b09842f7eea72489327692">fl7::gui::Face</a>.</p>
 
@@ -595,7 +593,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>A <a class="el" href="../../d6/d2a/classfl7_1_1gui_1_1faces_1_1DropDown.html">DropDown</a> as a whole is an interactive leaf control, so it's a Tab stop (<a class="el" href="../../d0/d93/classfl7_1_1gui_1_1Compound.html">Compound</a> itself doesn't opt into that by default). </p>
+<p>A <span class="tt"><a class="el" href="../../d6/d2a/classfl7_1_1gui_1_1faces_1_1DropDown.html">DropDown</a></span> as a whole is an interactive leaf control, so it's a Tab stop (<span class="tt"><a class="el" href="../../d0/d93/classfl7_1_1gui_1_1Compound.html">Compound</a></span> itself doesn't opt into that by default). </p>
 
 <p>Reimplemented from <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html#a49a890596f79ab1d3b1b5c38d4052c42">fl7::gui::Face</a>.</p>
 
@@ -705,7 +703,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Reacts to the popup list's own <a class="el" href="#a88825220de421c6dd09f4769bf46141a">get_selection_changed()</a>: adopts the new index, closes the popup, and hands focus back to this <a class="el" href="../../d6/d2a/classfl7_1_1gui_1_1faces_1_1DropDown.html">DropDown</a> (clicking a popup row unavoidably focuses the popup list itself first instead, see <a class="el" href="../../d6/d9c/classfl7_1_1gui_1_1Shell.html#a810ed9f5fb57eaec9bb0be7664b99803">Shell::update()</a>'s mouse handling), unless this change was actually just this <a class="el" href="../../d6/d2a/classfl7_1_1gui_1_1faces_1_1DropDown.html">DropDown</a> syncing the popup's own selection to its own (see <a class="el" href="#a0370ff3346ba2229b67ad93b54f32bee">set_selected_index()</a>/_open_popup()), not an actual row click, in which case none of that applies (and nothing is emitted a second time either). </p>
+<p>Reacts to the popup list's own "selection changed" signal: adopts the new index, closes the popup, and hands focus back to this drop-down (clicking a popup row unavoidably focuses the popup list itself first instead, see <span class="tt"><a class="el" href="../../d6/d9c/classfl7_1_1gui_1_1Shell.html#a810ed9f5fb57eaec9bb0be7664b99803">Shell::update()</a></span>'s mouse handling), unless this change was actually just this drop-down syncing the popup's own selection to its own (see <span class="tt"><a class="el" href="#a0370ff3346ba2229b67ad93b54f32bee">set_selected_index()</a></span> or <span class="tt"><a class="el" href="#ae8716517867caf839569b45d4fb6fbfd">_open_popup()</a></span>), not an actual row click, in which case none of that applies (and nothing is emitted a second time either). </p>
 
 </div>
 </div>
@@ -789,7 +787,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Keeps _label's text in sync with <a class="el" href="#ad9fd30785556ea2c4a048c09eb689736">get_display_text()</a>, whenever the selection changes. </p>
+<p>Keeps <span class="tt"><a class="el" href="#a73286939a896f617919e70cf685d260b">_label</a></span>'s text in sync with <span class="tt"><a class="el" href="#ad9fd30785556ea2c4a048c09eb689736">get_display_text()</a></span>, whenever the selection changes. </p>
 
 </div>
 </div>
@@ -815,7 +813,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Opens the popup if closed, or closes it if open; what both a click on the text part and a click on _arrow_button actually trigger. </p>
+<p>Opens the popup if closed, or closes it if open; what both a click on the text part and a click on <span class="tt"><a class="el" href="#a625dc32fc387c0ae4f3a5b53a20bc378">_arrow_button</a></span> actually trigger. </p>
 
 </div>
 </div>
@@ -997,7 +995,7 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Sets the currently selected item by index, or -1 to select none, unless already at that index. An out-of-range index (besides -1) is ignored. Emits <a class="el" href="#a88825220de421c6dd09f4769bf46141a">get_selection_changed()</a> (with the new index) when actually changed. </p>
+<p>Sets the currently selected item by index, or -1 to select none, unless already at that index. An out-of-range index (besides -1) is ignored. Emits the "selection changed" signal (with the new index) when actually changed. </p>
 
 </div>
 </div>
@@ -1021,7 +1019,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Non-owning: actually owned (as a child) by the inherited <a class="el" href="../../d4/de7/classfl7_1_1gui_1_1Collection.html">Collection</a>. </p>
+<p>Non-owning: actually owned (as a child) by the inherited <span class="tt"><a class="el" href="../../d4/de7/classfl7_1_1gui_1_1Collection.html">Collection</a></span>. </p>
 
 </div>
 </div>
@@ -1066,7 +1064,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Non-owning: actually owned (as a child) by the inherited <a class="el" href="../../d4/de7/classfl7_1_1gui_1_1Collection.html">Collection</a>. </p>
+<p>Non-owning: actually owned (as a child) by the inherited <span class="tt"><a class="el" href="../../d4/de7/classfl7_1_1gui_1_1Collection.html">Collection</a></span>. </p>
 
 </div>
 </div>
@@ -1089,7 +1087,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Non-owning: owned by the <a class="el" href="../../d6/d9c/classfl7_1_1gui_1_1Shell.html">Shell</a> as a separate top-level face, see <a class="el" href="#acd640822482685891798f5217833e8d8">_ensure_popup()</a>. </p>
+<p>Non-owning: owned by the <span class="tt"><a class="el" href="../../d6/d9c/classfl7_1_1gui_1_1Shell.html">Shell</a></span> as a separate top-level face, see <span class="tt"><a class="el" href="#acd640822482685891798f5217833e8d8">_ensure_popup()</a></span>. </p>
 
 </div>
 </div>
@@ -1156,7 +1154,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Suppresses <a class="el" href="#a59bb6ecc2a9aef68d1c6d22e2f91d40d">_on_popup_selection_changed()</a>'s row-click side effects while this <a class="el" href="../../d6/d2a/classfl7_1_1gui_1_1faces_1_1DropDown.html">DropDown</a> itself is the one pushing _selected_index onto _popup_list. </p>
+<p>Suppresses <span class="tt"><a class="el" href="#a59bb6ecc2a9aef68d1c6d22e2f91d40d">_on_popup_selection_changed()</a></span>'s row-click side effects while this drop-down itself is the one pushing <span class="tt"><a class="el" href="#a05a40554480bec65470cace99bb8390d">_selected_index</a></span> onto <span class="tt"><a class="el" href="#a86b8ae25deca8e222d80e516f0ea4a15">_popup_list</a></span>. </p>
 
 </div>
 </div>

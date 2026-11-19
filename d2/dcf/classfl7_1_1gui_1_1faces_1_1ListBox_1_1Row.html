@@ -324,7 +324,7 @@ Friends</h2></td></tr>
 <tr class="memitem:a28ba2b898a1475c383abae46c76d1d9e" id="r_a28ba2b898a1475c383abae46c76d1d9e"><td class="memItemLeft" align="right" valign="top">class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a28ba2b898a1475c383abae46c76d1d9e">ListBox</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>A single selectable row, purely a disabled decoration (themed "list_box_row", see <a class="el" href="../../d9/db9/classfl7_1_1gui_1_1HasCheckedState.html">HasCheckedState</a>) around its own caller-supplied content <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a> (see <a class="el" href="#af4c1e395e791a1b8c4dff1503db05f58">set_content()</a>): never itself hit-tested, hovered, pressed, or focused (that's <a class="el" href="../../d4/d24/classfl7_1_1gui_1_1faces_1_1ListBox_1_1RowArea.html">RowArea</a>'s job, for the whole list at once; see <a class="el" href="../../d4/d24/classfl7_1_1gui_1_1faces_1_1ListBox_1_1RowArea.html">ListBox::RowArea</a>), only visually reflects whether it's currently the owning list's selected item. </p>
+<div class="textblock"><p>A single selectable row, purely a disabled decoration (themed "list_box_row", see <span class="tt"><a class="el" href="../../d9/db9/classfl7_1_1gui_1_1HasCheckedState.html">HasCheckedState</a></span>) around its own caller-supplied content <span class="tt"><a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a></span> (see <span class="tt"><a class="el" href="#af4c1e395e791a1b8c4dff1503db05f58">set_content()</a></span>): never itself hit-tested, hovered, pressed, or focused (that's <span class="tt"><a class="el" href="../../d4/d24/classfl7_1_1gui_1_1faces_1_1ListBox_1_1RowArea.html">RowArea</a></span>'s job, for the whole list at once; see <span class="tt"><a class="el" href="../../d4/d24/classfl7_1_1gui_1_1faces_1_1ListBox_1_1RowArea.html">ListBox::RowArea</a></span>), only visually reflects whether it's currently the owning list's selected item. </p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a55112ef237192d53ef31aaa539b50c56" name="a55112ef237192d53ef31aaa539b50c56"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a55112ef237192d53ef31aaa539b50c56">&#9670;&#160;</a></span>Row()</h2>
@@ -410,7 +410,7 @@ Friends</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Keeps this row's content <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a> filling its entire new size. </p>
+<p>Keeps this row's content <span class="tt"><a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a></span> filling its entire new size. </p>
 
 <p>Reimplemented from <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html#a9866e132198a7de7a47e02e7347abe48">fl7::gui::Face</a>.</p>
 
@@ -438,7 +438,7 @@ Friends</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Re-numbers this row after some earlier row was removed (see <a class="el" href="../../d6/d18/classfl7_1_1gui_1_1faces_1_1ListBox.html#a6cd4cc9104d53925402ae3aad96d5917">ListBox::remove_item()</a>): only the owning list ever has a reason to shift a row's index like this, after the fact, behind its own back. </p>
+<p>Re-numbers this row after some earlier row was removed (see <span class="tt"><a class="el" href="../../d6/d18/classfl7_1_1gui_1_1faces_1_1ListBox.html#a6cd4cc9104d53925402ae3aad96d5917">ListBox::remove_item()</a></span>): only the owning list ever has a reason to shift a row's index like this, after the fact, behind its own back. </p>
 
 </div>
 </div>
@@ -495,7 +495,7 @@ requires (std::derived_from&lt;TFace, <a class="el" href="../../d9/d1a/classfl7_
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Constructs this row's content <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a> in place, adds it as this row's (only) child, and returns a reference to it. Disabled, and kept filling this row's entire size (see <a class="el" href="#a54428239b0fa8e1096a12088a2c9f361">_on_size_changed()</a>). </p>
+<p>Constructs this row's content <span class="tt"><a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a></span> in place, adds it as this row's (only) child, and returns a reference to it. Disabled, and kept filling this row's entire size (see <span class="tt"><a class="el" href="#a54428239b0fa8e1096a12088a2c9f361">_on_size_changed()</a></span>). </p>
 
 </div>
 </div>
@@ -542,7 +542,7 @@ requires (std::derived_from&lt;TFace, <a class="el" href="../../d9/d1a/classfl7_
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Non-owning: actually owned (as the only child) by the inherited <a class="el" href="../../d4/de7/classfl7_1_1gui_1_1Collection.html">Collection</a>, once <a class="el" href="#af4c1e395e791a1b8c4dff1503db05f58">set_content()</a> is called. </p>
+<p>Non-owning: actually owned (as the only child) by the inherited <span class="tt"><a class="el" href="../../d4/de7/classfl7_1_1gui_1_1Collection.html">Collection</a></span>, once <span class="tt"><a class="el" href="#af4c1e395e791a1b8c4dff1503db05f58">set_content()</a></span> is called. </p>
 
 </div>
 </div>

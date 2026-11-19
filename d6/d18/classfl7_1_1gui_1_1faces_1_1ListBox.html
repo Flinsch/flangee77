@@ -325,8 +325,7 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:abaaab78083d0bbbfccf9bdbbf5dc5b4a" id="r_abaaab78083d0bbbfccf9bdbbf5dc5b4a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d3/d7e/classcl7_1_1behavioral_1_1Signal.html">cl7::behavioral::Signal</a>&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abaaab78083d0bbbfccf9bdbbf5dc5b4a">_selection_changed</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>A scrollable, vertically stacked list of arbitrary rows (see <a class="el" href="#a1a2f266e2571acd72cccd7d754147c26">add_item()</a>), each wrapping one caller-supplied <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a>, with single-select-by-click/arrow-keys built in (see <a class="el" href="#a273b44ee0dfeaca2a8e12aff229d137e">get_selected_index()</a>/set_selected_index()), Ctrl-clicking the selected row to clear the selection included. Internally just a themed ("list_box") <a class="el" href="../../d8/d18/classfl7_1_1gui_1_1faces_1_1ScrollPanel.html">ScrollPanel</a> (see <a class="el" href="../../da/db8/classfl7_1_1gui_1_1faces_1_1ListBox_1_1Panel.html">Panel</a>) with its vertical scrolling reused wholesale and its horizontal scrolling permanently disabled/hidden (rows always span the full available width). Each row (see <a class="el" href="../../d2/dcf/classfl7_1_1gui_1_1faces_1_1ListBox_1_1Row.html">Row</a>, themed "list_box_row") is purely a disabled decoration around its own content <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a>; hit-testing/selection/keyboard navigation is instead handled by a single <a class="el" href="../../d4/d24/classfl7_1_1gui_1_1faces_1_1ListBox_1_1RowArea.html">RowArea</a> spanning all rows at once (see <a class="el" href="../../d4/d24/classfl7_1_1gui_1_1faces_1_1ListBox_1_1RowArea.html">RowArea</a>), both on the content <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a>'s behalf (clicking anywhere in a row, its disabled content included, selects that row) and so the whole list has one coherent focused face for arrow-key navigation, rather than each (otherwise disabled) row needing to be its own focusable <a class="el" href="../../df/d2b/classfl7_1_1gui_1_1Control.html">Control</a>.</p>
-<p>No removal is supported yet (the underlying <a class="el" href="../../d4/de7/classfl7_1_1gui_1_1Collection.html">Collection</a> itself doesn't support removing a child either, see <a class="el" href="../../d4/de7/classfl7_1_1gui_1_1Collection.html">Collection</a>). </p>
+<div class="textblock"><p>A scrollable, vertically stacked list of arbitrary rows (see <span class="tt"><a class="el" href="#a1a2f266e2571acd72cccd7d754147c26">add_item()</a></span> or <span class="tt"><a class="el" href="#a6cd4cc9104d53925402ae3aad96d5917">remove_item()</a></span>), each wrapping one caller-supplied <span class="tt"><a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a></span>, with single-select-by-click/arrow-keys built in (see <span class="tt"><a class="el" href="#a273b44ee0dfeaca2a8e12aff229d137e">get_selected_index()</a></span> or <span class="tt"><a class="el" href="#a755334e68712a7637dddc4bd8f9450ef">set_selected_index()</a></span>), Ctrl-clicking the selected row to clear the selection included. Internally just a themed scroll panel, with its vertical scrolling reused wholesale and its horizontal scrolling permanently disabled/hidden (rows always span the full available width). Each row is purely a disabled decoration around its own content <span class="tt"><a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a></span>: clicking anywhere in it, disabled content included, selects that row, and the whole list shares a single focused face for arrow-key navigation, rather than each row needing its own Tab stop. </p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a60fb60c569f3f993c113afcc2ab9569b" name="a60fb60c569f3f993c113afcc2ab9569b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a60fb60c569f3f993c113afcc2ab9569b">&#9670;&#160;</a></span>ListBox() <span class="overload">[1/3]</span></h2>
@@ -496,7 +495,7 @@ requires (std::derived_from&lt;TFace, <a class="el" href="../../d9/d1a/classfl7_
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Constructs a new item (an arbitrary <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a>, owned by a new row of its own) in place, adds it at the end of this list, and returns a reference to it (not to the row wrapping it, which stays purely an internal implementation detail). Disabled (same as the row wrapping it): clicking/hovering anywhere in the row always resolves to the row as a whole, never to the item's own content specifically. </p>
+<p>Constructs a new item (an arbitrary <span class="tt"><a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a></span>, owned by a new row of its own) in place, adds it at the end of this list, and returns a reference to it (not to the row wrapping it, which stays purely an internal implementation detail). Disabled (same as the row wrapping it): clicking/hovering anywhere in the row always resolves to the row as a whole, never to the item's own content specifically. </p>
 
 </div>
 </div>
@@ -668,7 +667,7 @@ requires (std::derived_from&lt;TFace, <a class="el" href="../../d9/d1a/classfl7_
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Removes (and destroys, along with its content <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a>) the item at the specified index; an out-of-range index is ignored. Every later item's own index shifts down by one to match. If the removed item was the currently selected one, the selection is cleared (-1) rather than jumping to whatever item now happens to occupy its old position; a selected item at a later index just keeps tracking the same (still selected) item, re-numbered down by one. Either way, <a class="el" href="#aece7fbccae67b65f6ee1e257b3e1d075">get_selection_changed()</a> only fires if the index this list reports actually changes as a result. </p>
+<p>Removes (and destroys, along with its content <span class="tt"><a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a></span>) the item at the specified index; an out-of-range index is ignored. Every later item's own index shifts down by one to match. If the removed item was the currently selected one, the selection is cleared (-1) rather than jumping to whatever item now happens to occupy its old position; a selected item at a later index just keeps tracking the same (still selected) item, re-numbered down by one. Either way, the "selection changed" signal only fires if the index this list reports actually changes as a result. </p>
 
 </div>
 </div>
@@ -704,7 +703,7 @@ requires (std::derived_from&lt;TFace, <a class="el" href="../../d9/d1a/classfl7_
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Sets the currently selected item by index, or -1 to select none, unless already at that index. An out-of-range index (besides -1) is ignored. Emits <a class="el" href="#aece7fbccae67b65f6ee1e257b3e1d075">get_selection_changed()</a> (with the new index) when actually changed. </p>
+<p>Sets the currently selected item by index, or -1 to select none, unless already at that index. An out-of-range index (besides -1) is ignored. Emits the "selection changed" signal (with the new index) when actually changed. </p>
 
 </div>
 </div>
@@ -728,7 +727,7 @@ requires (std::derived_from&lt;TFace, <a class="el" href="../../d9/d1a/classfl7_
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Non-owning: actually owned (as a child) by the inherited <a class="el" href="../../d4/de7/classfl7_1_1gui_1_1Collection.html">Collection</a>. </p>
+<p>Non-owning: actually owned (as a child) by the inherited <span class="tt"><a class="el" href="../../d4/de7/classfl7_1_1gui_1_1Collection.html">Collection</a></span>. </p>
 
 </div>
 </div>
@@ -796,7 +795,7 @@ requires (std::derived_from&lt;TFace, <a class="el" href="../../d9/d1a/classfl7_
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Non-owning: actually owned (as children) by _row_area, in insertion order. </p>
+<p>Non-owning: actually owned (as children) by <span class="tt"><a class="el" href="#a037d8eedfda54b41f2626e0ef94b8c1c">_row_area</a></span>, in insertion order. </p>
 
 </div>
 </div>
