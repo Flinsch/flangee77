@@ -20,22 +20,17 @@ namespace fl7::gui::faces {
 
 
 /**
- * A scrollable, vertically stacked list of arbitrary rows (see add_item()), each
- * wrapping one caller-supplied Face, with single-select-by-click/arrow-keys built
- * in (see get_selected_index()/set_selected_index()), Ctrl-clicking the selected
- * row to clear the selection included. Internally just a themed ("list_box")
- * ScrollPanel (see Panel) with its vertical scrolling reused wholesale and its
- * horizontal scrolling permanently disabled/hidden (rows always span the full
- * available width). Each row (see Row, themed "list_box_row") is purely a disabled
- * decoration around its own content Face; hit-testing/selection/keyboard navigation
- * is instead handled by a single RowArea spanning all rows at once (see RowArea),
- * both on the content Face's behalf (clicking anywhere in a row, its disabled
- * content included, selects that row) and so the whole list has one coherent
- * focused face for arrow-key navigation, rather than each (otherwise disabled) row
- * needing to be its own focusable Control.
- *
- * No removal is supported yet (the underlying Collection itself doesn't support
- * removing a child either, see Collection).
+ * A scrollable, vertically stacked list of arbitrary rows (see `add_item()` or
+ * `remove_item()`), each wrapping one caller-supplied `Face`, with
+ * single-select-by-click/arrow-keys built in (see `get_selected_index()` or
+ * `set_selected_index()`), Ctrl-clicking the selected row to clear the selection
+ * included. Internally just a themed scroll panel, with its vertical scrolling
+ * reused wholesale and its horizontal scrolling permanently disabled/hidden
+ * (rows always span the full available width). Each row is purely a disabled
+ * decoration around its own content `Face`: clicking anywhere in it, disabled
+ * content included, selects that row, and the whole list shares a single
+ * focused face for arrow-key navigation, rather than each row needing its own
+ * Tab stop.
  */
 class ListBox
     : public Compound
@@ -58,7 +53,7 @@ public:
     // #############################################################################
 
     /**
-     * Constructs a new item (an arbitrary Face, owned by a new row of its own) in
+     * Constructs a new item (an arbitrary `Face`, owned by a new row of its own) in
      * place, adds it at the end of this list, and returns a reference to it (not to
      * the row wrapping it, which stays purely an internal implementation detail).
      * Disabled (same as the row wrapping it): clicking/hovering anywhere in the row
@@ -70,14 +65,14 @@ public:
     TFace& add_item(Args&&... args);
 
     /**
-     * Removes (and destroys, along with its content Face) the item at the
+     * Removes (and destroys, along with its content `Face`) the item at the
      * specified index; an out-of-range index is ignored. Every later item's own
      * index shifts down by one to match. If the removed item was the currently
      * selected one, the selection is cleared (-1) rather than jumping to whatever
      * item now happens to occupy its old position; a selected item at a later
      * index just keeps tracking the same (still selected) item, re-numbered down
-     * by one. Either way, get_selection_changed() only fires if the index this
-     * list reports actually changes as a result.
+     * by one. Either way, the "selection changed" signal only fires if the index
+     * this list reports actually changes as a result.
      */
     void remove_item(int index);
 
@@ -90,7 +85,7 @@ public:
     /**
      * Sets the currently selected item by index, or -1 to select none, unless
      * already at that index. An out-of-range index (besides -1) is ignored. Emits
-     * get_selection_changed() (with the new index) when actually changed.
+     * the "selection changed" signal (with the new index) when actually changed.
      */
     void set_selected_index(int index);
 
@@ -146,12 +141,12 @@ private:
     // Attributes
     // #############################################################################
 
-    /** Non-owning: actually owned (as a child) by the inherited Collection. */
+    /** Non-owning: actually owned (as a child) by the inherited `Collection`. */
     Panel& _panel;
     /** Non-owning: actually owned (as a child) by the panel's content area. */
     RowArea& _row_area;
 
-    /** Non-owning: actually owned (as children) by _row_area, in insertion order. */
+    /** Non-owning: actually owned (as children) by `_row_area`, in insertion order. */
     std::vector<Row*> _rows;
 
     int _selected_index = -1;
@@ -170,10 +165,10 @@ private:
 
 /**
  * A single selectable row, purely a disabled decoration (themed "list_box_row",
- * see HasCheckedState) around its own caller-supplied content Face (see
- * set_content()): never itself hit-tested, hovered, pressed, or focused (that's
- * RowArea's job, for the whole list at once; see ListBox::RowArea), only visually
- * reflects whether it's currently the owning list's selected item.
+ * see `HasCheckedState`) around its own caller-supplied content `Face` (see
+ * `set_content()`): never itself hit-tested, hovered, pressed, or focused (that's
+ * `RowArea`'s job, for the whole list at once; see `ListBox::RowArea`), only
+ * visually reflects whether it's currently the owning list's selected item.
  */
 class ListBox::Row
     : public Compound
@@ -206,9 +201,9 @@ public:
     // #############################################################################
 
     /**
-     * Constructs this row's content Face in place, adds it as this row's (only)
+     * Constructs this row's content `Face` in place, adds it as this row's (only)
      * child, and returns a reference to it. Disabled, and kept filling this row's
-     * entire size (see _on_size_changed()).
+     * entire size (see `_on_size_changed()`).
      */
     template <class TFace, class... Args>
         requires(std::derived_from<TFace, Face>)
@@ -233,7 +228,7 @@ protected:
     /** Returns this row's theme role. */
     cl7::u8string_view _get_theme_key() const override { return u8"list_box_row"; }
 
-    /** Keeps this row's content Face filling its entire new size. */
+    /** Keeps this row's content `Face` filling its entire new size. */
     void _on_size_changed(ml7::Vector2f old_size, ml7::Vector2f new_size) override
     {
         if (!_content)
@@ -253,7 +248,7 @@ private:
 
     /**
      * Re-numbers this row after some earlier row was removed (see
-     * ListBox::remove_item()): only the owning list ever has a reason to shift a
+     * `ListBox::remove_item()`): only the owning list ever has a reason to shift a
      * row's index like this, after the fact, behind its own back.
      */
     void _set_index(int index) { _index = index; }
@@ -267,7 +262,7 @@ private:
     const ListBox& _owner;
     int _index;
 
-    /** Non-owning: actually owned (as the only child) by the inherited Collection, once set_content() is called. */
+    /** Non-owning: actually owned (as the only child) by the inherited `Collection`, once `set_content()` is called. */
     Face* _content = nullptr;
 
 }; // class ListBox::Row
@@ -279,11 +274,11 @@ private:
 // #############################################################################
 
 /**
- * Spans every row at once (see ListBox::_relayout_rows()): the one face that's
+ * Spans every row at once (see `ListBox::_relayout_rows()`): the one face that's
  * actually hit-tested/focused for the whole list, so a click anywhere in a row
- * (its disabled content Face included) selects that row, and arrow-key navigation
+ * (its disabled content `Face` included) selects that row, and arrow-key navigation
  * only needs this single face to hold the focus, rather than each (otherwise
- * disabled) row needing to be its own focusable Control.
+ * disabled) row needing to be its own focusable `Control`.
  */
 class ListBox::RowArea
     : public Container
@@ -306,8 +301,8 @@ protected:
     /**
      * Selects whichever row the click's (local) vertical position falls into, if
      * any (an out-of-range index, e.g. a click below the last row, is silently
-     * ignored, see set_selected_index()). Ctrl-clicking the already-selected row
-     * clears the selection instead (see _is_ctrl_down()).
+     * ignored, see `set_selected_index()`). Ctrl-clicking the already-selected row
+     * clears the selection instead (see `_is_ctrl_down()`).
      */
     void _on_mouse_down(xl7::input::MouseButton button, ml7::Vector2f local_position) override;
 
@@ -322,7 +317,7 @@ protected:
     /**
      * Consumes Up/Down (hard) while the selection still has somewhere to go
      * in that direction (from no selection, either arrow enters the list),
-     * so plain arrow-key focus navigation yields to _on_key_down() moving
+     * so plain arrow-key focus navigation yields to `_on_key_down()` moving
      * the selection instead; yields back once at either end. The horizontal
      * arrows always stay free.
      */
@@ -358,7 +353,7 @@ private:
 // #############################################################################
 
 /**
- * Constructs a new item (an arbitrary Face, owned by a new row of its own) in
+ * Constructs a new item (an arbitrary `Face`, owned by a new row of its own) in
  * place, adds it at the end of this list, and returns a reference to it (not to
  * the row wrapping it, which stays purely an internal implementation detail).
  * Disabled (same as the row wrapping it): clicking/hovering anywhere in the row

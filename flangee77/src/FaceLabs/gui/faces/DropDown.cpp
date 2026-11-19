@@ -45,7 +45,7 @@ namespace fl7::gui::faces {
     /**
      * Sets the currently selected item by index, or -1 to select none, unless
      * already at that index. An out-of-range index (besides -1) is ignored. Emits
-     * get_selection_changed() (with the new index) when actually changed.
+     * the "selection changed" signal (with the new index) when actually changed.
      */
     void DropDown::set_selected_index(int index)
     {
@@ -155,8 +155,8 @@ namespace fl7::gui::faces {
     // #############################################################################
 
     /**
-     * Keeps _label's text in sync with get_display_text(), whenever the selection
-     * changes.
+     * Keeps `_label`'s text in sync with `get_display_text()`, whenever the
+     * selection changes.
      */
     void DropDown::_sync_label()
     {
@@ -165,7 +165,7 @@ namespace fl7::gui::faces {
 
     /**
      * Opens the popup if closed, or closes it if open; what both a click on the
-     * text part and a click on _arrow_button actually trigger.
+     * text part and a click on `_arrow_button` actually trigger.
      */
     void DropDown::_toggle_popup()
     {
@@ -231,8 +231,8 @@ namespace fl7::gui::faces {
     }
 
     /**
-     * Creates the popup list (a separate top-level Shell face, see the class doc
-     * comment), populated from _items, unless it already exists.
+     * Creates the popup list (a separate top-level `Shell` face, see the class doc
+     * comment), populated from `_items`, unless it already exists.
      */
     void DropDown::_ensure_popup()
     {
@@ -260,13 +260,13 @@ namespace fl7::gui::faces {
     }
 
     /**
-     * Reacts to the popup list's own get_selection_changed(): adopts the new
-     * index, closes the popup, and hands focus back to this DropDown (clicking a
+     * Reacts to the popup list's own "selection changed" signal: adopts the new
+     * index, closes the popup, and hands focus back to this drop-down (clicking a
      * popup row unavoidably focuses the popup list itself first instead, see
-     * Shell::update()'s mouse handling), unless this change was actually just this
-     * DropDown syncing the popup's own selection to its own (see
-     * set_selected_index()/_open_popup()), not an actual row click, in which case
-     * none of that applies (and nothing is emitted a second time either).
+     * `Shell::update()`'s mouse handling), unless this change was actually just
+     * this drop-down syncing the popup's own selection to its own (see
+     * `set_selected_index()` or `_open_popup()`), not an actual row click, in which
+     * case none of that applies (and nothing is emitted a second time either).
      */
     void DropDown::_on_popup_selection_changed(int index)
     {

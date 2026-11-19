@@ -56,7 +56,7 @@ namespace fl7::gui::faces {
             _dragging = false;
         }
 
-        /** Resizes the owning frame by delta, clamped to Frame::MIN_WIDTH/MIN_HEIGHT, while dragging is armed. */
+        /** Resizes the owning frame by delta, clamped to `Frame::MIN_WIDTH` and `MIN_HEIGHT`, while dragging is armed. */
         void _on_mouse_drag(ml7::Vector2f delta, ml7::Vector2f local_position) override
         {
             if (!_dragging)

@@ -32,7 +32,8 @@ namespace fl7::gui::faces {
     // #############################################################################
 
     /**
-     * Sets this panel's content size, re-clamping (and, if that actually changes it, see get_scroll_changed()) the current scroll position to it.
+     * Sets this panel's content size, re-clamping the current scroll position to
+     * it (emitting the "scroll changed" signal if that actually changes it).
      */
     void ScrollPanel::set_content_size(ml7::Vector2f content_size)
     {
@@ -44,7 +45,8 @@ namespace fl7::gui::faces {
     }
 
     /**
-     * Sets this panel's scroll position, clamped to [0, get_content_size() - (viewport size)] per axis (never negative), unless already at that (clamped) position.
+     * Sets this panel's scroll position, clamped to [0, `get_content_size()` - (viewport size)]
+     * per axis (never negative), unless already at that (clamped) position.
      */
     void ScrollPanel::set_scroll_position(ml7::Vector2f scroll_position)
     {
@@ -52,7 +54,8 @@ namespace fl7::gui::faces {
     }
 
     /**
-     * Sets the amount the mouse wheel scrolls (vertically) per notch; also both scroll bars' own step.
+     * Sets the amount the mouse wheel scrolls (vertically) per notch; also both
+     * scroll bars' own step.
      */
     void ScrollPanel::set_wheel_step(float wheel_step)
     {
@@ -65,7 +68,7 @@ namespace fl7::gui::faces {
      * Sets whether this panel's content can be scrolled vertically at all.
      * While disabled, the vertical scroll position stays clamped to 0 regardless of
      * content size, and the vertical scroll bar is disabled (however its own
-     * visibility is configured; see set_vertical_scroll_bar_visibility()), since
+     * visibility is configured; see `set_vertical_scroll_bar_visibility()`), since
      * there would be nothing for it to do.
      */
     void ScrollPanel::set_vertical_scroll_enabled(bool enabled)
@@ -81,7 +84,7 @@ namespace fl7::gui::faces {
      * Sets whether this panel's content can be scrolled horizontally at all.
      * While disabled, the horizontal scroll position stays clamped to 0 regardless of
      * content size, and the horizontal scroll bar is disabled (however its own
-     * visibility is configured; see set_horizontal_scroll_bar_visibility()), since
+     * visibility is configured; see `set_horizontal_scroll_bar_visibility()`), since
      * there would be nothing for it to do.
      */
     void ScrollPanel::set_horizontal_scroll_enabled(bool enabled)
@@ -94,7 +97,7 @@ namespace fl7::gui::faces {
     }
 
     /**
-     * Sets this panel's vertical scroll bar's visibility mode. Auto shows it only
+     * Sets this panel's vertical scroll bar's visibility mode. `Auto` shows it only
      * while the content actually overflows vertically, accounting for whichever
      * other scroll bar ends up shown too, since showing one reduces the viewport
      * (and therefore how much room the other axis's content actually has) available
@@ -110,7 +113,7 @@ namespace fl7::gui::faces {
     }
 
     /**
-     * Sets this panel's horizontal scroll bar's visibility mode. Auto shows it only
+     * Sets this panel's horizontal scroll bar's visibility mode. `Auto` shows it only
      * while the content actually overflows horizontally, accounting for whichever
      * other scroll bar ends up shown too, since showing one reduces the viewport
      * (and therefore how much room the other axis's content actually has) available
@@ -140,7 +143,7 @@ namespace fl7::gui::faces {
     }
 
     /**
-     * Scrolls vertically by get_wheel_step() per wheel notch. Always consumes.
+     * Scrolls vertically by `get_wheel_step()` per wheel notch. Always consumes.
      */
     bool ScrollPanel::_on_mouse_wheel(int delta)
     {
@@ -159,7 +162,7 @@ namespace fl7::gui::faces {
     /**
      * Positions/sizes the content area and both scroll bars for this panel's own
      * current size, and resolves each scroll bar's actual shown/hidden state (see
-     * ScrollBarVisibility) and enabled state (shown and its own axis is enabled)
+     * `ScrollBarVisibility`) and enabled state (shown and its own axis is enabled)
      * for this pass. Auto visibility is resolved against each axis's own full-size
      * overflow first, then re-checked once more for whichever axis wasn't needed on
      * its own, against the viewport as actually reduced by the other axis's scroll
@@ -228,7 +231,7 @@ namespace fl7::gui::faces {
     }
 
     /**
-     * Clamps a scroll position to [0, get_content_size() - (viewport size)] per
+     * Clamps a scroll position to [0, `get_content_size()` - (viewport size)] per
      * axis (never negative), or to [0, 0] on an axis that's currently disabled.
      */
     ml7::Vector2f ScrollPanel::_clamp_scroll_offset(ml7::Vector2f scroll_offset) const
@@ -248,7 +251,8 @@ namespace fl7::gui::faces {
 
     /**
      * Clamps and applies a new scroll position: syncs the content area and both
-     * scroll bars, emitting get_scroll_changed() only if it actually changed.
+     * scroll bars, emitting the "scroll changed" signal only if it actually
+     * changed.
      */
     void ScrollPanel::_apply_scroll_offset(ml7::Vector2f scroll_offset)
     {
@@ -264,7 +268,7 @@ namespace fl7::gui::faces {
     }
 
     /**
-     * Re-runs _layout(), _update_scroll_bars(), and re-clamps/re-applies the
+     * Re-runs `_layout()`, `_update_scroll_bars()`, and re-clamps/re-applies the
      * current scroll position to them, in that order. Needed whenever anything any
      * of them depend on changes: this panel's own size, its content size, either
      * axis's enabled state, or either scroll bar's visibility mode.

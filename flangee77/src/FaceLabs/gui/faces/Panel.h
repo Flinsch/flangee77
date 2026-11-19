@@ -10,7 +10,7 @@ namespace fl7::gui::faces {
 
 
 /**
- * A plain background/border chrome (see Style) around arbitrary, publicly addable
+ * A plain background/border chrome (see `Style`) around arbitrary, publicly addable
  * children: the `Container`-based counterpart to `Window`'s `Compound`-based fixed
  * content area. Purely a marker beyond that: no new members, just a distinct type
  * so a renderer can tell "this container also wants a background drawn" from a bare

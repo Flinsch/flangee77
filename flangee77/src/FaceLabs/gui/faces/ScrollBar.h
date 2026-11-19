@@ -15,12 +15,12 @@ namespace fl7::gui::faces {
 
 
 /**
- * A Compound of a Slider (see its own get_handle_fraction()) between two
- * optional step buttons (get_show_buttons()), like any other GUI's scroll bar:
- * the slider's handle represents get_visible_fraction() of some larger
- * content (outside this face's own knowledge, e.g. a Panel's content vs. its
+ * A `Compound` of a `Slider` (see its own `get_handle_fraction()`) between two
+ * optional step buttons (`get_show_buttons()`), like any other GUI's scroll bar:
+ * the slider's handle represents `get_visible_fraction()` of some larger
+ * content (outside this face's own knowledge, e.g. a `Panel`'s content vs. its
  * visible area) that's currently visible, and the buttons nudge the value
- * by get_step() per click, same as a Left/Right/Up/Down key press (or the
+ * by `get_step()` per click, same as a Left/Right/Up/Down key press (or the
  * mouse wheel) already would against the slider itself. This face has no
  * visual role of its own (no background, no theme key): it's purely a layout
  * container, its slider/buttons carry their own themed roles.
@@ -53,7 +53,7 @@ public:
     /** Returns this scroll bar's current value. */
     float get_value() const { return _slider.get_value(); }
 
-    /** Sets this scroll bar's value, clamped to [get_min(), get_max()]. */
+    /** Sets this scroll bar's value, clamped to [`get_min()`, `get_max()`]. */
     void set_value(float value) { _slider.set_value(value); }
 
     /** Returns this scroll bar's minimum value. */
@@ -123,11 +123,11 @@ private:
     // Attributes
     // #############################################################################
 
-    /** Non-owning: actually owned (as a child) by the inherited Collection. */
+    /** Non-owning: actually owned (as a child) by the inherited `Collection`. */
     Slider& _slider;
-    /** Non-owning: actually owned (as a child) by the inherited Collection. */
+    /** Non-owning: actually owned (as a child) by the inherited `Collection`. */
     Button& _decrement_button;
-    /** Non-owning: actually owned (as a child) by the inherited Collection. */
+    /** Non-owning: actually owned (as a child) by the inherited `Collection`. */
     Button& _increment_button;
 
     Orientation _orientation;

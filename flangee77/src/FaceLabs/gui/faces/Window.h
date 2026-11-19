@@ -12,13 +12,13 @@ namespace fl7::gui::faces {
 
 
 /**
- * A bare top-level window: a background/border chrome (see Style) around an
- * internal content area, exposed via get_content_area() rather than a direct
- * add_child() on the Window itself (Window is a Compound: fixed internal
- * composition, not arbitrary public children). The content area fills the
- * entire window and is kept in sync as the window is resized. Chrome beyond
+ * A bare top-level window: a background/border chrome (see `Style`) around an
+ * internal content area, exposed via `get_content_area()` (the only place a
+ * caller can actually add children, since `Window` is a `Compound`: fixed
+ * internal composition, not arbitrary public children). The content area fills
+ * the entire window and is kept in sync as the window is resized. Chrome beyond
  * the plain background (title bar, close button, resize handles, ...) is left
- * to a future Frame built on top of this.
+ * to `Frame`, built on top of this.
  */
 class Window
     : public Compound
@@ -75,11 +75,11 @@ protected:
     ml7::Vector2f _calculate_minimum_size() const override;
 
     /**
-     * false: a window's own Style::padding would currently have no actual effect
+     * false: a window's own `Style::padding` would currently have no actual effect
      * (no text of its own, and its content area isn't inset by it the way
-     * Container's own children are, since Window is a Compound, not a Container;
-     * see Container's own doc comment), so reporting a size padded for it would be
-     * misleading.
+     * `Container`'s own children are, since `Window` is a `Compound`, not a
+     * `Container`; see `Container`'s own doc comment), so reporting a size padded
+     * for it would be misleading.
      */
     bool _applies_own_padding() const override { return false; }
 
@@ -91,7 +91,7 @@ private:
     // Attributes
     // #############################################################################
 
-    /** Non-owning: actually owned (as a child) by the inherited Collection. */
+    /** Non-owning: actually owned (as a child) by the inherited `Collection`. */
     Container& _content_area;
 
 }; // class Window

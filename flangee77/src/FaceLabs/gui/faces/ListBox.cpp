@@ -17,8 +17,8 @@ namespace fl7::gui::faces {
     // #############################################################################
 
     /**
-     * A plain ScrollPanel themed "list_box" instead of "scroll_panel", so a list
-     * box's chrome can be styled independently of a plain ScrollPanel's.
+     * A plain `ScrollPanel` themed "list_box" instead of "scroll_panel", so a list
+     * box's chrome can be styled independently of a plain `ScrollPanel`'s.
      */
     class ListBox::Panel
         : public ScrollPanel
@@ -48,14 +48,14 @@ namespace fl7::gui::faces {
     // #############################################################################
 
     /**
-     * Removes (and destroys, along with its content Face) the item at the
+     * Removes (and destroys, along with its content `Face`) the item at the
      * specified index; an out-of-range index is ignored. Every later item's own
      * index shifts down by one to match. If the removed item was the currently
      * selected one, the selection is cleared (-1) rather than jumping to whatever
      * item now happens to occupy its old position; a selected item at a later
      * index just keeps tracking the same (still selected) item, re-numbered down
-     * by one. Either way, get_selection_changed() only fires if the index this
-     * list reports actually changes as a result.
+     * by one. Either way, the "selection changed" signal only fires if the index
+     * this list reports actually changes as a result.
      */
     void ListBox::remove_item(int index)
     {
@@ -86,7 +86,7 @@ namespace fl7::gui::faces {
     /**
      * Sets the currently selected item by index, or -1 to select none, unless
      * already at that index. An out-of-range index (besides -1) is ignored. Emits
-     * get_selection_changed() (with the new index) when actually changed.
+     * the "selection changed" signal (with the new index) when actually changed.
      */
     void ListBox::set_selected_index(int index)
     {
@@ -175,8 +175,8 @@ namespace fl7::gui::faces {
     /**
      * Selects whichever row the click's (local) vertical position falls into, if
      * any (an out-of-range index, e.g. a click below the last row, is silently
-     * ignored, see set_selected_index()). Ctrl-clicking the already-selected row
-     * clears the selection instead (see _is_ctrl_down()).
+     * ignored, see `set_selected_index()`). Ctrl-clicking the already-selected row
+     * clears the selection instead (see `_is_ctrl_down()`).
      */
     void ListBox::RowArea::_on_mouse_down(xl7::input::MouseButton button, ml7::Vector2f local_position)
     {
@@ -228,7 +228,7 @@ namespace fl7::gui::faces {
     /**
      * Consumes Up/Down (hard) while the selection still has somewhere to go
      * in that direction (from no selection, either arrow enters the list),
-     * so plain arrow-key focus navigation yields to _on_key_down() moving
+     * so plain arrow-key focus navigation yields to `_on_key_down()` moving
      * the selection instead; yields back once at either end. The horizontal
      * arrows always stay free.
      */

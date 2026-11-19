@@ -16,13 +16,13 @@ namespace fl7::gui::faces {
     // #############################################################################
 
     /**
-     * The little checkbox glyph itself: a passive HasBackground box, themed
+     * The little checkbox glyph itself: a passive `HasBackground` box, themed
      * "checkbox". Disabled (excluded from hit-testing), so every click/hover across
-     * the whole CheckBox (box + caption) resolves to the CheckBox itself, never to
-     * the box alone. Mirrors the owning CheckBox's checked/hovered/pressed/focused
-     * state for theme resolution via _get_interaction_state_proxy() instead of its
-     * own: it isn't itself a HasCheckedState, and (being disabled) is never actually
-     * hit-tested, hovered, pressed, or focused on its own.
+     * the whole `CheckBox` (box + caption) resolves to the `CheckBox` itself, never
+     * to the box alone. Mirrors the owning `CheckBox`'s checked/hovered/pressed/
+     * focused state for theme resolution via `_get_interaction_state_proxy()`
+     * instead of its own: it isn't itself a `HasCheckedState`, and (being disabled)
+     * is never actually hit-tested, hovered, pressed, or focused on its own.
      */
     class CheckBox::Box
         : public Face
@@ -90,7 +90,7 @@ namespace fl7::gui::faces {
     /**
      * Returns the box glyph (square, side = caption height) plus, only if there
      * actually is a caption to separate it from, the gap plus the caption's own
-     * natural (unwrapped) preferred size, side by side; see _on_size_changed()
+     * natural (unwrapped) preferred size, side by side; see `_on_size_changed()`
      * for the matching actual layout.
      */
     ml7::Vector2f CheckBox::_calculate_preferred_size() const
@@ -103,7 +103,7 @@ namespace fl7::gui::faces {
     /**
      * Returns the box glyph (square, side = caption height) plus, only if there
      * actually is a caption to separate it from, the gap plus the caption's own
-     * natural (unwrapped) minimum size, side by side; see _on_size_changed()
+     * natural (unwrapped) minimum size, side by side; see `_on_size_changed()`
      * for the matching actual layout.
      */
     ml7::Vector2f CheckBox::_calculate_minimum_size() const

@@ -17,8 +17,7 @@ namespace fl7::gui::faces {
 /**
  * A Window with a fixed title bar (title text plus a close button) on top of its
  * content area, draggable (by that title bar) to move it and, by a small grip in
- * its bottom-right corner, to resize it (clamped to a sane minimum size; see
- * `MIN_WIDTH`/`MIN_HEIGHT`).
+ * its bottom-right corner, to resize it (clamped to a sane minimum size).
  */
 class Frame
     : public Window
@@ -131,12 +130,12 @@ private:
      */
     static constexpr float TITLE_BAR_HEIGHT = 24.0f;
 
-    /** Fixed for now, same caveat as TITLE_BAR_HEIGHT. */
+    /** Fixed for now, same caveat as `TITLE_BAR_HEIGHT`. */
     static constexpr float RESIZE_HANDLE_SIZE = 16.0f;
 
-    /** Dragging the resize handle (see ResizeHandle) never shrinks this frame below this size. */
+    /** Dragging the resize handle (see `ResizeHandle`) never shrinks this frame below this size. */
     static constexpr float MIN_WIDTH = 80.0f;
-    /** See MIN_WIDTH; tall enough for the title bar and the resize handle to both still fit. */
+    /** See `MIN_WIDTH`; tall enough for the title bar and the resize handle to both still fit. */
     static constexpr float MIN_HEIGHT = TITLE_BAR_HEIGHT + RESIZE_HANDLE_SIZE;
 
 

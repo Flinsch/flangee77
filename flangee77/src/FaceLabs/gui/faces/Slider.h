@@ -11,10 +11,10 @@ namespace fl7::gui::faces {
 
 
 /**
- * A TrackControl (horizontal or vertical) with a fixed, square handle by default
- * (see TrackControl for the shared value/step model and click/drag/keyboard/wheel
- * interaction). Set a handle fraction (see set_handle_fraction()) to instead give
- * it a handle whose length itself is meaningful, e.g., ScrollBar builds its middle,
+ * A `TrackControl` (horizontal or vertical) with a fixed, square handle by default
+ * (see `TrackControl` for the shared value/step model and click/drag/keyboard/wheel
+ * interaction). Set a handle fraction (see `set_handle_fraction()`) to instead give
+ * it a handle whose length itself is meaningful, e.g., `ScrollBar` builds its middle,
  * draggable part from exactly that.
  */
 class Slider
@@ -69,7 +69,7 @@ protected:
     /** Returns this slider's handle. */
     Face& _get_handle() override;
 
-    /** get_handle_fraction() of this slider's own main-axis size, if set; else the inherited fixed square. */
+    /** `get_handle_fraction()` of this slider's own main-axis size, if set; else the inherited fixed square. */
     float _get_handle_main_size() const override;
 
 
@@ -81,7 +81,7 @@ private:
     // Attributes
     // #############################################################################
 
-    /** Non-owning: actually owned (as a child) by the inherited Collection. */
+    /** Non-owning: actually owned (as a child) by the inherited `Collection`. */
     Handle& _handle;
 
     std::optional<float> _handle_fraction;

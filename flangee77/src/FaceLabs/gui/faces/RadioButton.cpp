@@ -17,13 +17,13 @@ namespace fl7::gui::faces {
     // #############################################################################
 
     /**
-     * The little radio glyph itself: a passive HasBackground box, themed
+     * The little radio glyph itself: a passive `HasBackground` box, themed
      * "radio_button". Disabled (excluded from hit-testing), so every click/hover
-     * across the whole RadioButton (box + caption) resolves to the RadioButton
-     * itself, never to the box alone. Mirrors the owning RadioButton's checked/
+     * across the whole `RadioButton` (box + caption) resolves to the `RadioButton`
+     * itself, never to the box alone. Mirrors the owning `RadioButton`'s checked/
      * hovered/pressed/focused state for theme resolution via
-     * _get_interaction_state_proxy() instead of its own: it isn't itself a
-     * HasCheckedState, and (being disabled) is never actually hit-tested,
+     * `_get_interaction_state_proxy()` instead of its own: it isn't itself a
+     * `HasCheckedState`, and (being disabled) is never actually hit-tested,
      * hovered, pressed, or focused on its own.
      */
     class RadioButton::Box
@@ -71,9 +71,10 @@ namespace fl7::gui::faces {
     /**
      * Sets whether this radio button is checked, unless already in that state.
      * Checking it unchecks whichever other member of its group was previously
-     * checked. Explicitly unchecking it (unlike a direct click, see _on_click())
-     * is still allowed, e.g. to start a group out with nothing selected. Emits
-     * the "changed" signal (with the new value) when actually changed.
+     * checked. Explicitly unchecking it (unlike clicking it, which only ever
+     * checks it) is still allowed, e.g. to start a group out with nothing
+     * selected. Emits the "changed" signal (with the new value) when actually
+     * changed.
      */
     void RadioButton::set_checked(bool checked)
     {
@@ -112,7 +113,7 @@ namespace fl7::gui::faces {
     /**
      * Returns the box glyph (square, side = caption height) plus, only if there
      * actually is a caption to separate it from, the gap plus the caption's own
-     * natural (unwrapped) preferred size, side by side; see _on_size_changed()
+     * natural (unwrapped) preferred size, side by side; see `_on_size_changed()`
      * for the matching actual layout.
      */
     ml7::Vector2f RadioButton::_calculate_preferred_size() const
@@ -125,7 +126,7 @@ namespace fl7::gui::faces {
     /**
      * Returns the box glyph (square, side = caption height) plus, only if there
      * actually is a caption to separate it from, the gap plus the caption's own
-     * natural (unwrapped) minimum size, side by side; see _on_size_changed()
+     * natural (unwrapped) minimum size, side by side; see `_on_size_changed()`
      * for the matching actual layout.
      */
     ml7::Vector2f RadioButton::_calculate_minimum_size() const
@@ -142,8 +143,8 @@ namespace fl7::gui::faces {
     // #############################################################################
 
     /**
-     * Unchecks this radio button directly, without notifying _group (called by
-     * RadioGroup itself, once it already knows about the newly checked member, to
+     * Unchecks this radio button directly, without notifying `_group` (called by
+     * `RadioGroup` itself, once it already knows about the newly checked member, to
      * avoid recursing back into it).
      */
     void RadioButton::_force_unchecked()

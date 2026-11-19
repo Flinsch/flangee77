@@ -13,12 +13,12 @@ namespace fl7::gui::faces {
 
 
 /**
- * A display-only image, shown per get_image_scale_mode() (default: Stretch; see
- * ImageScaleMode): distorted to exactly fill this face's own bounds, uniformly
+ * A display-only image, shown per `get_image_scale_mode()` (default: `Stretch`; see
+ * `ImageScaleMode`): distorted to exactly fill this face's own bounds, uniformly
  * scaled (preserving its own aspect ratio) to fit within them, or drawn at its own
- * native size, centered. Also HasBackground, so a themed fill/chrome shows through
+ * native size, centered. Also `HasBackground`, so a themed fill/chrome shows through
  * wherever the image itself doesn't fully cover this face's own bounds
- * (Zoom's/Center's letterboxing), same as any other boxed face's.
+ * (`Zoom`'s or `Center`'s letterboxing), same as any other boxed face's.
  */
 class PictureBox
     : public Static
@@ -47,10 +47,10 @@ public:
     // HasImage Implementations
     // #############################################################################
 
-    /** Returns this picture box's image, or nullptr if none is currently set; see set_image(). */
+    /** Returns this picture box's image, or nullptr if none is currently set; see `set_image()`. */
     const Image* get_image() const override { return _image ? &*_image : nullptr; }
 
-    /** Returns this picture box's scale mode; see set_image_scale_mode(). Default: Stretch. */
+    /** Returns this picture box's scale mode; see `set_image_scale_mode()`. Default: `Stretch`. */
     ImageScaleMode get_image_scale_mode() const override { return _scale_mode; }
 
 
@@ -62,7 +62,7 @@ public:
     /** Sets this picture box's image, or clears it (nullopt), unless already that. */
     void set_image(std::optional<Image> image) { _image = std::move(image); }
 
-    /** Sets this picture box's scale mode, unless already that; see ImageScaleMode. */
+    /** Sets this picture box's scale mode, unless already that; see `ImageScaleMode`. */
     void set_image_scale_mode(ImageScaleMode scale_mode) { _scale_mode = scale_mode; }
 
 

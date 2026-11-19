@@ -18,12 +18,12 @@ namespace fl7::gui::faces {
 
 
 /**
- * A togglable box with a persistent checked/unchecked value (see HasCheckedState)
+ * A togglable box with a persistent checked/unchecked value (see `HasCheckedState`)
  * and an optional caption to its right, mutually exclusive with the other members
- * of its RadioGroup: checking this one unchecks whichever other member of the same
- * group was previously checked. Composed internally the same way as CheckBox (see
- * there for the rationale): a passive "box" glyph (see Box) plus a Label caption,
- * both disabled so clicks/hover across either part resolve to this RadioButton as a
+ * of its `RadioGroup`: checking this one unchecks whichever other member of the same
+ * group was previously checked. Composed internally the same way as `CheckBox` (see
+ * there for the rationale): a passive "box" glyph plus a `Label` caption, both
+ * disabled so clicks/hover across either part resolve to this `RadioButton` as a
  * whole.
  */
 class RadioButton
@@ -60,9 +60,10 @@ public:
     /**
      * Sets whether this radio button is checked, unless already in that state.
      * Checking it unchecks whichever other member of its group was previously
-     * checked. Explicitly unchecking it (unlike a direct click, see _on_click())
-     * is still allowed, e.g. to start a group out with nothing selected. Emits
-     * the "changed" signal (with the new value) when actually changed.
+     * checked. Explicitly unchecking it (unlike clicking it, which only ever
+     * checks it) is still allowed, e.g. to start a group out with nothing
+     * selected. Emits the "changed" signal (with the new value) when actually
+     * changed.
      */
     void set_checked(bool checked);
 
@@ -92,13 +93,13 @@ protected:
     /** A radio button is an interactive leaf control, so it's a Tab stop (each member of a group individually, not just the checked one). */
     bool _is_focusable() const override { return true; }
 
-    /** A RadioButton's _on_click() meaningfully does something, so Enter/Space (or a gamepad's "confirm" button) can activate it while focused. */
+    /** A `RadioButton`'s `_on_click()` meaningfully does something, so Enter/Space (or a gamepad's "confirm" button) can activate it while focused. */
     bool _is_clickable() const override { return true; }
 
     /**
      * Returns the box glyph (square, side = caption height) plus, only if there
      * actually is a caption to separate it from, the gap plus the caption's own
-     * natural (unwrapped) preferred size, side by side; see _on_size_changed()
+     * natural (unwrapped) preferred size, side by side; see `_on_size_changed()`
      * for the matching actual layout.
      */
     ml7::Vector2f _calculate_preferred_size() const override;
@@ -106,7 +107,7 @@ protected:
     /**
      * Returns the box glyph (square, side = caption height) plus, only if there
      * actually is a caption to separate it from, the gap plus the caption's own
-     * natural (unwrapped) minimum size, side by side; see _on_size_changed()
+     * natural (unwrapped) minimum size, side by side; see `_on_size_changed()`
      * for the matching actual layout.
      */
     ml7::Vector2f _calculate_minimum_size() const override;
@@ -116,7 +117,7 @@ protected:
 private:
     class Box; // Face + HasBackground only, defined in RadioButton.cpp; passive, see Box's own doc comment.
 
-    /** Horizontal gap between the box glyph and the caption; see _on_size_changed(). */
+    /** Horizontal gap between the box glyph and the caption; see `_on_size_changed()`. */
     static constexpr float CAPTION_GAP = 6.0f;
 
     // #############################################################################
@@ -124,8 +125,8 @@ private:
     // #############################################################################
 
     /**
-     * Unchecks this radio button directly, without notifying _group (called by
-     * RadioGroup itself, once it already knows about the newly checked member, to
+     * Unchecks this radio button directly, without notifying `_group` (called by
+     * `RadioGroup` itself, once it already knows about the newly checked member, to
      * avoid recursing back into it).
      */
     void _force_unchecked();
@@ -136,9 +137,9 @@ private:
     // Attributes
     // #############################################################################
 
-    /** Non-owning: actually owned (as a child) by the inherited Collection. */
+    /** Non-owning: actually owned (as a child) by the inherited `Collection`. */
     Box& _box;
-    /** Non-owning: actually owned (as a child) by the inherited Collection. */
+    /** Non-owning: actually owned (as a child) by the inherited `Collection`. */
     Label& _label;
 
     /** Non-owning: whoever builds the group hierarchy keeps it alive. */

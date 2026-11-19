@@ -14,12 +14,12 @@ namespace fl7::gui::faces {
 
 
 /**
- * A togglable box with a persistent checked/unchecked value (see HasCheckedState)
+ * A togglable box with a persistent checked/unchecked value (see `HasCheckedState`)
  * and an optional caption to its right. Internally a small fixed composition (see
- * Compound): a passive "box" glyph (see Box) sized to this face's own height and a
- * Label filling the remaining width for the caption. Both are disabled (see
- * Face::set_enabled), so a click or hover anywhere across box+caption always
- * resolves to this CheckBox as a whole, never to either part individually.
+ * `Compound`): a passive "box" glyph sized to this face's own height and a `Label`
+ * filling the remaining width for the caption. Both are disabled (see
+ * `Face::set_enabled`), so a click or hover anywhere across box+caption always
+ * resolves to this `CheckBox` as a whole, never to either part individually.
  */
 class CheckBox
     : public Compound
@@ -83,13 +83,13 @@ protected:
     /** A checkbox is an interactive leaf control, so it's a Tab stop. */
     bool _is_focusable() const override { return true; }
 
-    /** A CheckBox's _on_click() meaningfully does something, so Enter/Space (or a gamepad's "confirm" button) can activate it while focused. */
+    /** A `CheckBox`'s `_on_click()` meaningfully does something, so Enter/Space (or a gamepad's "confirm" button) can activate it while focused. */
     bool _is_clickable() const override { return true; }
 
     /**
      * Returns the box glyph (square, side = caption height) plus, only if there
      * actually is a caption to separate it from, the gap plus the caption's own
-     * natural (unwrapped) preferred size, side by side; see _on_size_changed()
+     * natural (unwrapped) preferred size, side by side; see `_on_size_changed()`
      * for the matching actual layout.
      */
     ml7::Vector2f _calculate_preferred_size() const override;
@@ -97,7 +97,7 @@ protected:
     /**
      * Returns the box glyph (square, side = caption height) plus, only if there
      * actually is a caption to separate it from, the gap plus the caption's own
-     * natural (unwrapped) minimum size, side by side; see _on_size_changed()
+     * natural (unwrapped) minimum size, side by side; see `_on_size_changed()`
      * for the matching actual layout.
      */
     ml7::Vector2f _calculate_minimum_size() const override;
@@ -107,16 +107,16 @@ protected:
 private:
     class Box; // Face + HasBackground only, defined in CheckBox.cpp; passive, see Box's own doc comment.
 
-    /** Horizontal gap between the box glyph and the caption; see _on_size_changed(). */
+    /** Horizontal gap between the box glyph and the caption; see `_on_size_changed()`. */
     static constexpr float CAPTION_GAP = 6.0f;
 
     // #############################################################################
     // Attributes
     // #############################################################################
 
-    /** Non-owning: actually owned (as a child) by the inherited Collection. */
+    /** Non-owning: actually owned (as a child) by the inherited `Collection`. */
     Box& _box;
-    /** Non-owning: actually owned (as a child) by the inherited Collection. */
+    /** Non-owning: actually owned (as a child) by the inherited `Collection`. */
     Label& _label;
 
     bool _checked = false;

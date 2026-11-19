@@ -14,15 +14,15 @@ namespace fl7::gui::faces {
     // #############################################################################
 
     /**
-     * The draggable handle itself: a passive HasBackground box, themed
+     * The draggable handle itself: a passive `HasBackground` box, themed
      * "slider_handle". Disabled (excluded from hit-testing), so every click/hover
-     * across the whole Slider (track + handle) resolves to the Slider itself, never
-     * to the handle alone, except hovered, which additionally requires the pointer
-     * to really be over the handle's own (current) bounds (see
-     * _requires_own_bounds_for_hover()), not just anywhere on the track, so it only
-     * highlights when it's actually the thing under the cursor. Mirrors the owning
-     * Slider's pressed/focused state for theme resolution via
-     * _get_interaction_state_proxy() instead of its own: it isn't itself
+     * across the whole `Slider` (track + handle) resolves to the `Slider` itself,
+     * never to the handle alone, except hovered, which additionally requires the
+     * pointer to really be over the handle's own (current) bounds (see
+     * `_requires_own_bounds_for_hover()`), not just anywhere on the track, so it
+     * only highlights when it's actually the thing under the cursor. Mirrors the
+     * owning `Slider`'s pressed/focused state for theme resolution via
+     * `_get_interaction_state_proxy()` instead of its own: it isn't itself
      * hit-tested, pressed, or focused on its own.
      */
     class Slider::Handle
@@ -81,7 +81,7 @@ namespace fl7::gui::faces {
     }
 
     /**
-     * get_handle_fraction() of this slider's own main-axis size, if set; else the inherited fixed square.
+     * `get_handle_fraction()` of this slider's own main-axis size, if set; else the inherited fixed square.
      */
     float Slider::_get_handle_main_size() const
     {

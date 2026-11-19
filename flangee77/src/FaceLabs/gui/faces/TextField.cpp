@@ -79,8 +79,8 @@ namespace fl7::gui::faces {
 
     /**
      * Sets whether this text field wraps/accepts literal line breaks, unless
-     * already that; re-lays-out its scroll bar accordingly (see _relayout()) and
-     * scrolls the caret into view if necessary.
+     * already that; re-lays-out its scroll bar accordingly and scrolls the caret
+     * into view if necessary.
      */
     void TextField::set_multiline_enabled(bool enabled)
     {
@@ -94,9 +94,9 @@ namespace fl7::gui::faces {
 
     /**
      * Sets this text field's scroll bar's visibility mode, unless already that;
-     * re-lays-out accordingly (see _relayout()) and scrolls the caret into view
-     * if necessary. Has no effect while !get_multiline_enabled() (there's no
-     * scroll bar to show at all then, regardless).
+     * re-lays-out accordingly and scrolls the caret into view if necessary. Has
+     * no effect while multi-line is not enabled (there's no scroll bar to show
+     * at all then, regardless).
      */
     void TextField::set_scroll_bar_visibility(ScrollBarVisibility visibility)
     {
@@ -116,14 +116,14 @@ namespace fl7::gui::faces {
 
     /**
      * An editable field must always show exactly what was typed, so
-     * preserve_whitespace is non-negotiable, not theme-driven; wrap_mode
-     * likewise always follows get_multiline_enabled() directly, regardless of
+     * `preserve_whitespace` is non-negotiable, not theme-driven; `wrap_mode`
+     * likewise always follows `get_multiline_enabled()` directly, regardless of
      * whatever a theme happens to set, so rendering always matches this
-     * field's own caret/selection/hit-testing math (see _lay_out()). While
-     * actually scrolling (the scroll bar is shown; see _relayout()),
-     * vertical_align is additionally pinned to Top: Middle/Bottom would
-     * otherwise position the (now overflowing) text block so that even its
-     * very first line starts above this field's own top edge at scroll
+     * field's own caret/selection/hit-testing math (see `_lay_out()`). While
+     * actually scrolling (the scroll bar is shown; see `_relayout()`),
+     * `vertical_align` is additionally pinned to `Top`: `Middle` or `Bottom`
+     * would otherwise position the (now overflowing) text block so that even
+     * its very first line starts above this field's own top edge at scroll
      * position 0, which isn't what "scrolled all the way up" should look
      * like. Left alone (not actually overflowing yet), whatever the theme/
      * override sets is honored as-is, same as a single-line field's.
@@ -138,7 +138,7 @@ namespace fl7::gui::faces {
 
     /**
      * Keeps the scroll bar's size/position, and its range/visible_fraction/step,
-     * in sync with this field's own new size (see _relayout()), and scrolls the
+     * in sync with this field's own new size (see `_relayout()`), and scrolls the
      * caret into view if necessary.
      */
     void TextField::_on_size_changed(ml7::Vector2f old_size, ml7::Vector2f new_size)
@@ -170,7 +170,7 @@ namespace fl7::gui::faces {
 
     /**
      * Scrolls vertically by the scroll bar's own step per wheel notch, while
-     * get_multiline_enabled() and the scroll bar is actually shown. Always
+     * `get_multiline_enabled()` and the scroll bar is actually shown. Always
      * consumes then (even already clamped at an end), never otherwise.
      */
     bool TextField::_on_mouse_wheel(int delta)
@@ -188,8 +188,8 @@ namespace fl7::gui::faces {
      * moves a whole word at a time instead of one code point. Shift+Left/Right/
      * Home/End/Ctrl+Left/Ctrl+Right extends the selection instead of moving/
      * collapsing it; Ctrl+A selects everything outright. Ctrl+C/X/V copies/cuts/
-     * pastes the selection via the system clipboard (see xl7::Clipboard). While
-     * get_multiline_enabled(): Up/Down move the caret a line at a time (keeping
+     * pastes the selection via the system clipboard (see `xl7::Clipboard`). While
+     * `get_multiline_enabled()`: Up/Down move the caret a line at a time (keeping
      * roughly the same column); Home/End jump to the current LINE's start/end
      * rather than the whole text's (Ctrl+Home/Ctrl+End still do, regardless).
      * Scrolls the caret into view afterward, if necessary.
@@ -320,7 +320,7 @@ namespace fl7::gui::faces {
 
     /**
      * Inserts the input (filtered down to plain code points, plus line breaks while
-     * get_multiline_enabled()) at the caret, replacing any active selection.
+     * `get_multiline_enabled()`) at the caret, replacing any active selection.
      */
     void TextField::_on_text_input(const cl7::u32string& text)
     {
@@ -360,7 +360,7 @@ namespace fl7::gui::faces {
      * Consumes the horizontal arrows for the text caret (soft), so plain
      * arrow-key focus navigation yields while forced navigation (gamepad,
      * Alt+arrow) can still leave; same for the vertical arrows, but only
-     * while get_multiline_enabled() (there's no vertical caret movement
+     * while `get_multiline_enabled()` (there's no vertical caret movement
      * otherwise, so they stay free for navigation, as before).
      */
     ArrowResponse TextField::_consumes_arrow(ArrowDirection dir) const
@@ -379,8 +379,8 @@ namespace fl7::gui::faces {
     // #############################################################################
 
     /**
-     * Returns _Layout for _text, or empty if get_effective_style() has no font to
-     * lay out against (yet).
+     * Returns `_Layout` for `_text`, or empty if `get_effective_style()` has no
+     * font to lay out against (yet).
      */
     std::optional<TextField::_Layout> TextField::_lay_out() const
     {
@@ -421,7 +421,7 @@ namespace fl7::gui::faces {
     /**
      * Returns the index into `lines` of the line that `codepoint_index` falls
      * on: the last one whose own start still reaches it, same convention as
-     * fonts::TextLayout::locate() (an index sitting exactly on a line break
+     * `fonts::TextLayout::locate()` (an index sitting exactly on a line break
      * lands on the following line, not the end of the one before it).
      */
     size_t TextField::_line_index_at(const std::vector<fonts::TextLine>& lines, size_t codepoint_index)
@@ -434,9 +434,9 @@ namespace fl7::gui::faces {
     }
 
     /**
-     * Returns the code point index within _text whose caret position is closest to
-     * local_position (see _nearest_codepoint_in_line(), scoped to whichever line
-     * local_position.y falls on).
+     * Returns the code point index within `_text` whose caret position is closest
+     * to local_position (see `_nearest_codepoint_in_line()`, scoped to whichever
+     * line local_position.y falls on).
      */
     size_t TextField::_codepoint_index_at(ml7::Vector2f local_position) const
     {
@@ -456,7 +456,7 @@ namespace fl7::gui::faces {
     }
 
     /**
-     * Moves _caret_index to the nearest code point, roughly the same column
+     * Moves `_caret_index` to the nearest code point, roughly the same column
      * over, on the line `line_delta` lines away; a no-op if there's no such
      * line (already the first/last one).
      */
@@ -491,7 +491,7 @@ namespace fl7::gui::faces {
     }
 
     /**
-     * Returns the end of the line `codepoint_index` falls on, or _text.size() if
+     * Returns the end of the line `codepoint_index` falls on, or `_text.size()` if
      * there's no font to lay out against (yet).
      */
     size_t TextField::_line_end(size_t codepoint_index) const
@@ -505,9 +505,9 @@ namespace fl7::gui::faces {
 
     /**
      * Returns this field's own size, narrowed by its own effective padding on
-     * every side (see get_effective_padding()). Shared by _relayout() (deciding
+     * every side (see `get_effective_padding()`). Shared by `_relayout()` (deciding
      * word-wrap/overflow against this same, padding-narrowed size, not this
-     * field's raw get_size()) and _effective_text_box_size() (which narrows it
+     * field's raw `get_size()`) and `_effective_text_box_size()` (which narrows it
      * further still; see below).
      */
     ml7::Vector2f TextField::_padded_size() const
@@ -520,16 +520,17 @@ namespace fl7::gui::faces {
     }
 
     /**
-     * Returns _padded_size(), further narrowed by SCROLLBAR_THICKNESS while
-     * get_multiline_enabled() and the scroll bar is actually shown (see
-     * _relayout(), the only place that decides that); unchanged otherwise. This is
-     * also what's reported via get_text_box_size(), so it's on this field itself
-     * (rather than render::AbstractRenderer's own generic, padding-aware default)
-     * to account for its own padding here. While actually scrolling, the height
-     * is widened to at least _content_height: draw_text_in_box() also self-clips
-     * to this same box (see fonts::render::AbstractRenderer), and that box has
-     * already been shifted up by the current scroll offset, so a height no
-     * taller than the viewport would clip away whatever's scrolled into view.
+     * Returns `_padded_size()`, further narrowed by `SCROLLBAR_THICKNESS` while
+     * `get_multiline_enabled()` and the scroll bar is actually shown (see
+     * `_relayout()`, the only place that decides that); unchanged otherwise. This
+     * is also what's reported via `get_text_box_size()`, so it's on this field
+     * itself (rather than `render::AbstractRenderer`'s own generic, padding-aware
+     * default) to account for its own padding here. While actually scrolling, the
+     * height is widened to at least `_content_height`: `draw_text_in_box()` also
+     * self-clips to this same box (see `fonts::render::AbstractRenderer`), and
+     * that box has already been shifted up by the current scroll offset, so a
+     * height no taller than the viewport would clip away whatever's scrolled into
+     * view.
      */
     ml7::Vector2f TextField::_effective_text_box_size() const
     {
@@ -543,24 +544,24 @@ namespace fl7::gui::faces {
     }
 
     /**
-     * Re-decides (while get_multiline_enabled() and there's a font to lay out
+     * Re-decides (while `get_multiline_enabled()` and there's a font to lay out
      * against) whether the scroll bar is actually shown, per
-     * get_scroll_bar_visibility(): Always unconditionally; Auto only once this
-     * field's content actually overflows its own height at its padded width
-     * (see _padded_size()), or, if not yet, once more at the width actually
-     * left over once the scroll bar takes SCROLLBAR_THICKNESS off of it (a
+     * `get_scroll_bar_visibility()`: `Always` unconditionally; `Auto` only once
+     * this field's content actually overflows its own height at its padded width
+     * (see `_padded_size()`), or, if not yet, once more at the width actually
+     * left over once the scroll bar takes `SCROLLBAR_THICKNESS` off of it (a
      * narrower width only ever wraps to more, never fewer, lines, so this can't
      * flip back off and one re-check is enough to converge, same reasoning as
-     * faces::ScrollPanel's own single-axis visibility resolution); Never, well,
-     * never. Either way, sizes/positions the scroll bar accordingly (always,
-     * even hidden, so it's ready to reappear at the right place/size), and
-     * updates its range/visible_fraction/step (one line) from the result,
-     * re-clamping the current scroll position to it (see _set_scroll_offset()).
-     * Also caches the result's content height into _content_height (see
-     * _effective_text_box_size()), reset to 0 in the no-scroll-bar-at-all case.
-     * While !get_multiline_enabled() or there's no font yet, simply hides/
+     * `faces::ScrollPanel`'s own single-axis visibility resolution); `Never`,
+     * well, never. Either way, sizes/positions the scroll bar accordingly
+     * (always, even hidden, so it's ready to reappear at the right place/size),
+     * and updates its range/visible_fraction/step (one line) from the result,
+     * re-clamping the current scroll position to it (see `_set_scroll_offset()`).
+     * Also caches the result's content height into `_content_height` (see
+     * `_effective_text_box_size()`), reset to 0 in the no-scroll-bar-at-all case.
+     * While `!get_multiline_enabled()` or there's no font yet, simply hides/
      * disables the scroll bar and resets the scroll position to 0 instead,
-     * regardless of get_scroll_bar_visibility().
+     * regardless of `get_scroll_bar_visibility()`.
      */
     void TextField::_relayout()
     {
@@ -608,7 +609,7 @@ namespace fl7::gui::faces {
     }
 
     /**
-     * Sets _scroll_offset_y, clamped to the scroll bar's own current range, and
+     * Sets `_scroll_offset_y`, clamped to the scroll bar's own current range, and
      * syncs the scroll bar's own value to match.
      */
     void TextField::_set_scroll_offset(float scroll_offset_y)
@@ -619,7 +620,7 @@ namespace fl7::gui::faces {
 
     /**
      * Scrolls just enough (if at all) to bring the caret's own current line
-     * back within view, while get_multiline_enabled(). A no-op otherwise, or
+     * back within view, while `get_multiline_enabled()`. A no-op otherwise, or
      * if it's already (at least partially) visible.
      */
     void TextField::_ensure_caret_visible()
@@ -646,9 +647,9 @@ namespace fl7::gui::faces {
     }
 
     /**
-     * Runs _relayout() and _ensure_caret_visible(), then emits get_changed();
-     * every place _text actually changes funnels through this, instead of
-     * emitting directly.
+     * Runs `_relayout()` and `_ensure_caret_visible()`, then emits the "changed"
+     * signal; every place `_text` actually changes funnels through this, instead
+     * of emitting directly.
      */
     void TextField::_on_text_changed()
     {
@@ -698,7 +699,7 @@ namespace fl7::gui::faces {
     /**
      * Returns the start of the next word after index (skipping any whitespace right
      * after it first, then the rest of the current word, if any, then whatever
-     * whitespace separates it from that next word), or _text.size().
+     * whitespace separates it from that next word), or `_text.size()`.
      */
     size_t TextField::_next_word_boundary(size_t index) const
     {
@@ -712,7 +713,7 @@ namespace fl7::gui::faces {
     }
 
     /**
-     * Erases the current selection from _text, and collapses the caret (and
+     * Erases the current selection from `_text`, and collapses the caret (and
      * selection) to where it began.
      */
     void TextField::_delete_selection()
