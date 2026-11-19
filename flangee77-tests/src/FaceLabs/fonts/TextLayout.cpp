@@ -345,7 +345,7 @@ TESTLABS_CASE( u8"FaceLabs:  fonts:  TextLayout:  lay_out - an icon-covered code
 
 // #############################################################################
 // locate() / lay_out_box() (gui::render::CaretHelper/SelectionHelper, and
-// gui::faces::TextField's multiline support, all build on these)
+// gui::faces::TextField's multi-line support, all build on these)
 // #############################################################################
 
 TESTLABS_CASE( u8"FaceLabs:  fonts:  TextLayout:  locate - a code point right before an explicit line break stays on that line; right after it starts the next one" )

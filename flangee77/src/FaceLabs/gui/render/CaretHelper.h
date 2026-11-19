@@ -23,7 +23,7 @@ class AbstractRenderer;
  * Knows how to draw a `HasCaret` face's caret: a thin vertical line, spanning the
  * height of whichever line of `text` it currently falls on (see
  * `fonts::TextLayout::locate()`: text may have grown to more than one line, see
- * `gui::faces::TextField`'s multiline support), at the pixel x-offset
+ * `gui::faces::TextField`'s multi-line support), at the pixel x-offset
  * corresponding to its current code point index. No-op if the face isn't a
  * `HasCaret`, or its caret isn't currently visible. Talks only to
  * `AbstractRenderer`'s public (backend-agnostic) drawing primitives, so this is

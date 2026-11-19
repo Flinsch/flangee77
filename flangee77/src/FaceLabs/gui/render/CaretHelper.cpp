@@ -33,7 +33,7 @@ namespace fl7::gui::render {
             return;
 
         // Locates the caret's own line (same as text that may have grown to more
-        // than one, see gui::faces::TextField's multiline support, would actually
+        // than one, see gui::faces::TextField's multi-line support, would actually
         // be drawn), rather than assuming there's only ever the one.
         const fonts::CodepointPosition caret_position = fonts::TextLayout::locate(text, has_caret->get_caret_codepoint_index(), *style.font, style.text_style, absolute_position - text_scroll_offset, text_box_size);
 

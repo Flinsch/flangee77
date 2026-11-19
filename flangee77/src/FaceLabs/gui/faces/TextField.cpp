@@ -332,7 +332,7 @@ namespace fl7::gui::faces {
             // doc comment on _on_text_input()) are both normalized to a single LF,
             // so the rest of this field (line splitting, caret-by-line movement)
             // only ever has to deal with one kind of line break. Dropped outright
-            // (same as any other control character) unless multiline is enabled.
+            // (same as any other control character) unless multi-line is enabled.
             if (c == U'\r' || c == U'\n')
             {
                 if (_multiline_enabled)

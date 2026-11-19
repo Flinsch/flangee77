@@ -354,7 +354,7 @@ namespace TextLayout {
      *
      * Meant for `gui::render::CaretHelper` to position a caret rect against text
      * that may since have grown to more than one line (see
-     * `gui::faces::TextField`'s own multiline support).
+     * `gui::faces::TextField`'s own multi-line support).
      */
     CodepointPosition locate(std::span<const cl7::text::codec::codepoint> codepoints, size_t codepoint_index, Font& font, const TextStyle& text_style, ml7::Vector2f box_position, ml7::Vector2f box_size)
     {

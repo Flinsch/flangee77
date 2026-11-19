@@ -349,7 +349,7 @@ TESTLABS_CASE( u8"FaceLabs:  gui:  faces:  TextField:  Ctrl+C/X/V copy/cut/paste
 
 
 // #############################################################################
-// Multiline (set_multiline_enabled())
+// Multi-line (set_multiline_enabled())
 // #############################################################################
 //
 // Note: NullRenderer-based tests have no theme/font set up anywhere (see
@@ -378,7 +378,7 @@ TESTLABS_CASE( u8"FaceLabs:  gui:  faces:  TextField:  get_multiline_enabled() d
     TESTLABS_CHECK( !field.get_multiline_enabled() );
 }
 
-TESTLABS_CASE( u8"FaceLabs:  gui:  faces:  TextField:  with multiline enabled, a line break (CR or LF, same as Enter is reported, see Face::_on_text_input()) is inserted as a single LF; with it disabled (the default), it's dropped like any other control character" )
+TESTLABS_CASE( u8"FaceLabs:  gui:  faces:  TextField:  with multi-line enabled, a line break (CR or LF, same as Enter is reported, see Face::_on_text_input()) is inserted as a single LF; with it disabled (the default), it's dropped like any other control character" )
 {
     f77_tests::gui::NullRenderer renderer;
     f77_tests::gui::SimulatedInput input;
@@ -417,7 +417,7 @@ TESTLABS_CASE( u8"FaceLabs:  gui:  faces:  TextField:  with multiline enabled, a
     TESTLABS_CHECK_EQ( emit_count, 2 );
 }
 
-TESTLABS_CASE( u8"FaceLabs:  gui:  faces:  TextField:  Ctrl+Home/Ctrl+End always jump to the whole text's start/end, even with multiline enabled" )
+TESTLABS_CASE( u8"FaceLabs:  gui:  faces:  TextField:  Ctrl+Home/Ctrl+End always jump to the whole text's start/end, even with multi-line enabled" )
 {
     f77_tests::gui::NullRenderer renderer;
     f77_tests::gui::SimulatedInput input;
@@ -498,7 +498,7 @@ TESTLABS_CASE( u8"FaceLabs:  gui:  faces:  TextField:  Backspace/Delete remove a
     TESTLABS_CHECK_EQ( field.get_text(), cl7::u32string(U"HelloWorld") ); // the line break itself is gone, joining the two lines
 }
 
-TESTLABS_CASE( u8"FaceLabs:  gui:  faces:  TextField:  with multiline enabled, Up/Down stay with the field instead of moving focus elsewhere; without it (the default), they're free for navigation as before" )
+TESTLABS_CASE( u8"FaceLabs:  gui:  faces:  TextField:  with multi-line enabled, Up/Down stay with the field instead of moving focus elsewhere; without it (the default), they're free for navigation as before" )
 {
     f77_tests::gui::NullRenderer renderer;
     f77_tests::gui::SimulatedInput input;
@@ -526,14 +526,14 @@ TESTLABS_CASE( u8"FaceLabs:  gui:  faces:  TextField:  with multiline enabled, U
     shell.update();
     TESTLABS_CHECK( shell.get_focused_face() == static_cast<fl7::gui::Face*>(&field) );
 
-    // Without multiline (the default): Down is free, focus moves to `below`.
+    // Without multi-line (the default): Down is free, focus moves to `below`.
     input.set_key_down(xl7::input::Key::Down, true);
     shell.update();
     TESTLABS_CHECK( shell.get_focused_face() == static_cast<fl7::gui::Face*>(&below) );
     input.set_key_down(xl7::input::Key::Down, false);
     shell.update();
 
-    // Back on `field`, now with multiline enabled: Down stays here instead.
+    // Back on `field`, now with multi-line enabled: Down stays here instead.
     input.move_mouse_to({50.0f, 10.0f});
     shell.update();
     input.set_button_down(xl7::input::MouseButton::Left, true);
@@ -556,7 +556,7 @@ TESTLABS_CASE( u8"FaceLabs:  gui:  faces:  TextField:  with multiline enabled, U
 // #############################################################################
 //
 // This is the one corner of this field's behavior that genuinely needs a real
-// font to exercise meaningfully (see the "Multiline" section's own comment
+// font to exercise meaningfully (see the "Multi-line" section's own comment
 // above): whether the scroll bar actually shows/narrows the text box, and
 // whether the field ever scrolls at all, both come down to real line-height/
 // line-count math against a real font. set_style_override() (bypassing the
@@ -749,7 +749,7 @@ TESTLABS_CASE( u8"FaceLabs:  gui:  faces:  TextField:  set_style_override() with
     TESTLABS_CHECK_EQ_FLT( field.get_text_scroll_offset().y, 0.0f );
 }
 
-TESTLABS_CASE( u8"FaceLabs:  gui:  faces:  TextField:  set_style_override() with a real font: enabling multiline with the caret already out of view, or moving it there with Down, scrolls it back into view automatically" )
+TESTLABS_CASE( u8"FaceLabs:  gui:  faces:  TextField:  set_style_override() with a real font: enabling multi-line with the caret already out of view, or moving it there with Down, scrolls it back into view automatically" )
 {
     f77_tests::gui::NullRenderer renderer;
     f77_tests::gui::SimulatedInput input;
@@ -771,7 +771,7 @@ TESTLABS_CASE( u8"FaceLabs:  gui:  faces:  TextField:  set_style_override() with
     field.set_position({0.0f, 0.0f});
     field.set_size({200.0f, 40.0f}); // nowhere near tall enough for all those lines
 
-    // Enabling multiline with the caret already past the (now relevant)
+    // Enabling multi-line with the caret already past the (now relevant)
     // visible area scrolls it into view right away, without needing a
     // further nudge first.
     field.set_multiline_enabled(true);

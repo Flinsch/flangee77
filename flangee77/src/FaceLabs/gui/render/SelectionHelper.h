@@ -23,7 +23,7 @@ class AbstractRenderer;
  * Knows how to draw a `HasSelection` face's selection highlight: one flat-colored
  * rect per line the selection actually spans (see
  * `fonts::TextLayout::lay_out_box()`: text may have grown to more than one line,
- * see `gui::faces::TextField`'s multiline support), each from the pixel x-offset
+ * see `gui::faces::TextField`'s multi-line support), each from the pixel x-offset
  * of its selection's begin code point index to its end index within `text`,
  * clipped to that line's own range. No-op if the face isn't a `HasSelection`, or
  * it currently has no selection. Talks only to `AbstractRenderer`'s public
