@@ -159,7 +159,7 @@ public:
      * the current top-level face has arrow navigation disabled (see
      * `Face::get_arrow_navigation_enabled()`), or has no focusable face at
      * all. Called automatically for a plain arrow key press (see `update()`);
-     * exposed publicly so other input (a gamepad's d-pad, say) can drive the
+     * exposed publicly so other input (a gamepad's D-pad, say) can drive the
      * same navigation manually.
      */
     void focus_toward(ArrowDirection dir, bool force = false);

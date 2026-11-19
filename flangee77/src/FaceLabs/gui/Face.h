@@ -25,7 +25,7 @@ class Collection;
 
 
 /**
- * A cardinal direction for spatial (arrow key / gamepad d-pad) focus
+ * A cardinal direction for spatial (arrow key / gamepad D-pad) focus
  * navigation (see `Shell::focus_toward()`).
  */
 enum struct ArrowDirection
