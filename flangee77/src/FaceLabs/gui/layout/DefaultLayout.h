@@ -19,7 +19,7 @@ namespace fl7::gui::layout {
  * `Face::get_anchor()` flags (see `gui::Anchor`) say, as the container is resized:
  * Right without Left keeps its distance from the right edge (shifting as the
  * container grows/shrinks); Left and Right together instead stretches it to keep
- * its distance from both; same for `Top`/`Bottom` along the vertical axis,
+ * its distance from both; same for `Top` and `Bottom` along the vertical axis,
  * independently. `Left` (or `Top`) alone, or no anchor at all, does nothing on
  * either axis, same as having no layout at all, which is also the default (see
  * `Face::get_anchor()`).

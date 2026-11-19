@@ -32,10 +32,10 @@ namespace fl7::gui::layout {
  * How a child actually sits within its own cell (possibly larger than its own
  * preferred size: filled, shrunk-and-aligned near/far, or shrunk-and-centered) is
  * then up to its own `Face::get_anchor()` (the same flags `DefaultLayout` reads for
- * the other purpose of reacting to a resize), independently per axis: `Left`/`Top`
- * alone (whichever applies to that axis; the default anchor) aligns it near, at its
- * own `get_effective_preferred_size()`; `Right`/`Bottom` alone aligns it far
- * instead, same size; neither aligns it centered; both together fills the cell,
+ * the other purpose of reacting to a resize), independently per axis: `Left` or
+ * `Top` alone (whichever applies to that axis; the default anchor) aligns it near,
+ * at its own `get_effective_preferred_size()`; `Right` or `Bottom` alone aligns it
+ * far instead, same size; neither aligns it centered; both together fills the cell,
  * overriding its own preferred size. A stretched child (the default; see
  * `get_stretch()`) whose anchor doesn't fill the main axis this way just sits
  * somewhere within its own, larger cell instead of actually growing: stretch and
@@ -51,13 +51,12 @@ namespace fl7::gui::layout {
  * `faces::Label::_calculate_text_size()`), where the relevant inputs (and when
  * they've changed) are actually known.
  *
- * Also reports its own `calculate_preferred_size()`/`calculate_minimum_size()` (see
- * `Layout`): the sum of every child's own preferred/minimum size along the main
- * axis (plus gaps/padding), and their max along the cross axis (plus padding),
+ * Also reports its own `calculate_preferred_size()` or `calculate_minimum_size()`
+ * (see `Layout`): the sum of every child's own preferred/minimum size along the
+ * main axis (plus gaps/padding), and their max along the cross axis (plus padding),
  * ignoring stretch/anchor entirely: that's the size this sequence would occupy if
  * every child actually got exactly its own preferred/minimum size, which is what
- * `Container::_calculate_preferred_size()`/`_calculate_minimum_size()` defer to
- * while this layout is attached.
+ * a `Container` with this layout attached reports as its own effective size.
  */
 class BoxLayout
     : public Layout
@@ -175,7 +174,7 @@ private:
     // #############################################################################
 
     /**
-     * Shared by `calculate_preferred_size()`/`calculate_minimum_size()`: sums
+     * Shared by `calculate_preferred_size()` or `calculate_minimum_size()`: sums
      * `size_of(child)[axis]` across every child (plus gaps/padding on the main
      * axis), and takes the max of `size_of(child)[cross_axis]` (plus padding on
      * the cross axis), for whichever per-child size getter the caller passes in.
@@ -184,7 +183,7 @@ private:
 
     /**
      * Fits a child's own preferred size within its cell, along a single axis,
-     * per anchor's near_flag/far_flag; see this class's own doc comment and
+     * per anchor's `near_flag` and `far_flag`; see this class's own doc comment and
      * this method's own declaration (BoxLayout.h) for the exact rules.
      */
     static void _fit_in_cell(Anchor anchor, Anchor near_flag, Anchor far_flag, float cell_position, float cell_size, float preferred, float& out_position, float& out_size);

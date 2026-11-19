@@ -52,7 +52,7 @@ namespace fl7::gui::layout {
 
     /**
      * Fits a child's own preferred size within its cell, along a single axis,
-     * per anchor's near_flag/far_flag; see this class's own doc comment and
+     * per anchor's `near_flag` and `far_flag`; see this class's own doc comment and
      * this method's own declaration (BoxLayout.h) for the exact rules.
      */
     void BoxLayout::_fit_in_cell(Anchor anchor, Anchor near_flag, Anchor far_flag, float cell_position, float cell_size, float preferred, float& out_position, float& out_size)
@@ -202,7 +202,7 @@ namespace fl7::gui::layout {
     }
 
     /**
-     * Shared by `calculate_preferred_size()`/`calculate_minimum_size()`: sums
+     * Shared by `calculate_preferred_size()` or `calculate_minimum_size()`: sums
      * `size_of(child)[axis]` across every child (plus gaps/padding on the main
      * axis), and takes the max of `size_of(child)[cross_axis]` (plus padding on
      * the cross axis), for whichever per-child size getter the caller passes in.
