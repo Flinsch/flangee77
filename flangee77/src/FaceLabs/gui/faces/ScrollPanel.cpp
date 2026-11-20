@@ -153,11 +153,50 @@ namespace fl7::gui::faces {
         return true;
     }
 
+    /**
+     * Returns this panel's own chrome size; see `_calculate_chrome_size()`.
+     */
+    ml7::Vector2f ScrollPanel::_calculate_preferred_size() const
+    {
+        return _calculate_chrome_size();
+    }
+
+    /**
+     * Returns this panel's own chrome size; see `_calculate_chrome_size()`.
+     */
+    ml7::Vector2f ScrollPanel::_calculate_minimum_size() const
+    {
+        return _calculate_chrome_size();
+    }
+
 
 
     // #############################################################################
     // Helpers
     // #############################################################################
+
+    /**
+     * Returns the minimum room this panel's own chrome needs on each axis,
+     * accounting for both scroll bars' own (minimum) sizes, whichever
+     * combination of the two could actually end up shown. Shared by
+     * `_calculate_preferred_size()` and `_calculate_minimum_size()`, which
+     * (absent any other opinion of their own) both equal this.
+     */
+    ml7::Vector2f ScrollPanel::_calculate_chrome_size() const
+    {
+        const bool vertical_possible = _vertical_scroll_enabled
+            && _vertical_scroll_bar_visibility != ScrollBarVisibility::Never;
+        const bool horizontal_possible = _horizontal_scroll_enabled
+            && _horizontal_scroll_bar_visibility != ScrollBarVisibility::Never;
+
+        if (vertical_possible && horizontal_possible)
+            return {3.0f * SCROLLBAR_THICKNESS, 3.0f * SCROLLBAR_THICKNESS};
+        if (vertical_possible)
+            return {SCROLLBAR_THICKNESS, 2.0f * SCROLLBAR_THICKNESS};
+        if (horizontal_possible)
+            return {2.0f * SCROLLBAR_THICKNESS, SCROLLBAR_THICKNESS};
+        return {0.0f, 0.0f};
+    }
 
     /**
      * Positions/sizes the content area and both scroll bars for this panel's own

@@ -86,7 +86,9 @@ namespace fl7::gui::faces {
         const bool horizontal = _orientation == Orientation::Horizontal;
         const float main = horizontal ? get_size().x : get_size().y;
         const float cross = horizontal ? get_size().y : get_size().x;
-        const float button_main = _show_buttons ? std::min(cross, main * 0.5f) : 0.0f;
+        // Always square, matching the cross size, even if that overflows past `main`,
+        // rather than squeezing the buttons into a non-square shape instead.
+        const float button_main = _show_buttons ? cross : 0.0f;
 
         const auto make_vector = [horizontal](float m, float c) { return horizontal ? ml7::Vector2f{m, c} : ml7::Vector2f{c, m}; };
 

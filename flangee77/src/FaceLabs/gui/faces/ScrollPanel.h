@@ -148,11 +148,25 @@ protected:
     /** Returns this panel's theme role. */
     cl7::u8string_view _get_theme_key() const override { return u8"scroll_panel"; }
 
-    /** Lays out the content area and both scroll bars for this panel's own new size. */
+    /**
+     * Lays out the content area and both scroll bars for this panel's own new size.
+     */
     void _on_size_changed(ml7::Vector2f old_size, ml7::Vector2f new_size) override;
 
-    /** Scrolls vertically by `get_wheel_step()` per wheel notch. Always consumes. */
+    /**
+     * Scrolls vertically by `get_wheel_step()` per wheel notch. Always consumes.
+     */
     bool _on_mouse_wheel(int delta) override;
+
+    /**
+     * Returns this panel's own chrome size; see `_calculate_chrome_size()`.
+     */
+    ml7::Vector2f _calculate_preferred_size() const override;
+
+    /**
+     * Returns this panel's own chrome size; see `_calculate_chrome_size()`.
+     */
+    ml7::Vector2f _calculate_minimum_size() const override;
 
 
 
@@ -209,6 +223,15 @@ private:
     // #############################################################################
     // Helpers
     // #############################################################################
+
+    /**
+     * Returns the minimum room this panel's own chrome needs on each axis,
+     * accounting for both scroll bars' own (minimum) sizes, whichever
+     * combination of the two could actually end up shown. Shared by
+     * `_calculate_preferred_size()` and `_calculate_minimum_size()`, which
+     * (absent any other opinion of their own) both equal this.
+     */
+    ml7::Vector2f _calculate_chrome_size() const;
 
     /**
      * Positions/sizes the content area and both scroll bars for this panel's own
