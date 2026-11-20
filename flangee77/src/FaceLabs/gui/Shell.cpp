@@ -43,7 +43,8 @@ namespace fl7::gui {
      * frame's keyboard text input/key-downs to the focused face, if any: a held key
      * (any of them, not just the ones a particular face happens to care about)
      * auto-repeats after an initial delay, same as text input already does thanks
-     * to the OS.
+     * to the OS. While any modal is open (see `open_modal()`), mouse input never
+     * reaches anything behind the frontmost one, hit or not.
      */
     void Shell::update()
     {
@@ -54,8 +55,23 @@ namespace fl7::gui {
         _has_previous_mouse_position = true;
 
         Face* hit = nullptr;
-        for (auto it = _top_level_faces.rbegin(); it != _top_level_faces.rend() && !hit; ++it)
-            hit = (*it)->_find_hit_face(mouse_position, {});
+        for (auto it = _top_level_faces.rbegin();
+            it != _top_level_faces.rend(); ++it)
+        {
+            Face* const top_level = it->get();
+
+            hit = top_level->_find_hit_face(mouse_position, {});
+            if (hit)
+                break;
+
+            // An open modal blocks mouse input to whatever's behind it, hit or
+            // not: unlike every other top-level face, missing it isn't a miss
+            // on the whole shell, so this never falls through any further.
+            const bool is_open_modal = top_level->is_visible()
+                && std::ranges::find(_modals, top_level) != _modals.end();
+            if (is_open_modal)
+                break;
+        }
 
         if (hit != _hovered_face)
         {
@@ -313,6 +329,53 @@ namespace fl7::gui {
     }
 
     /**
+     * Registers `modal` (which must already be one of this shell's own top-level
+     * faces, see `add_face()`) as a currently open modal, raising it to the front
+     * of the Z-order (see `update()`) and keeping it there every time this is
+     * called again, e.g., on every re-open (same as `open_popup()`). While
+     * registered, `update()`'s own hit-testing blocks mouse input to everything
+     * behind it: a click that misses `modal` itself (and whatever's in front of
+     * it, e.g., a popup opened from within it) hits nothing at all, rather than
+     * falling through to whatever's behind. Stacks correctly: with more than one
+     * modal open, only the frontmost one (and whatever's in front of it) is ever
+     * reachable.
+     *
+     * Also moves focus onto `modal` itself, resuming wherever it was last left
+     * there (or clearing it instead, on a first-ever open).
+     */
+    void Shell::open_modal(Face* modal)
+    {
+        assert(modal);
+
+        if (std::ranges::find(_modals, modal) == _modals.end())
+            _modals.push_back(modal);
+
+        // On a first-ever open (nothing remembered yet for modal), this leaves
+        // its own first Tab stop (if any) unreachable by keyboard until it's
+        // clicked into once: _focus_adjacent_tab_stop() is currently a no-op
+        // with nothing focused. A later pass should focus that first Tab stop
+        // here instead in that case.
+        _bring_to_front(modal, true);
+    }
+
+    /**
+     * Unregisters and hides (`set_visible(false)`) the given modal, if currently
+     * registered (see `open_modal()`); a no-op otherwise. Focus then moves on its
+     * own to whichever face was last focused on the next visible top-level face
+     * beneath it, if any (and still visible/enabled), same as closing any other
+     * top-most top-level face would.
+     */
+    void Shell::close_modal(Face* modal)
+    {
+        const auto it = std::ranges::find(_modals, modal);
+        if (it == _modals.end())
+            return;
+
+        modal->set_visible(false);
+        _modals.erase(it);
+    }
+
+    /**
      * Renders all top-level faces (and their children) via the bound renderer.
      * Purely a delegation: this shell knows nothing about how drawing actually
      * happens (or in what order, or whatever), that's entirely up to the renderer.
@@ -382,11 +445,8 @@ namespace fl7::gui {
             if (!candidate->is_visible())
                 continue;
 
-            const auto found = _last_focused_by_top_level.find(candidate);
-            const bool still_eligible = found != _last_focused_by_top_level.end()
-                && found->second->is_visible() && found->second->is_enabled();
-            if (still_eligible)
-                _change_focus(found->second);
+            if (Face* restore = _last_eligible_focus_for(candidate))
+                _change_focus(restore);
             break; // candidate is the new top-most (visible) one either way.
         }
     }
@@ -494,8 +554,14 @@ namespace fl7::gui {
      * effect once that press is released, see `update()`'s mouse handling): purely
      * a Z-order correction, never closing or otherwise touching the popup itself.
      * Raising the popup itself needs no such chase the other way around.
+     *
+     * With `restore_focus`, additionally moves focus onto `top_level` itself,
+     * resuming wherever it was last left there (or clearing it instead): needed
+     * wherever raising doesn't already come with a more specific focus target of
+     * its own (see `open_modal()`; a direct click already knows exactly what to
+     * focus instead, see `update()`'s mouse handling, which leaves this `false`).
      */
-    void Shell::_bring_to_front(Face* top_level)
+    void Shell::_bring_to_front(Face* top_level, bool restore_focus)
     {
         const auto raise = [this](Face* face) {
             const auto it = std::ranges::find_if(_top_level_faces, [face](const std::unique_ptr<Face>& f) {
@@ -527,6 +593,9 @@ namespace fl7::gui {
                 }
             }
         }
+
+        if (restore_focus)
+            _change_focus(_last_eligible_focus_for(top_level));
     }
 
     /**
@@ -729,6 +798,22 @@ namespace fl7::gui {
         }
 
         return best;
+    }
+
+    /**
+     * Returns whichever face was last focused on `top_level` (see
+     * `_last_focused_by_top_level`), if any and still eligible (visible and
+     * enabled), else `nullptr`. Shared by `open_modal()` and
+     * `_handle_face_hidden()`'s own restore of a newly revealed top-most face.
+     */
+    Face* Shell::_last_eligible_focus_for(Face* top_level) const
+    {
+        const auto found = _last_focused_by_top_level.find(top_level);
+        if (found == _last_focused_by_top_level.end())
+            return nullptr;
+
+        Face* const face = found->second;
+        return (face->is_visible() && face->is_enabled()) ? face : nullptr;
     }
 
     /**

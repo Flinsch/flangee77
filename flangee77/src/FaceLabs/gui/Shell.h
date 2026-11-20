@@ -136,27 +136,13 @@ public:
     // #############################################################################
 
     /**
-     * Constructs a new top-level face of the specified type in place, adds it, and
-     * returns a reference to it.
-     */
-    template <class TFace, class... Args>
-        requires(std::derived_from<TFace, Face>)
-    TFace& add_face(Args&&... args)
-    {
-        auto face = std::make_unique<TFace>(std::forward<Args>(args)...);
-        TFace& ref = *face;
-        face->_shell = this;
-        _top_level_faces.push_back(std::move(face));
-        return ref;
-    }
-
-    /**
      * Refreshes hover/press/focus state from the bound input source's current-frame
      * state. Must be called once per frame, before drawing. Also routes this
      * frame's keyboard text input/key-downs to the focused face, if any: a held key
      * (any of them, not just the ones a particular face happens to care about)
      * auto-repeats after an initial delay, same as text input already does thanks
-     * to the OS.
+     * to the OS. While any modal is open (see `open_modal()`), mouse input never
+     * reaches anything behind the frontmost one, hit or not.
      */
     void update();
 
@@ -205,6 +191,24 @@ public:
     void set_focus(Face* face);
 
     /**
+     * Constructs a new top-level face of the specified type in place, adds it, and
+     * returns a reference to it. There's no counterpart to remove one again, only
+     * `set_visible()` (or a higher-level close, e.g. `close_popup()` or
+     * `close_modal()`) to hide it instead; see `close_popup()`'s own doc comment
+     * for why.
+     */
+    template <class TFace, class... Args>
+        requires(std::derived_from<TFace, Face>)
+    TFace& add_face(Args&&... args)
+    {
+        auto face = std::make_unique<TFace>(std::forward<Args>(args)...);
+        TFace& ref = *face;
+        face->_shell = this;
+        _top_level_faces.push_back(std::move(face));
+        return ref;
+    }
+
+    /**
      * Registers `popup` (which must already be one of this shell's own top-level
      * faces, see `add_face()`) as a popup owned by `owner`, bringing it to the front
      * of the Z-order (see `update()`) and keeping it there every time this is called
@@ -232,6 +236,32 @@ public:
      * an explicit close (e.g., Escape, or the opening face toggling it closed again).
      */
     void close_popup(Face* popup);
+
+    /**
+     * Registers `modal` (which must already be one of this shell's own top-level
+     * faces, see `add_face()`) as a currently open modal, raising it to the front
+     * of the Z-order (see `update()`) and keeping it there every time this is
+     * called again, e.g., on every re-open (same as `open_popup()`). While
+     * registered, `update()`'s own hit-testing blocks mouse input to everything
+     * behind it: a click that misses `modal` itself (and whatever's in front of
+     * it, e.g., a popup opened from within it) hits nothing at all, rather than
+     * falling through to whatever's behind. Stacks correctly: with more than one
+     * modal open, only the frontmost one (and whatever's in front of it) is ever
+     * reachable.
+     *
+     * Also moves focus onto `modal` itself, resuming wherever it was last left
+     * there (or clearing it instead, on a first-ever open).
+     */
+    void open_modal(Face* modal);
+
+    /**
+     * Unregisters and hides (`set_visible(false)`) the given modal, if currently
+     * registered (see `open_modal()`); a no-op otherwise. Focus then moves on its
+     * own to whichever face was last focused on the next visible top-level face
+     * beneath it, if any (and still visible/enabled), same as closing any other
+     * top-most top-level face would.
+     */
+    void close_modal(Face* modal);
 
     /**
      * Renders all top-level faces (and their children) via the bound renderer.
@@ -318,8 +348,14 @@ private:
      * effect once that press is released, see `update()`'s mouse handling): purely
      * a Z-order correction, never closing or otherwise touching the popup itself.
      * Raising the popup itself needs no such chase the other way around.
+     *
+     * With `restore_focus`, additionally moves focus onto `top_level` itself,
+     * resuming wherever it was last left there (or clearing it instead): needed
+     * wherever raising doesn't already come with a more specific focus target of
+     * its own (see `open_modal()`; a direct click already knows exactly what to
+     * focus instead, see `update()`'s mouse handling, which leaves this `false`).
      */
-    void _bring_to_front(Face* top_level);
+    void _bring_to_front(Face* top_level, bool restore_focus = false);
 
     /**
      * Returns the current top-level face: the focused face's own top-level
@@ -339,6 +375,14 @@ private:
      * intuitive face.
      */
     Face* _find_face_toward(Face* top_level, ArrowDirection dir, bool force) const;
+
+    /**
+     * Returns whichever face was last focused on `top_level` (see
+     * `_last_focused_by_top_level`), if any and still eligible (visible and
+     * enabled), else `nullptr`. Shared by `open_modal()` and
+     * `_handle_face_hidden()`'s own restore of a newly revealed top-most face.
+     */
+    Face* _last_eligible_focus_for(Face* top_level) const;
 
     /**
      * Returns whether `face` (or any of its ancestors) is `ancestor` itself,
@@ -384,6 +428,13 @@ private:
 
     /** Currently registered popups, see `open_popup()`/`close_popup()`. */
     std::vector<PopupEntry> _popups;
+
+    /**
+     * Currently open modals, see `open_modal()`/`close_modal()`. Non-owning:
+     * each one of `_top_level_faces`. Consulted by `update()`'s own hit-testing
+     * to block mouse input to anything behind the topmost one still visible.
+     */
+    std::vector<Face*> _modals;
 
     /** Non-owning: the topmost face currently under the mouse cursor. */
     Face* _hovered_face = nullptr;
