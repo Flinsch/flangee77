@@ -191,11 +191,13 @@ public:
     void set_focus(Face* face);
 
     /**
-     * Constructs a new top-level face of the specified type in place, adds it, and
-     * returns a reference to it. There's no counterpart to remove one again, only
-     * `set_visible()` (or a higher-level close, e.g. `close_popup()` or
-     * `close_modal()`) to hide it instead; see `close_popup()`'s own doc comment
-     * for why.
+     * Constructs a new top-level face of the specified type in place, adds it,
+     * and returns a reference to it, at the front of the Z-order (see
+     * `update()`), unless one or more modals (see `open_modal()`) are currently
+     * open, in which case it's placed just behind all of them instead, never in
+     * front. There's no counterpart to remove one again, only `set_visible()`
+     * (or a higher-level close, e.g. `close_popup()` or `close_modal()`) to hide
+     * it instead; see `close_popup()`'s own doc comment for why.
      */
     template <class TFace, class... Args>
         requires(std::derived_from<TFace, Face>)
@@ -204,7 +206,7 @@ public:
         auto face = std::make_unique<TFace>(std::forward<Args>(args)...);
         TFace& ref = *face;
         face->_shell = this;
-        _top_level_faces.push_back(std::move(face));
+        _top_level_faces.insert(_front_insertion_point(), std::move(face));
         return ref;
     }
 
@@ -331,6 +333,15 @@ private:
      * later.
      */
     void _change_focus(Face* face);
+
+    /**
+     * Returns where a newly added top-level face belongs in `_top_level_faces`:
+     * right behind every currently open (and visible) modal, so a brand new
+     * face never starts out in front of whichever one is blocking input (see
+     * `update()`'s own hit-testing); `_top_level_faces.end()` (the usual front
+     * of the Z-order) if none are currently open.
+     */
+    std::vector<std::unique_ptr<Face>>::const_iterator _front_insertion_point() const;
 
     /**
      * Moves the specified top-level face (which must actually currently be one) to

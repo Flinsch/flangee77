@@ -539,6 +539,21 @@ namespace fl7::gui {
     }
 
     /**
+     * Returns where a newly added top-level face belongs in `_top_level_faces`:
+     * right behind every currently open (and visible) modal, so a brand new
+     * face never starts out in front of whichever one is blocking input (see
+     * `update()`'s own hit-testing); `_top_level_faces.end()` (the usual front
+     * of the Z-order) if none are currently open.
+     */
+    std::vector<std::unique_ptr<Face>>::const_iterator Shell::_front_insertion_point() const
+    {
+        for (auto it = _top_level_faces.begin(); it != _top_level_faces.end(); ++it)
+            if ((*it)->is_visible() && std::ranges::find(_modals, it->get()) != _modals.end())
+                return it;
+        return _top_level_faces.end();
+    }
+
+    /**
      * Moves the specified top-level face (which must actually currently be one) to
      * the back of `_top_level_faces`, i.e., the front of the Z-order (see
      * `update()`, hit-tested/drawn last, same as a newly added one would be): the
