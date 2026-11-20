@@ -1885,9 +1885,6 @@ Friends</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void fl7::gui::Face::set_visible </td>
@@ -1896,13 +1893,8 @@ Friends</h2></td></tr>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
-<p>Sets whether this face is currently visible (drawn, and eligible for hit-testing). An invisible face's children are neither drawn nor hit-tested either. </p>
+<p>Sets whether this face is currently visible (drawn, and eligible for hit-testing). An invisible face's children are neither drawn nor hit-tested either. Going invisible also clears this face's (or any descendant's) hover/press/focus state on its own shell, if currently holding any of them; if this is also that shell's current top-most top-level face, focus then moves to whichever face was last focused on the next visible one beneath it, if any (and still visible and enabled). </p>
 
 </div>
 </div>

@@ -92,7 +92,6 @@ var hierarchy =
     [ "dl7::syntax::AstNode&lt; Ttype &gt;", "db/dcc/classdl7_1_1syntax_1_1AstNode.html", null ],
     [ "fl7::fonts::render::AbstractTextureAtlasBasedRenderer::AtlasLayer", "dd/d5d/structfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer_1_1AtlasLayer.html", null ],
     [ "cl7::profiling::Registry::Attorney", "d6/df3/classcl7_1_1profiling_1_1Registry_1_1Attorney.html", null ],
-    [ "fl7::gui::Shell::Attorney", "db/dd0/classfl7_1_1gui_1_1Shell_1_1Attorney.html", null ],
     [ "xl7::graphics::impl::direct3d11::meshes::IndexBufferImpl::Attorney", "d0/d6a/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1meshes_1_1IndexBufferImpl_1_1Attorney.html", null ],
     [ "xl7::graphics::impl::direct3d11::meshes::VertexBufferImpl::Attorney", "dc/da0/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1meshes_1_1VertexBufferImpl_1_1Attorney.html", null ],
     [ "xl7::graphics::impl::direct3d11::ResourceFactoryImpl::Attorney", "d4/dfa/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1ResourceFactoryImpl_1_1Attorney.html", null ],
@@ -179,6 +178,7 @@ var hierarchy =
       [ "cl7::text::codec::DecodeResult< Tchar >", "da/d9c/structcl7_1_1text_1_1codec_1_1DecodeResult.html", null ],
       [ "cl7::text::codec::EncodeResult< Tchar >", "d3/de8/structcl7_1_1text_1_1codec_1_1EncodeResult.html", null ]
     ] ],
+    [ "fl7::gui::Shell::CollectionAttorney", "db/db6/classfl7_1_1gui_1_1Shell_1_1CollectionAttorney.html", null ],
     [ "xl7::graphics::Color", "de/df3/structxl7_1_1graphics_1_1Color.html", null ],
     [ "fl7::fonts::raster::MsdfRasterizer::ColoredSegment", "d5/db2/structfl7_1_1fonts_1_1raster_1_1MsdfRasterizer_1_1ColoredSegment.html", null ],
     [ "dl7::xml::Format::CompactOptions", "d5/de1/structdl7_1_1xml_1_1Format_1_1CompactOptions.html", null ],
@@ -302,6 +302,7 @@ var hierarchy =
       [ "fl7::gui::faces::RadioButton::Box", "d7/d12/classfl7_1_1gui_1_1faces_1_1RadioButton_1_1Box.html", null ],
       [ "fl7::gui::faces::Slider::Handle", "dd/dd6/classfl7_1_1gui_1_1faces_1_1Slider_1_1Handle.html", null ]
     ] ],
+    [ "fl7::gui::Shell::FaceAttorney", "d1/d69/classfl7_1_1gui_1_1Shell_1_1FaceAttorney.html", null ],
     [ "std::false_type", null, [
       [ "cl7::detail::_is_any_string< std::remove_cvref_t< Tstring > >", "d8/d05/structcl7_1_1detail_1_1__is__any__string.html", [
         [ "cl7::is_any_string< Tstring >", "db/daf/structcl7_1_1is__any__string.html", null ]

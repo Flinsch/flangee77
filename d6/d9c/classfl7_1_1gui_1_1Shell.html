@@ -134,7 +134,8 @@ Collaboration diagram for fl7::gui::Shell:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:Attorney" id="r_Attorney"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/dd0/classfl7_1_1gui_1_1Shell_1_1Attorney.html">Attorney</a></td></tr>
+<tr class="memitem:FaceAttorney" id="r_FaceAttorney"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d69/classfl7_1_1gui_1_1Shell_1_1FaceAttorney.html">FaceAttorney</a></td></tr>
+<tr class="memitem:CollectionAttorney" id="r_CollectionAttorney"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/db6/classfl7_1_1gui_1_1Shell_1_1CollectionAttorney.html">CollectionAttorney</a></td></tr>
 <tr class="memitem:PopupEntry" id="r_PopupEntry"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/db0/structfl7_1_1gui_1_1Shell_1_1PopupEntry.html">PopupEntry</a></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -152,26 +153,35 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a62b722769c15173b6e4c3ea2e05043cb" id="r_a62b722769c15173b6e4c3ea2e05043cb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a62b722769c15173b6e4c3ea2e05043cb">get_pressed_face</a> () const</td></tr>
 <tr class="memitem:aad33ec4cf6767bd7c8447290c1cb6176" id="r_aad33ec4cf6767bd7c8447290c1cb6176"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aad33ec4cf6767bd7c8447290c1cb6176">get_focused_face</a> () const</td></tr>
 <tr class="memitem:a3cbf18ec2e0eed0b30b55b50a7e1956a" id="r_a3cbf18ec2e0eed0b30b55b50a7e1956a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d3/d53/namespaceml7.html#add70e3ce89c6f3e39fa3a52d54713255">ml7::Vector2f</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3cbf18ec2e0eed0b30b55b50a7e1956a">get_mouse_position</a> () const</td></tr>
-<tr class="memitem:a935140229a6ca98f48ac3b70e2845fe6" id="r_a935140229a6ca98f48ac3b70e2845fe6"><td class="memTemplParams" colspan="2">template&lt;class TFace, class... Args&gt; <br />
-requires (std::derived_from&lt;TFace, <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a>&gt;)</td></tr>
-<tr class="memitem:a935140229a6ca98f48ac3b70e2845fe6 template"><td class="memItemLeft" align="right" valign="top">TFace &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a935140229a6ca98f48ac3b70e2845fe6">add_face</a> (Args &amp;&amp;... args)</td></tr>
 <tr class="memitem:a810ed9f5fb57eaec9bb0be7664b99803" id="r_a810ed9f5fb57eaec9bb0be7664b99803"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a810ed9f5fb57eaec9bb0be7664b99803">update</a> ()</td></tr>
 <tr class="memitem:a6547b2a1c9badb7869e1e110d4c79568" id="r_a6547b2a1c9badb7869e1e110d4c79568"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6547b2a1c9badb7869e1e110d4c79568">focus_toward</a> (<a class="el" href="../../d5/d56/namespacefl7_1_1gui.html#a07bfb52c2d3768ba310be421d1287498">ArrowDirection</a> dir, bool force=false)</td></tr>
 <tr class="memitem:a5ebbec7bbee4e3bf38008001164c1711" id="r_a5ebbec7bbee4e3bf38008001164c1711"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5ebbec7bbee4e3bf38008001164c1711">can_click_focus</a> () const</td></tr>
 <tr class="memitem:a27d034435c854376f9fc68f0959193a2" id="r_a27d034435c854376f9fc68f0959193a2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a27d034435c854376f9fc68f0959193a2">click_focus</a> ()</td></tr>
 <tr class="memitem:adb72e80027b60579f18e35adaabf6764" id="r_adb72e80027b60579f18e35adaabf6764"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adb72e80027b60579f18e35adaabf6764">set_focus</a> (<a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a> *face)</td></tr>
+<tr class="memitem:a935140229a6ca98f48ac3b70e2845fe6" id="r_a935140229a6ca98f48ac3b70e2845fe6"><td class="memTemplParams" colspan="2">template&lt;class TFace, class... Args&gt; <br />
+requires (std::derived_from&lt;TFace, <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a>&gt;)</td></tr>
+<tr class="memitem:a935140229a6ca98f48ac3b70e2845fe6 template"><td class="memItemLeft" align="right" valign="top">TFace &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a935140229a6ca98f48ac3b70e2845fe6">add_face</a> (Args &amp;&amp;... args)</td></tr>
 <tr class="memitem:a29cc7e6e5e1902ccfedf2e271e3b47f1" id="r_a29cc7e6e5e1902ccfedf2e271e3b47f1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a29cc7e6e5e1902ccfedf2e271e3b47f1">open_popup</a> (<a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a> *popup, <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a> *owner)</td></tr>
 <tr class="memitem:a0fc392db730042c49722a71811730c4f" id="r_a0fc392db730042c49722a71811730c4f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0fc392db730042c49722a71811730c4f">close_popup</a> (<a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a> *popup)</td></tr>
+<tr class="memitem:a04554511e82293846d8b25c346fe02e5" id="r_a04554511e82293846d8b25c346fe02e5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a04554511e82293846d8b25c346fe02e5">open_modal</a> (<a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a> *modal)</td></tr>
+<tr class="memitem:a8625831a5a07a7f8be0ffa94f17f2bb8" id="r_a8625831a5a07a7f8be0ffa94f17f2bb8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8625831a5a07a7f8be0ffa94f17f2bb8">close_modal</a> (<a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a> *modal)</td></tr>
 <tr class="memitem:a33f7fc4b42f3cc79b53bd7f69de58246" id="r_a33f7fc4b42f3cc79b53bd7f69de58246"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a33f7fc4b42f3cc79b53bd7f69de58246">draw</a> () const</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-methods" class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
+<tr class="memitem:a28f18825e361e6e399edbc41bad29b12" id="r_a28f18825e361e6e399edbc41bad29b12"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a28f18825e361e6e399edbc41bad29b12">_handle_face_hidden</a> (<a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a> *hidden)</td></tr>
 <tr class="memitem:a97c8bf38ba36c4f4e92001d377032692" id="r_a97c8bf38ba36c4f4e92001d377032692"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a97c8bf38ba36c4f4e92001d377032692">_handle_face_removed</a> (<a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a> *removed)</td></tr>
 <tr class="memitem:a3064f775b360765281ef6e23f1fd17b2" id="r_a3064f775b360765281ef6e23f1fd17b2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3064f775b360765281ef6e23f1fd17b2">_focus_adjacent_tab_stop</a> (bool backward)</td></tr>
 <tr class="memitem:a29667418d1736c1617409a300a8c747a" id="r_a29667418d1736c1617409a300a8c747a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a29667418d1736c1617409a300a8c747a">_change_focus</a> (<a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a> *face)</td></tr>
-<tr class="memitem:ad1a7a820f886947530b66c65b01663a7" id="r_ad1a7a820f886947530b66c65b01663a7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad1a7a820f886947530b66c65b01663a7">_bring_to_front</a> (<a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a> *top_level)</td></tr>
+<tr class="memitem:af92ede3c1ae74147467c8b04252e1bc3" id="r_af92ede3c1ae74147467c8b04252e1bc3"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::unique_ptr&lt; <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a> &gt; &gt;::const_iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af92ede3c1ae74147467c8b04252e1bc3">_front_insertion_point</a> () const</td></tr>
+<tr class="memitem:afbb01c5567df2176917db48de460ff88" id="r_afbb01c5567df2176917db48de460ff88"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afbb01c5567df2176917db48de460ff88">_bring_to_front</a> (<a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a> *top_level, bool restore_focus=false)</td></tr>
 <tr class="memitem:ab804c6ea82c14160e77c9f058eadf49d" id="r_ab804c6ea82c14160e77c9f058eadf49d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab804c6ea82c14160e77c9f058eadf49d">_current_top_level_face</a> () const</td></tr>
 <tr class="memitem:a94e8dd95d42eb1c623968f496c56df4a" id="r_a94e8dd95d42eb1c623968f496c56df4a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a94e8dd95d42eb1c623968f496c56df4a">_find_face_toward</a> (<a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a> *top_level, <a class="el" href="../../d5/d56/namespacefl7_1_1gui.html#a07bfb52c2d3768ba310be421d1287498">ArrowDirection</a> dir, bool force) const</td></tr>
+<tr class="memitem:a009235dd8f414c21f50ed5c2cc34795e" id="r_a009235dd8f414c21f50ed5c2cc34795e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a009235dd8f414c21f50ed5c2cc34795e">_last_eligible_focus_for</a> (<a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a> *top_level) const</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pri-static-methods" class="groupheader"><a id="pri-static-methods" name="pri-static-methods"></a>
+Static Private Member Functions</h2></td></tr>
+<tr class="memitem:a5592c46030f447e155afcdc789497137" id="r_a5592c46030f447e155afcdc789497137"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5592c46030f447e155afcdc789497137">_is_within</a> (<a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a> *ancestor, <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a> *face)</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-attribs" class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -181,9 +191,11 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a29f47bd7db5dc7873b5d53bf248535cb" id="r_a29f47bd7db5dc7873b5d53bf248535cb"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="../../d8/dc4/classfl7_1_1gui_1_1Theme.html">Theme</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a29f47bd7db5dc7873b5d53bf248535cb">_theme</a> = nullptr</td></tr>
 <tr class="memitem:a3425e48374b7c3d8231ee0264883f816" id="r_a3425e48374b7c3d8231ee0264883f816"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::unique_ptr&lt; <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3425e48374b7c3d8231ee0264883f816">_top_level_faces</a></td></tr>
 <tr class="memitem:acdd5cbe7c0e74c640b5dd644daefa8fa" id="r_acdd5cbe7c0e74c640b5dd644daefa8fa"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="../../d5/db0/structfl7_1_1gui_1_1Shell_1_1PopupEntry.html">PopupEntry</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acdd5cbe7c0e74c640b5dd644daefa8fa">_popups</a></td></tr>
+<tr class="memitem:af86af6870cb52c4a4bd281fdbaadae6b" id="r_af86af6870cb52c4a4bd281fdbaadae6b"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af86af6870cb52c4a4bd281fdbaadae6b">_modals</a></td></tr>
 <tr class="memitem:acf56cb03916e54348bb4207faa04b2e7" id="r_acf56cb03916e54348bb4207faa04b2e7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acf56cb03916e54348bb4207faa04b2e7">_hovered_face</a> = nullptr</td></tr>
 <tr class="memitem:af0a441e5698cfe2d2071a6af72620fea" id="r_af0a441e5698cfe2d2071a6af72620fea"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af0a441e5698cfe2d2071a6af72620fea">_pressed_face</a> = nullptr</td></tr>
 <tr class="memitem:a367303a8b7e6569011d3aee570380802" id="r_a367303a8b7e6569011d3aee570380802"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a367303a8b7e6569011d3aee570380802">_focused_face</a> = nullptr</td></tr>
+<tr class="memitem:a3641182a887c77c384c034456bf66aad" id="r_a3641182a887c77c384c034456bf66aad"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a> *, <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3641182a887c77c384c034456bf66aad">_last_focused_by_top_level</a></td></tr>
 <tr class="memitem:a3393ce09e33e820ac258a589518cb09e" id="r_a3393ce09e33e820ac258a589518cb09e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d3/d53/namespaceml7.html#add70e3ce89c6f3e39fa3a52d54713255">ml7::Vector2f</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3393ce09e33e820ac258a589518cb09e">_mouse_position</a></td></tr>
 <tr class="memitem:ad58a46b9401a52de5964c372ed70b202" id="r_ad58a46b9401a52de5964c372ed70b202"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d3/d53/namespaceml7.html#add70e3ce89c6f3e39fa3a52d54713255">ml7::Vector2f</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad58a46b9401a52de5964c372ed70b202">_previous_mouse_position</a></td></tr>
 <tr class="memitem:a75111267e04beac22d2175754116a79b" id="r_a75111267e04beac22d2175754116a79b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a75111267e04beac22d2175754116a79b">_has_previous_mouse_position</a> = false</td></tr>
@@ -303,8 +315,8 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
-<a id="ad1a7a820f886947530b66c65b01663a7" name="ad1a7a820f886947530b66c65b01663a7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad1a7a820f886947530b66c65b01663a7">&#9670;&#160;</a></span>_bring_to_front()</h2>
+<a id="afbb01c5567df2176917db48de460ff88" name="afbb01c5567df2176917db48de460ff88"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afbb01c5567df2176917db48de460ff88">&#9670;&#160;</a></span>_bring_to_front()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -315,8 +327,12 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">void fl7::gui::Shell::_bring_to_front </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a> *</td>          <td class="paramname"><span class="paramname"><em>top_level</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a> *</td>          <td class="paramname"><span class="paramname"><em>top_level</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>restore_focus</em></span><span class="paramdefsep"> = </span><span class="paramdefval">false</span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -326,7 +342,8 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <p>Moves the specified top-level face (which must actually currently be one) to the back of <span class="tt"><a class="el" href="#a3425e48374b7c3d8231ee0264883f816">_top_level_faces</a></span>, i.e., the front of the Z-order (see <span class="tt"><a class="el" href="#a810ed9f5fb57eaec9bb0be7664b99803">update()</a></span>, hit-tested/drawn last, same as a newly added one would be): the usual "bring the clicked-into window to the front" behavior. A no-op if it's already there.</p>
-<p>Also raises, the same way, any registered popup (see <span class="tt"><a class="el" href="#a29cc7e6e5e1902ccfedf2e271e3b47f1">open_popup()</a></span>) whose owner lies within <span class="tt">top_level</span>'s own subtree: without this, raising a face whose own popup happens to currently sit further back (e.g., some other face having been raised in between) would leave that popup stranded visually behind it, for however long it still takes to actually get closed (its owner's own click handling, e.g., toggling it closed again, only takes effect once that press is released, see <span class="tt"><a class="el" href="#a810ed9f5fb57eaec9bb0be7664b99803">update()</a></span>'s mouse handling): purely a Z-order correction, never closing or otherwise touching the popup itself. Raising the popup itself needs no such chase the other way around. </p>
+<p>Also raises, the same way, any registered popup (see <span class="tt"><a class="el" href="#a29cc7e6e5e1902ccfedf2e271e3b47f1">open_popup()</a></span>) whose owner lies within <span class="tt">top_level</span>'s own subtree: without this, raising a face whose own popup happens to currently sit further back (e.g., some other face having been raised in between) would leave that popup stranded visually behind it, for however long it still takes to actually get closed (its owner's own click handling, e.g., toggling it closed again, only takes effect once that press is released, see <span class="tt"><a class="el" href="#a810ed9f5fb57eaec9bb0be7664b99803">update()</a></span>'s mouse handling): purely a Z-order correction, never closing or otherwise touching the popup itself. Raising the popup itself needs no such chase the other way around.</p>
+<p>With <span class="tt">restore_focus</span>, additionally moves focus onto <span class="tt">top_level</span> itself, resuming wherever it was last left there (or clearing it instead): needed wherever raising doesn't already come with a more specific focus target of its own (see <span class="tt"><a class="el" href="#a04554511e82293846d8b25c346fe02e5">open_modal()</a></span>; a direct click already knows exactly what to focus instead, see <span class="tt"><a class="el" href="#a810ed9f5fb57eaec9bb0be7664b99803">update()</a></span>'s mouse handling, which leaves this <span class="tt">false</span>). </p>
 
 </div>
 </div>
@@ -352,7 +369,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Changes <span class="tt"><a class="el" href="#a367303a8b7e6569011d3aee570380802">_focused_face</a></span> to the specified face (or <span class="tt">nullptr</span>), firing <span class="tt">_on_focus_lost()</span>/<span class="tt">_on_focus_gained()</span> as needed, and resetting the key-repeat timers so a key already held before the new face gained focus doesn't immediately fire a spurious repeat on it. A no-op if <span class="tt">face</span> is already the focused face. The shared implementation behind <span class="tt"><a class="el" href="#a810ed9f5fb57eaec9bb0be7664b99803">update()</a></span>'s mouse-press handling, <span class="tt"><a class="el" href="#a6547b2a1c9badb7869e1e110d4c79568">focus_toward()</a></span>, <span class="tt"><a class="el" href="#a3064f775b360765281ef6e23f1fd17b2">_focus_adjacent_tab_stop()</a></span>, and <span class="tt"><a class="el" href="#adb72e80027b60579f18e35adaabf6764">set_focus()</a></span>. </p>
+<p>Changes <span class="tt"><a class="el" href="#a367303a8b7e6569011d3aee570380802">_focused_face</a></span> to the specified face (or <span class="tt">nullptr</span>), firing <span class="tt">_on_focus_lost()</span>/<span class="tt">_on_focus_gained()</span> as needed, and resetting the key-repeat timers so a key already held before the new face gained focus doesn't immediately fire a spurious repeat on it. A no-op if <span class="tt">face</span> is already the focused face. The shared implementation behind <span class="tt"><a class="el" href="#a810ed9f5fb57eaec9bb0be7664b99803">update()</a></span>'s mouse-press handling, <span class="tt"><a class="el" href="#a6547b2a1c9badb7869e1e110d4c79568">focus_toward()</a></span>, <span class="tt"><a class="el" href="#a3064f775b360765281ef6e23f1fd17b2">_focus_adjacent_tab_stop()</a></span>, and <span class="tt"><a class="el" href="#adb72e80027b60579f18e35adaabf6764">set_focus()</a></span>. Also remembers a non-null <span class="tt">face</span> as its own top-level face's current entry in <span class="tt"><a class="el" href="#a3641182a887c77c384c034456bf66aad">_last_focused_by_top_level</a></span>, for <span class="tt"><a class="el" href="#a28f18825e361e6e399edbc41bad29b12">_handle_face_hidden()</a></span> to restore later. </p>
 
 </div>
 </div>
@@ -443,6 +460,58 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="af92ede3c1ae74147467c8b04252e1bc3" name="af92ede3c1ae74147467c8b04252e1bc3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af92ede3c1ae74147467c8b04252e1bc3">&#9670;&#160;</a></span>_front_insertion_point()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; std::unique_ptr&lt; <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a> &gt; &gt;::const_iterator fl7::gui::Shell::_front_insertion_point </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Returns where a newly added top-level face belongs in <span class="tt"><a class="el" href="#a3425e48374b7c3d8231ee0264883f816">_top_level_faces</a></span>: right behind every currently open (and visible) modal, so a brand new face never starts out in front of whichever one is blocking input (see <span class="tt"><a class="el" href="#a810ed9f5fb57eaec9bb0be7664b99803">update()</a></span>'s own hit-testing); <span class="tt">_top_level_faces.end()</span> (the usual front of the Z-order) if none are currently open. </p>
+
+</div>
+</div>
+<a id="a28f18825e361e6e399edbc41bad29b12" name="a28f18825e361e6e399edbc41bad29b12"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a28f18825e361e6e399edbc41bad29b12">&#9670;&#160;</a></span>_handle_face_hidden()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void fl7::gui::Shell::_handle_face_hidden </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a> *</td>          <td class="paramname"><span class="paramname"><em>hidden</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Called by <span class="tt"><a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html#a3deaab1e8fc9535fa077081463d538c4">Face::set_visible()</a></span> just after it actually goes invisible: same dangling-state cleanup as <span class="tt"><a class="el" href="#a97c8bf38ba36c4f4e92001d377032692">_handle_face_removed()</a></span> (minus the <span class="tt"><a class="el" href="#a3641182a887c77c384c034456bf66aad">_last_focused_by_top_level</a></span> bookkeeping, since <span class="tt">hidden</span> itself hasn't gone anywhere, merely invisible, and could still become a remembered last-focused face again once re-shown and focused anew), plus, if <span class="tt">hidden</span> was itself this shell's current top-most top-level face and not a registered popup (see <span class="tt"><a class="el" href="#a29cc7e6e5e1902ccfedf2e271e3b47f1">open_popup()</a></span>: a popup's own closing is never "a window closing", and often itself just a side effect of a focus change already in progress, which this must never override with a restore of its own), moves focus to whichever face was last focused on the next visible one beneath it, if any (and still visible and enabled). </p>
+
+</div>
+</div>
 <a id="a97c8bf38ba36c4f4e92001d377032692" name="a97c8bf38ba36c4f4e92001d377032692"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a97c8bf38ba36c4f4e92001d377032692">&#9670;&#160;</a></span>_handle_face_removed()</h2>
 
@@ -465,7 +534,63 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Called by <span class="tt"><a class="el" href="../../d4/de7/classfl7_1_1gui_1_1Collection.html#a03d9dd7945a9461765107b57a21cd0ce">Collection::remove_child()</a></span> just before it actually erases/destroys the specified face (and, transitively, its own descendants, if any): clears whichever of <span class="tt"><a class="el" href="#acf56cb03916e54348bb4207faa04b2e7">_hovered_face</a></span>/<span class="tt"><a class="el" href="#af0a441e5698cfe2d2071a6af72620fea">_pressed_face</a></span>/<span class="tt"><a class="el" href="#a367303a8b7e6569011d3aee570380802">_focused_face</a></span> (if any) falls within that subtree, so none of them is ever left dangling once it's actually gone. </p>
+<p>Called by <span class="tt"><a class="el" href="../../d4/de7/classfl7_1_1gui_1_1Collection.html#a03d9dd7945a9461765107b57a21cd0ce">Collection::remove_child()</a></span> just before it actually erases/destroys the specified face (and, transitively, its own descendants, if any): clears whichever of <span class="tt"><a class="el" href="#acf56cb03916e54348bb4207faa04b2e7">_hovered_face</a></span>/<span class="tt"><a class="el" href="#af0a441e5698cfe2d2071a6af72620fea">_pressed_face</a></span>/<span class="tt"><a class="el" href="#a367303a8b7e6569011d3aee570380802">_focused_face</a></span> (if any) falls within that subtree, so none of them is ever left dangling once it's actually gone, and forgets it as any top-level face's own remembered last-focused face (see <span class="tt"><a class="el" href="#a3641182a887c77c384c034456bf66aad">_last_focused_by_top_level</a></span>), if it was that. </p>
+
+</div>
+</div>
+<a id="a5592c46030f447e155afcdc789497137" name="a5592c46030f447e155afcdc789497137"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5592c46030f447e155afcdc789497137">&#9670;&#160;</a></span>_is_within()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool fl7::gui::Shell::_is_within </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a> *</td>          <td class="paramname"><span class="paramname"><em>ancestor</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a> *</td>          <td class="paramname"><span class="paramname"><em>face</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Returns whether <span class="tt">face</span> (or any of its ancestors) is <span class="tt">ancestor</span> itself, i.e., whether <span class="tt">face</span> lies within <span class="tt">ancestor</span>'s own subtree (always true if <span class="tt">face == ancestor</span>; always false if <span class="tt">face</span> is <span class="tt">nullptr</span>, regardless of <span class="tt">ancestor</span>). Shared by <span class="tt"><a class="el" href="#a97c8bf38ba36c4f4e92001d377032692">_handle_face_removed()</a></span>, <span class="tt"><a class="el" href="#a28f18825e361e6e399edbc41bad29b12">_handle_face_hidden()</a></span>, and <span class="tt"><a class="el" href="#a29667418d1736c1617409a300a8c747a">_change_focus()</a></span>'s own popup-closing check. </p>
+
+</div>
+</div>
+<a id="a009235dd8f414c21f50ed5c2cc34795e" name="a009235dd8f414c21f50ed5c2cc34795e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a009235dd8f414c21f50ed5c2cc34795e">&#9670;&#160;</a></span>_last_eligible_focus_for()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a> * fl7::gui::Shell::_last_eligible_focus_for </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a> *</td>          <td class="paramname"><span class="paramname"><em>top_level</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Returns whichever face was last focused on <span class="tt">top_level</span> (see <span class="tt"><a class="el" href="#a3641182a887c77c384c034456bf66aad">_last_focused_by_top_level</a></span>), if any and still eligible (visible and enabled), else <span class="tt">nullptr</span>. Shared by <span class="tt"><a class="el" href="#a04554511e82293846d8b25c346fe02e5">open_modal()</a></span> and <span class="tt"><a class="el" href="#a28f18825e361e6e399edbc41bad29b12">_handle_face_hidden()</a></span>'s own restore of a newly revealed top-most face. </p>
 
 </div>
 </div>
@@ -494,7 +619,7 @@ requires (std::derived_from&lt;TFace, <a class="el" href="../../d9/d1a/classfl7_
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Constructs a new top-level face of the specified type in place, adds it, and returns a reference to it. </p>
+<p>Constructs a new top-level face of the specified type in place, adds it, and returns a reference to it, at the front of the Z-order (see <span class="tt"><a class="el" href="#a810ed9f5fb57eaec9bb0be7664b99803">update()</a></span>), unless one or more modals (see <span class="tt"><a class="el" href="#a04554511e82293846d8b25c346fe02e5">open_modal()</a></span>) are currently open, in which case it's placed just behind all of them instead, never in front. There's no counterpart to remove one again, only <span class="tt">set_visible()</span> (or a higher-level close, e.g. <span class="tt"><a class="el" href="#a0fc392db730042c49722a71811730c4f">close_popup()</a></span> or <span class="tt"><a class="el" href="#a8625831a5a07a7f8be0ffa94f17f2bb8">close_modal()</a></span>) to hide it instead; see <span class="tt"><a class="el" href="#a0fc392db730042c49722a71811730c4f">close_popup()</a></span>'s own doc comment for why. </p>
 
 </div>
 </div>
@@ -531,6 +656,24 @@ requires (std::derived_from&lt;TFace, <a class="el" href="../../d9/d1a/classfl7_
       </table>
 </div><div class="memdoc">
 <p>Triggers the currently focused face as if it had just been clicked, if <span class="tt"><a class="el" href="#a5ebbec7bbee4e3bf38008001164c1711">can_click_focus()</a></span>; returns whether it actually did. Called automatically for Enter/Space (see <span class="tt"><a class="el" href="#a810ed9f5fb57eaec9bb0be7664b99803">update()</a></span>). Exposed publicly so other input (a gamepad's "confirm" button, say) can trigger the same activation manually. </p>
+
+</div>
+</div>
+<a id="a8625831a5a07a7f8be0ffa94f17f2bb8" name="a8625831a5a07a7f8be0ffa94f17f2bb8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8625831a5a07a7f8be0ffa94f17f2bb8">&#9670;&#160;</a></span>close_modal()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void fl7::gui::Shell::close_modal </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a> *</td>          <td class="paramname"><span class="paramname"><em>modal</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Unregisters and hides (<span class="tt">set_visible(false)</span>) the given modal, if currently registered (see <span class="tt"><a class="el" href="#a04554511e82293846d8b25c346fe02e5">open_modal()</a></span>); a no-op otherwise. Focus then moves on its own to whichever face was last focused on the next visible top-level face beneath it, if any (and still visible/enabled), same as closing any other top-most top-level face would. </p>
 
 </div>
 </div>
@@ -748,6 +891,25 @@ requires (std::derived_from&lt;TFace, <a class="el" href="../../d9/d1a/classfl7_
 
 </div>
 </div>
+<a id="a04554511e82293846d8b25c346fe02e5" name="a04554511e82293846d8b25c346fe02e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a04554511e82293846d8b25c346fe02e5">&#9670;&#160;</a></span>open_modal()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void fl7::gui::Shell::open_modal </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a> *</td>          <td class="paramname"><span class="paramname"><em>modal</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Registers <span class="tt">modal</span> (which must already be one of this shell's own top-level faces, see <span class="tt"><a class="el" href="#a935140229a6ca98f48ac3b70e2845fe6">add_face()</a></span>) as a currently open modal, raising it to the front of the Z-order (see <span class="tt"><a class="el" href="#a810ed9f5fb57eaec9bb0be7664b99803">update()</a></span>) and keeping it there every time this is called again, e.g., on every re-open (same as <span class="tt"><a class="el" href="#a29cc7e6e5e1902ccfedf2e271e3b47f1">open_popup()</a></span>). While registered, <span class="tt"><a class="el" href="#a810ed9f5fb57eaec9bb0be7664b99803">update()</a></span>'s own hit-testing blocks mouse input to everything behind it: a click that misses <span class="tt">modal</span> itself (and whatever's in front of it, e.g., a popup opened from within it) hits nothing at all, rather than falling through to whatever's behind. Stacks correctly: with more than one modal open, only the frontmost one (and whatever's in front of it) is ever reachable.</p>
+<p>Also moves focus onto <span class="tt">modal</span> itself, resuming wherever it was last left there (or clearing it instead, on a first-ever open). </p>
+
+</div>
+</div>
 <a id="a29cc7e6e5e1902ccfedf2e271e3b47f1" name="a29cc7e6e5e1902ccfedf2e271e3b47f1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a29cc7e6e5e1902ccfedf2e271e3b47f1">&#9670;&#160;</a></span>open_popup()</h2>
 
@@ -880,7 +1042,7 @@ requires (std::derived_from&lt;TFace, <a class="el" href="../../d9/d1a/classfl7_
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Refreshes hover/press/focus state from the bound input source's current-frame state. Must be called once per frame, before drawing. Also routes this frame's keyboard text input/key-downs to the focused face, if any: a held key (any of them, not just the ones a particular face happens to care about) auto-repeats after an initial delay, same as text input already does thanks to the OS. </p>
+<p>Refreshes hover/press/focus state from the bound input source's current-frame state. Must be called once per frame, before drawing. Also routes this frame's keyboard text input/key-downs to the focused face, if any: a held key (any of them, not just the ones a particular face happens to care about) auto-repeats after an initial delay, same as text input already does thanks to the OS. While any modal is open (see <span class="tt"><a class="el" href="#a04554511e82293846d8b25c346fe02e5">open_modal()</a></span>), mouse input never reaches anything behind the frontmost one, hit or not. </p>
 
 </div>
 </div>
@@ -997,6 +1159,52 @@ requires (std::derived_from&lt;TFace, <a class="el" href="../../d9/d1a/classfl7_
 </table>
 </div><div class="memdoc">
 <p>Non-owning. </p>
+
+</div>
+</div>
+<a id="a3641182a887c77c384c034456bf66aad" name="a3641182a887c77c384c034456bf66aad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3641182a887c77c384c034456bf66aad">&#9670;&#160;</a></span>_last_focused_by_top_level</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unordered_map&lt;<a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a>*, <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a>*&gt; fl7::gui::Shell::_last_focused_by_top_level</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Each top-level face's own most recently focused descendant (or itself), updated by <span class="tt"><a class="el" href="#a29667418d1736c1617409a300a8c747a">_change_focus()</a></span> and consulted by <span class="tt"><a class="el" href="#a28f18825e361e6e399edbc41bad29b12">_handle_face_hidden()</a></span> once a top-most top-level face goes invisible, to restore focus to whichever one was last focused on the next visible one beneath it. Both sides non-owning; an entry is removed once its own face (the value) is actually destroyed (see <span class="tt"><a class="el" href="#a97c8bf38ba36c4f4e92001d377032692">_handle_face_removed()</a></span>), not merely hidden. </p>
+
+</div>
+</div>
+<a id="af86af6870cb52c4a4bd281fdbaadae6b" name="af86af6870cb52c4a4bd281fdbaadae6b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af86af6870cb52c4a4bd281fdbaadae6b">&#9670;&#160;</a></span>_modals</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a>*&gt; fl7::gui::Shell::_modals</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Currently open modals, see <span class="tt"><a class="el" href="#a04554511e82293846d8b25c346fe02e5">open_modal()</a></span>/<span class="tt"><a class="el" href="#a8625831a5a07a7f8be0ffa94f17f2bb8">close_modal()</a></span>. Non-owning: each one of <span class="tt"><a class="el" href="#a3425e48374b7c3d8231ee0264883f816">_top_level_faces</a></span>. Consulted by <span class="tt"><a class="el" href="#a810ed9f5fb57eaec9bb0be7664b99803">update()</a></span>'s own hit-testing to block mouse input to anything behind the topmost one still visible. </p>
 
 </div>
 </div>

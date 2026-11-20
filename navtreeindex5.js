@@ -1,5 +1,11 @@
 var NAVTREEINDEX5 =
 {
+"d1/da4/structxl7_1_1graphics_1_1textures_1_1TextureRegion.html#a3d391a020acb53777f275dcf30b737e7":[7,0,8,1,7,29,3],
+"d1/da4/structxl7_1_1graphics_1_1textures_1_1TextureRegion.html#a3e4242b0d25141c894349c56aa8b210d":[5,0,8,2,7,29,1],
+"d1/da4/structxl7_1_1graphics_1_1textures_1_1TextureRegion.html#a3e4242b0d25141c894349c56aa8b210d":[7,0,8,1,7,29,1],
+"d1/da4/structxl7_1_1graphics_1_1textures_1_1TextureRegion.html#a5e3918a64ce29c255d697887fd8c0397":[5,0,8,2,7,29,6],
+"d1/da4/structxl7_1_1graphics_1_1textures_1_1TextureRegion.html#a5e3918a64ce29c255d697887fd8c0397":[7,0,8,1,7,29,6],
+"d1/da4/structxl7_1_1graphics_1_1textures_1_1TextureRegion.html#a60f155558294e820239b490857063cc4":[5,0,8,2,7,29,0],
 "d1/da4/structxl7_1_1graphics_1_1textures_1_1TextureRegion.html#a60f155558294e820239b490857063cc4":[7,0,8,1,7,29,0],
 "d1/da4/structxl7_1_1graphics_1_1textures_1_1TextureRegion.html#a61afb255f29cb65659181e835a02782d":[5,0,8,2,7,29,8],
 "d1/da4/structxl7_1_1graphics_1_1textures_1_1TextureRegion.html#a61afb255f29cb65659181e835a02782d":[7,0,8,1,7,29,8],
@@ -243,11 +249,5 @@ var NAVTREEINDEX5 =
 "d1/de4/classtl7_1_1reporting_1_1Reporter.html#a78dcc01483723704a4e256e3b566089d":[5,0,7,2,2,3],
 "d1/de4/classtl7_1_1reporting_1_1Reporter.html#a78dcc01483723704a4e256e3b566089d":[7,0,7,1,2,3],
 "d1/de4/classtl7_1_1reporting_1_1Reporter.html#a7a75c7f3c51a5ac1fa329ebf7e4f12b5":[5,0,7,2,2,4],
-"d1/de4/classtl7_1_1reporting_1_1Reporter.html#a7a75c7f3c51a5ac1fa329ebf7e4f12b5":[7,0,7,1,2,4],
-"d1/de4/classtl7_1_1reporting_1_1Reporter.html#a9aa3eecea61fb21d8b9f37ab1f973e71":[5,0,7,2,2,9],
-"d1/de4/classtl7_1_1reporting_1_1Reporter.html#a9aa3eecea61fb21d8b9f37ab1f973e71":[7,0,7,1,2,9],
-"d1/de4/classtl7_1_1reporting_1_1Reporter.html#ab08a7883d9963b9d5dd7df29c32dedf6":[5,0,7,2,2,1],
-"d1/de4/classtl7_1_1reporting_1_1Reporter.html#ab08a7883d9963b9d5dd7df29c32dedf6":[7,0,7,1,2,1],
-"d1/de4/classtl7_1_1reporting_1_1Reporter.html#ac4b02b233287ddf12b5c342ec4aa5828":[5,0,7,2,2,6],
-"d1/de4/classtl7_1_1reporting_1_1Reporter.html#ac4b02b233287ddf12b5c342ec4aa5828":[7,0,7,1,2,6]
+"d1/de4/classtl7_1_1reporting_1_1Reporter.html#a7a75c7f3c51a5ac1fa329ebf7e4f12b5":[7,0,7,1,2,4]
 };

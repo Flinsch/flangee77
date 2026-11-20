@@ -77,6 +77,12 @@ var NAVTREEINDEX4 =
 "d1/d67/classfl7_1_1gui_1_1HasText.html#a259b3d6fc1e6ef905d6c959df8f618c1":[7,0,3,1,13,0],
 "d1/d67/classfl7_1_1gui_1_1HasText.html#a2ee785888ad50d1ea278e542527d482b":[5,0,3,1,13,2],
 "d1/d67/classfl7_1_1gui_1_1HasText.html#a2ee785888ad50d1ea278e542527d482b":[7,0,3,1,13,2],
+"d1/d69/classfl7_1_1gui_1_1Shell_1_1FaceAttorney.html":[5,0,3,1,18,0],
+"d1/d69/classfl7_1_1gui_1_1Shell_1_1FaceAttorney.html":[7,0,3,1,18,0],
+"d1/d69/classfl7_1_1gui_1_1Shell_1_1FaceAttorney.html#a6dc10c9c159a568077424ab8c1c82dea":[5,0,3,1,18,0,1],
+"d1/d69/classfl7_1_1gui_1_1Shell_1_1FaceAttorney.html#a6dc10c9c159a568077424ab8c1c82dea":[7,0,3,1,18,0,1],
+"d1/d69/classfl7_1_1gui_1_1Shell_1_1FaceAttorney.html#a88843cf30c41d2082416b38de9617d38":[5,0,3,1,18,0,0],
+"d1/d69/classfl7_1_1gui_1_1Shell_1_1FaceAttorney.html#a88843cf30c41d2082416b38de9617d38":[7,0,3,1,18,0,0],
 "d1/d6f/Matrix4x4_8cpp.html":[8,0,4,20],
 "d1/d72/classxl7_1_1graphics_1_1images_1_1ImageReader.html":[5,0,8,2,0,7],
 "d1/d72/classxl7_1_1graphics_1_1images_1_1ImageReader.html":[7,0,8,1,0,7],
@@ -243,11 +249,5 @@ var NAVTREEINDEX4 =
 "d1/da4/structdl7_1_1syntax_1_1CustomSymbol.html#aeb5e92bbcba64dee92559333214987e9":[7,0,2,4,25,0],
 "d1/da4/structxl7_1_1graphics_1_1textures_1_1TextureRegion.html":[5,0,8,2,7,29],
 "d1/da4/structxl7_1_1graphics_1_1textures_1_1TextureRegion.html":[7,0,8,1,7,29],
-"d1/da4/structxl7_1_1graphics_1_1textures_1_1TextureRegion.html#a3d391a020acb53777f275dcf30b737e7":[5,0,8,2,7,29,3],
-"d1/da4/structxl7_1_1graphics_1_1textures_1_1TextureRegion.html#a3d391a020acb53777f275dcf30b737e7":[7,0,8,1,7,29,3],
-"d1/da4/structxl7_1_1graphics_1_1textures_1_1TextureRegion.html#a3e4242b0d25141c894349c56aa8b210d":[5,0,8,2,7,29,1],
-"d1/da4/structxl7_1_1graphics_1_1textures_1_1TextureRegion.html#a3e4242b0d25141c894349c56aa8b210d":[7,0,8,1,7,29,1],
-"d1/da4/structxl7_1_1graphics_1_1textures_1_1TextureRegion.html#a5e3918a64ce29c255d697887fd8c0397":[5,0,8,2,7,29,6],
-"d1/da4/structxl7_1_1graphics_1_1textures_1_1TextureRegion.html#a5e3918a64ce29c255d697887fd8c0397":[7,0,8,1,7,29,6],
-"d1/da4/structxl7_1_1graphics_1_1textures_1_1TextureRegion.html#a60f155558294e820239b490857063cc4":[5,0,8,2,7,29,0]
+"d1/da4/structxl7_1_1graphics_1_1textures_1_1TextureRegion.html#a3d391a020acb53777f275dcf30b737e7":[5,0,8,2,7,29,3]
 };
