@@ -325,31 +325,92 @@ namespace fl7::gui {
 
 
     // #############################################################################
-    // Backend Interface (Collection)
+    // Backend Interface (Face / Collection)
     // #############################################################################
+
+    /**
+     * Called by `Face::set_visible()` just after it actually goes invisible: same
+     * dangling-state cleanup as `_handle_face_removed()` (minus the
+     * `_last_focused_by_top_level` bookkeeping, since `hidden` itself hasn't gone
+     * anywhere, merely invisible, and could still become a remembered last-focused
+     * face again once re-shown and focused anew), plus, if `hidden` was itself this
+     * shell's current top-most top-level face and not a registered popup (see
+     * `open_popup()`: a popup's own closing is never "a window closing", and often
+     * itself just a side effect of a focus change already in progress, which this
+     * must never override with a restore of its own), moves focus to whichever
+     * face was last focused on the next visible one beneath it, if any (and still
+     * visible and enabled).
+     */
+    void Shell::_handle_face_hidden(Face* hidden)
+    {
+        if (_is_within(hidden, _hovered_face))
+            _hovered_face = nullptr;
+        if (_is_within(hidden, _pressed_face))
+            _pressed_face = nullptr;
+        if (_is_within(hidden, _focused_face))
+            _focused_face = nullptr;
+
+        // Same reasoning as _handle_face_removed()'s own identical popup cleanup:
+        // an owner going invisible (not just destroyed) just as well strands its
+        // popup open indefinitely otherwise.
+        std::erase_if(_popups, [&](const PopupEntry& entry) {
+            if (!_is_within(hidden, entry.owner))
+                return false;
+            entry.popup->set_visible(false);
+            return true;
+        });
+
+        const bool was_top_most = !hidden->get_parent()
+            && !_top_level_faces.empty() && _top_level_faces.back().get() == hidden;
+        if (!was_top_most)
+            return;
+
+        // A popup closing (own or just cleaned up above) is never "a window
+        // closing": it's often itself just a side effect of a focus change
+        // already in progress (see _change_focus()'s own popup-closing check),
+        // which this must never override with a restore of its own.
+        const bool was_a_popup = std::ranges::any_of(_popups, [hidden](const PopupEntry& e) {
+            return e.popup == hidden;
+        });
+        if (was_a_popup)
+            return;
+
+        const auto rbegin = std::next(_top_level_faces.rbegin());
+        for (auto it = rbegin; it != _top_level_faces.rend(); ++it)
+        {
+            Face* const candidate = it->get();
+            if (!candidate->is_visible())
+                continue;
+
+            const auto found = _last_focused_by_top_level.find(candidate);
+            const bool still_eligible = found != _last_focused_by_top_level.end()
+                && found->second->is_visible() && found->second->is_enabled();
+            if (still_eligible)
+                _change_focus(found->second);
+            break; // candidate is the new top-most (visible) one either way.
+        }
+    }
 
     /**
      * Called by `Collection::remove_child()` just before it actually erases/destroys
      * the specified face (and, transitively, its own descendants, if any): clears
      * whichever of `_hovered_face`/`_pressed_face`/`_focused_face` (if any) falls
      * within that subtree, so none of them is ever left dangling once it's actually
-     * gone.
+     * gone, and forgets it as any top-level face's own remembered last-focused face
+     * (see `_last_focused_by_top_level`), if it was that.
      */
     void Shell::_handle_face_removed(Face* removed)
     {
-        const auto is_within_removed_subtree = [removed](Face* face) {
-            for (; face; face = face->get_parent())
-                if (face == removed)
-                    return true;
-            return false;
-        };
-
-        if (is_within_removed_subtree(_hovered_face))
+        if (_is_within(removed, _hovered_face))
             _hovered_face = nullptr;
-        if (is_within_removed_subtree(_pressed_face))
+        if (_is_within(removed, _pressed_face))
             _pressed_face = nullptr;
-        if (is_within_removed_subtree(_focused_face))
+        if (_is_within(removed, _focused_face))
             _focused_face = nullptr;
+
+        std::erase_if(_last_focused_by_top_level, [&](const auto& entry) {
+            return _is_within(removed, entry.second);
+        });
 
         // A popup's owner can be removed (destroyed) while its popup is still
         // open (e.g., a DropDown's own enclosing Panel being torn down): closes
@@ -357,7 +418,7 @@ namespace fl7::gui {
         // indefinitely (a popup itself, always a top-level face, can never be
         // "removed" this way to begin with, see open_popup()).
         std::erase_if(_popups, [&](const PopupEntry& entry) {
-            if (!is_within_removed_subtree(entry.owner))
+            if (!_is_within(removed, entry.owner))
                 return false;
             entry.popup->set_visible(false);
             return true;
@@ -377,6 +438,9 @@ namespace fl7::gui {
      * immediately fire a spurious repeat on it. A no-op if `face` is already the
      * focused face. The shared implementation behind `update()`'s mouse-press
      * handling, `focus_toward()`, `_focus_adjacent_tab_stop()`, and `set_focus()`.
+     * Also remembers a non-null `face` as its own top-level face's current entry
+     * in `_last_focused_by_top_level`, for `_handle_face_hidden()` to restore
+     * later.
      */
     void Shell::_change_focus(Face* face)
     {
@@ -389,6 +453,14 @@ namespace fl7::gui {
         if (_focused_face)
             _focused_face->_on_focus_gained();
 
+        if (face)
+        {
+            Face* top_level = face;
+            while (top_level->get_parent())
+                top_level = top_level->get_parent();
+            _last_focused_by_top_level[top_level] = face;
+        }
+
         // A key already held before this face gained focus must not
         // immediately fire a spurious repeat on it.
         _key_repeat_next_fire_times = {};
@@ -398,14 +470,8 @@ namespace fl7::gui {
         // its own owner: a plain click/Tab/arrow move away from both closes it,
         // same as landing back within the popup's own content, or back on its
         // owner (e.g., to toggle it closed again), does not.
-        const auto is_within = [](Face* ancestor, Face* f) {
-            for (; f; f = f->get_parent())
-                if (f == ancestor)
-                    return true;
-            return false;
-        };
         std::erase_if(_popups, [&](const PopupEntry& entry) {
-            if (is_within(entry.popup, face) || is_within(entry.owner, face))
+            if (_is_within(entry.popup, face) || _is_within(entry.owner, face))
                 return false;
             entry.popup->set_visible(false);
             return true;
@@ -663,6 +729,21 @@ namespace fl7::gui {
         }
 
         return best;
+    }
+
+    /**
+     * Returns whether `face` (or any of its ancestors) is `ancestor` itself,
+     * i.e., whether `face` lies within `ancestor`'s own subtree (always true if
+     * `face == ancestor`; always false if `face` is `nullptr`, regardless of
+     * `ancestor`). Shared by `_handle_face_removed()`, `_handle_face_hidden()`,
+     * and `_change_focus()`'s own popup-closing check.
+     */
+    bool Shell::_is_within(Face* ancestor, Face* face)
+    {
+        for (; face; face = face->get_parent())
+            if (face == ancestor)
+                return true;
+        return false;
     }
 
 

@@ -33,7 +33,7 @@ namespace fl7::gui {
         assert(it != _children.end());
 
         if (Shell* shell = child.get_shell())
-            Shell::Attorney::handle_face_removed(*shell, &child);
+            Shell::CollectionAttorney::handle_face_removed(*shell, &child);
 
         _children.erase(it);
     }

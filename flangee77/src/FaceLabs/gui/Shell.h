@@ -14,6 +14,7 @@
 #include <concepts>
 #include <memory>
 #include <optional>
+#include <unordered_map>
 #include <vector>
 
 
@@ -38,11 +39,22 @@ class Shell
 
 public:
     /**
+     * Grants `Face` access to notify this shell when it has just gone invisible
+     * (see `Face::set_visible()`), keeping that (backend-facing) capability out
+     * of the public query API.
+     */
+    class FaceAttorney
+    {
+        static void handle_face_hidden(Shell& shell, Face* hidden) { shell._handle_face_hidden(hidden); }
+        friend class Face;
+    };
+
+    /**
      * Grants `Collection` access to notify this shell when one of its children is
      * about to be removed (see `Collection::remove_child()`), keeping that
      * (backend-facing) capability out of the public query API.
      */
-    class Attorney
+    class CollectionAttorney
     {
         static void handle_face_removed(Shell& shell, Face* removed) { shell._handle_face_removed(removed); }
         friend class Collection;
@@ -233,15 +245,31 @@ public:
 private:
 
     // #############################################################################
-    // Backend Interface (Collection)
+    // Backend Interface (Face / Collection)
     // #############################################################################
+
+    /**
+     * Called by `Face::set_visible()` just after it actually goes invisible: same
+     * dangling-state cleanup as `_handle_face_removed()` (minus the
+     * `_last_focused_by_top_level` bookkeeping, since `hidden` itself hasn't gone
+     * anywhere, merely invisible, and could still become a remembered last-focused
+     * face again once re-shown and focused anew), plus, if `hidden` was itself this
+     * shell's current top-most top-level face and not a registered popup (see
+     * `open_popup()`: a popup's own closing is never "a window closing", and often
+     * itself just a side effect of a focus change already in progress, which this
+     * must never override with a restore of its own), moves focus to whichever
+     * face was last focused on the next visible one beneath it, if any (and still
+     * visible and enabled).
+     */
+    void _handle_face_hidden(Face* hidden);
 
     /**
      * Called by `Collection::remove_child()` just before it actually erases/destroys
      * the specified face (and, transitively, its own descendants, if any): clears
      * whichever of `_hovered_face`/`_pressed_face`/`_focused_face` (if any) falls
      * within that subtree, so none of them is ever left dangling once it's actually
-     * gone.
+     * gone, and forgets it as any top-level face's own remembered last-focused face
+     * (see `_last_focused_by_top_level`), if it was that.
      */
     void _handle_face_removed(Face* removed);
 
@@ -268,6 +296,9 @@ private:
      * immediately fire a spurious repeat on it. A no-op if `face` is already the
      * focused face. The shared implementation behind `update()`'s mouse-press
      * handling, `focus_toward()`, `_focus_adjacent_tab_stop()`, and `set_focus()`.
+     * Also remembers a non-null `face` as its own top-level face's current entry
+     * in `_last_focused_by_top_level`, for `_handle_face_hidden()` to restore
+     * later.
      */
     void _change_focus(Face* face);
 
@@ -308,6 +339,15 @@ private:
      * intuitive face.
      */
     Face* _find_face_toward(Face* top_level, ArrowDirection dir, bool force) const;
+
+    /**
+     * Returns whether `face` (or any of its ancestors) is `ancestor` itself,
+     * i.e., whether `face` lies within `ancestor`'s own subtree (always true if
+     * `face == ancestor`; always false if `face` is `nullptr`, regardless of
+     * `ancestor`). Shared by `_handle_face_removed()`, `_handle_face_hidden()`,
+     * and `_change_focus()`'s own popup-closing check.
+     */
+    static bool _is_within(Face* ancestor, Face* face);
 
 
 
@@ -351,6 +391,16 @@ private:
     Face* _pressed_face = nullptr;
     /** Non-owning: the face that is the focus target. */
     Face* _focused_face = nullptr;
+
+    /**
+     * Each top-level face's own most recently focused descendant (or itself),
+     * updated by `_change_focus()` and consulted by `_handle_face_hidden()` once
+     * a top-most top-level face goes invisible, to restore focus to whichever
+     * one was last focused on the next visible one beneath it. Both sides
+     * non-owning; an entry is removed once its own face (the value) is actually
+     * destroyed (see `_handle_face_removed()`), not merely hidden.
+     */
+    std::unordered_map<Face*, Face*> _last_focused_by_top_level;
 
     /** The mouse's current absolute (screen) position, as of the most recent `update()`. */
     ml7::Vector2f _mouse_position;

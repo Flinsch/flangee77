@@ -223,9 +223,13 @@ public:
     /**
      * Sets whether this face is currently visible (drawn, and eligible for
      * hit-testing). An invisible face's children are neither drawn nor hit-tested
-     * either.
+     * either. Going invisible also clears this face's (or any descendant's)
+     * hover/press/focus state on its own shell, if currently holding any of them;
+     * if this is also that shell's current top-most top-level face, focus then
+     * moves to whichever face was last focused on the next visible one beneath it,
+     * if any (and still visible and enabled).
      */
-    void set_visible(bool visible) { _visible = visible; }
+    void set_visible(bool visible);
 
     /**
      * Returns whether this face currently participates in hit-testing (independent
