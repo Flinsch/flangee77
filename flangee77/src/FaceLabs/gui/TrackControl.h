@@ -229,6 +229,16 @@ private:
      */
     bool _dragging_handle = false;
 
+    /**
+     * While `_dragging_handle`: this gesture's own running value, accumulating
+     * every drag delta since `_on_mouse_down()` unclamped, unlike `_value` itself
+     * (always clamped to [`_min`, `_max`]): dragging the handle past either end
+     * and back again this way lines it back up with the cursor right where it
+     * left off, instead of the cursor and the handle drifting apart for the rest
+     * of the gesture.
+     */
+    float _drag_value = 0.0f;
+
     cl7::behavioral::Signal<float> _changed;
 
 }; // class TrackControl

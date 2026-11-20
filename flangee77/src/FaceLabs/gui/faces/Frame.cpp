@@ -44,10 +44,11 @@ namespace fl7::gui::faces {
         /** Returns this resize handle's theme role. */
         cl7::u8string_view _get_theme_key() const override { return u8"frame_resize_handle"; }
 
-        /** Arms dragging. */
+        /** Arms dragging, seeding `_drag_size` from the frame's current size. */
         void _on_mouse_down(xl7::input::MouseButton button, ml7::Vector2f local_position) override
         {
             _dragging = true;
+            _drag_size = _frame.get_size();
         }
 
         /** Disarms dragging. */
@@ -56,16 +57,19 @@ namespace fl7::gui::faces {
             _dragging = false;
         }
 
-        /** Resizes the owning frame by delta, clamped to `Frame::MIN_WIDTH` and `MIN_HEIGHT`, while dragging is armed. */
+        /**
+         * Resizes the owning frame by delta, clamped to `Frame::MIN_WIDTH` and
+         * `MIN_HEIGHT`, while dragging is armed; see `_drag_size`.
+         */
         void _on_mouse_drag(ml7::Vector2f delta, ml7::Vector2f local_position) override
         {
             if (!_dragging)
                 return;
 
-            const ml7::Vector2f size = _frame.get_size();
+            _drag_size += delta;
             _frame.set_size({
-                std::max(Frame::MIN_WIDTH, size.x + delta.x),
-                std::max(Frame::MIN_HEIGHT, size.y + delta.y),
+                std::max(Frame::MIN_WIDTH, _drag_size.x),
+                std::max(Frame::MIN_HEIGHT, _drag_size.y),
             });
         }
 
@@ -79,6 +83,16 @@ namespace fl7::gui::faces {
 
         /** Whether this handle is currently being dragged. */
         bool _dragging = false;
+
+        /**
+         * This drag gesture's own running size, accumulating every `delta` since
+         * `_on_mouse_down()` unclamped, unlike the frame's own (always clamped to
+         * `Frame::MIN_WIDTH`/`MIN_HEIGHT`) actual size: dragging past the minimum
+         * and back again this way lines the handle back up with the cursor right
+         * where it left off, instead of the cursor and the frame's actual size
+         * drifting apart for the rest of the gesture.
+         */
+        ml7::Vector2f _drag_size;
 
     }; // class Frame::ResizeHandle
 

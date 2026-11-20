@@ -140,7 +140,9 @@ namespace fl7::gui {
 
         _dragging_handle = local_main >= handle_main_begin && local_main < handle_main_end;
 
-        if (!_dragging_handle)
+        if (_dragging_handle)
+            _drag_value = _value;
+        else
             _set_value_from_local_main(local_main);
     }
 
@@ -159,7 +161,10 @@ namespace fl7::gui {
 
         const float track_range = _get_track_range();
         if (track_range > 0.0f)
-            set_value(_value + (_main(delta) / track_range) * (_max - _min));
+        {
+            _drag_value += (_main(delta) / track_range) * (_max - _min);
+            set_value(_drag_value);
+        }
     }
 
     /**
