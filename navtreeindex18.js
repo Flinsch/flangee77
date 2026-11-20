@@ -1,5 +1,7 @@
 var NAVTREEINDEX18 =
 {
+"d4/dac/GuillotinePacker_8cpp.html":[8,0,0,1,4],
+"d4/dad/structfl7_1_1fonts_1_1raster_1_1PixelOffset.html":[5,0,3,0,1,7],
 "d4/dad/structfl7_1_1fonts_1_1raster_1_1PixelOffset.html":[7,0,3,0,1,6],
 "d4/dad/structfl7_1_1fonts_1_1raster_1_1PixelOffset.html#ab3ff32bb644386ffd0f87218f5a6bcab":[5,0,3,0,1,7,0],
 "d4/dad/structfl7_1_1fonts_1_1raster_1_1PixelOffset.html#ab3ff32bb644386ffd0f87218f5a6bcab":[7,0,3,0,1,6,0],
@@ -247,7 +249,5 @@ var NAVTREEINDEX18 =
 "d5/d23/classdl7_1_1xml_1_1Attribute.html":[5,0,2,6,2],
 "d5/d23/classdl7_1_1xml_1_1Attribute.html":[7,0,2,6,2],
 "d5/d23/classdl7_1_1xml_1_1Attribute.html#a0a23d348dda9fa27f88cdbb5bbbe2b5b":[5,0,2,6,2,2],
-"d5/d23/classdl7_1_1xml_1_1Attribute.html#a0a23d348dda9fa27f88cdbb5bbbe2b5b":[7,0,2,6,2,2],
-"d5/d23/classdl7_1_1xml_1_1Attribute.html#a1d7e7e13a7e622872e255f498df7ec32":[5,0,2,6,2,1],
-"d5/d23/classdl7_1_1xml_1_1Attribute.html#a1d7e7e13a7e622872e255f498df7ec32":[7,0,2,6,2,1]
+"d5/d23/classdl7_1_1xml_1_1Attribute.html#a0a23d348dda9fa27f88cdbb5bbbe2b5b":[7,0,2,6,2,2]
 };

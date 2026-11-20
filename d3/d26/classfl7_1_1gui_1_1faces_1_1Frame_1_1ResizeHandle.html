@@ -259,6 +259,7 @@ Protected Member Functions</h2></td></tr>
 Private Attributes</h2></td></tr>
 <tr class="memitem:af86ef8cb890497ecdec8a53508966dbb" id="r_af86ef8cb890497ecdec8a53508966dbb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#a6ce73032f1128df3f5e97398c5c3aa98">Frame</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af86ef8cb890497ecdec8a53508966dbb">_frame</a></td></tr>
 <tr class="memitem:ae07f7550c0dcf5d73365a7786051178c" id="r_ae07f7550c0dcf5d73365a7786051178c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae07f7550c0dcf5d73365a7786051178c">_dragging</a> = false</td></tr>
+<tr class="memitem:a9a16de9761aeefd3ad11e086c70c132b" id="r_a9a16de9761aeefd3ad11e086c70c132b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d3/d53/namespaceml7.html#add70e3ce89c6f3e39fa3a52d54713255">ml7::Vector2f</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9a16de9761aeefd3ad11e086c70c132b">_drag_size</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A small, actively interactive drag grip in the frame's own bottom-right corner (see <span class="tt"><a class="el" href="../../dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#adfba79abdc735fa6f1932a565df90513">Frame::_on_size_changed()</a></span>'s own repositioning), letting the user resize it. Deliberately NOT a disabled/passive decoration, unlike <span class="tt"><a class="el" href="../../dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html">Frame</a></span>'s own <span class="tt"><a class="el" href="../../dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#ac4d91f7f3076dfb773412eb3c650f311">_title_label</a></span> (or <span class="tt"><a class="el" href="../../d8/dac/classfl7_1_1gui_1_1TrackControl.html">TrackControl</a></span>'s handle): it overlaps the frame's content area, which, unlike the title bar's own otherwise-empty strip, is both enabled and (being added first, in <a class="el" href="../../db/d0d/classfl7_1_1gui_1_1faces_1_1Window.html">Window</a>'s own constructor) further back in z-order, so it would otherwise swallow the click before it ever reached <a class="el" href="../../dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html">Frame</a>'s own mouse hooks. Handles dragging entirely on its own instead, resizing its owning frame directly. Not a <a class="el" href="../../df/d2b/classfl7_1_1gui_1_1Control.html">Control</a> either: drag-only, no keyboard equivalent (yet), so no Tab stop. </p>
@@ -418,7 +419,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Arms dragging. </p>
+<p>Arms dragging, seeding <span class="tt"><a class="el" href="#a9a16de9761aeefd3ad11e086c70c132b">_drag_size</a></span> from the frame's current size. </p>
 
 <p>Reimplemented from <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html#af169922cd19e4a90bed5190cd8d69943">fl7::gui::Face</a>.</p>
 
@@ -450,7 +451,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Resizes the owning frame by delta, clamped to <span class="tt"><a class="el" href="../../dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#ad5205e5dffba076cb41f41209d1da431">Frame::MIN_WIDTH</a></span> and <span class="tt"><a class="el" href="../../dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#abf805006a92809379e5249e9dd26f744">MIN_HEIGHT</a></span>, while dragging is armed. </p>
+<p>Resizes the owning frame by delta, clamped to <span class="tt"><a class="el" href="../../dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#ad5205e5dffba076cb41f41209d1da431">Frame::MIN_WIDTH</a></span> and <span class="tt"><a class="el" href="../../dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#abf805006a92809379e5249e9dd26f744">MIN_HEIGHT</a></span>, while dragging is armed; see <span class="tt"><a class="el" href="#a9a16de9761aeefd3ad11e086c70c132b">_drag_size</a></span>. </p>
 
 <p>Reimplemented from <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html#af16e7e80f64342ddb418ae955e98f621">fl7::gui::Face</a>.</p>
 
@@ -535,6 +536,29 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">Member Data Documentation</h2>
+<a id="a9a16de9761aeefd3ad11e086c70c132b" name="a9a16de9761aeefd3ad11e086c70c132b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9a16de9761aeefd3ad11e086c70c132b">&#9670;&#160;</a></span>_drag_size</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d3/d53/namespaceml7.html#add70e3ce89c6f3e39fa3a52d54713255">ml7::Vector2f</a> fl7::gui::faces::Frame::ResizeHandle::_drag_size</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>This drag gesture's own running size, accumulating every <span class="tt">delta</span> since <span class="tt"><a class="el" href="#a48b8573039397d7d113b8f15090ed658">_on_mouse_down()</a></span> unclamped, unlike the frame's own (always clamped to <span class="tt"><a class="el" href="../../dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#ad5205e5dffba076cb41f41209d1da431">Frame::MIN_WIDTH</a></span>/<span class="tt"><a class="el" href="../../dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#abf805006a92809379e5249e9dd26f744">MIN_HEIGHT</a></span>) actual size: dragging past the minimum and back again this way lines the handle back up with the cursor right where it left off, instead of the cursor and the frame's actual size drifting apart for the rest of the gesture. </p>
+
+</div>
+</div>
 <a id="ae07f7550c0dcf5d73365a7786051178c" name="ae07f7550c0dcf5d73365a7786051178c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae07f7550c0dcf5d73365a7786051178c">&#9670;&#160;</a></span>_dragging</h2>
 

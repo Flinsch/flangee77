@@ -1,5 +1,15 @@
 var NAVTREEINDEX52 =
 {
+"db/d19/structfl7_1_1gui_1_1layout_1_1DefaultLayout_1_1Insets.html":[7,0,3,1,1,1,0],
+"db/d19/structfl7_1_1gui_1_1layout_1_1DefaultLayout_1_1Insets.html#a1ea1736b250c6abef99eef035bcb58ec":[5,0,3,1,1,1,0,2],
+"db/d19/structfl7_1_1gui_1_1layout_1_1DefaultLayout_1_1Insets.html#a1ea1736b250c6abef99eef035bcb58ec":[7,0,3,1,1,1,0,2],
+"db/d19/structfl7_1_1gui_1_1layout_1_1DefaultLayout_1_1Insets.html#a2e55a9210a5881954f4cc76aeab079b6":[5,0,3,1,1,1,0,0],
+"db/d19/structfl7_1_1gui_1_1layout_1_1DefaultLayout_1_1Insets.html#a2e55a9210a5881954f4cc76aeab079b6":[7,0,3,1,1,1,0,0],
+"db/d19/structfl7_1_1gui_1_1layout_1_1DefaultLayout_1_1Insets.html#a5f9317b41ec6ae4fb7f4da03a7185043":[5,0,3,1,1,1,0,1],
+"db/d19/structfl7_1_1gui_1_1layout_1_1DefaultLayout_1_1Insets.html#a5f9317b41ec6ae4fb7f4da03a7185043":[7,0,3,1,1,1,0,1],
+"db/d19/structfl7_1_1gui_1_1layout_1_1DefaultLayout_1_1Insets.html#af65de18006f538d2a120867fc7ab341d":[5,0,3,1,1,1,0,3],
+"db/d19/structfl7_1_1gui_1_1layout_1_1DefaultLayout_1_1Insets.html#af65de18006f538d2a120867fc7ab341d":[7,0,3,1,1,1,0,3],
+"db/d1a/Mouse_8cpp.html":[8,0,7,2,16],
 "db/d1b/StyleRun_8h.html":[8,0,3,0,2,12],
 "db/d1b/StyleRun_8h_source.html":[8,0,3,0,2,12],
 "db/d1e/classxl7_1_1resources_1_1ResourceId.html":[5,0,8,4,3],
@@ -239,15 +249,5 @@ var NAVTREEINDEX52 =
 "db/d4f/namespaceml7_1_1distance2.html#afe641454cfeb858566eade44f57ce950":[5,0,4,1,2],
 "db/d53/classtl7_1_1TestSuite.html":[5,0,7,12],
 "db/d53/classtl7_1_1TestSuite.html":[7,0,7,11],
-"db/d53/classtl7_1_1TestSuite.html#a1d0fd14763d4298ec0f57eebabd230cd":[5,0,7,12,9],
-"db/d53/classtl7_1_1TestSuite.html#a1d0fd14763d4298ec0f57eebabd230cd":[7,0,7,11,9],
-"db/d53/classtl7_1_1TestSuite.html#a2717ea3150a0ed4d72bdae23f45d2644":[5,0,7,12,18],
-"db/d53/classtl7_1_1TestSuite.html#a2717ea3150a0ed4d72bdae23f45d2644":[7,0,7,11,18],
-"db/d53/classtl7_1_1TestSuite.html#a2d5b10e47889dae2e2f2c38e95906f20":[5,0,7,12,2],
-"db/d53/classtl7_1_1TestSuite.html#a2d5b10e47889dae2e2f2c38e95906f20":[7,0,7,11,2],
-"db/d53/classtl7_1_1TestSuite.html#a3da21430dc76534efc2f9c297a9cfbcf":[5,0,7,12,15],
-"db/d53/classtl7_1_1TestSuite.html#a3da21430dc76534efc2f9c297a9cfbcf":[7,0,7,11,15],
-"db/d53/classtl7_1_1TestSuite.html#a54bc38e7074125b7ad25ed1611f71e0a":[5,0,7,12,3],
-"db/d53/classtl7_1_1TestSuite.html#a54bc38e7074125b7ad25ed1611f71e0a":[7,0,7,11,3],
-"db/d53/classtl7_1_1TestSuite.html#a59368e47c138bf8c83712c40cf3302b2":[5,0,7,12,21]
+"db/d53/classtl7_1_1TestSuite.html#a1d0fd14763d4298ec0f57eebabd230cd":[5,0,7,12,9]
 };

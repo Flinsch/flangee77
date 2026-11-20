@@ -1,5 +1,15 @@
 var NAVTREEINDEX50 =
 {
+"da/d74/structtl7_1_1Stats_1_1Group.html#a73e6dcac97d1ef17470caeca7cb4ae5f":[5,0,7,8,0,6],
+"da/d74/structtl7_1_1Stats_1_1Group.html#a73e6dcac97d1ef17470caeca7cb4ae5f":[7,0,7,7,0,6],
+"da/d74/structtl7_1_1Stats_1_1Group.html#a9dbc0d3bb30771a6c26c5813cdd3667f":[5,0,7,8,0,5],
+"da/d74/structtl7_1_1Stats_1_1Group.html#a9dbc0d3bb30771a6c26c5813cdd3667f":[7,0,7,7,0,5],
+"da/d74/structtl7_1_1Stats_1_1Group.html#ae270b995dd7db421f17f5a5e299daf44":[5,0,7,8,0,3],
+"da/d74/structtl7_1_1Stats_1_1Group.html#ae270b995dd7db421f17f5a5e299daf44":[7,0,7,7,0,3],
+"da/d74/structtl7_1_1Stats_1_1Group.html#ae69d56ffde53230b69123dd575e5afed":[5,0,7,8,0,0],
+"da/d74/structtl7_1_1Stats_1_1Group.html#ae69d56ffde53230b69123dd575e5afed":[7,0,7,7,0,0],
+"da/d77/xml_2detail_2Lexer_8cpp.html":[8,0,2,6,0,4],
+"da/d7a/CubicBezier3_8h.html":[8,0,4,4],
 "da/d7a/CubicBezier3_8h_source.html":[8,0,4,4],
 "da/d7a/classxl7_1_1graphics_1_1images_1_1codecs_1_1targa_1_1Reader.html":[5,0,8,2,0,0,2,1],
 "da/d7a/classxl7_1_1graphics_1_1images_1_1codecs_1_1targa_1_1Reader.html":[7,0,8,1,0,0,2,1],
@@ -239,15 +249,5 @@ var NAVTREEINDEX50 =
 "da/de1/Deflate_8cpp.html#a76d1573dfa888b0db9f4955adcb33f2d":[8,0,2,0,0,1],
 "da/de1/MeshBufferDesc_8h.html":[8,0,7,1,2,13],
 "da/de1/MeshBufferDesc_8h_source.html":[8,0,7,1,2,13],
-"da/de2/BitmapRenderer_8h.html":[8,0,3,0,2,5],
-"da/de2/BitmapRenderer_8h_source.html":[8,0,3,0,2,5],
-"da/de7/conceptdl7_1_1config_1_1named__enum.html":[5,0,2,1,13],
-"da/de7/conceptdl7_1_1config_1_1named__enum.html":[6,1,0,2],
-"da/de8/find__roots__by__sign__change__and__newton_8h.html":[8,0,0,0,4],
-"da/de8/find__roots__by__sign__change__and__newton_8h_source.html":[8,0,0,0,4],
-"da/de9/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1states_1_1RasterizerStateImpl_1_1Attorney.html":[5,0,8,2,1,1,4,2,0],
-"da/de9/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1states_1_1RasterizerStateImpl_1_1Attorney.html":[7,0,8,1,1,1,2,2,0],
-"da/de9/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1states_1_1RasterizerStateImpl_1_1Attorney.html#a86224caf8efeee374e6b4db5d7431c2b":[5,0,8,2,1,1,4,2,0,0],
-"da/de9/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1states_1_1RasterizerStateImpl_1_1Attorney.html#a86224caf8efeee374e6b4db5d7431c2b":[7,0,8,1,1,1,2,2,0,0],
-"da/de9/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1states_1_1RasterizerStateImpl_1_1Attorney.html#aa6d860d65cc0083a5bd02c9493097cd7":[5,0,8,2,1,1,4,2,0,1]
+"da/de2/BitmapRenderer_8h.html":[8,0,3,0,2,5]
 };

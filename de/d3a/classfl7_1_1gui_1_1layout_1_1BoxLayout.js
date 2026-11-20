@@ -9,7 +9,7 @@ var classfl7_1_1gui_1_1layout_1_1BoxLayout =
     [ "BoxLayout", "de/d3a/classfl7_1_1gui_1_1layout_1_1BoxLayout.html#ab346d1dc3443a1026376d5f9932a74be", null ],
     [ "~BoxLayout", "de/d3a/classfl7_1_1gui_1_1layout_1_1BoxLayout.html#a06a4819b8f97227cde67209eb87f8b26", null ],
     [ "_calculate_size", "de/d3a/classfl7_1_1gui_1_1layout_1_1BoxLayout.html#aa120ad4d726a157710d4d559d28ce75b", null ],
-    [ "_fit_in_cell", "de/d3a/classfl7_1_1gui_1_1layout_1_1BoxLayout.html#aad1533145ab9c8c10f0aca101cb1c7fa", null ],
+    [ "_fit_in_cell", "de/d3a/classfl7_1_1gui_1_1layout_1_1BoxLayout.html#a24056c487be407a6cc7f37495b93be97", null ],
     [ "calculate_minimum_size", "de/d3a/classfl7_1_1gui_1_1layout_1_1BoxLayout.html#aea0d8a8b8192e20936a9f24db0004f0d", null ],
     [ "calculate_preferred_size", "de/d3a/classfl7_1_1gui_1_1layout_1_1BoxLayout.html#a735260044a6b3ba8e633815617c08ff4", null ],
     [ "get_gap", "de/d3a/classfl7_1_1gui_1_1layout_1_1BoxLayout.html#a1352689bee7e47895949eb3af5098d6c", null ],

@@ -1,5 +1,7 @@
 var NAVTREEINDEX17 =
 {
+"d4/d6c/XiaoLabs_2graphics_2images_2Image_8h.html":[8,0,7,1,0,2],
+"d4/d6c/XiaoLabs_2graphics_2images_2Image_8h_source.html":[8,0,7,1,0,2],
 "d4/d6d/namespacexl7_1_1graphics_1_1impl_1_1direct3d11.html":[5,0,8,2,1,0],
 "d4/d6f/D3DShaderCompiler_8cpp.html":[8,0,7,1,1,2,1,0],
 "d4/d70/classxl7_1_1graphics_1_1textures_1_1ITextureFactory.html":[5,0,8,2,7,8],
@@ -247,7 +249,5 @@ var NAVTREEINDEX17 =
 "d4/da8/ISurfaceFactory_8h.html":[8,0,7,1,6,4],
 "d4/da8/ISurfaceFactory_8h_source.html":[8,0,7,1,6,4],
 "d4/daa/Glyph_8h.html":[8,0,3,0,12],
-"d4/daa/Glyph_8h_source.html":[8,0,3,0,12],
-"d4/dac/GuillotinePacker_8cpp.html":[8,0,0,1,4],
-"d4/dad/structfl7_1_1fonts_1_1raster_1_1PixelOffset.html":[5,0,3,0,1,7]
+"d4/daa/Glyph_8h_source.html":[8,0,3,0,12]
 };

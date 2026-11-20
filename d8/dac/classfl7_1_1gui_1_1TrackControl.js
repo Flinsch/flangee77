@@ -36,6 +36,7 @@ var classfl7_1_1gui_1_1TrackControl =
     [ "set_step", "d8/dac/classfl7_1_1gui_1_1TrackControl.html#a0b247e5f047249f30323876c1fb1fb07", null ],
     [ "set_value", "d8/dac/classfl7_1_1gui_1_1TrackControl.html#aa118e742ac2539a20195c7be6e5d2744", null ],
     [ "_changed", "d8/dac/classfl7_1_1gui_1_1TrackControl.html#a57842e9ac08822b992722414922c922f", null ],
+    [ "_drag_value", "d8/dac/classfl7_1_1gui_1_1TrackControl.html#a3176eb6538bbc629595be111e59dfa66", null ],
     [ "_dragging_handle", "d8/dac/classfl7_1_1gui_1_1TrackControl.html#aa65c080b9fdc3d1bed395c361709542f", null ],
     [ "_max", "d8/dac/classfl7_1_1gui_1_1TrackControl.html#a284f028ce414a0acbc2faf285720ec74", null ],
     [ "_min", "d8/dac/classfl7_1_1gui_1_1TrackControl.html#afe5bf7de011e801e476f314c5a671831", null ],

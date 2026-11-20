@@ -1,5 +1,7 @@
 var NAVTREEINDEX28 =
 {
+"d7/d4b/SurfaceDesc_8h.html":[8,0,7,1,6,9],
+"d7/d4b/SurfaceDesc_8h_source.html":[8,0,7,1,6,9],
 "d7/d4b/structxl7_1_1graphics_1_1QuadRenderer_1_1Vertex.html":[5,0,8,2,12,2],
 "d7/d4b/structxl7_1_1graphics_1_1QuadRenderer_1_1Vertex.html":[7,0,8,1,12,2],
 "d7/d4b/structxl7_1_1graphics_1_1QuadRenderer_1_1Vertex.html#a0dd5b7081573c8089d2217199f075686":[5,0,8,2,12,2,0],
@@ -247,7 +249,5 @@ var NAVTREEINDEX28 =
 "d7/d8b/classxl7_1_1graphics_1_1QuadRenderer.html":[5,0,8,2,12],
 "d7/d8b/classxl7_1_1graphics_1_1QuadRenderer.html":[7,0,8,1,12],
 "d7/d8b/classxl7_1_1graphics_1_1QuadRenderer.html#a004bda4bddc65ddb57ed92a5bc3c776b":[5,0,8,2,12,11],
-"d7/d8b/classxl7_1_1graphics_1_1QuadRenderer.html#a004bda4bddc65ddb57ed92a5bc3c776b":[7,0,8,1,12,11],
-"d7/d8b/classxl7_1_1graphics_1_1QuadRenderer.html#a027d2d03101318f311dcf5981fa91dc9":[5,0,8,2,12,33],
-"d7/d8b/classxl7_1_1graphics_1_1QuadRenderer.html#a027d2d03101318f311dcf5981fa91dc9":[7,0,8,1,12,33]
+"d7/d8b/classxl7_1_1graphics_1_1QuadRenderer.html#a004bda4bddc65ddb57ed92a5bc3c776b":[7,0,8,1,12,11]
 };

@@ -1,5 +1,15 @@
 var NAVTREEINDEX47 =
 {
+"da/d25/MultilineStringMatcher_8h.html":[8,0,2,5,0,11],
+"da/d25/MultilineStringMatcher_8h_source.html":[8,0,2,5,0,11],
+"da/d29/classdl7_1_1ini_1_1Value.html":[5,0,2,2,6],
+"da/d29/classdl7_1_1ini_1_1Value.html":[7,0,2,2,6],
+"da/d29/classdl7_1_1ini_1_1Value.html#a00ac98b2648153e3b9721056f30e7a18":[5,0,2,2,6,0],
+"da/d29/classdl7_1_1ini_1_1Value.html#a00ac98b2648153e3b9721056f30e7a18":[7,0,2,2,6,0],
+"da/d29/classdl7_1_1ini_1_1Value.html#a00ac98b2648153e3b9721056f30e7a18a22ae0e2b89e5e3d477f988cc36d3272b":[5,0,2,2,6,0,2],
+"da/d29/classdl7_1_1ini_1_1Value.html#a00ac98b2648153e3b9721056f30e7a18a22ae0e2b89e5e3d477f988cc36d3272b":[7,0,2,2,6,0,2],
+"da/d29/classdl7_1_1ini_1_1Value.html#a00ac98b2648153e3b9721056f30e7a18a27118326006d3829667a400ad23d5d98":[5,0,2,2,6,0,1],
+"da/d29/classdl7_1_1ini_1_1Value.html#a00ac98b2648153e3b9721056f30e7a18a27118326006d3829667a400ad23d5d98":[7,0,2,2,6,0,1],
 "da/d29/classdl7_1_1ini_1_1Value.html#a00ac98b2648153e3b9721056f30e7a18a27226c864bac7454a8504f8edb15d95b":[5,0,2,2,6,0,4],
 "da/d29/classdl7_1_1ini_1_1Value.html#a00ac98b2648153e3b9721056f30e7a18a27226c864bac7454a8504f8edb15d95b":[7,0,2,2,6,0,4],
 "da/d29/classdl7_1_1ini_1_1Value.html#a00ac98b2648153e3b9721056f30e7a18aa0faef0851b4294c06f2b94bb1cb2044":[5,0,2,2,6,0,3],
@@ -239,15 +249,5 @@ var NAVTREEINDEX47 =
 "da/d43/detail_2windows_2user_8cpp.html":[8,0,1,5,0,1,6],
 "da/d45/classfl7_1_1gui_1_1faces_1_1Panel.html":[5,0,3,1,0,6],
 "da/d45/classfl7_1_1gui_1_1faces_1_1Panel.html":[7,0,3,1,0,6],
-"da/d45/classfl7_1_1gui_1_1faces_1_1Panel.html#a0bc1fdbfa043c291d734a10dad135b9a":[5,0,3,1,0,6,0],
-"da/d45/classfl7_1_1gui_1_1faces_1_1Panel.html#a0bc1fdbfa043c291d734a10dad135b9a":[7,0,3,1,0,6,0],
-"da/d45/classfl7_1_1gui_1_1faces_1_1Panel.html#a45fdbdd0f300eae864c42d0f1bb56b83":[5,0,3,1,0,6,6],
-"da/d45/classfl7_1_1gui_1_1faces_1_1Panel.html#a45fdbdd0f300eae864c42d0f1bb56b83":[7,0,3,1,0,6,6],
-"da/d45/classfl7_1_1gui_1_1faces_1_1Panel.html#a4ae1cb9bd4d21e9068c2910613169eda":[5,0,3,1,0,6,3],
-"da/d45/classfl7_1_1gui_1_1faces_1_1Panel.html#a4ae1cb9bd4d21e9068c2910613169eda":[7,0,3,1,0,6,3],
-"da/d45/classfl7_1_1gui_1_1faces_1_1Panel.html#a62ffaf223a1db0a8540f5500a4adae39":[5,0,3,1,0,6,4],
-"da/d45/classfl7_1_1gui_1_1faces_1_1Panel.html#a62ffaf223a1db0a8540f5500a4adae39":[7,0,3,1,0,6,4],
-"da/d45/classfl7_1_1gui_1_1faces_1_1Panel.html#a897145d024607cae703f1480a0696e0d":[5,0,3,1,0,6,2],
-"da/d45/classfl7_1_1gui_1_1faces_1_1Panel.html#a897145d024607cae703f1480a0696e0d":[7,0,3,1,0,6,2],
-"da/d45/classfl7_1_1gui_1_1faces_1_1Panel.html#a97fd2f467a640bcbe2e2ba444b96128a":[5,0,3,1,0,6,5]
+"da/d45/classfl7_1_1gui_1_1faces_1_1Panel.html#a0bc1fdbfa043c291d734a10dad135b9a":[5,0,3,1,0,6,0]
 };

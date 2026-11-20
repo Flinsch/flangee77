@@ -1,5 +1,7 @@
 var NAVTREEINDEX16 =
 {
+"d4/d03/structcl7_1_1text_1_1codec_1_1traits_3_01cl7_1_1u32char__t_01_4.html#a22d616b9fa73238ea8a5776bf5ecd0e7":[5,0,1,11,0,18,4],
+"d4/d03/structcl7_1_1text_1_1codec_1_1traits_3_01cl7_1_1u32char__t_01_4.html#a22d616b9fa73238ea8a5776bf5ecd0e7":[7,0,1,9,0,18,4],
 "d4/d03/structcl7_1_1text_1_1codec_1_1traits_3_01cl7_1_1u32char__t_01_4.html#a254a14d7079acda8e1a23a2c4941c165":[5,0,1,11,0,18,0],
 "d4/d03/structcl7_1_1text_1_1codec_1_1traits_3_01cl7_1_1u32char__t_01_4.html#a254a14d7079acda8e1a23a2c4941c165":[7,0,1,9,0,18,0],
 "d4/d03/structcl7_1_1text_1_1codec_1_1traits_3_01cl7_1_1u32char__t_01_4.html#a6a38fccc251d784882ac0248195be6b8":[5,0,1,11,0,18,3],
@@ -247,7 +249,5 @@ var NAVTREEINDEX16 =
 "d4/d6b/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1shaders_1_1VertexShaderImpl_1_1Attorney.html#aee0ae5c2cbf8491ecbb8de9c55213580":[5,0,8,2,1,0,3,4,0,1],
 "d4/d6b/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1shaders_1_1VertexShaderImpl_1_1Attorney.html#aee0ae5c2cbf8491ecbb8de9c55213580":[7,0,8,1,1,0,1,4,0,1],
 "d4/d6b/structcl7_1_1detail_1_1__is__any__string__view_3_01std_1_1basic__string__view_3_01Tchar_00_01Ttraits_01_4_01_4.html":[5,0,1,4,3],
-"d4/d6b/structcl7_1_1detail_1_1__is__any__string__view_3_01std_1_1basic__string__view_3_01Tchar_00_01Ttraits_01_4_01_4.html":[7,0,1,3,3],
-"d4/d6c/XiaoLabs_2graphics_2images_2Image_8h.html":[8,0,7,1,0,2],
-"d4/d6c/XiaoLabs_2graphics_2images_2Image_8h_source.html":[8,0,7,1,0,2]
+"d4/d6b/structcl7_1_1detail_1_1__is__any__string__view_3_01std_1_1basic__string__view_3_01Tchar_00_01Ttraits_01_4_01_4.html":[7,0,1,3,3]
 };

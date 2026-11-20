@@ -10,6 +10,7 @@ var classfl7_1_1gui_1_1faces_1_1Frame_1_1ResizeHandle =
     [ "_on_mouse_up", "d3/d26/classfl7_1_1gui_1_1faces_1_1Frame_1_1ResizeHandle.html#ae5b3ebbbcfb4a1f2db5974e038fe12cc", null ],
     [ "operator=", "d3/d26/classfl7_1_1gui_1_1faces_1_1Frame_1_1ResizeHandle.html#a7414be3efdc7bd1f986b142a373f7bf5", null ],
     [ "operator=", "d3/d26/classfl7_1_1gui_1_1faces_1_1Frame_1_1ResizeHandle.html#a955bed71ab36d68ca6722b74e38ebe9d", null ],
+    [ "_drag_size", "d3/d26/classfl7_1_1gui_1_1faces_1_1Frame_1_1ResizeHandle.html#a9a16de9761aeefd3ad11e086c70c132b", null ],
     [ "_dragging", "d3/d26/classfl7_1_1gui_1_1faces_1_1Frame_1_1ResizeHandle.html#ae07f7550c0dcf5d73365a7786051178c", null ],
     [ "_frame", "d3/d26/classfl7_1_1gui_1_1faces_1_1Frame_1_1ResizeHandle.html#af86ef8cb890497ecdec8a53508966dbb", null ]
 ];

@@ -294,6 +294,7 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:ad6afad3f682ea8e5381d2e783cca71c3" id="r_ad6afad3f682ea8e5381d2e783cca71c3"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad6afad3f682ea8e5381d2e783cca71c3">_value</a></td></tr>
 <tr class="memitem:a6927a1ed12bf60931a29a1672438b0b8" id="r_a6927a1ed12bf60931a29a1672438b0b8"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6927a1ed12bf60931a29a1672438b0b8">_step</a></td></tr>
 <tr class="memitem:aa65c080b9fdc3d1bed395c361709542f" id="r_aa65c080b9fdc3d1bed395c361709542f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa65c080b9fdc3d1bed395c361709542f">_dragging_handle</a> = false</td></tr>
+<tr class="memitem:a3176eb6538bbc629595be111e59dfa66" id="r_a3176eb6538bbc629595be111e59dfa66"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3176eb6538bbc629595be111e59dfa66">_drag_value</a> = 0.0f</td></tr>
 <tr class="memitem:a57842e9ac08822b992722414922c922f" id="r_a57842e9ac08822b992722414922c922f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d3/d7e/classcl7_1_1behavioral_1_1Signal.html">cl7::behavioral::Signal</a>&lt; float &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a57842e9ac08822b992722414922c922f">_changed</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
@@ -1184,6 +1185,29 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3176eb6538bbc629595be111e59dfa66" name="a3176eb6538bbc629595be111e59dfa66"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3176eb6538bbc629595be111e59dfa66">&#9670;&#160;</a></span>_drag_value</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float fl7::gui::TrackControl::_drag_value = 0.0f</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>While <span class="tt"><a class="el" href="#aa65c080b9fdc3d1bed395c361709542f">_dragging_handle</a></span>: this gesture's own running value, accumulating every drag delta since <span class="tt"><a class="el" href="#aa22abadd62edbbcfad5ad2afd01875c6">_on_mouse_down()</a></span> unclamped, unlike <span class="tt"><a class="el" href="#ad6afad3f682ea8e5381d2e783cca71c3">_value</a></span> itself (always clamped to [<span class="tt"><a class="el" href="#afe5bf7de011e801e476f314c5a671831">_min</a></span>, <span class="tt"><a class="el" href="#a284f028ce414a0acbc2faf285720ec74">_max</a></span>]): dragging the handle past either end and back again this way lines it back up with the cursor right where it left off, instead of the cursor and the handle drifting apart for the rest of the gesture. </p>
 
 </div>
 </div>

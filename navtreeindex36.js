@@ -1,5 +1,13 @@
 var NAVTREEINDEX36 =
 {
+"d8/d1f/structml7_1_1Quaternion.html#a26e57e24b739e367bac895d1f5a19e95":[7,0,4,19,48],
+"d8/d1f/structml7_1_1Quaternion.html#a2a92bb9bb1773b40eb33252e7c4c49ca":[5,0,4,19,28],
+"d8/d1f/structml7_1_1Quaternion.html#a2a92bb9bb1773b40eb33252e7c4c49ca":[7,0,4,19,28],
+"d8/d1f/structml7_1_1Quaternion.html#a2b823c461bb6b8790e97eaec10cfb9ea":[5,0,4,19,27],
+"d8/d1f/structml7_1_1Quaternion.html#a2b823c461bb6b8790e97eaec10cfb9ea":[7,0,4,19,27],
+"d8/d1f/structml7_1_1Quaternion.html#a2d2ebcd4b17f6a0d52fce96a8b60c73f":[5,0,4,19,45],
+"d8/d1f/structml7_1_1Quaternion.html#a2d2ebcd4b17f6a0d52fce96a8b60c73f":[7,0,4,19,45],
+"d8/d1f/structml7_1_1Quaternion.html#a33409505843210f7f9fcc0cdd3c3b3f5":[5,0,4,19,23],
 "d8/d1f/structml7_1_1Quaternion.html#a33409505843210f7f9fcc0cdd3c3b3f5":[7,0,4,19,23],
 "d8/d1f/structml7_1_1Quaternion.html#a46a5f8f46dfa4392e8e167d63a8a0d31":[5,0,4,19,35],
 "d8/d1f/structml7_1_1Quaternion.html#a46a5f8f46dfa4392e8e167d63a8a0d31":[7,0,4,19,35],
@@ -241,13 +249,5 @@ var NAVTREEINDEX36 =
 "d8/d48/TextMetrics_8h_source.html":[8,0,3,0,20],
 "d8/d48/config_2Value_8h.html":[8,0,2,1,7],
 "d8/d48/config_2Value_8h_source.html":[8,0,2,1,7],
-"d8/d50/LogContext_8cpp.html":[8,0,1,4,8],
-"d8/d51/structcl7_1_1bits_1_1detail_1_1SwapBytesImpl_3_01T_00_011_01_4.html":[5,0,1,1,0,1],
-"d8/d51/structcl7_1_1bits_1_1detail_1_1SwapBytesImpl_3_01T_00_011_01_4.html":[7,0,1,1,0,1],
-"d8/d51/structcl7_1_1bits_1_1detail_1_1SwapBytesImpl_3_01T_00_011_01_4.html#a731a5775f9ecd0038b9d357e6e35621f":[5,0,1,1,0,1,0],
-"d8/d51/structcl7_1_1bits_1_1detail_1_1SwapBytesImpl_3_01T_00_011_01_4.html#a731a5775f9ecd0038b9d357e6e35621f":[7,0,1,1,0,1,0],
-"d8/d53/classxl7_1_1graphics_1_1pipeline_1_1RasterizerStage.html":[5,0,8,2,3,7],
-"d8/d53/classxl7_1_1graphics_1_1pipeline_1_1RasterizerStage.html":[7,0,8,1,3,7],
-"d8/d53/classxl7_1_1graphics_1_1pipeline_1_1RasterizerStage.html#a104f446ae5d7abd074970f29c65efc1b":[5,0,8,2,3,7,0],
-"d8/d53/classxl7_1_1graphics_1_1pipeline_1_1RasterizerStage.html#a104f446ae5d7abd074970f29c65efc1b":[7,0,8,1,3,7,0]
+"d8/d50/LogContext_8cpp.html":[8,0,1,4,8]
 };

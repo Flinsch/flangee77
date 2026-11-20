@@ -1,5 +1,15 @@
 var NAVTREEINDEX60 =
 {
+"dc/da0/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1meshes_1_1VertexBufferImpl_1_1Attorney.html#aee0ae5c2cbf8491ecbb8de9c55213580":[7,0,8,1,1,0,0,1,0,1],
+"dc/da0/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Reader_1_1PaletteEntry.html":[5,0,8,2,0,0,1,5,2],
+"dc/da0/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Reader_1_1PaletteEntry.html":[7,0,8,1,0,0,1,5,2],
+"dc/da0/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Reader_1_1PaletteEntry.html#a7b590449a19003d04ed20ea49097951d":[5,0,8,2,0,0,1,5,2,1],
+"dc/da0/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Reader_1_1PaletteEntry.html#a7b590449a19003d04ed20ea49097951d":[7,0,8,1,0,0,1,5,2,1],
+"dc/da0/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Reader_1_1PaletteEntry.html#aafeb5a2faf5b557c2d266631c00fdb74":[5,0,8,2,0,0,1,5,2,0],
+"dc/da0/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Reader_1_1PaletteEntry.html#aafeb5a2faf5b557c2d266631c00fdb74":[7,0,8,1,0,0,1,5,2,0],
+"dc/da0/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Reader_1_1PaletteEntry.html#adf0eadb2edbf8a89139545b688098655":[5,0,8,2,0,0,1,5,2,2],
+"dc/da0/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Reader_1_1PaletteEntry.html#adf0eadb2edbf8a89139545b688098655":[7,0,8,1,0,0,1,5,2,2],
+"dc/da2/classxl7_1_1graphics_1_1states_1_1IStateFactory.html":[5,0,8,2,5,4],
 "dc/da2/classxl7_1_1graphics_1_1states_1_1IStateFactory.html":[7,0,8,1,5,4],
 "dc/da2/classxl7_1_1graphics_1_1states_1_1IStateFactory.html#a46aa04c1c97a330e3b518b1e0539f958":[5,0,8,2,5,4,2],
 "dc/da2/classxl7_1_1graphics_1_1states_1_1IStateFactory.html#a46aa04c1c97a330e3b518b1e0539f958":[7,0,8,1,5,4,2],
@@ -239,15 +249,5 @@ var NAVTREEINDEX60 =
 "dc/de3/structxl7_1_1graphics_1_1impl_1_1shared_1_1meshes_1_1MeshBufferDiscardPolicy_1_1UpdateRecommendation.html#af4ba4065d234e2269ba63b54aee237ac":[7,0,8,1,1,2,0,1,1,1],
 "dc/dea/find__cubic__roots_8cpp.html":[8,0,0,0,0],
 "dc/def/structml7_1_1Ray2.html":[5,0,4,20],
-"dc/def/structml7_1_1Ray2.html":[7,0,4,20],
-"dc/def/structml7_1_1Ray2.html#a011f4b01ad2db4bd0b685f417b09324e":[5,0,4,20,4],
-"dc/def/structml7_1_1Ray2.html#a011f4b01ad2db4bd0b685f417b09324e":[7,0,4,20,4],
-"dc/def/structml7_1_1Ray2.html#a1651b0ae1184ffe34d55c74f09224d62":[5,0,4,20,5],
-"dc/def/structml7_1_1Ray2.html#a1651b0ae1184ffe34d55c74f09224d62":[7,0,4,20,5],
-"dc/def/structml7_1_1Ray2.html#a19616538bf249d2a537c30b3b6d755c3":[5,0,4,20,2],
-"dc/def/structml7_1_1Ray2.html#a19616538bf249d2a537c30b3b6d755c3":[7,0,4,20,2],
-"dc/def/structml7_1_1Ray2.html#a3601a39e543dd98801f4dae52f56e395":[5,0,4,20,7],
-"dc/def/structml7_1_1Ray2.html#a3601a39e543dd98801f4dae52f56e395":[7,0,4,20,7],
-"dc/def/structml7_1_1Ray2.html#a560d708582b6962c012b084b9bca8fe2":[5,0,4,20,14],
-"dc/def/structml7_1_1Ray2.html#a560d708582b6962c012b084b9bca8fe2":[7,0,4,20,14]
+"dc/def/structml7_1_1Ray2.html":[7,0,4,20]
 };
