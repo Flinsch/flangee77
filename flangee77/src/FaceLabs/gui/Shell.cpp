@@ -43,8 +43,10 @@ namespace fl7::gui {
      * frame's keyboard text input/key-downs to the focused face, if any: a held key
      * (any of them, not just the ones a particular face happens to care about)
      * auto-repeats after an initial delay, same as text input already does thanks
-     * to the OS. While any modal is open (see `open_modal()`), mouse input never
-     * reaches anything behind the frontmost one, hit or not.
+     * to the OS. Tab/Shift+Tab and arrow-key navigation (see `focus_toward()`)
+     * work even with nothing currently focused yet, landing on an initial
+     * candidate instead. While any modal is open (see `open_modal()`), mouse
+     * input never reaches anything behind the frontmost one, hit or not.
      */
     void Shell::update()
     {
@@ -136,79 +138,83 @@ namespace fl7::gui {
             const cl7::u32string& text_input = _keyboard->get_text_input();
             if (!text_input.empty())
                 _focused_face->_on_text_input(text_input);
+        }
 
-            // Mirrors the OS's own auto-repeat for text_input above (which gets
-            // it for free from WM_CHAR): an initial delay, then a steady repeat
-            // rate, for as long as the key stays held. Unlike text_input, there's
-            // no OS repeat signal available for us to piggyback on here (the raw
-            // input backend reports physical key transitions only), so this is
-            // our own timer, applied uniformly to every key, not just the ones a
-            // particular face happens to care about.
-            constexpr auto initial_delay = std::chrono::milliseconds(500);
-            constexpr auto repeat_interval = std::chrono::milliseconds(40);
-            const auto now = std::chrono::steady_clock::now();
+        // Mirrors the OS's own auto-repeat for text_input above (which gets
+        // it for free from WM_CHAR): an initial delay, then a steady repeat
+        // rate, for as long as the key stays held. Unlike text_input, there's
+        // no OS repeat signal available for us to piggyback on here (the raw
+        // input backend reports physical key transitions only), so this is
+        // our own timer, applied uniformly to every key, not just the ones a
+        // particular face happens to care about.
+        constexpr auto initial_delay = std::chrono::milliseconds(500);
+        constexpr auto repeat_interval = std::chrono::milliseconds(40);
+        const auto now = std::chrono::steady_clock::now();
 
-            using xl7::input::Key;
+        using xl7::input::Key;
 
-            // Tab/Shift+Tab and Enter/Space are consumed by this shell itself
-            // (focus navigation/activation), never forwarded to the focused
-            // face's own _on_key_down() (text input, e.g., a literal space typed
-            // into a TextField, still goes through separately, see the text_input
-            // handling above). A plain arrow key triggers focus_toward() first,
-            // querying _consumes_arrow() against whatever state the focused face is
-            // still in from BEFORE this keypress (e.g., a ListBox's current
-            // selection): only once that's decided does the key still go through to
-            // _on_key_down() as usual (e.g., TextField's caret, or that same ListBox
-            // selection actually moving), dispatched to whichever face was focused
-            // at the start, regardless of whether focus_toward() just moved on.
-            const auto fire_key = [this](Key key) {
-                if (key == Key::Tab)
-                {
-                    _focus_adjacent_tab_stop(_keyboard->is_key_down(Key::LeftShift) || _keyboard->is_key_down(Key::RightShift));
-                    return;
-                }
-
-                if (key == Key::Enter || key == Key::Space)
-                {
-                    click_focus();
-                    return;
-                }
-
-                Face* const original_focus = _focused_face;
-
-                const bool force = _keyboard->is_key_down(Key::LeftAlt) || _keyboard->is_key_down(Key::RightAlt);
-                switch (key)
-                {
-                case Key::Up:    focus_toward(ArrowDirection::Up, force);    break;
-                case Key::Down:  focus_toward(ArrowDirection::Down, force);  break;
-                case Key::Left:  focus_toward(ArrowDirection::Left, force);  break;
-                case Key::Right: focus_toward(ArrowDirection::Right, force); break;
-                default: break;
-                }
-
-                if (original_focus)
-                    original_focus->_on_key_down(key);
-            };
-
-            for (size_t i = 1; i < static_cast<size_t>(Key::COUNT); ++i)
+        // Tab/Shift+Tab and Enter/Space are consumed by this shell itself
+        // (focus navigation/activation), never forwarded to the focused
+        // face's own _on_key_down() (text input, e.g., a literal space typed
+        // into a TextField, still goes through separately, see the text_input
+        // handling above). A plain arrow key triggers focus_toward() first,
+        // querying _consumes_arrow() against whatever state the focused face is
+        // still in from BEFORE this keypress (e.g., a ListBox's current
+        // selection): only once that's decided does the key still go through to
+        // _on_key_down() as usual (e.g., TextField's caret, or that same ListBox
+        // selection actually moving), dispatched to whichever face was focused
+        // at the start, regardless of whether focus_toward() just moved on. None
+        // of Tab/arrow navigation themselves need a face to already be focused
+        // (see _focus_adjacent_tab_stop()/_find_face_toward()'s own handling of
+        // that); only the final _on_key_down() dispatch and the text input
+        // handling above do, and both already guard for that on their own.
+        const auto fire_key = [this](Key key) {
+            if (key == Key::Tab)
             {
-                const Key key = static_cast<Key>(i);
-                auto& next_fire_time = _key_repeat_next_fire_times[i];
+                _focus_adjacent_tab_stop(_keyboard->is_key_down(Key::LeftShift) || _keyboard->is_key_down(Key::RightShift));
+                return;
+            }
 
-                if (_keyboard->is_key_pressed(key))
-                {
-                    fire_key(key);
-                    next_fire_time = now + initial_delay;
-                }
-                else if (!_keyboard->is_key_down(key))
-                {
-                    next_fire_time.reset();
-                }
-                else if (next_fire_time && now >= *next_fire_time)
-                {
-                    fire_key(key);
-                    next_fire_time = now + repeat_interval;
-                }
+            if (key == Key::Enter || key == Key::Space)
+            {
+                click_focus();
+                return;
+            }
+
+            Face* const original_focus = _focused_face;
+
+            const bool force = _keyboard->is_key_down(Key::LeftAlt) || _keyboard->is_key_down(Key::RightAlt);
+            switch (key)
+            {
+            case Key::Up:    focus_toward(ArrowDirection::Up, force);    break;
+            case Key::Down:  focus_toward(ArrowDirection::Down, force);  break;
+            case Key::Left:  focus_toward(ArrowDirection::Left, force);  break;
+            case Key::Right: focus_toward(ArrowDirection::Right, force); break;
+            default: break;
+            }
+
+            if (original_focus)
+                original_focus->_on_key_down(key);
+        };
+
+        for (size_t i = 1; i < static_cast<size_t>(Key::COUNT); ++i)
+        {
+            const Key key = static_cast<Key>(i);
+            auto& next_fire_time = _key_repeat_next_fire_times[i];
+
+            if (_keyboard->is_key_pressed(key))
+            {
+                fire_key(key);
+                next_fire_time = now + initial_delay;
+            }
+            else if (!_keyboard->is_key_down(key))
+            {
+                next_fire_time.reset();
+            }
+            else if (next_fire_time && now >= *next_fire_time)
+            {
+                fire_key(key);
+                next_fire_time = now + repeat_interval;
             }
         }
     }
@@ -350,11 +356,6 @@ namespace fl7::gui {
         if (std::ranges::find(_modals, modal) == _modals.end())
             _modals.push_back(modal);
 
-        // On a first-ever open (nothing remembered yet for modal), this leaves
-        // its own first Tab stop (if any) unreachable by keyboard until it's
-        // clicked into once: _focus_adjacent_tab_stop() is currently a no-op
-        // with nothing focused. A later pass should focus that first Tab stop
-        // here instead in that case.
         _bring_to_front(modal, true);
     }
 
@@ -615,20 +616,18 @@ namespace fl7::gui {
 
     /**
      * Moves focus to the next (or, if `backward`, previous) Tab stop (see
-     * `Face::_is_focusable()`/`get_tab_order()`), scoped to the currently focused
-     * face's own top-level face's subtree, wrapping around at either end.
-     * No-op if nothing is currently focused (there's no "current" top-level
-     * face to scope to otherwise, see `update()`'s Tab handling) or if that
-     * subtree has no Tab stop at all.
+     * `Face::_is_focusable()`/`get_tab_order()`), scoped to the current
+     * top-level face's own subtree (see `_current_top_level_face()`), wrapping
+     * around at either end. Lands on the first (or, if `backward`, last) Tab
+     * stop instead if nothing is currently focused yet, or the current focus
+     * isn't itself a Tab stop. A no-op if there's no current top-level face at
+     * all, or it has no Tab stop.
      */
     void Shell::_focus_adjacent_tab_stop(bool backward)
     {
-        if (!_focused_face)
+        Face* const top_level = _current_top_level_face();
+        if (!top_level)
             return;
-
-        Face* top_level = _focused_face;
-        while (top_level->get_parent())
-            top_level = top_level->get_parent();
 
         std::vector<Face*> tab_stops;
         top_level->_collect_tab_stops(tab_stops);
@@ -650,7 +649,7 @@ namespace fl7::gui {
         const auto it = std::ranges::find(tab_stops, _focused_face);
 
         size_t next_index;
-        if (it == tab_stops.end()) // The focused face (e.g., set via a click) isn't itself a Tab stop.
+        if (it == tab_stops.end()) // Nothing focused yet, or the current focus isn't itself a Tab stop.
             next_index = backward ? tab_stops.size() - 1 : 0;
         else
         {

@@ -141,8 +141,10 @@ public:
      * frame's keyboard text input/key-downs to the focused face, if any: a held key
      * (any of them, not just the ones a particular face happens to care about)
      * auto-repeats after an initial delay, same as text input already does thanks
-     * to the OS. While any modal is open (see `open_modal()`), mouse input never
-     * reaches anything behind the frontmost one, hit or not.
+     * to the OS. Tab/Shift+Tab and arrow-key navigation (see `focus_toward()`)
+     * work even with nothing currently focused yet, landing on an initial
+     * candidate instead. While any modal is open (see `open_modal()`), mouse
+     * input never reaches anything behind the frontmost one, hit or not.
      */
     void update();
 
@@ -313,11 +315,12 @@ private:
 
     /**
      * Moves focus to the next (or, if `backward`, previous) Tab stop (see
-     * `Face::_is_focusable()`/`get_tab_order()`), scoped to the currently focused
-     * face's own top-level face's subtree, wrapping around at either end.
-     * No-op if nothing is currently focused (there's no "current" top-level
-     * face to scope to otherwise, see `update()`'s Tab handling) or if that
-     * subtree has no Tab stop at all.
+     * `Face::_is_focusable()`/`get_tab_order()`), scoped to the current
+     * top-level face's own subtree (see `_current_top_level_face()`), wrapping
+     * around at either end. Lands on the first (or, if `backward`, last) Tab
+     * stop instead if nothing is currently focused yet, or the current focus
+     * isn't itself a Tab stop. A no-op if there's no current top-level face at
+     * all, or it has no Tab stop.
      */
     void _focus_adjacent_tab_stop(bool backward);
 

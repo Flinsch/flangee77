@@ -520,7 +520,7 @@ TESTLABS_CASE( u8"FaceLabs:  gui:  Shell:  Tab stays scoped to the currently foc
     shell.update();
 }
 
-TESTLABS_CASE( u8"FaceLabs:  gui:  Shell:  Tab does nothing while nothing is currently focused yet (no current top-level face to scope to)" )
+TESTLABS_CASE( u8"FaceLabs:  gui:  Shell:  Tab focuses the topmost top-level face's first Tab stop while nothing is currently focused yet" )
 {
     f77_tests::gui::NullRenderer renderer;
     f77_tests::gui::SimulatedInput input;
@@ -532,6 +532,48 @@ TESTLABS_CASE( u8"FaceLabs:  gui:  Shell:  Tab does nothing while nothing is cur
     auto& button = panel.add_child<fl7::gui::faces::Button>(U"A");
     button.set_position({0.0f, 0.0f});
     button.set_size({50.0f, 20.0f});
+
+    TESTLABS_CHECK( shell.get_focused_face() == nullptr );
+
+    input.set_key_down(xl7::input::Key::Tab, true);
+    shell.update();
+    TESTLABS_CHECK( shell.get_focused_face() == static_cast<fl7::gui::Face*>(&button) );
+    input.set_key_down(xl7::input::Key::Tab, false);
+    shell.update();
+}
+
+TESTLABS_CASE( u8"FaceLabs:  gui:  Shell:  Shift+Tab lands on the last Tab stop instead while nothing is currently focused yet" )
+{
+    f77_tests::gui::NullRenderer renderer;
+    f77_tests::gui::SimulatedInput input;
+    fl7::gui::Shell shell(&renderer, &input.mouse, &input.keyboard);
+
+    auto& panel = shell.add_face<fl7::gui::faces::Panel>();
+    panel.set_position({0.0f, 0.0f});
+    panel.set_size({300.0f, 100.0f});
+    auto& button_a = panel.add_child<fl7::gui::faces::Button>(U"A");
+    button_a.set_position({0.0f, 0.0f});
+    button_a.set_size({50.0f, 20.0f});
+    auto& button_b = panel.add_child<fl7::gui::faces::Button>(U"B");
+    button_b.set_position({100.0f, 0.0f});
+    button_b.set_size({50.0f, 20.0f});
+
+    TESTLABS_CHECK( shell.get_focused_face() == nullptr );
+
+    input.set_key_down(xl7::input::Key::LeftShift, true);
+    input.set_key_down(xl7::input::Key::Tab, true);
+    shell.update();
+    TESTLABS_CHECK( shell.get_focused_face() == static_cast<fl7::gui::Face*>(&button_b) );
+    input.set_key_down(xl7::input::Key::Tab, false);
+    input.set_key_down(xl7::input::Key::LeftShift, false);
+    shell.update();
+}
+
+TESTLABS_CASE( u8"FaceLabs:  gui:  Shell:  Tab does nothing with no top-level face at all to scope to" )
+{
+    f77_tests::gui::NullRenderer renderer;
+    f77_tests::gui::SimulatedInput input;
+    fl7::gui::Shell shell(&renderer, &input.mouse, &input.keyboard);
 
     TESTLABS_CHECK( shell.get_focused_face() == nullptr );
 
@@ -613,6 +655,32 @@ TESTLABS_CASE( u8"FaceLabs:  gui:  Shell:  with nothing focused yet, an arrow ke
 
     shell.focus_toward(fl7::gui::ArrowDirection::Right); // enters at the outermost control towards the right
     TESTLABS_CHECK( shell.get_focused_face() == static_cast<fl7::gui::Face*>(&right) );
+}
+
+TESTLABS_CASE( u8"FaceLabs:  gui:  Shell:  an actual arrow key press (not a direct focus_toward() call) also works while nothing is currently focused yet" )
+{
+    f77_tests::gui::NullRenderer renderer;
+    f77_tests::gui::SimulatedInput input;
+    fl7::gui::Shell shell(&renderer, &input.mouse, &input.keyboard);
+
+    auto& panel = shell.add_face<fl7::gui::faces::Panel>();
+    panel.set_position({0.0f, 0.0f});
+    panel.set_size({300.0f, 100.0f});
+
+    auto& left = panel.add_child<fl7::gui::faces::Button>(U"Left");
+    left.set_position({0.0f, 0.0f});
+    left.set_size({50.0f, 20.0f});
+    auto& right = panel.add_child<fl7::gui::faces::Button>(U"Right");
+    right.set_position({200.0f, 0.0f});
+    right.set_size({50.0f, 20.0f});
+
+    TESTLABS_CHECK( shell.get_focused_face() == nullptr );
+
+    input.set_key_down(xl7::input::Key::Right, true);
+    shell.update();
+    TESTLABS_CHECK( shell.get_focused_face() == static_cast<fl7::gui::Face*>(&right) );
+    input.set_key_down(xl7::input::Key::Right, false);
+    shell.update();
 }
 
 TESTLABS_CASE( u8"FaceLabs:  gui:  Shell:  a focused TextField keeps the horizontal arrows for its caret (soft); Alt+arrow still moves focus away" )
