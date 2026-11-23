@@ -1,5 +1,9 @@
 var NAVTREEINDEX71 =
 {
+"de/df3/structxl7_1_1graphics_1_1Color.html#ae7dd9ce5aee17add9e87012878f974fc":[5,0,8,2,8,55],
+"de/df3/structxl7_1_1graphics_1_1Color.html#ae7dd9ce5aee17add9e87012878f974fc":[7,0,8,1,8,55],
+"de/df3/structxl7_1_1graphics_1_1Color.html#ae860c719cf2edb5fe09b14259268e8f5":[5,0,8,2,8,27],
+"de/df3/structxl7_1_1graphics_1_1Color.html#ae860c719cf2edb5fe09b14259268e8f5":[7,0,8,1,8,27],
 "de/df3/structxl7_1_1graphics_1_1Color.html#aebbdee44ce57561bd42b288dbee80745":[5,0,8,2,8,37],
 "de/df3/structxl7_1_1graphics_1_1Color.html#aebbdee44ce57561bd42b288dbee80745":[7,0,8,1,8,37],
 "de/df3/structxl7_1_1graphics_1_1Color.html#af0abe6081f291b8853c35f63cb38cad3":[5,0,8,2,8,9],
@@ -245,9 +249,5 @@ var NAVTREEINDEX71 =
 "df/d23/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1states_1_1SamplerStateImpl.html#a1c027a6d754da0d1662fc571a6472654":[5,0,8,2,1,0,4,3,11],
 "df/d23/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1states_1_1SamplerStateImpl.html#a1c027a6d754da0d1662fc571a6472654":[7,0,8,1,1,0,2,3,11],
 "df/d23/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1states_1_1SamplerStateImpl.html#a280fb6e3db173b5f4e0aa3a63d1e6ff6":[5,0,8,2,1,0,4,3,13],
-"df/d23/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1states_1_1SamplerStateImpl.html#a280fb6e3db173b5f4e0aa3a63d1e6ff6":[7,0,8,1,1,0,2,3,13],
-"df/d23/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1states_1_1SamplerStateImpl.html#a3a8c4d86afdc39cc087769ab24f3eadc":[5,0,8,2,1,0,4,3,6],
-"df/d23/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1states_1_1SamplerStateImpl.html#a3a8c4d86afdc39cc087769ab24f3eadc":[7,0,8,1,1,0,2,3,6],
-"df/d23/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1states_1_1SamplerStateImpl.html#a4daa77d9db4749ec174d17aa5bb0ef8d":[5,0,8,2,1,0,4,3,4],
-"df/d23/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1states_1_1SamplerStateImpl.html#a4daa77d9db4749ec174d17aa5bb0ef8d":[7,0,8,1,1,0,2,3,4]
+"df/d23/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1states_1_1SamplerStateImpl.html#a280fb6e3db173b5f4e0aa3a63d1e6ff6":[7,0,8,1,1,0,2,3,13]
 };

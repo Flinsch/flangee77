@@ -294,6 +294,10 @@ requires (std::derived_from&lt;TFace, <a class="el" href="../../d9/d1a/classfl7_
 <tr class="memitem:a4749ea1564f3b26c7d72e3914e050531 inherit pro_methods_classfl7_1_1gui_1_1Face" id="r_a4749ea1564f3b26c7d72e3914e050531"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html#a4749ea1564f3b26c7d72e3914e050531">_on_key_down</a> (<a class="el" href="../../df/d6d/namespacexl7_1_1input.html#abe528627c6556cb308cd570df5723c45">xl7::input::Key</a> key)</td></tr>
 <tr class="memitem:a82e5252051e560e082f90c5bf235da4b inherit pro_methods_classfl7_1_1gui_1_1Face" id="r_a82e5252051e560e082f90c5bf235da4b"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html#a82e5252051e560e082f90c5bf235da4b">_on_text_input</a> (const <a class="el" href="../../d1/d2e/namespacecl7.html#acdaa45946567058735bc614c9ed1333c">cl7::u32string</a> &amp;text)</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pri-methods" class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a0703b9ffee64d953c66b64c7d1b83fd4" id="r_a0703b9ffee64d953c66b64c7d1b83fd4"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0703b9ffee64d953c66b64c7d1b83fd4">_min_height</a> () const</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-attribs" class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:a20967b0c3c2ed6307e2c37b316eddb0f" id="r_a20967b0c3c2ed6307e2c37b316eddb0f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../dd/d69/classfl7_1_1gui_1_1Container.html">Container</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a20967b0c3c2ed6307e2c37b316eddb0f">_content_area</a></td></tr>
@@ -306,10 +310,7 @@ Private Attributes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-static-attribs" class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
 Static Private Attributes</h2></td></tr>
-<tr class="memitem:a9ec4897629eb4fb86bcaf1ce99a37c58" id="r_a9ec4897629eb4fb86bcaf1ce99a37c58"><td class="memItemLeft" align="right" valign="top">static constexpr float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9ec4897629eb4fb86bcaf1ce99a37c58">TITLE_BAR_HEIGHT</a> = 24.0f</td></tr>
-<tr class="memitem:a345732a3f7faa945d6fad2ce9b0fc89e" id="r_a345732a3f7faa945d6fad2ce9b0fc89e"><td class="memItemLeft" align="right" valign="top">static constexpr float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a345732a3f7faa945d6fad2ce9b0fc89e">RESIZE_HANDLE_SIZE</a> = 16.0f</td></tr>
 <tr class="memitem:ad5205e5dffba076cb41f41209d1da431" id="r_ad5205e5dffba076cb41f41209d1da431"><td class="memItemLeft" align="right" valign="top">static constexpr float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad5205e5dffba076cb41f41209d1da431">MIN_WIDTH</a> = 80.0f</td></tr>
-<tr class="memitem:abf805006a92809379e5249e9dd26f744" id="r_abf805006a92809379e5249e9dd26f744"><td class="memItemLeft" align="right" valign="top">static constexpr float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abf805006a92809379e5249e9dd26f744">MIN_HEIGHT</a> = <a class="el" href="#a9ec4897629eb4fb86bcaf1ce99a37c58">TITLE_BAR_HEIGHT</a> + <a class="el" href="#a345732a3f7faa945d6fad2ce9b0fc89e">RESIZE_HANDLE_SIZE</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A top-level window: a background/border chrome (see <span class="tt"><a class="el" href="../../dd/d02/structfl7_1_1gui_1_1Style.html">Style</a></span>) around an internal content area, exposed via <span class="tt"><a class="el" href="#a7b43547d70b2476bb8b8541f1a1f5e31">get_content_area()</a></span> (the only place a caller can actually add children, since this is a <span class="tt"><a class="el" href="../../d0/d93/classfl7_1_1gui_1_1Compound.html">Compound</a></span>: fixed internal composition, not arbitrary public children), with a fixed title bar (title text plus a close button) on top of it, draggable (by that title bar) to move it and, by a small grip in its bottom-right corner, to resize it (clamped to a sane minimum size). The content area fills whatever's left below the title bar and is kept in sync as the frame is resized. </p>
@@ -465,7 +466,7 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Returns the content area's own effective minimum size, plus this frame's own fixed title bar height on top; width is otherwise unaffected, the title bar never needs more of it than the content area itself already does. </p>
+<p>Returns the content area's own effective minimum size, plus this frame's own title bar height on top; width is otherwise unaffected, the title bar never needs more of it than the content area itself already does. </p>
 
 <p>Reimplemented from <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html#af740f74d08c785ef76ef46a77d0ec530">fl7::gui::Face</a>.</p>
 
@@ -493,7 +494,7 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Returns the content area's own effective preferred size, plus this frame's own fixed title bar height on top; width is otherwise unaffected, the title bar never needs more of it than the content area itself already does. </p>
+<p>Returns the content area's own effective preferred size, plus this frame's own title bar height on top; width is otherwise unaffected, the title bar never needs more of it than the content area itself already does. </p>
 
 <p>Reimplemented from <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html#a0bf7f9b89fb34633392b25502d8efc8f">fl7::gui::Face</a>.</p>
 
@@ -524,6 +525,32 @@ Static Private Attributes</h2></td></tr>
 <p>Returns this frame's theme role. </p>
 
 <p>Reimplemented from <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html#a6ce0fc56db00390b40b9991387751e36">fl7::gui::Face</a>.</p>
+
+</div>
+</div>
+<a id="a0703b9ffee64d953c66b64c7d1b83fd4" name="a0703b9ffee64d953c66b64c7d1b83fd4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0703b9ffee64d953c66b64c7d1b83fd4">&#9670;&#160;</a></span>_min_height()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float fl7::gui::faces::Frame::_min_height </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Returns the minimum height dragging the resize handle (see <span class="tt"><a class="el" href="../../d3/d26/classfl7_1_1gui_1_1faces_1_1Frame_1_1ResizeHandle.html">ResizeHandle</a></span>) never shrinks this frame below: tall enough for the title bar and the resize handle to both still fit. </p>
 
 </div>
 </div>
@@ -1053,29 +1080,6 @@ Static Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="abf805006a92809379e5249e9dd26f744" name="abf805006a92809379e5249e9dd26f744"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abf805006a92809379e5249e9dd26f744">&#9670;&#160;</a></span>MIN_HEIGHT</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">float fl7::gui::faces::Frame::MIN_HEIGHT = <a class="el" href="#a9ec4897629eb4fb86bcaf1ce99a37c58">TITLE_BAR_HEIGHT</a> + <a class="el" href="#a345732a3f7faa945d6fad2ce9b0fc89e">RESIZE_HANDLE_SIZE</a></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span><span class="mlabel constexpr">constexpr</span><span class="mlabel private">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>See <span class="tt"><a class="el" href="#ad5205e5dffba076cb41f41209d1da431">MIN_WIDTH</a></span>; tall enough for the title bar and the resize handle to both still fit. </p>
-
-</div>
-</div>
 <a id="ad5205e5dffba076cb41f41209d1da431" name="ad5205e5dffba076cb41f41209d1da431"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad5205e5dffba076cb41f41209d1da431">&#9670;&#160;</a></span>MIN_WIDTH</h2>
 
@@ -1095,53 +1099,7 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Dragging the resize handle (see <span class="tt"><a class="el" href="../../d3/d26/classfl7_1_1gui_1_1faces_1_1Frame_1_1ResizeHandle.html">ResizeHandle</a></span>) never shrinks this frame below this size. </p>
-
-</div>
-</div>
-<a id="a345732a3f7faa945d6fad2ce9b0fc89e" name="a345732a3f7faa945d6fad2ce9b0fc89e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a345732a3f7faa945d6fad2ce9b0fc89e">&#9670;&#160;</a></span>RESIZE_HANDLE_SIZE</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">float fl7::gui::faces::Frame::RESIZE_HANDLE_SIZE = 16.0f</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span><span class="mlabel constexpr">constexpr</span><span class="mlabel private">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Fixed for now, same caveat as <span class="tt"><a class="el" href="#a9ec4897629eb4fb86bcaf1ce99a37c58">TITLE_BAR_HEIGHT</a></span>. </p>
-
-</div>
-</div>
-<a id="a9ec4897629eb4fb86bcaf1ce99a37c58" name="a9ec4897629eb4fb86bcaf1ce99a37c58"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9ec4897629eb4fb86bcaf1ce99a37c58">&#9670;&#160;</a></span>TITLE_BAR_HEIGHT</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">float fl7::gui::faces::Frame::TITLE_BAR_HEIGHT = 24.0f</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span><span class="mlabel constexpr">constexpr</span><span class="mlabel private">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Fixed for now, should eventually come from the active theme/chrome instead (e.g., the 9-slice title bar chrome's own native height). </p>
+<p>Dragging the resize handle (see <span class="tt"><a class="el" href="../../d3/d26/classfl7_1_1gui_1_1faces_1_1Frame_1_1ResizeHandle.html">ResizeHandle</a></span>) never shrinks this frame's own width below this. Fixed for now; should eventually follow from recursively aggregating the content area's own children instead, once that's generalized (see <span class="tt"><a class="el" href="../../dd/d69/classfl7_1_1gui_1_1Container.html">Container</a></span>/<span class="tt"><a class="el" href="../../d0/d93/classfl7_1_1gui_1_1Compound.html">Compound</a></span>). </p>
 
 </div>
 </div>

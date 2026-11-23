@@ -182,7 +182,7 @@ var searchData=
   ['themelevel_2eh_179',['ThemeLevel.h',['../db/dfe/ThemeLevel_8h.html',1,'']]],
   ['tilde_180',['Tilde',['../d1/db1/structdl7_1_1yaml_1_1Format.html#a5394e05ec1f72592e180f47fa1d4c913a77a804418d76dc407383a618b60853ab',1,'dl7::yaml::Format']]],
   ['title_181',['title',['../dd/d38/structxl7_1_1Config_1_1General.html#af66c27c548682da2c709e3304ba5215a',1,'xl7::Config::General']]],
-  ['title_5fbar_5fheight_182',['TITLE_BAR_HEIGHT',['../dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#a9ec4897629eb4fb86bcaf1ce99a37c58',1,'fl7::gui::faces::Frame']]],
+  ['title_5fbar_5fheight_182',['title_bar_height',['../dd/d02/structfl7_1_1gui_1_1Style.html#a8098a3fb022be664fe789e4a79e3b358',1,'fl7::gui::Style::title_bar_height'],['../d0/d60/structfl7_1_1gui_1_1ThemeLevel.html#a1cdf4f80913af70eca4e8a891c0d281b',1,'fl7::gui::ThemeLevel::title_bar_height']]],
   ['tl7_183',['tl7',['../d1/dce/namespacetl7.html',1,'']]],
   ['tl7_3a_3aexceptions_184',['exceptions',['../da/d05/namespacetl7_1_1exceptions.html',1,'tl7']]],
   ['tl7_3a_3ainternals_185',['internals',['../d2/d23/namespacetl7_1_1internals.html',1,'tl7']]],

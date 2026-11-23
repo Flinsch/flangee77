@@ -1,7 +1,5 @@
 var NAVTREEINDEX60 =
 {
-"dc/da0/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Reader_1_1PaletteEntry.html":[5,0,8,2,0,0,1,5,2],
-"dc/da0/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Reader_1_1PaletteEntry.html":[7,0,8,1,0,0,1,5,2],
 "dc/da0/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Reader_1_1PaletteEntry.html#a7b590449a19003d04ed20ea49097951d":[5,0,8,2,0,0,1,5,2,1],
 "dc/da0/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Reader_1_1PaletteEntry.html#a7b590449a19003d04ed20ea49097951d":[7,0,8,1,0,0,1,5,2,1],
 "dc/da0/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Reader_1_1PaletteEntry.html#aafeb5a2faf5b557c2d266631c00fdb74":[5,0,8,2,0,0,1,5,2,0],
@@ -249,5 +247,7 @@ var NAVTREEINDEX60 =
 "dc/dea/find__cubic__roots_8cpp.html":[8,0,0,0,0],
 "dc/def/structml7_1_1Ray2.html":[5,0,4,20],
 "dc/def/structml7_1_1Ray2.html":[7,0,4,20],
-"dc/def/structml7_1_1Ray2.html#a011f4b01ad2db4bd0b685f417b09324e":[5,0,4,20,4]
+"dc/def/structml7_1_1Ray2.html#a011f4b01ad2db4bd0b685f417b09324e":[5,0,4,20,4],
+"dc/def/structml7_1_1Ray2.html#a011f4b01ad2db4bd0b685f417b09324e":[7,0,4,20,4],
+"dc/def/structml7_1_1Ray2.html#a1651b0ae1184ffe34d55c74f09224d62":[5,0,4,20,5]
 };

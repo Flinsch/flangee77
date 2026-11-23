@@ -1,5 +1,11 @@
 var NAVTREEINDEX14 =
 {
+"d3/dcb/structxl7_1_1graphics_1_1impl_1_1shared_1_1textures_1_1TextureDiscardPolicy_1_1UpdateRecommendation.html#a0a4befb12a16d638ab08533741b4d2ff":[7,0,8,1,1,2,2,0,1,0],
+"d3/dcb/structxl7_1_1graphics_1_1impl_1_1shared_1_1textures_1_1TextureDiscardPolicy_1_1UpdateRecommendation.html#a476f450589d370ec3ab46bdb2307f3e6":[5,0,8,2,1,2,3,0,1,1],
+"d3/dcb/structxl7_1_1graphics_1_1impl_1_1shared_1_1textures_1_1TextureDiscardPolicy_1_1UpdateRecommendation.html#a476f450589d370ec3ab46bdb2307f3e6":[7,0,8,1,1,2,2,0,1,1],
+"d3/dce/StandardLogger_8h.html":[8,0,1,4,15],
+"d3/dce/StandardLogger_8h_source.html":[8,0,1,4,15],
+"d3/dd0/classfl7_1_1fonts_1_1render_1_1AbstractRenderer.html":[5,0,3,0,2,0],
 "d3/dd0/classfl7_1_1fonts_1_1render_1_1AbstractRenderer.html":[7,0,3,0,2,0],
 "d3/dd0/classfl7_1_1fonts_1_1render_1_1AbstractRenderer.html#a1619a32a010bb5827c7a5b65af382844":[5,0,3,0,2,0,21],
 "d3/dd0/classfl7_1_1fonts_1_1render_1_1AbstractRenderer.html#a1619a32a010bb5827c7a5b65af382844":[7,0,3,0,2,0,21],
@@ -243,11 +249,5 @@ var NAVTREEINDEX14 =
 "d3/dea/Profiler_8cpp.html":[8,0,1,6,0],
 "d3/dea/structcl7_1_1profiling_1_1SampleHandler.html":[5,0,1,9,3],
 "d3/dea/structcl7_1_1profiling_1_1SampleHandler.html":[7,0,1,7,3],
-"d3/dea/structcl7_1_1profiling_1_1SampleHandler.html#a2e18cbdae308348be85b98432213b2c5":[5,0,1,9,3,4],
-"d3/dea/structcl7_1_1profiling_1_1SampleHandler.html#a2e18cbdae308348be85b98432213b2c5":[7,0,1,7,3,4],
-"d3/dea/structcl7_1_1profiling_1_1SampleHandler.html#a59d013ac4fd9683b1a01a65592244211":[5,0,1,9,3,2],
-"d3/dea/structcl7_1_1profiling_1_1SampleHandler.html#a59d013ac4fd9683b1a01a65592244211":[7,0,1,7,3,2],
-"d3/dea/structcl7_1_1profiling_1_1SampleHandler.html#a5e7d397932c61e2d15afdd55e2980ec7":[5,0,1,9,3,0],
-"d3/dea/structcl7_1_1profiling_1_1SampleHandler.html#a5e7d397932c61e2d15afdd55e2980ec7":[7,0,1,7,3,0],
-"d3/dea/structcl7_1_1profiling_1_1SampleHandler.html#acb5f2303d020684ff3e6b7637590b605":[5,0,1,9,3,1]
+"d3/dea/structcl7_1_1profiling_1_1SampleHandler.html#a2e18cbdae308348be85b98432213b2c5":[5,0,1,9,3,4]
 };

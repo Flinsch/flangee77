@@ -45,6 +45,5 @@ var classfl7_1_1gui_1_1faces_1_1ScrollPanel =
     [ "_vertical_scroll_bar", "d8/d18/classfl7_1_1gui_1_1faces_1_1ScrollPanel.html#ad740e10093544ce7cec95cc5b1c14112", null ],
     [ "_vertical_scroll_bar_visibility", "d8/d18/classfl7_1_1gui_1_1faces_1_1ScrollPanel.html#a031d37686fad68cf65bfc2d687895fcf", null ],
     [ "_vertical_scroll_enabled", "d8/d18/classfl7_1_1gui_1_1faces_1_1ScrollPanel.html#abcae3af4d9d21475374a48a271c33cc3", null ],
-    [ "_wheel_step", "d8/d18/classfl7_1_1gui_1_1faces_1_1ScrollPanel.html#ac821dc9a12c8f1e18a6eba4017475589", null ],
-    [ "SCROLLBAR_THICKNESS", "d8/d18/classfl7_1_1gui_1_1faces_1_1ScrollPanel.html#a7c46e8dd1372d3513596c2de149b9e3f", null ]
+    [ "_wheel_step", "d8/d18/classfl7_1_1gui_1_1faces_1_1ScrollPanel.html#ac821dc9a12c8f1e18a6eba4017475589", null ]
 ];

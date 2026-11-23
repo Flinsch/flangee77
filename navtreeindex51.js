@@ -1,5 +1,7 @@
 var NAVTREEINDEX51 =
 {
+"da/dca/unionxl7_1_1graphics_1_1Color_1_1Value32.html#a34ffee333d2de74ca5fc66c782e97ba8":[5,0,8,2,8,0,1],
+"da/dca/unionxl7_1_1graphics_1_1Color_1_1Value32.html#a34ffee333d2de74ca5fc66c782e97ba8":[7,0,8,1,8,0,1],
 "da/dca/unionxl7_1_1graphics_1_1Color_1_1Value32.html#ad9baa9cfea4061dba8ae7c68d20cc579":[5,0,8,2,8,0,0],
 "da/dca/unionxl7_1_1graphics_1_1Color_1_1Value32.html#ad9baa9cfea4061dba8ae7c68d20cc579":[7,0,8,1,8,0,0],
 "da/dcd/namespacexl7_1_1graphics_1_1impl_1_1direct3d9_1_1meshes.html":[5,0,8,2,1,1,2],
@@ -247,7 +249,5 @@ var NAVTREEINDEX51 =
 "db/d19/structfl7_1_1gui_1_1layout_1_1DefaultLayout_1_1Insets.html#a5f9317b41ec6ae4fb7f4da03a7185043":[5,0,3,1,1,1,0,1],
 "db/d19/structfl7_1_1gui_1_1layout_1_1DefaultLayout_1_1Insets.html#a5f9317b41ec6ae4fb7f4da03a7185043":[7,0,3,1,1,1,0,1],
 "db/d19/structfl7_1_1gui_1_1layout_1_1DefaultLayout_1_1Insets.html#af65de18006f538d2a120867fc7ab341d":[5,0,3,1,1,1,0,3],
-"db/d19/structfl7_1_1gui_1_1layout_1_1DefaultLayout_1_1Insets.html#af65de18006f538d2a120867fc7ab341d":[7,0,3,1,1,1,0,3],
-"db/d1a/Mouse_8cpp.html":[8,0,7,2,16],
-"db/d1b/StyleRun_8h.html":[8,0,3,0,2,12]
+"db/d19/structfl7_1_1gui_1_1layout_1_1DefaultLayout_1_1Insets.html#af65de18006f538d2a120867fc7ab341d":[7,0,3,1,1,1,0,3]
 };

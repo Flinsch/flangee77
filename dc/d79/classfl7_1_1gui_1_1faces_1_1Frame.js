@@ -9,6 +9,7 @@ var classfl7_1_1gui_1_1faces_1_1Frame =
     [ "_calculate_minimum_size", "dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#abf36c19461d2c95b1a234865185ecca9", null ],
     [ "_calculate_preferred_size", "dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#aefc67e955f74768bd66c82aff92d73e4", null ],
     [ "_get_theme_key", "dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#a389865dd37a8000544414c9c9bdcb62d", null ],
+    [ "_min_height", "dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#a0703b9ffee64d953c66b64c7d1b83fd4", null ],
     [ "_on_mouse_down", "dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#aecde8701b6786d5cdfc11c006dcc01fd", null ],
     [ "_on_mouse_drag", "dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#a4ff9291896eb579735808576f5336c6f", null ],
     [ "_on_mouse_up", "dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#ab6a92230915b2852da9d651f6edea294", null ],
@@ -30,8 +31,5 @@ var classfl7_1_1gui_1_1faces_1_1Frame =
     [ "_opened", "dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#a6f7dd1fa58afba02a77b4432bf3d12e9", null ],
     [ "_resize_handle", "dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#a5ef7ecad5b04a35829950aeb06bd0e4c", null ],
     [ "_title_label", "dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#ac4d91f7f3076dfb773412eb3c650f311", null ],
-    [ "MIN_HEIGHT", "dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#abf805006a92809379e5249e9dd26f744", null ],
-    [ "MIN_WIDTH", "dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#ad5205e5dffba076cb41f41209d1da431", null ],
-    [ "RESIZE_HANDLE_SIZE", "dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#a345732a3f7faa945d6fad2ce9b0fc89e", null ],
-    [ "TITLE_BAR_HEIGHT", "dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#a9ec4897629eb4fb86bcaf1ce99a37c58", null ]
+    [ "MIN_WIDTH", "dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#ad5205e5dffba076cb41f41209d1da431", null ]
 ];

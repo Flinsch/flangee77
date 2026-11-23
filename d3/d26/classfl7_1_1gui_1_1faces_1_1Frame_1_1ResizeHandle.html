@@ -449,7 +449,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Resizes the owning frame by delta, clamped to <span class="tt"><a class="el" href="../../dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#ad5205e5dffba076cb41f41209d1da431">Frame::MIN_WIDTH</a></span> and <span class="tt"><a class="el" href="../../dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#abf805006a92809379e5249e9dd26f744">MIN_HEIGHT</a></span>, while dragging is armed; see <span class="tt"><a class="el" href="#a9a16de9761aeefd3ad11e086c70c132b">_drag_size</a></span>. </p>
+<p>Resizes the owning frame by delta, clamped to <span class="tt"><a class="el" href="../../dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#ad5205e5dffba076cb41f41209d1da431">Frame::MIN_WIDTH</a></span> and its own <span class="tt"><a class="el" href="../../dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#a0703b9ffee64d953c66b64c7d1b83fd4">_min_height()</a></span>, while dragging is armed; see <span class="tt"><a class="el" href="#a9a16de9761aeefd3ad11e086c70c132b">_drag_size</a></span>. </p>
 
 <p>Reimplemented from <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html#af16e7e80f64342ddb418ae955e98f621">fl7::gui::Face</a>.</p>
 
@@ -553,7 +553,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>This drag gesture's own running size, accumulating every <span class="tt">delta</span> since <span class="tt"><a class="el" href="#a48b8573039397d7d113b8f15090ed658">_on_mouse_down()</a></span> unclamped, unlike the frame's own (always clamped to <span class="tt"><a class="el" href="../../dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#ad5205e5dffba076cb41f41209d1da431">Frame::MIN_WIDTH</a></span>/<span class="tt"><a class="el" href="../../dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#abf805006a92809379e5249e9dd26f744">MIN_HEIGHT</a></span>) actual size: dragging past the minimum and back again this way lines the handle back up with the cursor right where it left off, instead of the cursor and the frame's actual size drifting apart for the rest of the gesture. </p>
+<p>This drag gesture's own running size, accumulating every <span class="tt">delta</span> since <span class="tt"><a class="el" href="#a48b8573039397d7d113b8f15090ed658">_on_mouse_down()</a></span> unclamped, unlike the frame's own (always clamped to <span class="tt"><a class="el" href="../../dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#ad5205e5dffba076cb41f41209d1da431">Frame::MIN_WIDTH</a></span>/<span class="tt"><a class="el" href="../../dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#a0703b9ffee64d953c66b64c7d1b83fd4">_min_height()</a></span>) actual size: dragging past the minimum and back again this way lines the handle back up with the cursor right where it left off, instead of the cursor and the frame's actual size drifting apart for the rest of the gesture. </p>
 
 </div>
 </div>

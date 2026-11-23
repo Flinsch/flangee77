@@ -333,10 +333,6 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a031d37686fad68cf65bfc2d687895fcf" id="r_a031d37686fad68cf65bfc2d687895fcf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/d56/namespacefl7_1_1gui.html#a30fe03b96f3682e72e7438fd4bcce1cc">ScrollBarVisibility</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a031d37686fad68cf65bfc2d687895fcf">_vertical_scroll_bar_visibility</a> = <a class="el" href="../../d5/d56/namespacefl7_1_1gui.html#a30fe03b96f3682e72e7438fd4bcce1cca68eec46437c384d8dad18d5464ebc35c">ScrollBarVisibility::Always</a></td></tr>
 <tr class="memitem:aa730359b3752a24a8ba08019b13e7a19" id="r_aa730359b3752a24a8ba08019b13e7a19"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/d56/namespacefl7_1_1gui.html#a30fe03b96f3682e72e7438fd4bcce1cc">ScrollBarVisibility</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa730359b3752a24a8ba08019b13e7a19">_horizontal_scroll_bar_visibility</a> = <a class="el" href="../../d5/d56/namespacefl7_1_1gui.html#a30fe03b96f3682e72e7438fd4bcce1cca06b9281e396db002010bde1de57262eb">ScrollBarVisibility::Auto</a></td></tr>
 <tr class="memitem:a70d223429d3ff56e906f97e05f017968" id="r_a70d223429d3ff56e906f97e05f017968"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d3/d7e/classcl7_1_1behavioral_1_1Signal.html">cl7::behavioral::Signal</a>&lt; <a class="el" href="../../d3/d53/namespaceml7.html#add70e3ce89c6f3e39fa3a52d54713255">ml7::Vector2f</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a70d223429d3ff56e906f97e05f017968">_scroll_changed</a></td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 id="header-pri-static-attribs" class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
-Static Private Attributes</h2></td></tr>
-<tr class="memitem:a7c46e8dd1372d3513596c2de149b9e3f" id="r_a7c46e8dd1372d3513596c2de149b9e3f"><td class="memItemLeft" align="right" valign="top">static constexpr float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7c46e8dd1372d3513596c2de149b9e3f">SCROLLBAR_THICKNESS</a> = 16.0f</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A <span class="tt"><a class="el" href="../../da/d45/classfl7_1_1gui_1_1faces_1_1Panel.html">Panel</a></span>-like background/border chrome around an internal, always-present vertical and horizontal <span class="tt"><a class="el" href="../../d2/d8a/classfl7_1_1gui_1_1faces_1_1ScrollBar.html">ScrollBar</a></span> plus an arbitrary, publicly addable content area (see <span class="tt"><a class="el" href="#a774902676b6bce824aa0a4127305289d">get_content_area()</a></span>, the only place a caller can actually add children, same as <span class="tt"><a class="el" href="../../dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html">Frame</a></span>'s), whose content is allowed to be larger than its own (viewport) bounds: scrolled into view via <span class="tt"><a class="el" href="#a774e2b4e1784beb4b7a9dc7a113cc9ea">get_scroll_position()</a></span> or <span class="tt"><a class="el" href="#afdaf57564c12c9b509d769514defebcb">set_scroll_position()</a></span>, clamped to <span class="tt"><a class="el" href="#acb66d23c420db2f693e11b6290bf0aff">get_content_size()</a></span> (set explicitly by the caller: there's no layout system yet to compute a content size from the children themselves, see <span class="tt"><a class="el" href="../../dd/d69/classfl7_1_1gui_1_1Container.html">Container</a></span>). Overflowing content is still clipped to the content area's own bounds regardless (see <span class="tt"><a class="el" href="../../d4/de7/classfl7_1_1gui_1_1Collection.html#a2b6cc62bc581086ef0f5d374edfbb854">Collection::clips_children()</a></span>). Also scrolls vertically on its own, by <span class="tt"><a class="el" href="#a8fd332372991312aabc3319099d567e7">get_wheel_step()</a></span> per wheel notch, while hovered (or bubbled up to from a child that doesn't itself want the wheel, e.g. a <span class="tt"><a class="el" href="../../d3/dd8/classfl7_1_1gui_1_1faces_1_1Label.html">Label</a></span>, but not one that does, e.g. a <span class="tt"><a class="el" href="../../d5/d35/classfl7_1_1gui_1_1faces_1_1Slider.html">Slider</a></span>).</p>
@@ -1415,29 +1411,6 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <p>The amount the mouse wheel scrolls (vertically) per notch; also both scroll bars' own step. </p>
-
-</div>
-</div>
-<a id="a7c46e8dd1372d3513596c2de149b9e3f" name="a7c46e8dd1372d3513596c2de149b9e3f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7c46e8dd1372d3513596c2de149b9e3f">&#9670;&#160;</a></span>SCROLLBAR_THICKNESS</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">float fl7::gui::faces::ScrollPanel::SCROLLBAR_THICKNESS = 16.0f</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span><span class="mlabel constexpr">constexpr</span><span class="mlabel private">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Fixed for now, should eventually come from the active theme/chrome instead (e.g., the 9-slice chrome's own native scroll bar thickness). </p>
 
 </div>
 </div>

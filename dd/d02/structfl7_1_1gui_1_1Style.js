@@ -7,6 +7,9 @@ var structfl7_1_1gui_1_1Style =
     [ "chrome", "dd/d02/structfl7_1_1gui_1_1Style.html#af0a8bf2ed20e26a4011584833e337185", null ],
     [ "font", "dd/d02/structfl7_1_1gui_1_1Style.html#a8cde85beb8810c0bd6b4f020c30e37d6", null ],
     [ "padding", "dd/d02/structfl7_1_1gui_1_1Style.html#a9befece0b0d852fcd3f1762fd9e084c5", null ],
+    [ "resize_handle_size", "dd/d02/structfl7_1_1gui_1_1Style.html#aec8d33b51086094565f053e0345f4ad3", null ],
+    [ "scroll_bar_thickness", "dd/d02/structfl7_1_1gui_1_1Style.html#ac2c88f767ea3c8816f5744222a9093d6", null ],
     [ "selection_color", "dd/d02/structfl7_1_1gui_1_1Style.html#abef17f1be0d3abe85f50e9472aff0b9e", null ],
-    [ "text_style", "dd/d02/structfl7_1_1gui_1_1Style.html#ade7e6945e2546e9a86d02f9030329f68", null ]
+    [ "text_style", "dd/d02/structfl7_1_1gui_1_1Style.html#ade7e6945e2546e9a86d02f9030329f68", null ],
+    [ "title_bar_height", "dd/d02/structfl7_1_1gui_1_1Style.html#a8098a3fb022be664fe789e4a79e3b358", null ]
 ];

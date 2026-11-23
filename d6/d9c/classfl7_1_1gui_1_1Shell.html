@@ -456,7 +456,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Moves focus to the next (or, if <span class="tt">backward</span>, previous) Tab stop (see <span class="tt"><a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html#a49a890596f79ab1d3b1b5c38d4052c42">Face::_is_focusable()</a></span>/<span class="tt">get_tab_order()</span>), scoped to the currently focused face's own top-level face's subtree, wrapping around at either end. No-op if nothing is currently focused (there's no "current" top-level face to scope to otherwise, see <span class="tt"><a class="el" href="#a810ed9f5fb57eaec9bb0be7664b99803">update()</a></span>'s Tab handling) or if that subtree has no Tab stop at all. </p>
+<p>Moves focus to the next (or, if <span class="tt">backward</span>, previous) Tab stop (see <span class="tt"><a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html#a49a890596f79ab1d3b1b5c38d4052c42">Face::_is_focusable()</a></span>/<span class="tt">get_tab_order()</span>), scoped to the current top-level face's own subtree (see <span class="tt"><a class="el" href="#ab804c6ea82c14160e77c9f058eadf49d">_current_top_level_face()</a></span>), wrapping around at either end. Lands on the first (or, if <span class="tt">backward</span>, last) Tab stop instead if nothing is currently focused yet, or the current focus isn't itself a Tab stop. A no-op if there's no current top-level face at all, or it has no Tab stop. </p>
 
 </div>
 </div>
@@ -1042,7 +1042,7 @@ requires (std::derived_from&lt;TFace, <a class="el" href="../../d9/d1a/classfl7_
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Refreshes hover/press/focus state from the bound input source's current-frame state. Must be called once per frame, before drawing. Also routes this frame's keyboard text input/key-downs to the focused face, if any: a held key (any of them, not just the ones a particular face happens to care about) auto-repeats after an initial delay, same as text input already does thanks to the OS. While any modal is open (see <span class="tt"><a class="el" href="#a04554511e82293846d8b25c346fe02e5">open_modal()</a></span>), mouse input never reaches anything behind the frontmost one, hit or not. </p>
+<p>Refreshes hover/press/focus state from the bound input source's current-frame state. Must be called once per frame, before drawing. Also routes this frame's keyboard text input/key-downs to the focused face, if any: a held key (any of them, not just the ones a particular face happens to care about) auto-repeats after an initial delay, same as text input already does thanks to the OS. Tab/Shift+Tab and arrow-key navigation (see <span class="tt"><a class="el" href="#a6547b2a1c9badb7869e1e110d4c79568">focus_toward()</a></span>) work even with nothing currently focused yet, landing on an initial candidate instead. While any modal is open (see <span class="tt"><a class="el" href="#a04554511e82293846d8b25c346fe02e5">open_modal()</a></span>), mouse input never reaches anything behind the frontmost one, hit or not. </p>
 
 </div>
 </div>

@@ -1,7 +1,5 @@
 var NAVTREEINDEX59 =
 {
-"dc/d7b/classcl7_1_1VersionedId.html#a8c2ff0d668222e60cf3c4358f1671a62":[5,0,1,34,8],
-"dc/d7b/classcl7_1_1VersionedId.html#a8c2ff0d668222e60cf3c4358f1671a62":[7,0,1,32,8],
 "dc/d7b/classcl7_1_1VersionedId.html#a8d7a163ea61a0b01218b6ce8bb2467d1":[5,0,1,34,11],
 "dc/d7b/classcl7_1_1VersionedId.html#a8d7a163ea61a0b01218b6ce8bb2467d1":[7,0,1,32,11],
 "dc/d7b/classcl7_1_1VersionedId.html#a954c1be673083ba524a29d72af53d4ae":[5,0,1,34,0],
@@ -249,5 +247,7 @@ var NAVTREEINDEX59 =
 "dc/da0/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1meshes_1_1VertexBufferImpl_1_1Attorney.html#a01fa91debc8e0a33798f8d0b5b6514bd":[5,0,8,2,1,0,2,1,0,0],
 "dc/da0/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1meshes_1_1VertexBufferImpl_1_1Attorney.html#a01fa91debc8e0a33798f8d0b5b6514bd":[7,0,8,1,1,0,0,1,0,0],
 "dc/da0/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1meshes_1_1VertexBufferImpl_1_1Attorney.html#aee0ae5c2cbf8491ecbb8de9c55213580":[5,0,8,2,1,0,2,1,0,1],
-"dc/da0/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1meshes_1_1VertexBufferImpl_1_1Attorney.html#aee0ae5c2cbf8491ecbb8de9c55213580":[7,0,8,1,1,0,0,1,0,1]
+"dc/da0/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1meshes_1_1VertexBufferImpl_1_1Attorney.html#aee0ae5c2cbf8491ecbb8de9c55213580":[7,0,8,1,1,0,0,1,0,1],
+"dc/da0/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Reader_1_1PaletteEntry.html":[5,0,8,2,0,0,1,5,2],
+"dc/da0/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1Reader_1_1PaletteEntry.html":[7,0,8,1,0,0,1,5,2]
 };

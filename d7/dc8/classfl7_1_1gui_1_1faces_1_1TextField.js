@@ -59,6 +59,5 @@ var classfl7_1_1gui_1_1faces_1_1TextField =
     [ "_scroll_bar_visibility", "d7/dc8/classfl7_1_1gui_1_1faces_1_1TextField.html#a87e8095f0108ee84c74cabf56f7a814d", null ],
     [ "_scroll_offset_y", "d7/dc8/classfl7_1_1gui_1_1faces_1_1TextField.html#af06b9ac45f3a042ed27500ec65b61f64", null ],
     [ "_selection_anchor", "d7/dc8/classfl7_1_1gui_1_1faces_1_1TextField.html#ac72bae5ce96e1230e20a507a9f92babe", null ],
-    [ "_text", "d7/dc8/classfl7_1_1gui_1_1faces_1_1TextField.html#ae2dd72ac2b3bb33ddffb6f05bd7cdf69", null ],
-    [ "SCROLLBAR_THICKNESS", "d7/dc8/classfl7_1_1gui_1_1faces_1_1TextField.html#ad97e960ef6615b06f75d3cc1a0059cb0", null ]
+    [ "_text", "d7/dc8/classfl7_1_1gui_1_1faces_1_1TextField.html#ae2dd72ac2b3bb33ddffb6f05bd7cdf69", null ]
 ];

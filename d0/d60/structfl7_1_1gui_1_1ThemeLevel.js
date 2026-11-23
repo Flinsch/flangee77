@@ -10,6 +10,9 @@ var structfl7_1_1gui_1_1ThemeLevel =
     [ "hovered", "d0/d60/structfl7_1_1gui_1_1ThemeLevel.html#acee8407be61b2754982afd1196d2265d", null ],
     [ "padding", "d0/d60/structfl7_1_1gui_1_1ThemeLevel.html#ac2806f062f91060bd88ffdfcd7ae95b8", null ],
     [ "pressed", "d0/d60/structfl7_1_1gui_1_1ThemeLevel.html#a1ef388b1ede869857fbe1e9cb6ae778a", null ],
+    [ "resize_handle_size", "d0/d60/structfl7_1_1gui_1_1ThemeLevel.html#a7c5701add49fe4bc109b564672771508", null ],
+    [ "scroll_bar_thickness", "d0/d60/structfl7_1_1gui_1_1ThemeLevel.html#a955f320e0e3ac09679797957bb270c62", null ],
     [ "selection_color", "d0/d60/structfl7_1_1gui_1_1ThemeLevel.html#a2c5f45db9a7018f878b648cfae0c6a41", null ],
-    [ "text_style", "d0/d60/structfl7_1_1gui_1_1ThemeLevel.html#a591f4e891e9c7a055682a614d4f26fda", null ]
+    [ "text_style", "d0/d60/structfl7_1_1gui_1_1ThemeLevel.html#a591f4e891e9c7a055682a614d4f26fda", null ],
+    [ "title_bar_height", "d0/d60/structfl7_1_1gui_1_1ThemeLevel.html#a1cdf4f80913af70eca4e8a891c0d281b", null ]
 ];
