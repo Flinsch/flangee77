@@ -638,8 +638,8 @@ TESTLABS_CASE( u8"FaceLabs:  gui:  faces:  TextField:  set_style_override() with
     fl7::gui::Shell shell(&renderer, &input.mouse, &input.keyboard);
 
     // Long enough that narrowing the wrap width by a scroll bar's own
-    // SCROLLBAR_THICKNESS (see below) still leaves each individual word
-    // plenty of room, so that narrowing alone can't itself add a 3rd line.
+    // thickness (see below) still leaves each individual word plenty of
+    // room, so that narrowing alone can't itself add a 3rd line.
     const cl7::u32string text = U"AAAAAAAAAA BBBBBBBBBB";
 
     fl7::gui::Style style;

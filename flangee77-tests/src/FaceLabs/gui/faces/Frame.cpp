@@ -15,7 +15,7 @@
 // Plain API (no Shell/input involved)
 // #############################################################################
 
-TESTLABS_CASE( u8"FaceLabs:  gui:  faces:  Frame:  get_effective_preferred_size() is the content area's own preferred size plus the fixed title bar height on top; get_effective_minimum_size() is the same against the content area's own minimum size instead, but never smaller than MIN_WIDTH/MIN_HEIGHT" )
+TESTLABS_CASE( u8"FaceLabs:  gui:  faces:  Frame:  get_effective_preferred_size() is the content area's own preferred size plus the title bar height on top; get_effective_minimum_size() is the same against the content area's own minimum size instead, but never smaller than its own minimum width/height" )
 {
     fl7::gui::faces::Frame frame;
 
@@ -27,12 +27,12 @@ TESTLABS_CASE( u8"FaceLabs:  gui:  faces:  Frame:  get_effective_preferred_size(
     TESTLABS_CHECK_EQ_FLT( frame.get_effective_preferred_size().y, 74.0f ); // 50 + the title bar's own 24.
 
     // Content area's own minimum (20, 10) plus the title bar (24) would be
-    // (20, 34), both below MIN_WIDTH(80)/MIN_HEIGHT(40): clamped up to those instead.
+    // (20, 34), both below the minimum width (80)/height (40): clamped up to those instead.
     TESTLABS_CHECK_EQ_FLT( frame.get_effective_minimum_size().x, 80.0f );
     TESTLABS_CHECK_EQ_FLT( frame.get_effective_minimum_size().y, 40.0f );
 }
 
-TESTLABS_CASE( u8"FaceLabs:  gui:  faces:  Frame:  get_effective_minimum_size() uses the content area's own minimum (plus the title bar) once that actually exceeds MIN_WIDTH/MIN_HEIGHT" )
+TESTLABS_CASE( u8"FaceLabs:  gui:  faces:  Frame:  get_effective_minimum_size() uses the content area's own minimum (plus the title bar) once that actually exceeds its own minimum width/height" )
 {
     fl7::gui::faces::Frame frame;
 

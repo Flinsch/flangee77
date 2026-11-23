@@ -54,6 +54,9 @@ namespace fl7::gui {
         style.border_width = (level && level->border_width) ? *level->border_width : _default_level.border_width.value_or(style.border_width);
         style.selection_color = (level && level->selection_color) ? *level->selection_color : _default_level.selection_color.value_or(style.selection_color);
         style.padding = (level && level->padding) ? *level->padding : _default_level.padding.value_or(style.padding);
+        style.scroll_bar_thickness = (level && level->scroll_bar_thickness) ? *level->scroll_bar_thickness : _default_level.scroll_bar_thickness.value_or(style.scroll_bar_thickness);
+        style.title_bar_height = (level && level->title_bar_height) ? *level->title_bar_height : _default_level.title_bar_height.value_or(style.title_bar_height);
+        style.resize_handle_size = (level && level->resize_handle_size) ? *level->resize_handle_size : _default_level.resize_handle_size.value_or(style.resize_handle_size);
 
         if (level)
         {
@@ -98,6 +101,12 @@ namespace fl7::gui {
             style.selection_color = *overlay.selection_color;
         if (overlay.padding)
             style.padding = *overlay.padding;
+        if (overlay.scroll_bar_thickness)
+            style.scroll_bar_thickness = *overlay.scroll_bar_thickness;
+        if (overlay.title_bar_height)
+            style.title_bar_height = *overlay.title_bar_height;
+        if (overlay.resize_handle_size)
+            style.resize_handle_size = *overlay.resize_handle_size;
     }
 
 

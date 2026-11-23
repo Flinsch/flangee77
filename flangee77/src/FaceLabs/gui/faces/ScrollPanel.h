@@ -209,18 +209,6 @@ private:
 
 
     // #############################################################################
-    // Constants
-    // #############################################################################
-
-    /**
-     * Fixed for now, should eventually come from the active theme/chrome
-     * instead (e.g., the 9-slice chrome's own native scroll bar thickness).
-     */
-    static constexpr float SCROLLBAR_THICKNESS = 16.0f;
-
-
-
-    // #############################################################################
     // Helpers
     // #############################################################################
 

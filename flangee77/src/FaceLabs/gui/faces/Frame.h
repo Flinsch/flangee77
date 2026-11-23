@@ -103,15 +103,15 @@ protected:
 
     /**
      * Returns the content area's own effective preferred size, plus this
-     * frame's own fixed title bar height on top; width is otherwise unaffected,
-     * the title bar never needs more of it than the content area itself
-     * already does.
+     * frame's own title bar height on top; width is otherwise unaffected, the
+     * title bar never needs more of it than the content area itself already
+     * does.
      */
     ml7::Vector2f _calculate_preferred_size() const override;
 
     /**
-     * Returns the content area's own effective minimum size, plus this frame's
-     * own fixed title bar height on top; width is otherwise unaffected, the
+     * Returns the content area's own effective minimum size, plus this
+     * frame's own title bar height on top; width is otherwise unaffected, the
      * title bar never needs more of it than the content area itself already
      * does.
      */
@@ -151,18 +151,25 @@ private:
     // #############################################################################
 
     /**
-     * Fixed for now, should eventually come from the active theme/chrome
-     * instead (e.g., the 9-slice title bar chrome's own native height).
+     * Dragging the resize handle (see `ResizeHandle`) never shrinks this
+     * frame's own width below this. Fixed for now; should eventually follow
+     * from recursively aggregating the content area's own children instead,
+     * once that's generalized (see `Container`/`Compound`).
      */
-    static constexpr float TITLE_BAR_HEIGHT = 24.0f;
-
-    /** Fixed for now, same caveat as `TITLE_BAR_HEIGHT`. */
-    static constexpr float RESIZE_HANDLE_SIZE = 16.0f;
-
-    /** Dragging the resize handle (see `ResizeHandle`) never shrinks this frame below this size. */
     static constexpr float MIN_WIDTH = 80.0f;
-    /** See `MIN_WIDTH`; tall enough for the title bar and the resize handle to both still fit. */
-    static constexpr float MIN_HEIGHT = TITLE_BAR_HEIGHT + RESIZE_HANDLE_SIZE;
+
+
+
+    // #############################################################################
+    // Helpers
+    // #############################################################################
+
+    /**
+     * Returns the minimum height dragging the resize handle (see
+     * `ResizeHandle`) never shrinks this frame below: tall enough for the
+     * title bar and the resize handle to both still fit.
+     */
+    float _min_height() const;
 
 
 

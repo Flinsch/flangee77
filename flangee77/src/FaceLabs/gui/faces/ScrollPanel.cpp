@@ -189,12 +189,14 @@ namespace fl7::gui::faces {
         const bool horizontal_possible = _horizontal_scroll_enabled
             && _horizontal_scroll_bar_visibility != ScrollBarVisibility::Never;
 
+        const float thickness = get_effective_style().scroll_bar_thickness;
+
         if (vertical_possible && horizontal_possible)
-            return {3.0f * SCROLLBAR_THICKNESS, 3.0f * SCROLLBAR_THICKNESS};
+            return {3.0f * thickness, 3.0f * thickness};
         if (vertical_possible)
-            return {SCROLLBAR_THICKNESS, 2.0f * SCROLLBAR_THICKNESS};
+            return {thickness, 2.0f * thickness};
         if (horizontal_possible)
-            return {2.0f * SCROLLBAR_THICKNESS, SCROLLBAR_THICKNESS};
+            return {2.0f * thickness, thickness};
         return {0.0f, 0.0f};
     }
 
@@ -211,6 +213,7 @@ namespace fl7::gui::faces {
     void ScrollPanel::_layout()
     {
         const ml7::Vector2f size = get_size();
+        const float thickness = get_effective_style().scroll_bar_thickness;
 
         const bool vertical_overflows_full = _vertical_scroll_enabled && _content_size.y > size.y;
         const bool horizontal_overflows_full = _horizontal_scroll_enabled && _content_size.x > size.x;
@@ -226,13 +229,13 @@ namespace fl7::gui::faces {
         // pass: an axis already shown only becomes even more clearly needed as
         // the viewport shrinks further, never less.
         if (_vertical_scroll_enabled && _vertical_scroll_bar_visibility == ScrollBarVisibility::Auto && !vertical_shown && horizontal_shown)
-            vertical_shown = _content_size.y > (size.y - SCROLLBAR_THICKNESS);
+            vertical_shown = _content_size.y > (size.y - thickness);
         if (_horizontal_scroll_enabled && _horizontal_scroll_bar_visibility == ScrollBarVisibility::Auto && !horizontal_shown && vertical_shown)
-            horizontal_shown = _content_size.x > (size.x - SCROLLBAR_THICKNESS);
+            horizontal_shown = _content_size.x > (size.x - thickness);
 
         const ml7::Vector2f viewport_size{
-            std::max(0.0f, size.x - (vertical_shown ? SCROLLBAR_THICKNESS : 0.0f)),
-            std::max(0.0f, size.y - (horizontal_shown ? SCROLLBAR_THICKNESS : 0.0f)),
+            std::max(0.0f, size.x - (vertical_shown ? thickness : 0.0f)),
+            std::max(0.0f, size.y - (horizontal_shown ? thickness : 0.0f)),
         };
 
         _content_area.set_position({0.0f, 0.0f});
@@ -241,12 +244,12 @@ namespace fl7::gui::faces {
         _vertical_scroll_bar.set_visible(vertical_shown);
         _vertical_scroll_bar.set_enabled(vertical_shown && _vertical_scroll_enabled);
         _vertical_scroll_bar.set_position({viewport_size.x, 0.0f});
-        _vertical_scroll_bar.set_size({SCROLLBAR_THICKNESS, viewport_size.y});
+        _vertical_scroll_bar.set_size({thickness, viewport_size.y});
 
         _horizontal_scroll_bar.set_visible(horizontal_shown);
         _horizontal_scroll_bar.set_enabled(horizontal_shown && _horizontal_scroll_enabled);
         _horizontal_scroll_bar.set_position({0.0f, viewport_size.y});
-        _horizontal_scroll_bar.set_size({viewport_size.x, SCROLLBAR_THICKNESS});
+        _horizontal_scroll_bar.set_size({viewport_size.x, thickness});
     }
 
     /**

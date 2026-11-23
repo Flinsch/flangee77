@@ -520,24 +520,24 @@ namespace fl7::gui::faces {
     }
 
     /**
-     * Returns `_padded_size()`, further narrowed by `SCROLLBAR_THICKNESS` while
-     * `get_multiline_enabled()` and the scroll bar is actually shown (see
-     * `_relayout()`, the only place that decides that); unchanged otherwise. This
-     * is also what's reported via `get_text_box_size()`, so it's on this field
-     * itself (rather than `render::AbstractRenderer`'s own generic, padding-aware
-     * default) to account for its own padding here. While actually scrolling, the
-     * height is widened to at least `_content_height`: `draw_text_in_box()` also
-     * self-clips to this same box (see `fonts::render::AbstractRenderer`), and
-     * that box has already been shifted up by the current scroll offset, so a
-     * height no taller than the viewport would clip away whatever's scrolled into
-     * view.
+     * Returns `_padded_size()`, further narrowed by the scroll bar's own
+     * thickness while `get_multiline_enabled()` and the scroll bar is actually
+     * shown (see `_relayout()`, the only place that decides that); unchanged
+     * otherwise. This is also what's reported via `get_text_box_size()`, so
+     * it's on this field itself (rather than `render::AbstractRenderer`'s own
+     * generic, padding-aware default) to account for its own padding here.
+     * While actually scrolling, the height is widened to at least
+     * `_content_height`: `draw_text_in_box()` also self-clips to this same box
+     * (see `fonts::render::AbstractRenderer`), and that box has already been
+     * shifted up by the current scroll offset, so a height no taller than the
+     * viewport would clip away whatever's scrolled into view.
      */
     ml7::Vector2f TextField::_effective_text_box_size() const
     {
         ml7::Vector2f size = _padded_size();
         if (_multiline_enabled && _scroll_bar.is_visible())
         {
-            size.x = std::max(0.0f, size.x - SCROLLBAR_THICKNESS);
+            size.x = std::max(0.0f, size.x - get_effective_style().scroll_bar_thickness);
             size.y = std::max(size.y, _content_height);
         }
         return size;
@@ -549,7 +549,7 @@ namespace fl7::gui::faces {
      * `get_scroll_bar_visibility()`: `Always` unconditionally; `Auto` only once
      * this field's content actually overflows its own height at its padded width
      * (see `_padded_size()`), or, if not yet, once more at the width actually
-     * left over once the scroll bar takes `SCROLLBAR_THICKNESS` off of it (a
+     * left over once the scroll bar takes its own thickness off of it (a
      * narrower width only ever wraps to more, never fewer, lines, so this can't
      * flip back off and one re-check is enough to converge, same reasoning as
      * `faces::ScrollPanel`'s own single-axis visibility resolution); `Never`,
@@ -565,11 +565,12 @@ namespace fl7::gui::faces {
      */
     void TextField::_relayout()
     {
-        const ml7::Vector2f size = get_size();
-        _scroll_bar.set_position({size.x - SCROLLBAR_THICKNESS, 0.0f});
-        _scroll_bar.set_size({SCROLLBAR_THICKNESS, size.y});
-
         const Style style = get_effective_style();
+
+        const ml7::Vector2f size = get_size();
+        _scroll_bar.set_position({size.x - style.scroll_bar_thickness, 0.0f});
+        _scroll_bar.set_size({style.scroll_bar_thickness, size.y});
+
         if (!_multiline_enabled || !style.font || _scroll_bar_visibility == ScrollBarVisibility::Never)
         {
             _scroll_bar.set_visible(false);
@@ -591,7 +592,7 @@ namespace fl7::gui::faces {
         }
         if (scroll_bar_shown)
         {
-            const float width = std::max(0.0f, padded_size.x - SCROLLBAR_THICKNESS);
+            const float width = std::max(0.0f, padded_size.x - style.scroll_bar_thickness);
             block = fonts::TextLayout::lay_out_box(codepoints, *style.font, style.text_style, {0.0f, 0.0f}, {width, padded_size.y});
         }
         const float content_height = static_cast<float>(block.lines.size()) * block.line_height;

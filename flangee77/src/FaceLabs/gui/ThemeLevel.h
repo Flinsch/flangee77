@@ -45,6 +45,9 @@ struct ThemeLevel
     std::optional<float> border_width;
     std::optional<xl7::graphics::Color> selection_color;
     std::optional<Padding> padding;
+    std::optional<float> scroll_bar_thickness;
+    std::optional<float> title_bar_height;
+    std::optional<float> resize_handle_size;
 
     /**
      * Independent, not mutually exclusive (a face can be checked and hovered and

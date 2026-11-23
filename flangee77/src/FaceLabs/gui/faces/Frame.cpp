@@ -59,7 +59,7 @@ namespace fl7::gui::faces {
 
         /**
          * Resizes the owning frame by delta, clamped to `Frame::MIN_WIDTH` and
-         * `MIN_HEIGHT`, while dragging is armed; see `_drag_size`.
+         * its own `_min_height()`, while dragging is armed; see `_drag_size`.
          */
         void _on_mouse_drag(ml7::Vector2f delta, ml7::Vector2f local_position) override
         {
@@ -69,7 +69,7 @@ namespace fl7::gui::faces {
             _drag_size += delta;
             _frame.set_size({
                 std::max(Frame::MIN_WIDTH, _drag_size.x),
-                std::max(Frame::MIN_HEIGHT, _drag_size.y),
+                std::max(_frame._min_height(), _drag_size.y),
             });
         }
 
@@ -87,10 +87,10 @@ namespace fl7::gui::faces {
         /**
          * This drag gesture's own running size, accumulating every `delta` since
          * `_on_mouse_down()` unclamped, unlike the frame's own (always clamped to
-         * `Frame::MIN_WIDTH`/`MIN_HEIGHT`) actual size: dragging past the minimum
-         * and back again this way lines the handle back up with the cursor right
-         * where it left off, instead of the cursor and the frame's actual size
-         * drifting apart for the rest of the gesture.
+         * `Frame::MIN_WIDTH`/`_min_height()`) actual size: dragging past the
+         * minimum and back again this way lines the handle back up with the
+         * cursor right where it left off, instead of the cursor and the frame's
+         * actual size drifting apart for the rest of the gesture.
          */
         ml7::Vector2f _drag_size;
 
@@ -161,40 +161,49 @@ namespace fl7::gui::faces {
      */
     void Frame::_on_size_changed(ml7::Vector2f old_size, ml7::Vector2f new_size)
     {
-        _close_button.set_position({std::max(0.0f, new_size.x - TITLE_BAR_HEIGHT), 0.0f});
-        _close_button.set_size({TITLE_BAR_HEIGHT, TITLE_BAR_HEIGHT});
+        const Style style = get_effective_style();
+        const float title_bar_height = style.title_bar_height;
+        const float resize_handle_size = style.resize_handle_size;
+
+        _close_button.set_position({std::max(0.0f, new_size.x - title_bar_height), 0.0f});
+        _close_button.set_size({title_bar_height, title_bar_height});
 
         _title_label.set_position({0.0f, 0.0f});
-        _title_label.set_size({std::max(0.0f, new_size.x - TITLE_BAR_HEIGHT), TITLE_BAR_HEIGHT});
+        _title_label.set_size({std::max(0.0f, new_size.x - title_bar_height), title_bar_height});
 
-        _resize_handle.set_position({std::max(0.0f, new_size.x - RESIZE_HANDLE_SIZE), std::max(0.0f, new_size.y - RESIZE_HANDLE_SIZE)});
-        _resize_handle.set_size({RESIZE_HANDLE_SIZE, RESIZE_HANDLE_SIZE});
+        _resize_handle.set_position({
+            std::max(0.0f, new_size.x - resize_handle_size),
+            std::max(0.0f, new_size.y - resize_handle_size),
+        });
+        _resize_handle.set_size({resize_handle_size, resize_handle_size});
 
-        _content_area.set_position({0.0f, TITLE_BAR_HEIGHT});
-        _content_area.set_size({new_size.x, std::max(0.0f, new_size.y - TITLE_BAR_HEIGHT)});
+        _content_area.set_position({0.0f, title_bar_height});
+        _content_area.set_size({new_size.x, std::max(0.0f, new_size.y - title_bar_height)});
     }
 
     /**
      * Returns the content area's own effective preferred size, plus this
-     * frame's own fixed title bar height on top; width is otherwise unaffected,
-     * the title bar never needs more of it than the content area itself
-     * already does.
+     * frame's own title bar height on top; width is otherwise unaffected, the
+     * title bar never needs more of it than the content area itself already
+     * does.
      */
     ml7::Vector2f Frame::_calculate_preferred_size() const
     {
-        return _content_area.get_effective_preferred_size() + ml7::Vector2f{0.0f, TITLE_BAR_HEIGHT};
+        return _content_area.get_effective_preferred_size()
+            + ml7::Vector2f{0.0f, get_effective_style().title_bar_height};
     }
 
     /**
-     * Returns the content area's own effective minimum size, plus this frame's
-     * own fixed title bar height on top; width is otherwise unaffected, the
+     * Returns the content area's own effective minimum size, plus this
+     * frame's own title bar height on top; width is otherwise unaffected, the
      * title bar never needs more of it than the content area itself already
      * does.
      */
     ml7::Vector2f Frame::_calculate_minimum_size() const
     {
-        const ml7::Vector2f content_minimum = _content_area.get_effective_minimum_size() + ml7::Vector2f{0.0f, TITLE_BAR_HEIGHT};
-        return {std::max(MIN_WIDTH, content_minimum.x), std::max(MIN_HEIGHT, content_minimum.y)};
+        const ml7::Vector2f content_minimum = _content_area.get_effective_minimum_size()
+            + ml7::Vector2f{0.0f, get_effective_style().title_bar_height};
+        return {std::max(MIN_WIDTH, content_minimum.x), std::max(_min_height(), content_minimum.y)};
     }
 
     /**
@@ -202,7 +211,7 @@ namespace fl7::gui::faces {
      */
     void Frame::_on_mouse_down(xl7::input::MouseButton button, ml7::Vector2f local_position)
     {
-        _dragging = local_position.y < TITLE_BAR_HEIGHT;
+        _dragging = local_position.y < get_effective_style().title_bar_height;
     }
 
     /**
@@ -220,6 +229,23 @@ namespace fl7::gui::faces {
     {
         if (_dragging)
             set_position(get_position() + delta);
+    }
+
+
+
+    // #############################################################################
+    // Helpers
+    // #############################################################################
+
+    /**
+     * Returns the minimum height dragging the resize handle (see
+     * `ResizeHandle`) never shrinks this frame below: tall enough for the
+     * title bar and the resize handle to both still fit.
+     */
+    float Frame::_min_height() const
+    {
+        const Style style = get_effective_style();
+        return style.title_bar_height + style.resize_handle_size;
     }
 
 

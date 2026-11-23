@@ -245,19 +245,6 @@ protected:
 private:
 
     // #############################################################################
-    // Constants
-    // #############################################################################
-
-    /**
-     * Fixed for now, should eventually come from the active theme/chrome
-     * instead (e.g., the 9-slice chrome's own native scroll bar thickness);
-     * see `faces::ScrollPanel`'s own identical constant/caveat.
-     */
-    static constexpr float SCROLLBAR_THICKNESS = 16.0f;
-
-
-
-    // #############################################################################
     // Helpers
     // #############################################################################
 
@@ -325,17 +312,17 @@ private:
     ml7::Vector2f _padded_size() const;
 
     /**
-     * Returns `_padded_size()`, further narrowed by `SCROLLBAR_THICKNESS` while
-     * `get_multiline_enabled()` and the scroll bar is actually shown (see
-     * `_relayout()`, the only place that decides that); unchanged otherwise. This
-     * is also what's reported via `get_text_box_size()`, so it's on this field
-     * itself (rather than `render::AbstractRenderer`'s own generic, padding-aware
-     * default) to account for its own padding here. While actually scrolling, the
-     * height is widened to at least `_content_height`: `draw_text_in_box()` also
-     * self-clips to this same box (see `fonts::render::AbstractRenderer`), and
-     * that box has already been shifted up by the current scroll offset, so a
-     * height no taller than the viewport would clip away whatever's scrolled into
-     * view.
+     * Returns `_padded_size()`, further narrowed by the scroll bar's own
+     * thickness while `get_multiline_enabled()` and the scroll bar is actually
+     * shown (see `_relayout()`, the only place that decides that); unchanged
+     * otherwise. This is also what's reported via `get_text_box_size()`, so
+     * it's on this field itself (rather than `render::AbstractRenderer`'s own
+     * generic, padding-aware default) to account for its own padding here.
+     * While actually scrolling, the height is widened to at least
+     * `_content_height`: `draw_text_in_box()` also self-clips to this same box
+     * (see `fonts::render::AbstractRenderer`), and that box has already been
+     * shifted up by the current scroll offset, so a height no taller than the
+     * viewport would clip away whatever's scrolled into view.
      */
     ml7::Vector2f _effective_text_box_size() const;
 
@@ -345,7 +332,7 @@ private:
      * `get_scroll_bar_visibility()`: `Always` unconditionally; `Auto` only once
      * this field's content actually overflows its own height at its padded width
      * (see `_padded_size()`), or, if not yet, once more at the width actually
-     * left over once the scroll bar takes `SCROLLBAR_THICKNESS` off of it (a
+     * left over once the scroll bar takes its own thickness off of it (a
      * narrower width only ever wraps to more, never fewer, lines, so this can't
      * flip back off and one re-check is enough to converge, same reasoning as
      * `faces::ScrollPanel`'s own single-axis visibility resolution); `Never`,

@@ -54,6 +54,15 @@ struct Style
      */
     Padding padding;
 
+    /** A scroll bar's own thickness (see `faces::ScrollPanel`, `faces::TextField`). */
+    float scroll_bar_thickness = 16.0f;
+
+    /** A `faces::Frame`'s own title bar height. */
+    float title_bar_height = 24.0f;
+
+    /** A `faces::Frame`'s own resize handle's (square) size. */
+    float resize_handle_size = 16.0f;
+
 
 
 private:
