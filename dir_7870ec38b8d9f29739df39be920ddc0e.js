@@ -23,7 +23,5 @@ var dir_7870ec38b8d9f29739df39be920ddc0e =
     [ "Slider.cpp", "df/de6/Slider_8cpp.html", "df/de6/Slider_8cpp" ],
     [ "Slider.h", "db/dff/Slider_8h.html", "db/dff/Slider_8h" ],
     [ "TextField.cpp", "d5/d8d/TextField_8cpp.html", null ],
-    [ "TextField.h", "db/de6/TextField_8h.html", "db/de6/TextField_8h" ],
-    [ "Window.cpp", "d2/d84/Window_8cpp.html", null ],
-    [ "Window.h", "d3/ded/Window_8h.html", "d3/ded/Window_8h" ]
+    [ "TextField.h", "db/de6/TextField_8h.html", "db/de6/TextField_8h" ]
 ];

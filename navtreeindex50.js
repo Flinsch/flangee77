@@ -1,8 +1,5 @@
 var NAVTREEINDEX50 =
 {
-"da/d71/classfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer.html#ac56d766c29dafb5b17b597f230c5f16d":[5,0,3,0,2,1,28],
-"da/d71/classfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer.html#ac56d766c29dafb5b17b597f230c5f16d":[7,0,3,0,2,1,28],
-"da/d71/classfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer.html#ad168d978774dc00d81f7b5fc24a667c1":[5,0,3,0,2,1,35],
 "da/d71/classfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer.html#ad168d978774dc00d81f7b5fc24a667c1":[7,0,3,0,2,1,35],
 "da/d71/classfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer.html#ae07242a1b4f403674e12c454c3c2361a":[5,0,3,0,2,1,36],
 "da/d71/classfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer.html#ae07242a1b4f403674e12c454c3c2361a":[7,0,3,0,2,1,36],
@@ -249,5 +246,8 @@ var NAVTREEINDEX50 =
 "da/dc1/structtl7_1_1Signature_1_1equal__to.html#a539245150f323a10f6651113322c8644":[5,0,7,7,1,0],
 "da/dc1/structtl7_1_1Signature_1_1equal__to.html#a539245150f323a10f6651113322c8644":[7,0,7,6,1,0],
 "da/dc9/ini_2detail_2Lexer_8cpp.html":[8,0,2,2,0,8],
-"da/dca/unionxl7_1_1graphics_1_1Color_1_1Value32.html":[5,0,8,2,8,0]
+"da/dca/unionxl7_1_1graphics_1_1Color_1_1Value32.html":[5,0,8,2,8,0],
+"da/dca/unionxl7_1_1graphics_1_1Color_1_1Value32.html":[7,0,8,1,8,0],
+"da/dca/unionxl7_1_1graphics_1_1Color_1_1Value32.html#a34ffee333d2de74ca5fc66c782e97ba8":[5,0,8,2,8,0,1],
+"da/dca/unionxl7_1_1graphics_1_1Color_1_1Value32.html#a34ffee333d2de74ca5fc66c782e97ba8":[7,0,8,1,8,0,1]
 };

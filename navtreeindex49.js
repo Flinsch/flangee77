@@ -1,8 +1,5 @@
 var NAVTREEINDEX49 =
 {
-"da/d4c/structml7_1_1Matrix2x3.html#ae62fbb96ecc988afce9c703f4d21e48f":[5,0,4,13,20],
-"da/d4c/structml7_1_1Matrix2x3.html#ae62fbb96ecc988afce9c703f4d21e48f":[7,0,4,13,20],
-"da/d4c/structml7_1_1Matrix2x3.html#ae6d0bd7b98433751ba779317c00593e3":[5,0,4,13,32],
 "da/d4c/structml7_1_1Matrix2x3.html#ae6d0bd7b98433751ba779317c00593e3":[7,0,4,13,32],
 "da/d4c/structml7_1_1Matrix2x3.html#af02be8a97db9263fe1ce6b4105b7f3c7":[5,0,4,13,54],
 "da/d4c/structml7_1_1Matrix2x3.html#af02be8a97db9263fe1ce6b4105b7f3c7":[7,0,4,13,54],
@@ -249,5 +246,8 @@ var NAVTREEINDEX49 =
 "da/d71/classfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer.html#aa2da2811c77a00228735c0982ae372c0":[5,0,3,0,2,1,13],
 "da/d71/classfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer.html#aa2da2811c77a00228735c0982ae372c0":[7,0,3,0,2,1,13],
 "da/d71/classfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer.html#ab408d318bd89a6b3914a1fcaffe47794":[5,0,3,0,2,1,33],
-"da/d71/classfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer.html#ab408d318bd89a6b3914a1fcaffe47794":[7,0,3,0,2,1,33]
+"da/d71/classfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer.html#ab408d318bd89a6b3914a1fcaffe47794":[7,0,3,0,2,1,33],
+"da/d71/classfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer.html#ac56d766c29dafb5b17b597f230c5f16d":[5,0,3,0,2,1,28],
+"da/d71/classfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer.html#ac56d766c29dafb5b17b597f230c5f16d":[7,0,3,0,2,1,28],
+"da/d71/classfl7_1_1fonts_1_1render_1_1AbstractTextureAtlasBasedRenderer.html#ad168d978774dc00d81f7b5fc24a667c1":[5,0,3,0,2,1,35]
 };

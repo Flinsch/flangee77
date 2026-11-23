@@ -1,6 +1,5 @@
 var NAVTREEINDEX15 =
 {
-"d3/dea/structcl7_1_1profiling_1_1SampleHandler.html#acb5f2303d020684ff3e6b7637590b605":[5,0,1,9,3,1],
 "d3/dea/structcl7_1_1profiling_1_1SampleHandler.html#acb5f2303d020684ff3e6b7637590b605":[7,0,1,7,3,1],
 "d3/dea/structcl7_1_1profiling_1_1SampleHandler.html#ad2675a4f2c22ed0bd7d35d1dc9b99d37":[5,0,1,9,3,3],
 "d3/dea/structcl7_1_1profiling_1_1SampleHandler.html#ad2675a4f2c22ed0bd7d35d1dc9b99d37":[7,0,1,7,3,3],
@@ -65,8 +64,6 @@ var NAVTREEINDEX15 =
 "d3/deb/classdl7_1_1syntax_1_1Diagnostics.html#af9a96e491349046e238342eaa1f34dc5":[5,0,2,4,8,14],
 "d3/deb/classdl7_1_1syntax_1_1Diagnostics.html#af9a96e491349046e238342eaa1f34dc5":[7,0,2,4,8,14],
 "d3/dec/direct3d11_2RenderingContextImpl_8cpp.html":[8,0,7,1,1,0,11],
-"d3/ded/Window_8h.html":[8,0,3,1,0,25],
-"d3/ded/Window_8h_source.html":[8,0,3,1,0,25],
 "d3/dee/classxl7_1_1input_1_1Mouse.html":[5,0,8,3,6],
 "d3/dee/classxl7_1_1input_1_1Mouse.html":[7,0,8,2,6],
 "d3/dee/classxl7_1_1input_1_1Mouse.html#a01775657c445e5a69614ed3000a5eb67":[5,0,8,3,6,14],
@@ -249,5 +246,8 @@ var NAVTREEINDEX15 =
 "d4/d01/structml7_1_1ops_1_1clamp.html":[7,0,4,3,0],
 "d4/d01/structml7_1_1ops_1_1clamp.html#ad83ad7d10b01431e73de44047a031895":[5,0,4,3,0,0],
 "d4/d01/structml7_1_1ops_1_1clamp.html#ad83ad7d10b01431e73de44047a031895":[7,0,4,3,0,0],
-"d4/d02/RadioGroup_8cpp.html":[8,0,3,1,20]
+"d4/d02/RadioGroup_8cpp.html":[8,0,3,1,20],
+"d4/d03/Grammar_8h.html":[8,0,2,4,14],
+"d4/d03/Grammar_8h_source.html":[8,0,2,4,14],
+"d4/d03/IResizable_8h.html":[8,0,1,3,14]
 };

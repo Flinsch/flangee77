@@ -1,8 +1,5 @@
 var NAVTREEINDEX18 =
 {
-"d4/da5/toml_2detail_2Lexer_8h.html":[8,0,2,5,0,9],
-"d4/da5/toml_2detail_2Lexer_8h_source.html":[8,0,2,5,0,9],
-"d4/da8/ISurfaceFactory_8h.html":[8,0,7,1,6,4],
 "d4/da8/ISurfaceFactory_8h_source.html":[8,0,7,1,6,4],
 "d4/daa/Glyph_8h.html":[8,0,3,0,12],
 "d4/daa/Glyph_8h_source.html":[8,0,3,0,12],
@@ -249,5 +246,8 @@ var NAVTREEINDEX18 =
 "d5/d1f/structxl7_1_1input_1_1GameController_1_1StickState.html#a0491edaf665fbac2c6d65453f97de2fb":[5,0,8,3,2,1,0],
 "d5/d1f/structxl7_1_1input_1_1GameController_1_1StickState.html#a0491edaf665fbac2c6d65453f97de2fb":[7,0,8,2,2,1,0],
 "d5/d1f/structxl7_1_1input_1_1GameController_1_1StickState.html#a214951885e0b4ff7754bb23a95de39ef":[5,0,8,3,2,1,2],
-"d5/d1f/structxl7_1_1input_1_1GameController_1_1StickState.html#a214951885e0b4ff7754bb23a95de39ef":[7,0,8,2,2,1,2]
+"d5/d1f/structxl7_1_1input_1_1GameController_1_1StickState.html#a214951885e0b4ff7754bb23a95de39ef":[7,0,8,2,2,1,2],
+"d5/d1f/structxl7_1_1input_1_1GameController_1_1StickState.html#a8ff81339e341fd6d0a016430f5198f49":[5,0,8,3,2,1,1],
+"d5/d1f/structxl7_1_1input_1_1GameController_1_1StickState.html#a8ff81339e341fd6d0a016430f5198f49":[7,0,8,2,2,1,1],
+"d5/d23/classdl7_1_1xml_1_1Attribute.html":[5,0,2,6,2]
 };

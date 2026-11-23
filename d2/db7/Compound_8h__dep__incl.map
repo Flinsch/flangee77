@@ -1,55 +1,51 @@
 <map id="FaceLabs/gui/Compound.h" name="FaceLabs/gui/Compound.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="580,5,771,33"/>
-<area shape="rect" id="Node000002" href="$d6/df2/TrackControl_8h.html" title=" " alt="" coords="248,90,450,117"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="607,39,402,91,400,87,611,35"/>
-<area shape="rect" id="Node000004" href="$d0/d2d/ScrollBar_8h.html" title=" " alt="" coords="360,266,503,311"/>
-<area shape="poly" id="edge22_Node000001_Node000004" title=" " alt="" coords="630,42,603,61,575,83,532,130,495,181,444,267,440,264,490,178,528,127,571,79,600,56,635,39"/>
-<area shape="rect" id="Node000006" href="$d8/d6a/ScrollPanel_8h.html" title=" " alt="" coords="192,359,335,404"/>
-<area shape="poly" id="edge23_Node000001_Node000006" title=" " alt="" coords="563,30,420,48,257,76,182,95,117,118,66,145,47,159,34,175,15,211,8,243,14,275,34,309,58,327,97,342,194,367,190,370,95,348,55,332,30,313,9,277,3,243,10,209,29,172,43,156,63,140,114,113,181,90,256,71,419,43,568,27"/>
-<area shape="rect" id="Node000007" href="$d3/d7a/ListBox_8h.html" title=" " alt="" coords="713,452,857,496"/>
-<area shape="poly" id="edge18_Node000001_Node000007" title=" " alt="" coords="716,38,742,57,762,79,778,109,786,134,788,195,788,290,787,453,783,450,782,290,782,195,780,135,773,111,757,83,738,61,716,44"/>
-<area shape="rect" id="Node000014" href="$d9/d36/CheckBox_8h.html" title=" " alt="" coords="604,81,747,126"/>
-<area shape="poly" id="edge14_Node000001_Node000014" title=" " alt="" coords="677,47,678,81,673,79,674,51"/>
-<area shape="rect" id="Node000016" href="$dd/d26/DropDown_8h.html" title=" " alt="" coords="1095,452,1238,496"/>
-<area shape="poly" id="edge16_Node000001_Node000016" title=" " alt="" coords="786,29,926,50,1002,65,1074,83,1139,105,1192,130,1212,145,1228,160,1238,177,1241,194,1241,290,1235,337,1220,382,1201,422,1182,453,1179,449,1196,420,1215,380,1230,336,1236,290,1236,195,1233,179,1223,163,1209,149,1189,135,1137,110,1073,88,1001,70,925,55,786,35"/>
-<area shape="rect" id="Node000017" href="$d1/d27/RadioButton_8h.html" title=" " alt="" coords="823,81,966,126"/>
-<area shape="poly" id="edge19_Node000001_Node000017" title=" " alt="" coords="725,36,839,80,834,81,725,42"/>
-<area shape="rect" id="Node000020" href="$db/de6/TextField_8h.html" title=" " alt="" coords="528,266,671,311"/>
-<area shape="poly" id="edge24_Node000001_Node000020" title=" " alt="" coords="630,43,611,60,594,82,585,106,580,130,578,181,585,229,595,267,590,265,580,230,573,182,574,130,580,104,589,80,607,56,634,39"/>
-<area shape="rect" id="Node000021" href="$d3/ded/Window_8h.html" title=" " alt="" coords="1276,81,1419,126"/>
-<area shape="poly" id="edge26_Node000001_Node000021" title=" " alt="" coords="786,25,1005,45,1132,60,1257,78,1278,84,1273,85,1257,84,1131,65,1004,50,787,31"/>
-<area shape="rect" id="Node000003" href="$de/d18/TrackControl_8cpp.html" title=" " alt="" coords="211,182,428,210"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="341,130,326,183,321,181,339,134"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="391,122,420,144,442,172,449,197,450,222,442,267,437,265,445,222,444,198,437,175,416,148,391,128"/>
-<area shape="rect" id="Node000012" href="$db/dff/Slider_8h.html" title=" " alt="" coords="44,174,187,218"/>
-<area shape="poly" id="edge11_Node000002_Node000012" title=" " alt="" coords="299,125,173,175,170,171,303,121"/>
-<area shape="rect" id="Node000005" href="$d3/de5/ScrollBar_8cpp.html" title=" " alt="" coords="360,359,503,404"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="433,324,434,360,429,358,430,329"/>
-<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="376,320,305,361,302,356,380,317"/>
-<area shape="rect" id="Node000011" href="$d5/d8d/TextField_8cpp.html" title=" " alt="" coords="528,359,671,404"/>
-<area shape="poly" id="edge10_Node000004_Node000011" title=" " alt="" coords="485,316,562,358,557,359,485,321"/>
-<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="351,401,551,437,715,463,710,464,550,442,351,407"/>
-<area shape="rect" id="Node000010" href="$d9/d10/ScrollPanel_8cpp.html" title=" " alt="" coords="192,452,335,496"/>
-<area shape="poly" id="edge9_Node000006_Node000010" title=" " alt="" coords="265,417,266,453,261,450,262,421"/>
-<area shape="rect" id="Node000008" href="$d8/d54/DropDown_8cpp.html" title=" " alt="" coords="1024,544,1167,589"/>
-<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="872,498,1026,545,1021,544,871,503"/>
-<area shape="rect" id="Node000009" href="$dd/dc1/ListBox_8cpp.html" title=" " alt="" coords="713,544,857,589"/>
-<area shape="poly" id="edge8_Node000007_Node000009" title=" " alt="" coords="787,510,787,546,783,542,783,514"/>
-<area shape="poly" id="edge12_Node000012_Node000004" title=" " alt="" coords="202,219,362,265,358,268,202,225"/>
-<area shape="rect" id="Node000013" href="$df/de6/Slider_8cpp.html" title=" " alt="" coords="44,266,187,311"/>
-<area shape="poly" id="edge13_Node000012_Node000013" title=" " alt="" coords="116,231,118,267,113,266,115,237"/>
-<area shape="rect" id="Node000015" href="$db/d75/CheckBox_8cpp.html" title=" " alt="" coords="604,174,747,218"/>
-<area shape="poly" id="edge15_Node000014_Node000015" title=" " alt="" coords="677,139,678,175,673,172,674,144"/>
-<area shape="poly" id="edge17_Node000016_Node000008" title=" " alt="" coords="1143,507,1114,546,1111,542,1138,510"/>
-<area shape="rect" id="Node000018" href="$d4/d02/RadioGroup_8cpp.html" title=" " alt="" coords="990,182,1201,210"/>
-<area shape="poly" id="edge20_Node000017_Node000018" title=" " alt="" coords="956,130,1069,181,1064,182,956,135"/>
-<area shape="rect" id="Node000019" href="$dc/d1f/RadioButton_8cpp.html" title=" " alt="" coords="823,174,966,218"/>
-<area shape="poly" id="edge21_Node000017_Node000019" title=" " alt="" coords="896,139,897,175,892,172,893,143"/>
-<area shape="poly" id="edge25_Node000020_Node000011" title=" " alt="" coords="601,324,602,360,597,357,598,329"/>
-<area shape="rect" id="Node000022" href="$d7/db3/Frame_8h.html" title=" " alt="" coords="1444,174,1587,218"/>
-<area shape="poly" id="edge27_Node000021_Node000022" title=" " alt="" coords="1402,131,1478,173,1473,173,1401,136"/>
-<area shape="rect" id="Node000024" href="$d2/d84/Window_8cpp.html" title=" " alt="" coords="1276,174,1419,218"/>
-<area shape="poly" id="edge29_Node000021_Node000024" title=" " alt="" coords="1349,139,1350,175,1345,172,1346,143"/>
-<area shape="rect" id="Node000023" href="$d5/de0/Frame_8cpp.html" title=" " alt="" coords="1444,266,1587,311"/>
-<area shape="poly" id="edge28_Node000022_Node000023" title=" " alt="" coords="1517,232,1518,268,1514,265,1514,236"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="521,5,712,33"/>
+<area shape="rect" id="Node000002" href="$d6/df2/TrackControl_8h.html" title=" " alt="" coords="260,90,461,117"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="559,40,403,91,400,87,563,36"/>
+<area shape="rect" id="Node000004" href="$d0/d2d/ScrollBar_8h.html" title=" " alt="" coords="267,266,411,311"/>
+<area shape="poly" id="edge24_Node000001_Node000004" title=" " alt="" coords="599,43,523,140,449,220,414,246,380,268,377,264,411,242,445,216,519,136,595,47"/>
+<area shape="rect" id="Node000006" href="$d8/d6a/ScrollPanel_8h.html" title=" " alt="" coords="99,359,243,404"/>
+<area shape="poly" id="edge25_Node000001_Node000006" title=" " alt="" coords="504,33,371,53,224,82,155,101,96,123,49,147,20,175,9,200,10,226,21,252,38,276,86,322,136,357,132,360,83,326,34,280,16,254,5,227,4,200,16,172,46,143,94,118,154,96,223,77,371,48,508,30"/>
+<area shape="rect" id="Node000007" href="$d3/d7a/ListBox_8h.html" title=" " alt="" coords="515,452,659,496"/>
+<area shape="poly" id="edge20_Node000001_Node000007" title=" " alt="" coords="618,46,619,195,619,290,617,336,610,381,595,453,591,450,605,380,611,335,614,290,614,195,615,51"/>
+<area shape="rect" id="Node000014" href="$d9/d36/CheckBox_8h.html" title=" " alt="" coords="705,81,848,126"/>
+<area shape="poly" id="edge14_Node000001_Node000014" title=" " alt="" coords="655,38,737,80,731,81,656,43"/>
+<area shape="rect" id="Node000016" href="$dd/d26/DropDown_8h.html" title=" " alt="" coords="654,266,797,311"/>
+<area shape="poly" id="edge16_Node000001_Node000016" title=" " alt="" coords="627,46,695,217,717,267,712,265,690,219,625,50"/>
+<area shape="rect" id="Node000017" href="$d7/db3/Frame_8h.html" title=" " alt="" coords="873,81,1016,126"/>
+<area shape="poly" id="edge18_Node000001_Node000017" title=" " alt="" coords="684,35,861,78,875,84,870,84,860,84,684,40"/>
+<area shape="rect" id="Node000019" href="$d1/d27/RadioButton_8h.html" title=" " alt="" coords="1074,81,1217,126"/>
+<area shape="poly" id="edge21_Node000001_Node000019" title=" " alt="" coords="727,33,1029,78,1076,88,1071,89,1028,84,727,38"/>
+<area shape="rect" id="Node000022" href="$db/de6/TextField_8h.html" title=" " alt="" coords="435,266,579,311"/>
+<area shape="poly" id="edge26_Node000001_Node000022" title=" " alt="" coords="607,46,518,267,514,264,603,49"/>
+<area shape="rect" id="Node000003" href="$de/d18/TrackControl_8cpp.html" title=" " alt="" coords="30,182,246,210"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="313,125,172,184,169,179,316,121"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="390,124,412,146,428,173,434,196,428,219,408,247,382,268,379,264,404,243,423,217,429,196,423,175,408,150,390,130"/>
+<area shape="rect" id="Node000012" href="$db/dff/Slider_8h.html" title=" " alt="" coords="270,174,413,218"/>
+<area shape="poly" id="edge11_Node000002_Node000012" title=" " alt="" coords="356,130,349,174,344,172,353,135"/>
+<area shape="rect" id="Node000005" href="$d3/de5/ScrollBar_8cpp.html" title=" " alt="" coords="267,359,411,404"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="340,324,341,360,337,358,338,329"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="283,320,212,361,209,356,287,317"/>
+<area shape="rect" id="Node000011" href="$d5/d8d/TextField_8cpp.html" title=" " alt="" coords="435,359,579,404"/>
+<area shape="poly" id="edge10_Node000004_Node000011" title=" " alt="" coords="393,316,470,358,464,359,392,321"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="258,402,517,457,513,460,258,407"/>
+<area shape="rect" id="Node000010" href="$d9/d10/ScrollPanel_8cpp.html" title=" " alt="" coords="99,452,243,496"/>
+<area shape="poly" id="edge9_Node000006_Node000010" title=" " alt="" coords="172,417,174,452,169,451,170,422"/>
+<area shape="rect" id="Node000008" href="$d8/d54/DropDown_8cpp.html" title=" " alt="" coords="654,544,797,589"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="633,502,695,544,690,543,632,508"/>
+<area shape="rect" id="Node000009" href="$dd/dc1/ListBox_8cpp.html" title=" " alt="" coords="486,544,629,589"/>
+<area shape="poly" id="edge8_Node000007_Node000009" title=" " alt="" coords="578,510,566,546,563,542,573,513"/>
+<area shape="poly" id="edge12_Node000012_Node000004" title=" " alt="" coords="342,232,342,267,337,265,339,236"/>
+<area shape="rect" id="Node000013" href="$df/de6/Slider_8cpp.html" title=" " alt="" coords="99,266,243,311"/>
+<area shape="poly" id="edge13_Node000012_Node000013" title=" " alt="" coords="285,228,213,268,210,264,289,224"/>
+<area shape="rect" id="Node000015" href="$db/d75/CheckBox_8cpp.html" title=" " alt="" coords="705,174,848,218"/>
+<area shape="poly" id="edge15_Node000014_Node000015" title=" " alt="" coords="778,139,779,175,774,172,775,144"/>
+<area shape="poly" id="edge17_Node000016_Node000008" title=" " alt="" coords="728,325,728,545,723,543,724,329"/>
+<area shape="rect" id="Node000018" href="$d5/de0/Frame_8cpp.html" title=" " alt="" coords="873,174,1016,218"/>
+<area shape="poly" id="edge19_Node000017_Node000018" title=" " alt="" coords="946,139,947,175,942,172,943,143"/>
+<area shape="rect" id="Node000020" href="$d4/d02/RadioGroup_8cpp.html" title=" " alt="" coords="1040,182,1251,210"/>
+<area shape="poly" id="edge22_Node000019_Node000020" title=" " alt="" coords="1147,139,1148,183,1143,180,1144,143"/>
+<area shape="rect" id="Node000021" href="$dc/d1f/RadioButton_8cpp.html" title=" " alt="" coords="1275,174,1419,218"/>
+<area shape="poly" id="edge23_Node000019_Node000021" title=" " alt="" coords="1208,130,1302,173,1296,173,1208,135"/>
+<area shape="poly" id="edge27_Node000022_Node000011" title=" " alt="" coords="509,324,509,360,505,357,506,329"/>
 </map>

@@ -354,8 +354,7 @@ var annotated_dup =
           [ "ScrollBar", "d2/d8a/classfl7_1_1gui_1_1faces_1_1ScrollBar.html", "d2/d8a/classfl7_1_1gui_1_1faces_1_1ScrollBar" ],
           [ "ScrollPanel", "d8/d18/classfl7_1_1gui_1_1faces_1_1ScrollPanel.html", "d8/d18/classfl7_1_1gui_1_1faces_1_1ScrollPanel" ],
           [ "Slider", "d5/d35/classfl7_1_1gui_1_1faces_1_1Slider.html", "d5/d35/classfl7_1_1gui_1_1faces_1_1Slider" ],
-          [ "TextField", "d7/dc8/classfl7_1_1gui_1_1faces_1_1TextField.html", "d7/dc8/classfl7_1_1gui_1_1faces_1_1TextField" ],
-          [ "Window", "db/d0d/classfl7_1_1gui_1_1faces_1_1Window.html", "db/d0d/classfl7_1_1gui_1_1faces_1_1Window" ]
+          [ "TextField", "d7/dc8/classfl7_1_1gui_1_1faces_1_1TextField.html", "d7/dc8/classfl7_1_1gui_1_1faces_1_1TextField" ]
         ] ],
         [ "layout", "df/dcc/namespacefl7_1_1gui_1_1layout.html", [
           [ "BoxLayout", "de/d3a/classfl7_1_1gui_1_1layout_1_1BoxLayout.html", "de/d3a/classfl7_1_1gui_1_1layout_1_1BoxLayout" ],

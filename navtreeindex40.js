@@ -1,8 +1,5 @@
 var NAVTREEINDEX40 =
 {
-"d8/dd9/structml7_1_1Matrix3x4.html#ab2459598f9853ed85d9aee02d27e3e12":[7,0,4,15,72],
-"d8/dd9/structml7_1_1Matrix3x4.html#ab45389008051fcc6f74d073c4c4264c9":[5,0,4,15,41],
-"d8/dd9/structml7_1_1Matrix3x4.html#ab45389008051fcc6f74d073c4c4264c9":[7,0,4,15,41],
 "d8/dd9/structml7_1_1Matrix3x4.html#ab61d40801995bd01fa4646105ab80e3a":[5,0,4,15,61],
 "d8/dd9/structml7_1_1Matrix3x4.html#ab61d40801995bd01fa4646105ab80e3a":[7,0,4,15,61],
 "d8/dd9/structml7_1_1Matrix3x4.html#abba3b84e885ddbb915de09e36524cc67":[5,0,4,15,24],
@@ -249,5 +246,8 @@ var NAVTREEINDEX40 =
 "d9/d15/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1meshes_1_1VertexBufferImpl.html#ac2f61bcf38f14170864b69e65b4da864":[5,0,8,2,1,1,2,1,4],
 "d9/d15/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1meshes_1_1VertexBufferImpl.html#ac2f61bcf38f14170864b69e65b4da864":[7,0,8,1,1,1,0,1,4],
 "d9/d15/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1meshes_1_1VertexBufferImpl.html#ad223ef2b48d8961a27507b9874856938":[5,0,8,2,1,1,2,1,9],
-"d9/d15/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1meshes_1_1VertexBufferImpl.html#ad223ef2b48d8961a27507b9874856938":[7,0,8,1,1,1,0,1,9]
+"d9/d15/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1meshes_1_1VertexBufferImpl.html#ad223ef2b48d8961a27507b9874856938":[7,0,8,1,1,1,0,1,9],
+"d9/d15/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1meshes_1_1VertexBufferImpl.html#ae08c5956f565ae6e675beb0ef94362b1":[5,0,8,2,1,1,2,1,12],
+"d9/d15/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1meshes_1_1VertexBufferImpl.html#ae08c5956f565ae6e675beb0ef94362b1":[7,0,8,1,1,1,0,1,12],
+"d9/d15/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1meshes_1_1VertexBufferImpl.html#ae6528e78df0fc9fdb1a72c8781408493":[5,0,8,2,1,1,2,1,8]
 };
