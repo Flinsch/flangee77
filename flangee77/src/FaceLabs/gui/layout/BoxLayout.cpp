@@ -4,6 +4,7 @@
 #include "../Face.h"
 
 #include <algorithm>
+#include <unordered_set>
 
 
 
@@ -102,8 +103,15 @@ namespace fl7::gui::layout {
      */
     void BoxLayout::perform(Container& container)
     {
-        const auto& children = container.get_children();
-        const size_t n = children.size();
+        // Prunes _order/_stretches of any child no longer actually present.
+        std::unordered_set<const Face*> current;
+        for (const auto& child : container.get_children())
+            current.insert(child.get());
+        std::erase_if(_order, [&current](const Face* child) { return !current.contains(child); });
+        for (auto it = _stretches.begin(); it != _stretches.end(); )
+            it = current.contains(it->first) ? std::next(it) : _stretches.erase(it);
+
+        const size_t n = _order.size();
 
         if (n == 0)
             return;
@@ -121,7 +129,7 @@ namespace fl7::gui::layout {
 
         float fixed_total = 0.0f;
         float stretch_sum = 0.0f;
-        for (const auto& child_ptr : children)
+        for (const auto& child_ptr : _order)
         {
             const float stretch = get_stretch(*child_ptr);
             if (stretch > 0.0f)
@@ -134,7 +142,7 @@ namespace fl7::gui::layout {
         const float cross_available = std::max(0.0f, container_size[cross_axis] - padding_cross_near - padding_cross_far);
 
         float offset = padding_main_near;
-        for (const auto& child_ptr : children)
+        for (const auto& child_ptr : _order)
         {
             Face& child = *child_ptr;
 
@@ -184,7 +192,7 @@ namespace fl7::gui::layout {
      */
     ml7::Vector2f BoxLayout::calculate_preferred_size(const Container& container) const
     {
-        return _calculate_size(container, &Face::get_effective_preferred_size);
+        return _calculate_size(&Face::get_effective_preferred_size);
     }
 
     /**
@@ -198,19 +206,19 @@ namespace fl7::gui::layout {
      */
     ml7::Vector2f BoxLayout::calculate_minimum_size(const Container& container) const
     {
-        return _calculate_size(container, &Face::get_effective_minimum_size);
+        return _calculate_size(&Face::get_effective_minimum_size);
     }
 
     /**
      * Shared by `calculate_preferred_size()` or `calculate_minimum_size()`: sums
-     * `size_of(child)[axis]` across every child (plus gaps/padding on the main
-     * axis), and takes the max of `size_of(child)[cross_axis]` (plus padding on
-     * the cross axis), for whichever per-child size getter the caller passes in.
+     * `size_of(child)[axis]` across every child in this layout's own sequence
+     * (plus gaps/padding on the main axis), and takes the max of
+     * `size_of(child)[cross_axis]` (plus padding on the cross axis), for
+     * whichever per-child size getter the caller passes in.
      */
-    ml7::Vector2f BoxLayout::_calculate_size(const Container& container, ml7::Vector2f (Face::*size_of)() const) const
+    ml7::Vector2f BoxLayout::_calculate_size(ml7::Vector2f (Face::*size_of)() const) const
     {
-        const auto& children = container.get_children();
-        const size_t n = children.size();
+        const size_t n = _order.size();
 
         const unsigned axis = _orientation == Orientation::Horizontal ? 0 : 1;
         const unsigned cross_axis = 1 - axis;
@@ -220,9 +228,9 @@ namespace fl7::gui::layout {
 
         float main = padding_main + (n > 0 ? _gap * static_cast<float>(n - 1) : 0.0f);
         float cross = 0.0f;
-        for (const auto& child_ptr : children)
+        for (const auto& child_ptr : _order)
         {
-            const ml7::Vector2f size = (child_ptr.get()->*size_of)();
+            const ml7::Vector2f size = (child_ptr->*size_of)();
             main += size[axis];
             cross = std::max(cross, size[cross_axis]);
         }

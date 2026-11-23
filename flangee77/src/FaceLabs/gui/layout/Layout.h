@@ -20,6 +20,13 @@ namespace fl7::gui::layout {
  * positioned/sized, entirely unmanaged; attaching one of these takes over that job
  * instead, kept in sync automatically as the container's children or own size
  * change (see `Container::add_child()`, `remove_child()`, or `set_size()`).
+ *
+ * Every concrete layout also offers its own `add_child()` (and, where its own
+ * strategy actually has a notion of "where", e.g.,`BoxLayout::insert_child()`,
+ * further placement methods besides), each with whatever parameters that
+ * strategy actually needs to place a new child; adding one through
+ * `Container::add_child()` directly instead bypasses that, leaving it
+ * unarranged by this layout.
  */
 class Layout
 {
@@ -59,6 +66,35 @@ public:
      * children, e.g., `DefaultLayout`, has none to report either).
      */
     virtual ml7::Vector2f calculate_minimum_size(const Container& container) const { return {}; }
+
+
+
+protected:
+
+    // #############################################################################
+    // Methods
+    // #############################################################################
+
+    /**
+     * Returns this layout's own container, set once by `Container::set_layout()`
+     * right after construction: the one a concrete layout's own `add_child()`
+     * (see, e.g., `BoxLayout::add_child()`) actually adds a new child through.
+     * Read-only from here on purpose: only `Container::set_layout()` itself
+     * ever gets to set this, not a subclass.
+     */
+    Container* _get_container() const { return _container; }
+
+
+
+private:
+
+    // #############################################################################
+    // Attributes
+    // #############################################################################
+
+    Container* _container = nullptr;
+
+    friend class gui::Container;
 
 }; // class Layout
 

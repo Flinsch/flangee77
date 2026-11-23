@@ -2,12 +2,15 @@
 #define FL7_GUI_LAYOUT_BOXLAYOUT_H
 #include "./Layout.h"
 
+#include "../Container.h"
 #include "../Face.h"
 #include "../Padding.h"
 
 #include <MathLabs/Vector2.h>
 
+#include <cassert>
 #include <unordered_map>
+#include <vector>
 
 
 
@@ -16,52 +19,55 @@ namespace fl7::gui::layout {
 
 
 /**
- * Arranges a container's children one after another along a single axis (see
- * `Orientation`), separated by a fixed `get_gap()`, within a fixed `get_padding()`
- * kept around the whole sequence. This divides the container into a sequence of
- * cells, one per child: along the main axis, a cell is either exactly as big as its
- * own child's `get_effective_preferred_size()` (a stretch factor of 0 or less; see
- * `get_stretch()`) or a share of whatever space is left over once every such
- * fixed-size child's cell has been accounted for, proportional to its own stretch
- * factor relative to the other stretched children's (every child's default: see
- * `get_stretch()`, every cell then just splits the main axis evenly, unless some
- * are explicitly pinned to their own preferred size via 0 instead); along the
- * perpendicular (cross) axis, every cell is simply the container's own full extent
- * there (minus padding).
+ * This layout keeps its own sequence of children, independent of the attached
+ * container's own child list (which only ever determines Z-order/hit-testing):
+ * built up via this layout's own `add_child()` (appends to the end) or
+ * `insert_child()` (anywhere); a child added directly via `Container::add_child()`
+ * instead isn't part of this sequence, so it's simply left wherever it already is,
+ * unarranged by this layout.
+ *
+ * Arranges that sequence one after another along a single axis (see `Orientation`),
+ * separated by a fixed `get_gap()`, within a fixed `get_padding()` kept around the
+ * whole sequence. This divides the container into a sequence of cells, one per
+ * child: along the main axis, a cell is either exactly as big as its own child's
+ * effective preferred size (a stretch factor of 0 or less) or a share of whatever
+ * space is left over once every such fixed-size child's cell has been accounted for,
+ * proportional to its own stretch factor relative to the other stretched children's
+ * (every cell then just splits the main axis evenly, unless some are explicitly
+ * pinned to their own preferred size via 0 instead); along the perpendicular (cross)
+ * axis, every cell is simply the container's own full extent there (minus padding).
  *
  * How a child actually sits within its own cell (possibly larger than its own
  * preferred size: filled, shrunk-and-aligned near/far, or shrunk-and-centered) is
- * then up to its own `Face::get_anchor()` (the same flags `DefaultLayout` reads for
- * the other purpose of reacting to a resize), independently per axis: `Left` or
- * `Top` alone (whichever applies to that axis; the default anchor) aligns it near,
- * at its own `get_effective_preferred_size()`; `Right` or `Bottom` alone aligns it
- * far instead, same size; neither aligns it centered; both together fills the cell,
- * overriding its own preferred size. A stretched child (the default; see
- * `get_stretch()`) whose anchor doesn't fill the main axis this way just sits
- * somewhere within its own, larger cell instead of actually growing: stretch and
- * anchor are independent, exactly as they already are for the cross axis. A plain
- * stack of fixed-size children, each kept at its own preferred size regardless of
- * this layout's own size, therefore needs 0 explicitly set on every one of them
- * (see `set_stretch()`), not just left at the default.
+ * then up to its own anchor (the same flags `DefaultLayout` reads for the other
+ * purpose of reacting to a resize), independently per axis: `Left` or `Top` alone
+ * (whichever applies to that axis; the default anchor) aligns it near, at its own
+ * effective preferred size; `Right` or `Bottom` alone aligns it far instead, same
+ * size; neither aligns it centered; both together fills the cell, overriding its
+ * own preferred size. A stretched child (the default) whose anchor doesn't fill the
+ * main axis this way just sits somewhere within its own, larger cell instead of
+ * actually growing: stretch and anchor are independent, exactly as they already are
+ * for the cross axis. A plain stack of fixed-size children, each kept at its own
+ * preferred size regardless of this layout's own size, therefore needs 0 explicitly
+ * set on every one of them, not just left at the default.
  *
  * None of this ever shrinks a child past its own effective minimum size, though:
  * once a cell (on either axis) becomes smaller than that, the child keeps its
  * minimum size instead and simply overflows the cell, and possibly this layout's
  * own bounds, rather than shrinking further or distorting its content.
  *
- * Each child's own `get_effective_preferred_size()` is re-queried live on every
+ * Each child's own effective preferred/minimum size is re-queried live on every
  * `perform()` call, not cached here: it can genuinely change over time (e.g.,
  * `faces::Label`'s, after its text changes). Any face type whose own calculation is
- * actually expensive to repeat is expected to cache that internally instead (see
- * `faces::Label::_calculate_text_size()`), where the relevant inputs (and when
- * they've changed) are actually known.
+ * actually expensive to repeat is expected to cache that internally instead, where
+ * the relevant inputs (and when they've changed) are actually known.
  *
- * Also reports its own `calculate_preferred_size()` or `calculate_minimum_size()`
- * (see `Layout`): the sum of every child's own preferred/minimum size along the
- * main axis (plus gaps/padding), and their max along the cross axis (plus padding),
- * ignoring stretch/anchor entirely: that's the size this sequence would occupy if
- * every child actually got exactly its own preferred/minimum size, which is what
- * a `Container` with this layout attached reports as its own effective size.
+ * Also reports its own preferred/minimum size (see `Layout`): the sum of every
+ * child's own preferred/minimum size along the main axis (plus gaps/padding), and
+ * their max along the cross axis (plus padding), ignoring stretch/anchor entirely:
+ * that's the size this sequence would occupy if every child actually got exactly
+ * its own preferred/minimum size, which is what a `Container` with this layout
+ * attached reports as its own effective size.
  */
 class BoxLayout
     : public Layout
@@ -139,6 +145,42 @@ public:
 
 
     // #############################################################################
+    // Methods
+    // #############################################################################
+
+    /**
+     * Constructs a new child Face of the specified type in place, adds it at the
+     * end of this layout's own sequence, and returns a reference to the new
+     * child. Prefer this (or `insert_child()`) over `Container::add_child()`
+     * directly; see this class's own doc comment.
+     */
+    template <class TFace, class... Args>
+        requires(std::derived_from<TFace, Face>)
+    TFace& add_child(Args&&... args)
+    {
+        return insert_child<TFace>(_order.size(), std::forward<Args>(args)...);
+    }
+
+    /**
+     * Constructs a new child Face of the specified type in place, inserts it
+     * into this layout's own sequence at the given index (0 at the very front,
+     * shifting every later item back by one), and returns a reference to the
+     * new child.
+     */
+    template <class TFace, class... Args>
+        requires(std::derived_from<TFace, Face>)
+    TFace& insert_child(size_t index, Args&&... args)
+    {
+        assert(index <= _order.size());
+        TFace& ref = _get_container()->add_child<TFace>(std::forward<Args>(args)...);
+        _order.insert(_order.begin() + static_cast<std::ptrdiff_t>(index), &ref);
+        perform(*_get_container());
+        return ref;
+    }
+
+
+
+    // #############################################################################
     // Layout Implementation
     // #############################################################################
 
@@ -180,11 +222,12 @@ private:
 
     /**
      * Shared by `calculate_preferred_size()` or `calculate_minimum_size()`: sums
-     * `size_of(child)[axis]` across every child (plus gaps/padding on the main
-     * axis), and takes the max of `size_of(child)[cross_axis]` (plus padding on
-     * the cross axis), for whichever per-child size getter the caller passes in.
+     * `size_of(child)[axis]` across every child in this layout's own sequence
+     * (plus gaps/padding on the main axis), and takes the max of
+     * `size_of(child)[cross_axis]` (plus padding on the cross axis), for
+     * whichever per-child size getter the caller passes in.
      */
-    ml7::Vector2f _calculate_size(const Container& container, ml7::Vector2f (Face::*size_of)() const) const;
+    ml7::Vector2f _calculate_size(ml7::Vector2f (Face::*size_of)() const) const;
 
     /**
      * Fits a child's own preferred size within its cell, along a single axis,
@@ -202,6 +245,15 @@ private:
     float _gap;
     Padding _padding;
 
+    /**
+     * This layout's own sequence, built up via `add_child()`/`insert_child()`;
+     * see this class's own doc comment. Non-owning: each one of this layout's
+     * own container's children. Pruned of any child no longer actually
+     * present on every `perform()` call, same as `_stretches` below.
+     */
+    std::vector<Face*> _order;
+
+    /** Per-child stretch override; see `set_stretch()`. Pruned same as `_order`. */
     std::unordered_map<const Face*, float> _stretches;
 
 }; // class BoxLayout

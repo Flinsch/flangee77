@@ -60,6 +60,7 @@ public:
     {
         auto new_layout = std::make_unique<TLayout>(std::forward<Args>(args)...);
         TLayout& ref = *new_layout;
+        ref._container = this;
         _layout = std::move(new_layout);
         _layout->perform(*this);
         return ref;
@@ -95,8 +96,11 @@ public:
 
     /**
      * Constructs a new child Face of the specified type in place, adds it,
-     * re-performs this container's layout (if any; see `set_layout()`), and
-     * returns a reference to the new child.
+     * re-performs this container's layout (if any; see `set_layout()`), and returns
+     * a reference to the new child. If a layout is attached, prefer adding through
+     * its own `add_child()` instead: a child added here bypasses whatever placement
+     * bookkeeping that layout does, so it's simply left wherever it already is,
+     * unarranged by it.
      */
     template <class TFace, class... Args>
         requires(std::derived_from<TFace, Face>)

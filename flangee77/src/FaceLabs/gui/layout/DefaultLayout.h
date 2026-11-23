@@ -2,13 +2,14 @@
 #define FL7_GUI_LAYOUT_DEFAULTLAYOUT_H
 #include "./Layout.h"
 
+#include "../Container.h"
+#include "../Face.h"
+
+#include <concepts>
 #include <unordered_map>
+#include <utility>
 
 
-
-namespace fl7::gui {
-class Face;
-} // namespace fl7::gui
 
 namespace fl7::gui::layout {
 
@@ -43,6 +44,27 @@ public:
     DefaultLayout& operator=(DefaultLayout&&) = delete;
 
     ~DefaultLayout() override = default;
+
+
+
+    // #############################################################################
+    // Methods
+    // #############################################################################
+
+    /**
+     * Constructs a new child Face of the specified type in place, adds it, and
+     * returns a reference to the new child: same as `Container::add_child()`,
+     * since this layout has no notion of position/order of its own to begin
+     * with (every child is simply anchored independently; see this class's own
+     * doc comment), just offered for consistency with every other layout's own
+     * `add_child()`.
+     */
+    template <class TFace, class... Args>
+        requires(std::derived_from<TFace, Face>)
+    TFace& add_child(Args&&... args)
+    {
+        return _get_container()->add_child<TFace>(std::forward<Args>(args)...);
+    }
 
 
 

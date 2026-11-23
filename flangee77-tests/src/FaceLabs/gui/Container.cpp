@@ -210,15 +210,17 @@ TESTLABS_CASE( u8"FaceLabs:  gui:  Container:  once a layout is set, get_effecti
 
     container.set_layout<fl7::gui::layout::BoxLayout>(fl7::gui::layout::BoxLayout::Orientation::Horizontal);
 
-    // BoxLayout::calculate_preferred_size()/calculate_minimum_size() ignore the
-    // child's own get_position() entirely (BoxLayout doesn't care where a child
-    // used to sit, only its own preferred/minimum size): with a single child and
-    // no gap/padding, both axes just reduce to that child's own preferred/
-    // minimum size, a different (and smaller) number than the bounding box above.
-    TESTLABS_CHECK_EQ_FLT( container.get_effective_preferred_size().x, 20.0f );
-    TESTLABS_CHECK_EQ_FLT( container.get_effective_preferred_size().y, 20.0f );
-    TESTLABS_CHECK_EQ_FLT( container.get_effective_minimum_size().x, 5.0f );
-    TESTLABS_CHECK_EQ_FLT( container.get_effective_minimum_size().y, 5.0f );
+    // child was added via Container::add_child() above, before this layout
+    // even existed, not through the layout's own add_child(): it isn't part
+    // of this layout's own sequence (see layout::BoxLayout's own doc
+    // comment), so its own preferred/minimum size doesn't factor in at all
+    // here, no matter how it's actually positioned/sized; the layout reports
+    // its OWN calculation instead of the bounding box above, zero (no
+    // children in its sequence, no gap/padding either) in this case.
+    TESTLABS_CHECK_EQ_FLT( container.get_effective_preferred_size().x, 0.0f );
+    TESTLABS_CHECK_EQ_FLT( container.get_effective_preferred_size().y, 0.0f );
+    TESTLABS_CHECK_EQ_FLT( container.get_effective_minimum_size().x, 0.0f );
+    TESTLABS_CHECK_EQ_FLT( container.get_effective_minimum_size().y, 0.0f );
 }
 
 
