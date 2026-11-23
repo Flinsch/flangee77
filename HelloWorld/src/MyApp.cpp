@@ -290,7 +290,7 @@ namespace helloworld {
 
 
         // 9-slicing demo chrome atlas (see assets/gfx/chrome.ppm): two 32x32
-        // raised-bevel sprites side by side, 8px border each, window chrome on
+        // raised-bevel sprites side by side, 8px border each, frame chrome on
         // the left half, button chrome on the right half.
         xl7::graphics::images::Image chrome_image;
         netpbm_image_reader.load_from_file(cl7::platform::filesystem::get_working_directory() + u8"assets/gfx/chrome.ppm", chrome_image);

@@ -17,7 +17,7 @@ namespace fl7::gui {
  * drawn (see `render::BackgroundHelper`) onto an arbitrarily sized destination rect,
  * corners are placed at native size, edges stretch along their one free axis, and
  * the center stretches along both: the classic 9-slice/9-patch technique for
- * scaling chrome (window/panel backgrounds, button skins, etc.) without distorting
+ * scaling chrome (frame/panel backgrounds, button skins, etc.) without distorting
  * borders or corners.
  */
 struct NineSliceChrome

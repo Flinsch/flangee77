@@ -18,9 +18,9 @@ namespace fl7::gui::faces {
 
 
 /**
- * A top-level frame window: a background/border chrome (see `Style`) around an
- * internal content area, exposed via `get_content_area()` (the only place a caller
- * can actually add children, since this is a `Compound`: fixed internal composition,
+ * A top-level window: a background/border chrome (see `Style`) around an internal
+ * content area, exposed via `get_content_area()` (the only place a caller can
+ * actually add children, since this is a `Compound`: fixed internal composition,
  * not arbitrary public children), with a fixed title bar (title text plus a close
  * button) on top of it, draggable (by that title bar) to move it and, by a small
  * grip in its bottom-right corner, to resize it (clamped to a sane minimum size).

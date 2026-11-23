@@ -17,7 +17,7 @@ namespace fl7::gui {
 /**
  * A named, cascading bundle of visual defaults: one theme-wide default level, plus
  * any number of face-type/role levels, keyed by the faces' own theme keys (e.g.,
- * "window", "button", etc.), each with its own optional checked/hovered/pressed/
+ * "frame", "button", etc.), each with its own optional checked/hovered/pressed/
  * focused overlays (see `ThemeLevel`, `resolve()`).
  */
 class Theme

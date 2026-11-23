@@ -331,7 +331,7 @@ protected:
 
     /**
      * Returns this face's role/key for theme-based style resolution (see
-     * `get_effective_style()`), e.g., "window", "button", etc. Default: empty,
+     * `get_effective_style()`), e.g., "frame", "button", etc. Default: empty,
      * meaning this face type doesn't participate in theming (falls straight through
      * to the ordinary inherited-override/last-resort-default style). Override in
      * concrete types that do.
