@@ -4,6 +4,8 @@ var classfl7_1_1gui_1_1faces_1_1DropDown =
     [ "DropDown", "d6/d2a/classfl7_1_1gui_1_1faces_1_1DropDown.html#a0305920e6a16575cfd31451cb03f4fc2", null ],
     [ "DropDown", "d6/d2a/classfl7_1_1gui_1_1faces_1_1DropDown.html#ae8241a3f0371cd365295df76f50f42b9", null ],
     [ "~DropDown", "d6/d2a/classfl7_1_1gui_1_1faces_1_1DropDown.html#a588e720850acf8bf8a22b294e58662cd", null ],
+    [ "_calculate_minimum_size", "d6/d2a/classfl7_1_1gui_1_1faces_1_1DropDown.html#a1be7d7c6b556e469d90814803c445bad", null ],
+    [ "_calculate_preferred_size", "d6/d2a/classfl7_1_1gui_1_1faces_1_1DropDown.html#a3b5e3b2b2730e154f7771352555ee0dc", null ],
     [ "_close_popup", "d6/d2a/classfl7_1_1gui_1_1faces_1_1DropDown.html#ad70764f6e88e271f111df94b1268a12b", null ],
     [ "_consumes_arrow", "d6/d2a/classfl7_1_1gui_1_1faces_1_1DropDown.html#a97de974fa286b5301cc9e8c9dfb6c5e0", null ],
     [ "_ensure_popup", "d6/d2a/classfl7_1_1gui_1_1faces_1_1DropDown.html#acd640822482685891798f5217833e8d8", null ],

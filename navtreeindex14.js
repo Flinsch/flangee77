@@ -1,5 +1,11 @@
 var NAVTREEINDEX14 =
 {
+"d3/dc5/namespacexl7_1_1graphics_1_1impl_1_1direct3d9_1_1states.html#acf20b0e5bfcb625406e5633d45a9e709":[5,0,8,2,1,1,4,6],
+"d3/dc8/Label_8h.html":[8,0,3,1,0,9],
+"d3/dc8/Label_8h_source.html":[8,0,3,1,0,9],
+"d3/dcb/structxl7_1_1graphics_1_1impl_1_1shared_1_1textures_1_1TextureDiscardPolicy_1_1UpdateRecommendation.html":[5,0,8,2,1,2,3,0,1],
+"d3/dcb/structxl7_1_1graphics_1_1impl_1_1shared_1_1textures_1_1TextureDiscardPolicy_1_1UpdateRecommendation.html":[7,0,8,1,1,2,2,0,1],
+"d3/dcb/structxl7_1_1graphics_1_1impl_1_1shared_1_1textures_1_1TextureDiscardPolicy_1_1UpdateRecommendation.html#a0a4befb12a16d638ab08533741b4d2ff":[5,0,8,2,1,2,3,0,1,0],
 "d3/dcb/structxl7_1_1graphics_1_1impl_1_1shared_1_1textures_1_1TextureDiscardPolicy_1_1UpdateRecommendation.html#a0a4befb12a16d638ab08533741b4d2ff":[7,0,8,1,1,2,2,0,1,0],
 "d3/dcb/structxl7_1_1graphics_1_1impl_1_1shared_1_1textures_1_1TextureDiscardPolicy_1_1UpdateRecommendation.html#a476f450589d370ec3ab46bdb2307f3e6":[5,0,8,2,1,2,3,0,1,1],
 "d3/dcb/structxl7_1_1graphics_1_1impl_1_1shared_1_1textures_1_1TextureDiscardPolicy_1_1UpdateRecommendation.html#a476f450589d370ec3ab46bdb2307f3e6":[7,0,8,1,1,2,2,0,1,1],
@@ -243,11 +249,5 @@ var NAVTREEINDEX14 =
 "d3/de8/structcl7_1_1text_1_1codec_1_1EncodeResult.html#af0d1e05d595ea0e3e3d6bd9334fad902":[7,0,1,9,0,9,3],
 "d3/de8/structcl7_1_1text_1_1codec_1_1EncodeResult.html#af1370ce3c3c2ff87042d163612bdc4fa":[5,0,1,11,0,9,0],
 "d3/de8/structcl7_1_1text_1_1codec_1_1EncodeResult.html#af1370ce3c3c2ff87042d163612bdc4fa":[7,0,1,9,0,9,0],
-"d3/de8/structcl7_1_1text_1_1codec_1_1EncodeResult.html#afd3dd62c56bf5d41cd154da4645d10e1":[5,0,1,11,0,9,2],
-"d3/de8/structcl7_1_1text_1_1codec_1_1EncodeResult.html#afd3dd62c56bf5d41cd154da4645d10e1":[7,0,1,9,0,9,2],
-"d3/de9/PixelLayout_8cpp.html":[8,0,7,1,20],
-"d3/dea/Profiler_8cpp.html":[8,0,1,6,0],
-"d3/dea/structcl7_1_1profiling_1_1SampleHandler.html":[5,0,1,9,3],
-"d3/dea/structcl7_1_1profiling_1_1SampleHandler.html":[7,0,1,7,3],
-"d3/dea/structcl7_1_1profiling_1_1SampleHandler.html#a2e18cbdae308348be85b98432213b2c5":[5,0,1,9,3,4]
+"d3/de8/structcl7_1_1text_1_1codec_1_1EncodeResult.html#afd3dd62c56bf5d41cd154da4645d10e1":[5,0,1,11,0,9,2]
 };

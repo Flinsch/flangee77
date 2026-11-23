@@ -1,5 +1,11 @@
 var NAVTREEINDEX13 =
 {
+"d3/d7a/structxl7_1_1graphics_1_1textures_1_1CubemapWrite.html#a57fbeca08b726925fa4f4460c7c804dd":[7,0,8,1,7,3,1],
+"d3/d7a/structxl7_1_1graphics_1_1textures_1_1CubemapWrite.html#a605d3ec2ea19b7b78fd7c2264e67515b":[5,0,8,2,7,3,2],
+"d3/d7a/structxl7_1_1graphics_1_1textures_1_1CubemapWrite.html#a605d3ec2ea19b7b78fd7c2264e67515b":[7,0,8,1,7,3,2],
+"d3/d7a/structxl7_1_1graphics_1_1textures_1_1CubemapWrite.html#afe03c8669f38b48877b594b0c4d24744":[5,0,8,2,7,3,0],
+"d3/d7a/structxl7_1_1graphics_1_1textures_1_1CubemapWrite.html#afe03c8669f38b48877b594b0c4d24744":[7,0,8,1,7,3,0],
+"d3/d7c/AbstractLogHandler_8cpp.html":[8,0,1,4,0],
 "d3/d7e/classcl7_1_1behavioral_1_1Signal.html":[5,0,1,0,2],
 "d3/d7e/classcl7_1_1behavioral_1_1Signal.html":[7,0,1,0,2],
 "d3/d7e/classcl7_1_1behavioral_1_1Signal.html#a0fd5f28a7f82fe628ae9d160c16f7dda":[5,0,1,0,2,5],
@@ -243,11 +249,5 @@ var NAVTREEINDEX13 =
 "d3/dc5/namespacexl7_1_1graphics_1_1impl_1_1direct3d9_1_1states.html#a7783226c2adf782db8e01796f82c8e37":[5,0,8,2,1,1,4,10],
 "d3/dc5/namespacexl7_1_1graphics_1_1impl_1_1direct3d9_1_1states.html#a77d1ecf28a1206a8f8d064a898fab7e3":[5,0,8,2,1,1,4,11],
 "d3/dc5/namespacexl7_1_1graphics_1_1impl_1_1direct3d9_1_1states.html#aa4cd7fadec8f9d93672e0152987a7151":[5,0,8,2,1,1,4,9],
-"d3/dc5/namespacexl7_1_1graphics_1_1impl_1_1direct3d9_1_1states.html#ac33753debf62739388c45eef6b49b908":[5,0,8,2,1,1,4,8],
-"d3/dc5/namespacexl7_1_1graphics_1_1impl_1_1direct3d9_1_1states.html#acf20b0e5bfcb625406e5633d45a9e709":[5,0,8,2,1,1,4,6],
-"d3/dc8/Label_8h.html":[8,0,3,1,0,9],
-"d3/dc8/Label_8h_source.html":[8,0,3,1,0,9],
-"d3/dcb/structxl7_1_1graphics_1_1impl_1_1shared_1_1textures_1_1TextureDiscardPolicy_1_1UpdateRecommendation.html":[5,0,8,2,1,2,3,0,1],
-"d3/dcb/structxl7_1_1graphics_1_1impl_1_1shared_1_1textures_1_1TextureDiscardPolicy_1_1UpdateRecommendation.html":[7,0,8,1,1,2,2,0,1],
-"d3/dcb/structxl7_1_1graphics_1_1impl_1_1shared_1_1textures_1_1TextureDiscardPolicy_1_1UpdateRecommendation.html#a0a4befb12a16d638ab08533741b4d2ff":[5,0,8,2,1,2,3,0,1,0]
+"d3/dc5/namespacexl7_1_1graphics_1_1impl_1_1direct3d9_1_1states.html#ac33753debf62739388c45eef6b49b908":[5,0,8,2,1,1,4,8]
 };
