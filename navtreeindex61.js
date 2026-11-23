@@ -1,5 +1,11 @@
 var NAVTREEINDEX61 =
 {
+"dc/ddf/classxl7_1_1resources_1_1ResourceWithData.html#a8e20e15e0509d88546f0c6dd7127341c":[5,0,8,4,6,11],
+"dc/ddf/classxl7_1_1resources_1_1ResourceWithData.html#a8e20e15e0509d88546f0c6dd7127341c":[7,0,8,3,6,11],
+"dc/ddf/classxl7_1_1resources_1_1ResourceWithData.html#aada4bd6ca1d164487554bfb5b1a25933":[5,0,8,4,6,5],
+"dc/ddf/classxl7_1_1resources_1_1ResourceWithData.html#aada4bd6ca1d164487554bfb5b1a25933":[7,0,8,3,6,5],
+"dc/ddf/classxl7_1_1resources_1_1ResourceWithData.html#abf7e8015eceea610544689bd78cde56d":[5,0,8,4,6,3],
+"dc/ddf/classxl7_1_1resources_1_1ResourceWithData.html#abf7e8015eceea610544689bd78cde56d":[7,0,8,3,6,3],
 "dc/ddf/classxl7_1_1resources_1_1ResourceWithData.html#af8c83e20f87fb800a7112a6049863d75":[5,0,8,4,6,0],
 "dc/ddf/classxl7_1_1resources_1_1ResourceWithData.html#af8c83e20f87fb800a7112a6049863d75":[7,0,8,3,6,0],
 "dc/de3/structxl7_1_1graphics_1_1impl_1_1shared_1_1meshes_1_1MeshBufferDiscardPolicy_1_1UpdateRecommendation.html":[5,0,8,2,1,2,1,1,1],
@@ -243,11 +249,5 @@ var NAVTREEINDEX61 =
 "dd/d02/structfl7_1_1gui_1_1Style.html":[7,0,3,1,20],
 "dd/d02/structfl7_1_1gui_1_1Style.html#a0d8d38ebe7f407323a516ef345d0d812":[5,0,3,1,20,3],
 "dd/d02/structfl7_1_1gui_1_1Style.html#a0d8d38ebe7f407323a516ef345d0d812":[7,0,3,1,20,3],
-"dd/d02/structfl7_1_1gui_1_1Style.html#a31b07c7075b07064f2cca690fc7481aa":[5,0,3,1,20,2],
-"dd/d02/structfl7_1_1gui_1_1Style.html#a31b07c7075b07064f2cca690fc7481aa":[7,0,3,1,20,2],
-"dd/d02/structfl7_1_1gui_1_1Style.html#a8098a3fb022be664fe789e4a79e3b358":[5,0,3,1,20,11],
-"dd/d02/structfl7_1_1gui_1_1Style.html#a8098a3fb022be664fe789e4a79e3b358":[7,0,3,1,20,11],
-"dd/d02/structfl7_1_1gui_1_1Style.html#a8cde85beb8810c0bd6b4f020c30e37d6":[5,0,3,1,20,5],
-"dd/d02/structfl7_1_1gui_1_1Style.html#a8cde85beb8810c0bd6b4f020c30e37d6":[7,0,3,1,20,5],
-"dd/d02/structfl7_1_1gui_1_1Style.html#a9befece0b0d852fcd3f1762fd9e084c5":[5,0,3,1,20,6]
+"dd/d02/structfl7_1_1gui_1_1Style.html#a31b07c7075b07064f2cca690fc7481aa":[5,0,3,1,20,2]
 };

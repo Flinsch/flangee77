@@ -502,7 +502,7 @@ requires (std::derived_from&lt;TFace, <a class="el" href="../../d9/d1a/classfl7_
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Constructs a new child <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a> of the specified type in place, adds it, re-performs this container's layout (if any; see <span class="tt"><a class="el" href="#a3c8e995da93504b13f72c8acceeaaa82">set_layout()</a></span>), and returns a reference to the new child. </p>
+<p>Constructs a new child <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a> of the specified type in place, adds it, re-performs this container's layout (if any; see <span class="tt"><a class="el" href="#a3c8e995da93504b13f72c8acceeaaa82">set_layout()</a></span>), and returns a reference to the new child. If a layout is attached, prefer adding through its own <span class="tt"><a class="el" href="#a07a865e38cfd6bf3654f7bab50fc45a1">add_child()</a></span> instead: a child added here bypasses whatever placement bookkeeping that layout does, so it's simply left wherever it already is, unarranged by it. </p>
 
 </div>
 </div>

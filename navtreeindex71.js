@@ -1,5 +1,17 @@
 var NAVTREEINDEX71 =
 {
+"de/df3/structxl7_1_1graphics_1_1Color.html#a930e335c21377f75e7ab1c1ab9437474":[5,0,8,2,8,34],
+"de/df3/structxl7_1_1graphics_1_1Color.html#a930e335c21377f75e7ab1c1ab9437474":[7,0,8,1,8,34],
+"de/df3/structxl7_1_1graphics_1_1Color.html#a952f4fc49beee4b4fdc0116ece9f875e":[5,0,8,2,8,61],
+"de/df3/structxl7_1_1graphics_1_1Color.html#a952f4fc49beee4b4fdc0116ece9f875e":[7,0,8,1,8,61],
+"de/df3/structxl7_1_1graphics_1_1Color.html#a961bccac85d0a57ae89178bc93285a56":[5,0,8,2,8,5],
+"de/df3/structxl7_1_1graphics_1_1Color.html#a961bccac85d0a57ae89178bc93285a56":[7,0,8,1,8,5],
+"de/df3/structxl7_1_1graphics_1_1Color.html#aab86990af5cd0726f76f4d58130349ca":[5,0,8,2,8,38],
+"de/df3/structxl7_1_1graphics_1_1Color.html#aab86990af5cd0726f76f4d58130349ca":[7,0,8,1,8,38],
+"de/df3/structxl7_1_1graphics_1_1Color.html#aacbfb36aa848e315d3e69bc26a5343db":[5,0,8,2,8,35],
+"de/df3/structxl7_1_1graphics_1_1Color.html#aacbfb36aa848e315d3e69bc26a5343db":[7,0,8,1,8,35],
+"de/df3/structxl7_1_1graphics_1_1Color.html#aaed5742d2ee703938969f235c948a11f":[5,0,8,2,8,57],
+"de/df3/structxl7_1_1graphics_1_1Color.html#aaed5742d2ee703938969f235c948a11f":[7,0,8,1,8,57],
 "de/df3/structxl7_1_1graphics_1_1Color.html#abb2fb37f664edc844cf05eba11c7f9fe":[5,0,8,2,8,56],
 "de/df3/structxl7_1_1graphics_1_1Color.html#abb2fb37f664edc844cf05eba11c7f9fe":[7,0,8,1,8,56],
 "de/df3/structxl7_1_1graphics_1_1Color.html#abc7da1f4b54dbd3530cb3aaac0bc8546":[5,0,8,2,8,6],
@@ -237,17 +249,5 @@ var NAVTREEINDEX71 =
 "df/d15/LogContext_8h_source.html":[8,0,1,4,9],
 "df/d16/classxl7_1_1detail_1_1IClipboardImpl.html":[5,0,8,1,0],
 "df/d16/classxl7_1_1detail_1_1IClipboardImpl.html":[7,0,8,0,0],
-"df/d16/classxl7_1_1detail_1_1IClipboardImpl.html#a1a6785a09e7b5dee3c4c650a335a7485":[5,0,8,1,0,2],
-"df/d16/classxl7_1_1detail_1_1IClipboardImpl.html#a1a6785a09e7b5dee3c4c650a335a7485":[7,0,8,0,0,2],
-"df/d16/classxl7_1_1detail_1_1IClipboardImpl.html#a40d115bb755b4946847b59ab9320595a":[5,0,8,1,0,1],
-"df/d16/classxl7_1_1detail_1_1IClipboardImpl.html#a40d115bb755b4946847b59ab9320595a":[7,0,8,0,0,1],
-"df/d16/classxl7_1_1detail_1_1IClipboardImpl.html#aa850fb68d257ef6230d5ee7cd7772ed2":[5,0,8,1,0,0],
-"df/d16/classxl7_1_1detail_1_1IClipboardImpl.html#aa850fb68d257ef6230d5ee7cd7772ed2":[7,0,8,0,0,0],
-"df/d16/namespacexl7_1_1graphics_1_1impl_1_1direct3d9_1_1shaders.html":[5,0,8,2,1,1,3],
-"df/d17/KeyboardMouseSystemImpl_8h.html":[8,0,7,2,0,0,1],
-"df/d17/KeyboardMouseSystemImpl_8h_source.html":[8,0,7,2,0,0,1],
-"df/d19/structxl7_1_1graphics_1_1meshes_1_1MeshBufferWrite.html":[5,0,8,2,2,10],
-"df/d19/structxl7_1_1graphics_1_1meshes_1_1MeshBufferWrite.html":[7,0,8,1,2,10],
-"df/d19/structxl7_1_1graphics_1_1meshes_1_1MeshBufferWrite.html#a68157e58216c8032ca1745df32dc9575":[5,0,8,2,2,10,1],
-"df/d19/structxl7_1_1graphics_1_1meshes_1_1MeshBufferWrite.html#a68157e58216c8032ca1745df32dc9575":[7,0,8,1,2,10,1]
+"df/d16/classxl7_1_1detail_1_1IClipboardImpl.html#a1a6785a09e7b5dee3c4c650a335a7485":[5,0,8,1,0,2]
 };

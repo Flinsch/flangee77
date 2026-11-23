@@ -1,5 +1,11 @@
 var NAVTREEINDEX52 =
 {
+"db/d07/Mouse_8h.html":[8,0,7,2,17],
+"db/d07/Mouse_8h_source.html":[8,0,7,2,17],
+"db/d08/Contour_8h.html":[8,0,3,0,5],
+"db/d08/Contour_8h_source.html":[8,0,3,0,5],
+"db/d0d/gui_2render_2AbstractRenderer_8cpp.html":[8,0,3,1,2,0],
+"db/d10/TrueTypeFontLoader_8cpp.html":[8,0,3,0,0,0,2],
 "db/d13/classfl7_1_1gui_1_1HasBackground.html":[5,0,3,1,8],
 "db/d13/classfl7_1_1gui_1_1HasBackground.html":[7,0,3,1,8],
 "db/d13/classfl7_1_1gui_1_1HasBackground.html#a2113eec83c1c8e974a0480bcf9bb0ec6":[5,0,3,1,8,0],
@@ -243,11 +249,5 @@ var NAVTREEINDEX52 =
 "db/d48/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1ChunkReader.html":[7,0,8,1,0,0,1,0],
 "db/d48/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1ChunkReader.html#a3c4ce171a2ccc6c73e3ffc05dc5ae117":[5,0,8,2,0,0,1,0,1],
 "db/d48/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1ChunkReader.html#a3c4ce171a2ccc6c73e3ffc05dc5ae117":[7,0,8,1,0,0,1,0,1],
-"db/d48/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1ChunkReader.html#ab20cccbb139b1b135884aa4c55dbad33":[5,0,8,2,0,0,1,0,2],
-"db/d48/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1ChunkReader.html#ab20cccbb139b1b135884aa4c55dbad33":[7,0,8,1,0,0,1,0,2],
-"db/d48/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1ChunkReader.html#ab9395a7c5b7af5e0b082db64b86289c9":[5,0,8,2,0,0,1,0,3],
-"db/d48/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1ChunkReader.html#ab9395a7c5b7af5e0b082db64b86289c9":[7,0,8,1,0,0,1,0,3],
-"db/d4d/xml_2detail_2Builder_8cpp.html":[8,0,2,6,0,0],
-"db/d4f/namespaceml7_1_1distance2.html":[5,0,4,1],
-"db/d4f/namespaceml7_1_1distance2.html#a80e3c5c437b4320a512359f30a81bad8":[5,0,4,1,4]
+"db/d48/structxl7_1_1graphics_1_1images_1_1codecs_1_1png_1_1ChunkReader.html#ab20cccbb139b1b135884aa4c55dbad33":[5,0,8,2,0,0,1,0,2]
 };

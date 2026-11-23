@@ -314,11 +314,12 @@ var searchData=
   ['green_311',['GREEN',['../de/df3/structxl7_1_1graphics_1_1Color.html#ae7dd9ce5aee17add9e87012878f974fc',1,'xl7::graphics::Color']]],
   ['green_312',['Green',['../df/d9d/namespacetl7_1_1reporting.html#a2076a4332e2f7ada874779153be0a740aed3245396b7a3cba1d6cdee95c887f54',1,'tl7::reporting::Green'],['../d8/d30/namespacexl7_1_1graphics.html#a7f932a51645d57b7b508969692d213dead382816a3cbeed082c9e216e7392eed1',1,'xl7::graphics::Green']]],
   ['group_313',['Group',['../da/d74/structtl7_1_1Stats_1_1Group.html',1,'tl7::Stats']]],
-  ['guid_314',['Guid',['../dc/dbd/structcl7_1_1Guid.html',1,'cl7::Guid'],['../dc/dbd/structcl7_1_1Guid.html#aca05495200e4422a23d9da1063220f76',1,'cl7::Guid::Guid()'],['../dc/dbd/structcl7_1_1Guid.html#ac03a92151437cfdb73eecc30844b3f76',1,'cl7::Guid::Guid(const std::array&lt; std::byte, 16 &gt; &amp;bytes)'],['../dc/dbd/structcl7_1_1Guid.html#a3040f328b15399ee4685271cebd3f64c',1,'cl7::Guid::Guid(cl7::u8string_view string)']]],
-  ['guid_2ecpp_315',['Guid.cpp',['../dd/dc0/Guid_8cpp.html',1,'']]],
-  ['guid_2eh_316',['Guid.h',['../d6/d2a/Guid_8h.html',1,'']]],
-  ['guide_317',['Code Style Guide',['../de/d95/md_code-style-guide.html',1,'']]],
-  ['guillotinepacker_318',['GuillotinePacker',['../de/da8/classal7_1_1packing_1_1GuillotinePacker.html',1,'al7::packing::GuillotinePacker'],['../de/da8/classal7_1_1packing_1_1GuillotinePacker.html#a06888879690d430a8d4fa98cb466cea4',1,'al7::packing::GuillotinePacker::GuillotinePacker()']]],
-  ['guillotinepacker_2ecpp_319',['GuillotinePacker.cpp',['../d4/dac/GuillotinePacker_8cpp.html',1,'']]],
-  ['guillotinepacker_2eh_320',['GuillotinePacker.h',['../dc/d79/GuillotinePacker_8h.html',1,'']]]
+  ['gui_3a_3acontainer_314',['Container',['../d5/d1e/classfl7_1_1gui_1_1layout_1_1Layout.html#a4b59c95768c7207947604d2678161d38',1,'fl7::gui::layout::Layout']]],
+  ['guid_315',['Guid',['../dc/dbd/structcl7_1_1Guid.html',1,'cl7::Guid'],['../dc/dbd/structcl7_1_1Guid.html#aca05495200e4422a23d9da1063220f76',1,'cl7::Guid::Guid()'],['../dc/dbd/structcl7_1_1Guid.html#ac03a92151437cfdb73eecc30844b3f76',1,'cl7::Guid::Guid(const std::array&lt; std::byte, 16 &gt; &amp;bytes)'],['../dc/dbd/structcl7_1_1Guid.html#a3040f328b15399ee4685271cebd3f64c',1,'cl7::Guid::Guid(cl7::u8string_view string)']]],
+  ['guid_2ecpp_316',['Guid.cpp',['../dd/dc0/Guid_8cpp.html',1,'']]],
+  ['guid_2eh_317',['Guid.h',['../d6/d2a/Guid_8h.html',1,'']]],
+  ['guide_318',['Code Style Guide',['../de/d95/md_code-style-guide.html',1,'']]],
+  ['guillotinepacker_319',['GuillotinePacker',['../de/da8/classal7_1_1packing_1_1GuillotinePacker.html',1,'al7::packing::GuillotinePacker'],['../de/da8/classal7_1_1packing_1_1GuillotinePacker.html#a06888879690d430a8d4fa98cb466cea4',1,'al7::packing::GuillotinePacker::GuillotinePacker()']]],
+  ['guillotinepacker_2ecpp_320',['GuillotinePacker.cpp',['../d4/dac/GuillotinePacker_8cpp.html',1,'']]],
+  ['guillotinepacker_2eh_321',['GuillotinePacker.h',['../dc/d79/GuillotinePacker_8h.html',1,'']]]
 ];

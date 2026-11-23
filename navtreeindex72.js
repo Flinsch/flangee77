@@ -1,5 +1,17 @@
 var NAVTREEINDEX72 =
 {
+"df/d16/classxl7_1_1detail_1_1IClipboardImpl.html#a1a6785a09e7b5dee3c4c650a335a7485":[7,0,8,0,0,2],
+"df/d16/classxl7_1_1detail_1_1IClipboardImpl.html#a40d115bb755b4946847b59ab9320595a":[5,0,8,1,0,1],
+"df/d16/classxl7_1_1detail_1_1IClipboardImpl.html#a40d115bb755b4946847b59ab9320595a":[7,0,8,0,0,1],
+"df/d16/classxl7_1_1detail_1_1IClipboardImpl.html#aa850fb68d257ef6230d5ee7cd7772ed2":[5,0,8,1,0,0],
+"df/d16/classxl7_1_1detail_1_1IClipboardImpl.html#aa850fb68d257ef6230d5ee7cd7772ed2":[7,0,8,0,0,0],
+"df/d16/namespacexl7_1_1graphics_1_1impl_1_1direct3d9_1_1shaders.html":[5,0,8,2,1,1,3],
+"df/d17/KeyboardMouseSystemImpl_8h.html":[8,0,7,2,0,0,1],
+"df/d17/KeyboardMouseSystemImpl_8h_source.html":[8,0,7,2,0,0,1],
+"df/d19/structxl7_1_1graphics_1_1meshes_1_1MeshBufferWrite.html":[5,0,8,2,2,10],
+"df/d19/structxl7_1_1graphics_1_1meshes_1_1MeshBufferWrite.html":[7,0,8,1,2,10],
+"df/d19/structxl7_1_1graphics_1_1meshes_1_1MeshBufferWrite.html#a68157e58216c8032ca1745df32dc9575":[5,0,8,2,2,10,1],
+"df/d19/structxl7_1_1graphics_1_1meshes_1_1MeshBufferWrite.html#a68157e58216c8032ca1745df32dc9575":[7,0,8,1,2,10,1],
 "df/d19/structxl7_1_1graphics_1_1meshes_1_1MeshBufferWrite.html#a8bf6dd1fb40235a1ae9290a42612ca3e":[5,0,8,2,2,10,2],
 "df/d19/structxl7_1_1graphics_1_1meshes_1_1MeshBufferWrite.html#a8bf6dd1fb40235a1ae9290a42612ca3e":[7,0,8,1,2,10,2],
 "df/d19/structxl7_1_1graphics_1_1meshes_1_1MeshBufferWrite.html#aaf3c03ebfc13aa4be19013f40006817e":[5,0,8,2,2,10,0],
@@ -237,17 +249,5 @@ var NAVTREEINDEX72 =
 "df/d6d/namespacexl7_1_1input.html#a777a3fd099c5613d4762ba50984327b3a2cd349073c4937c593353ffe98956c58":[5,0,8,3,7,6],
 "df/d6d/namespacexl7_1_1input.html#a777a3fd099c5613d4762ba50984327b3a36131cbdc50218d923d0bcb0d9870e1c":[5,0,8,3,7,8],
 "df/d6d/namespacexl7_1_1input.html#a777a3fd099c5613d4762ba50984327b3a4905ac9d6a22bdfc1ae096094ce6248d":[5,0,8,3,7,14],
-"df/d6d/namespacexl7_1_1input.html#a777a3fd099c5613d4762ba50984327b3a57cec4137b614c87cb4e24a3d003a3e0":[5,0,8,3,7,13],
-"df/d6d/namespacexl7_1_1input.html#a777a3fd099c5613d4762ba50984327b3a6e53ad4e24c7b597e15b2193883bf7f2":[5,0,8,3,7,0],
-"df/d6d/namespacexl7_1_1input.html#a777a3fd099c5613d4762ba50984327b3a7fc56270e7a70fa81a5935b72eacbe29":[5,0,8,3,7,10],
-"df/d6d/namespacexl7_1_1input.html#a777a3fd099c5613d4762ba50984327b3a826b0ea5950d9f05469d6f3ded8b570f":[5,0,8,3,7,1],
-"df/d6d/namespacexl7_1_1input.html#a777a3fd099c5613d4762ba50984327b3a9d5ed678fe57bcca610140957afab571":[5,0,8,3,7,11],
-"df/d6d/namespacexl7_1_1input.html#a777a3fd099c5613d4762ba50984327b3aa6122a65eaa676f700ae68d393054a37":[5,0,8,3,7,4],
-"df/d6d/namespacexl7_1_1input.html#a777a3fd099c5613d4762ba50984327b3ae499bf8bc6e897455b94cabc7a5c2da7":[5,0,8,3,7,7],
-"df/d6d/namespacexl7_1_1input.html#a777a3fd099c5613d4762ba50984327b3aee57d4f85b132ca155ad4f77e71b7df1":[5,0,8,3,7,3],
-"df/d6d/namespacexl7_1_1input.html#a82f54fb48696c5decb999c49bc57641f":[5,0,8,3,15],
-"df/d6d/namespacexl7_1_1input.html#a90c3dec896f81a99c82028197ad95eaf":[5,0,8,3,18],
-"df/d6d/namespacexl7_1_1input.html#ab01b92ac3d91f65856dc7e7f34365e91":[5,0,8,3,19],
-"df/d6d/namespacexl7_1_1input.html#abe528627c6556cb308cd570df5723c45":[5,0,8,3,9],
-"df/d6d/namespacexl7_1_1input.html#abe528627c6556cb308cd570df5723c45a013ec032d3460d4be4431c6ab1f8f224":[5,0,8,3,9,51]
+"df/d6d/namespacexl7_1_1input.html#a777a3fd099c5613d4762ba50984327b3a57cec4137b614c87cb4e24a3d003a3e0":[5,0,8,3,7,13]
 };
