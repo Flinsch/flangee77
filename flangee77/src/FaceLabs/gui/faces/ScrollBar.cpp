@@ -71,11 +71,45 @@ namespace fl7::gui::faces {
         _layout();
     }
 
+    /** Returns this scroll bar's chrome size; see `_calculate_chrome_size()`. */
+    ml7::Vector2f ScrollBar::_calculate_preferred_size() const
+    {
+        return _calculate_chrome_size();
+    }
+
+    /** Returns this scroll bar's chrome size; see `_calculate_chrome_size()`. */
+    ml7::Vector2f ScrollBar::_calculate_minimum_size() const
+    {
+        return _calculate_chrome_size();
+    }
+
 
 
     // #############################################################################
     // Helpers
     // #############################################################################
+
+    /**
+     * Returns the minimum room this scroll bar needs: the standard thickness
+     * for this kind of track (see `Style::scroll_bar_thickness`) on the cross
+     * axis; on the main axis, room for both step buttons (each a square of
+     * that same thickness) if `get_show_buttons()`, else just the slider's
+     * own minimum main-axis size (with no buttons, this scroll bar is just
+     * its slider). Shared by `_calculate_preferred_size()` and
+     * `_calculate_minimum_size()`, which (absent any other opinion of their
+     * own) both equal this.
+     */
+    ml7::Vector2f ScrollBar::_calculate_chrome_size() const
+    {
+        const bool horizontal = _orientation == Orientation::Horizontal;
+        const float thickness = get_effective_style().scroll_bar_thickness;
+
+        const ml7::Vector2f slider_minimum = _slider.get_effective_minimum_size();
+        const float slider_main = horizontal ? slider_minimum.x : slider_minimum.y;
+        const float main = _show_buttons ? 2.0f * thickness : slider_main;
+
+        return horizontal ? ml7::Vector2f{main, thickness} : ml7::Vector2f{thickness, main};
+    }
 
     /**
      * Lays out the step buttons (if shown) at each end and the slider filling

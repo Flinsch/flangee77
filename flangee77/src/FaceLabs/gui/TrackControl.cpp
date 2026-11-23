@@ -210,11 +210,37 @@ namespace fl7::gui {
         return true;
     }
 
+    /** Returns this track's own chrome size; see `_calculate_chrome_size()`. */
+    ml7::Vector2f TrackControl::_calculate_preferred_size() const
+    {
+        return _calculate_chrome_size();
+    }
+
+    /** Returns this track's own chrome size; see `_calculate_chrome_size()`. */
+    ml7::Vector2f TrackControl::_calculate_minimum_size() const
+    {
+        return _calculate_chrome_size();
+    }
+
 
 
     // #############################################################################
     // Helpers
     // #############################################################################
+
+    /**
+     * Returns the minimum room this track needs: the standard thickness for
+     * this kind of track (see `Style::scroll_bar_thickness`) on the cross
+     * axis, and twice that on the main axis (room for a square handle of that
+     * same thickness, plus some actual travel to drag it along). Shared by
+     * `_calculate_preferred_size()` and `_calculate_minimum_size()`, which
+     * (absent any other opinion of their own) both equal this.
+     */
+    ml7::Vector2f TrackControl::_calculate_chrome_size() const
+    {
+        const float thickness = get_effective_style().scroll_bar_thickness;
+        return _make_vector(2.0f * thickness, thickness);
+    }
 
     /**
      * Returns how far the handle can travel along the main axis (the track's own main-axis size minus the handle's).

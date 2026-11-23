@@ -103,6 +103,12 @@ protected:
     /** Keeps the slider/buttons' sizes/positions in sync with this scroll bar's own size. */
     void _on_size_changed(ml7::Vector2f old_size, ml7::Vector2f new_size) override;
 
+    /** Returns this scroll bar's chrome size; see `_calculate_chrome_size()`. */
+    ml7::Vector2f _calculate_preferred_size() const override;
+
+    /** Returns this scroll bar's chrome size; see `_calculate_chrome_size()`. */
+    ml7::Vector2f _calculate_minimum_size() const override;
+
 
 
 private:
@@ -110,6 +116,18 @@ private:
     // #############################################################################
     // Helpers
     // #############################################################################
+
+    /**
+     * Returns the minimum room this scroll bar needs: the standard thickness
+     * for this kind of track (see `Style::scroll_bar_thickness`) on the cross
+     * axis; on the main axis, room for both step buttons (each a square of
+     * that same thickness) if `get_show_buttons()`, else just the slider's
+     * own minimum main-axis size (with no buttons, this scroll bar is just
+     * its slider). Shared by `_calculate_preferred_size()` and
+     * `_calculate_minimum_size()`, which (absent any other opinion of their
+     * own) both equal this.
+     */
+    ml7::Vector2f _calculate_chrome_size() const;
 
     /**
      * Lays out the step buttons (if shown) at each end and the slider filling

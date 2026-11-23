@@ -101,6 +101,22 @@ protected:
     void _on_size_changed(ml7::Vector2f old_size, ml7::Vector2f new_size) override;
 
     /**
+     * Returns the text label's own effective preferred size plus the arrow
+     * button's, side by side (width) and at whichever is taller (height): the
+     * size this drop-down would occupy if both actually got exactly their own
+     * preferred size.
+     */
+    ml7::Vector2f _calculate_preferred_size() const override;
+
+    /**
+     * Returns the text label's own effective minimum size plus the arrow
+     * button's, side by side (width) and at whichever is taller (height): the
+     * size this drop-down would occupy if both actually got exactly their own
+     * minimum size.
+     */
+    ml7::Vector2f _calculate_minimum_size() const override;
+
+    /**
      * Toggles the popup list open/closed. Also what Enter/Space triggers while this
      * drop-down is focused.
      */

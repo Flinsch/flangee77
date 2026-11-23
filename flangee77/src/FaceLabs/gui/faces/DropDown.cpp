@@ -100,6 +100,32 @@ namespace fl7::gui::faces {
     }
 
     /**
+     * Returns the text label's own effective preferred size plus the arrow
+     * button's, side by side (width) and at whichever is taller (height): the
+     * size this drop-down would occupy if both actually got exactly their own
+     * preferred size.
+     */
+    ml7::Vector2f DropDown::_calculate_preferred_size() const
+    {
+        const ml7::Vector2f label_size = _label.get_effective_preferred_size();
+        const ml7::Vector2f arrow_size = _arrow_button.get_effective_preferred_size();
+        return {label_size.x + arrow_size.x, std::max(label_size.y, arrow_size.y)};
+    }
+
+    /**
+     * Returns the text label's own effective minimum size plus the arrow
+     * button's, side by side (width) and at whichever is taller (height): the
+     * size this drop-down would occupy if both actually got exactly their own
+     * minimum size.
+     */
+    ml7::Vector2f DropDown::_calculate_minimum_size() const
+    {
+        const ml7::Vector2f label_size = _label.get_effective_minimum_size();
+        const ml7::Vector2f arrow_size = _arrow_button.get_effective_minimum_size();
+        return {label_size.x + arrow_size.x, std::max(label_size.y, arrow_size.y)};
+    }
+
+    /**
      * Toggles the popup list open/closed. Also what Enter/Space triggers while this
      * drop-down is focused.
      */

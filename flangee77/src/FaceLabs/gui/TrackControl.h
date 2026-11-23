@@ -175,6 +175,12 @@ protected:
     /** Nudges the value by `get_step()` per wheel notch, while hovered or bubbled up to. Always consumes. */
     bool _on_mouse_wheel(int delta) override;
 
+    /** Returns this track's own chrome size; see `_calculate_chrome_size()`. */
+    ml7::Vector2f _calculate_preferred_size() const override;
+
+    /** Returns this track's own chrome size; see `_calculate_chrome_size()`. */
+    ml7::Vector2f _calculate_minimum_size() const override;
+
     /** A `TrackControl` is an interactive leaf control, so it's a Tab stop. */
     bool _is_focusable() const override { return true; }
 
@@ -194,6 +200,16 @@ private:
     // #############################################################################
     // Helpers
     // #############################################################################
+
+    /**
+     * Returns the minimum room this track needs: the standard thickness for
+     * this kind of track (see `Style::scroll_bar_thickness`) on the cross
+     * axis, and twice that on the main axis (room for a square handle of that
+     * same thickness, plus some actual travel to drag it along). Shared by
+     * `_calculate_preferred_size()` and `_calculate_minimum_size()`, which
+     * (absent any other opinion of their own) both equal this.
+     */
+    ml7::Vector2f _calculate_chrome_size() const;
 
     /** Returns how far the handle can travel along the main axis (the track's own main-axis size minus the handle's). */
     float _get_track_range() const;
