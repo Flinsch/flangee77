@@ -3,6 +3,8 @@
 
 #include <FaceLabs/gui/Container.h>
 #include <FaceLabs/gui/Shell.h>
+#include <FaceLabs/gui/Style.h>
+#include <FaceLabs/gui/faces/Button.h>
 #include <FaceLabs/gui/faces/Frame.h>
 
 #include "../shared.h"
@@ -48,6 +50,52 @@ TESTLABS_CASE( u8"FaceLabs:  gui:  faces:  Frame:  get_title()/set_title()" )
 
     frame.set_title(U"Renamed");
     TESTLABS_CHECK_EQ( frame.get_title(), cl7::u32string(U"Renamed") );
+}
+
+TESTLABS_CASE( u8"FaceLabs:  gui:  faces:  Frame:  a frame's own Style::padding never applies to the frame itself (see Face::_applies_own_padding()), though an explicit override still cascades down to its (otherwise themeless/padding-less) content area, same as to any other descendant" )
+{
+    fl7::gui::faces::Frame frame;
+
+    fl7::gui::Style style;
+    style.padding = fl7::gui::Padding(50.0f); // Deliberately huge: would obviously show up below if it applied at all.
+    frame.set_style_override(style);
+
+    TESTLABS_CHECK_EQ_FLT( frame.get_effective_padding().left, 0.0f );
+    TESTLABS_CHECK_EQ_FLT( frame.get_effective_padding().top, 0.0f );
+
+    // The content area itself has no theme role of its own, so it falls
+    // through to Frame's own explicit override instead (see
+    // Face::_find_inherited_style_override()), and, being a plain,
+    // unlayouted Container, actually applies that inherited padding to
+    // itself; this is the pre-existing, generic override-cascading
+    // behavior, not something Frame's own suppression touches at all.
+    TESTLABS_CHECK_EQ_FLT( frame.get_content_area().get_effective_padding().left, 50.0f );
+}
+
+TESTLABS_CASE( u8"FaceLabs:  gui:  faces:  Frame:  get_content_area() is the only place a caller can actually add children; they become descendants of the content area, not the Frame itself" )
+{
+    fl7::gui::faces::Frame frame;
+
+    auto& button = frame.get_content_area().add_child<fl7::gui::faces::Button>(U"Caption");
+    TESTLABS_CHECK( button.get_parent() == &frame.get_content_area() );
+    TESTLABS_CHECK( button.get_parent() != static_cast<fl7::gui::Face*>(&frame) );
+}
+
+TESTLABS_CASE( u8"FaceLabs:  gui:  faces:  Frame:  the content area fills whatever's left below the title bar, and is kept in sync as the frame is resized" )
+{
+    fl7::gui::faces::Frame frame;
+
+    // Position/size are only laid out once a resize actually triggers it (see
+    // Frame::_on_size_changed()); a fresh frame hasn't had one yet.
+    frame.set_size({200.0f, 150.0f});
+    TESTLABS_CHECK_EQ_ROUND( 3, frame.get_content_area().get_position().x, 0.0f );
+    TESTLABS_CHECK_EQ_ROUND( 3, frame.get_content_area().get_position().y, 24.0f ); // The fixed title bar height.
+    TESTLABS_CHECK_EQ_ROUND( 3, frame.get_content_area().get_size().x, 200.0f );
+    TESTLABS_CHECK_EQ_ROUND( 3, frame.get_content_area().get_size().y, 126.0f ); // 150 minus the title bar.
+
+    frame.set_size({100.0f, 80.0f});
+    TESTLABS_CHECK_EQ_ROUND( 3, frame.get_content_area().get_size().x, 100.0f );
+    TESTLABS_CHECK_EQ_ROUND( 3, frame.get_content_area().get_size().y, 56.0f ); // 80 minus the title bar.
 }
 
 TESTLABS_CASE( u8"FaceLabs:  gui:  faces:  Frame:  open()/close() toggle visibility, emitting get_opened()/get_closed() only on an actual change" )
@@ -209,4 +257,34 @@ TESTLABS_CASE( u8"FaceLabs:  gui:  faces:  Frame:  pressing and dragging inside 
 
     input.set_button_down(xl7::input::MouseButton::Left, false);
     shell.update();
+}
+
+TESTLABS_CASE( u8"FaceLabs:  gui:  faces:  Frame:  a button added to the content area is hit-tested/clicked correctly, offset by the title bar" )
+{
+    f77_tests::gui::NullRenderer renderer;
+    f77_tests::gui::SimulatedInput input;
+    fl7::gui::Shell shell(&renderer, &input.mouse, &input.keyboard);
+
+    auto& frame = shell.add_face<fl7::gui::faces::Frame>(U"Title");
+    frame.set_position({10.0f, 10.0f});
+    frame.set_size({200.0f, 150.0f});
+
+    auto& button = frame.get_content_area().add_child<fl7::gui::faces::Button>(U"Caption");
+    button.set_position({20.0f, 20.0f});
+    button.set_size({80.0f, 24.0f});
+
+    int click_count = 0;
+    button.get_clicked().connect([&]() { ++click_count; });
+
+    // Button spans the frame's absolute (10+20, 10+24+20) to (10+100, 10+24+44):
+    // offset both by the frame's own position and by the title bar on top of
+    // the content area's own position.
+    input.move_mouse_to({60.0f, 64.0f});
+    shell.update();
+    input.set_button_down(xl7::input::MouseButton::Left, true);
+    shell.update();
+    input.set_button_down(xl7::input::MouseButton::Left, false);
+    shell.update();
+
+    TESTLABS_CHECK_EQ( click_count, 1 );
 }

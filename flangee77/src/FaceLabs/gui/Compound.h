@@ -17,7 +17,7 @@ namespace fl7::gui {
  * `Compound` subclass builds its own fixed internal parts (via the inherited
  * protected `add_child`, in its own constructor), and a caller can't add
  * arbitrary children onto it directly. If a `Compound` wants to accept
- * arbitrary caller content too (e.g., `Window`'s content area), it should
+ * arbitrary caller content too (e.g., `Frame`'s content area), it should
  * expose that narrowly and by name (e.g., `get_content_area()`), not via a
  * generic public `add_child`.
  */

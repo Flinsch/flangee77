@@ -74,7 +74,6 @@ target_sources(flangee77-tests
     FaceLabs/gui/faces/ScrollPanel.cpp
     FaceLabs/gui/faces/Slider.cpp
     FaceLabs/gui/faces/TextField.cpp
-    FaceLabs/gui/faces/Window.cpp
     FaceLabs/gui/layout/BoxLayout.cpp
     FaceLabs/gui/layout/DefaultLayout.cpp
     FaceLabs/gui/render/BackgroundHelper.cpp

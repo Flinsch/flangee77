@@ -249,7 +249,7 @@ namespace fl7::gui::faces {
 
         // This DropDown's own lifetime is NOT tied to the popup's: it's a separate
         // top-level Shell face (see the class doc comment), and Shell has no way to
-        // ever remove a top-level face again (same as, say, a Window). If this
+        // ever remove a top-level face again (same as, say, a Frame). If this
         // DropDown is destroyed first, this popup, and this connection's `this`
         // capture with it, just stays around, permanently hidden and unreachable,
         // for the shell's remaining lifetime: a known, pre-existing limitation of

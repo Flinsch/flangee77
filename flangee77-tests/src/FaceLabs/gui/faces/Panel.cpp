@@ -17,7 +17,7 @@
 // Plain API (no Shell/input involved)
 // #############################################################################
 
-TESTLABS_CASE( u8"FaceLabs:  gui:  faces:  Panel:  is directly a Container (unlike Window's Compound-gated content area): add_child()/remove_child() are public on the Panel itself" )
+TESTLABS_CASE( u8"FaceLabs:  gui:  faces:  Panel:  is directly a Container (unlike Frame's Compound-gated content area): add_child()/remove_child() are public on the Panel itself" )
 {
     fl7::gui::faces::Panel panel;
 

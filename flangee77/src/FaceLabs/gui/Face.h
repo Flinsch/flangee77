@@ -454,7 +454,7 @@ protected:
     /**
      * Called after this face's size has actually changed (see `set_size()`), with
      * both the old and the new size. Default: no-op. Override to react to a size
-     * change (e.g., `Window` keeping its internal content area in sync).
+     * change (e.g., `Frame` keeping its internal content area in sync).
      */
     virtual void _on_size_changed(ml7::Vector2f old_size, ml7::Vector2f new_size) {}
 

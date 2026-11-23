@@ -19,7 +19,7 @@ namespace fl7::gui::faces {
  * A `Panel`-like background/border chrome around an internal, always-present
  * vertical and horizontal `ScrollBar` plus an arbitrary, publicly addable content
  * area (see `get_content_area()`, the only place a caller can actually add
- * children, same as `Window`'s), whose content is allowed to be larger than its own
+ * children, same as `Frame`'s), whose content is allowed to be larger than its own
  * (viewport) bounds: scrolled into view via `get_scroll_position()` or
  * `set_scroll_position()`, clamped to `get_content_size()` (set explicitly by the
  * caller: there's no layout system yet to compute a content size from the children

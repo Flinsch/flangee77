@@ -1,6 +1,9 @@
 #ifndef FL7_GUI_FACES_FRAME_H
 #define FL7_GUI_FACES_FRAME_H
-#include "./Window.h"
+#include "../Compound.h"
+#include "../HasBackground.h"
+
+#include "../Container.h"
 
 #include "./Button.h"
 #include "./Label.h"
@@ -15,12 +18,18 @@ namespace fl7::gui::faces {
 
 
 /**
- * A Window with a fixed title bar (title text plus a close button) on top of its
- * content area, draggable (by that title bar) to move it and, by a small grip in
- * its bottom-right corner, to resize it (clamped to a sane minimum size).
+ * A top-level frame window: a background/border chrome (see `Style`) around an
+ * internal content area, exposed via `get_content_area()` (the only place a caller
+ * can actually add children, since this is a `Compound`: fixed internal composition,
+ * not arbitrary public children), with a fixed title bar (title text plus a close
+ * button) on top of it, draggable (by that title bar) to move it and, by a small
+ * grip in its bottom-right corner, to resize it (clamped to a sane minimum size).
+ * The content area fills whatever's left below the title bar and is kept in sync as
+ * the frame is resized.
  */
 class Frame
-    : public Window
+    : public Compound
+    , public HasBackground
 {
 
 public:
@@ -38,6 +47,11 @@ public:
     // #############################################################################
     // Properties
     // #############################################################################
+
+    /** Returns this frame's content area: the (only) place a caller can actually add children. */
+    Container& get_content_area() { return _content_area; }
+    /** Returns this frame's content area: the (only) place a caller can actually add children. */
+    const Container& get_content_area() const { return _content_area; }
 
     /** Returns this frame's title text. */
     const cl7::u32string& get_title() const { return _title_label.get_text(); }
@@ -77,6 +91,9 @@ protected:
     // Face Implementations
     // #############################################################################
 
+    /** Returns this frame's theme role. */
+    cl7::u8string_view _get_theme_key() const override { return u8"frame"; }
+
     /**
      * Lays out the title bar (title label and close button), the resize handle
      * (bottom-right corner), and the content area (the remainder below the title
@@ -85,20 +102,29 @@ protected:
     void _on_size_changed(ml7::Vector2f old_size, ml7::Vector2f new_size) override;
 
     /**
-     * Returns the content area's own effective preferred size (see `Window`), plus
-     * this frame's own fixed title bar height on top; width is otherwise
-     * unaffected, the title bar never needs more of it than the content area itself
+     * Returns the content area's own effective preferred size, plus this
+     * frame's own fixed title bar height on top; width is otherwise unaffected,
+     * the title bar never needs more of it than the content area itself
      * already does.
      */
     ml7::Vector2f _calculate_preferred_size() const override;
 
     /**
-     * Returns the content area's own effective minimum size (see `Window`), plus
-     * this frame's own fixed title bar height on top; width is otherwise
-     * unaffected, the title bar never needs more of it than the content area itself
-     * already does.
+     * Returns the content area's own effective minimum size, plus this frame's
+     * own fixed title bar height on top; width is otherwise unaffected, the
+     * title bar never needs more of it than the content area itself already
+     * does.
      */
     ml7::Vector2f _calculate_minimum_size() const override;
+
+    /**
+     * `false`: a frame's own `Style::padding` would currently have no actual
+     * effect (no text of its own, and its content area isn't inset by it the
+     * way `Container`'s own children are, since this is a `Compound`, not a
+     * `Container`; see `Container`'s own doc comment), so reporting a size
+     * padded for it would be misleading.
+     */
+    bool _applies_own_padding() const override { return false; }
 
     /**
      * Arms dragging if the press landed within the title bar strip.
@@ -144,11 +170,13 @@ private:
     // Attributes
     // #############################################################################
 
-    /** Non-owning: actually owned (as a child) by the inherited Collection. */
+    /** Non-owning: actually owned (as a child) by the inherited `Collection`. */
+    Container& _content_area;
+    /** Non-owning: actually owned (as a child) by the inherited `Collection`. */
     Label& _title_label;
-    /** Non-owning: actually owned (as a child) by the inherited Collection. */
+    /** Non-owning: actually owned (as a child) by the inherited `Collection`. */
     Button& _close_button;
-    /** Non-owning: actually owned (as a child) by the inherited Collection. */
+    /** Non-owning: actually owned (as a child) by the inherited `Collection`. */
     ResizeHandle& _resize_handle;
 
     cl7::behavioral::Signal<> _opened;

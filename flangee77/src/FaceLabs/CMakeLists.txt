@@ -50,7 +50,6 @@ target_sources(flangee77
     gui/faces/ScrollPanel.cpp
     gui/faces/Slider.cpp
     gui/faces/TextField.cpp
-    gui/faces/Window.cpp
 
     gui/layout/BoxLayout.cpp
     gui/layout/DefaultLayout.cpp

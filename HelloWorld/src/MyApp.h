@@ -128,11 +128,11 @@ private:
     std::unique_ptr<fl7::gui::Shell> _gui_shell;
     fl7::gui::RadioGroup _gui_radio_group;
     fl7::gui::Theme _gui_theme;
-    /** 9-slicing demo chrome atlas (see assets/gfx/chrome.ppm, backed by _gui_chrome_texture_id): window chrome on the left half, button chrome on the right half. */
-    fl7::gui::NineSliceChrome _gui_window_chrome;
+    /** 9-slicing demo chrome atlas (see assets/gfx/chrome.ppm, backed by _gui_chrome_texture_id): frame chrome on the left half, button chrome on the right half. */
+    fl7::gui::NineSliceChrome _gui_frame_chrome;
     fl7::gui::NineSliceChrome _gui_button_chrome;
 
-    /** Backs _gui_window_chrome/_gui_button_chrome (see NineSliceChrome). */
+    /** Backs _gui_frame_chrome/_gui_button_chrome (see NineSliceChrome). */
     xl7::graphics::textures::Texture::Id _gui_chrome_texture_id;
 
     /** Demo PictureBox image (reuses the dummy texture already loaded for the spinning quad above, backed by _texture_id). */

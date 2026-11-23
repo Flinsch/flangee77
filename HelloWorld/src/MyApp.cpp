@@ -311,12 +311,12 @@ namespace helloworld {
 
         const auto gui_chrome_texture_id = xl7::resources::id_cast<xl7::graphics::textures::Texture2D::Id>(_gui_chrome_texture_id);
 
-        _gui_window_chrome.texture_id = gui_chrome_texture_id;
-        _gui_window_chrome.uv_min = {0.0f, 0.0f};
-        _gui_window_chrome.uv_max = {0.5f, 1.0f};
-        _gui_window_chrome.sprite_size = {32.0f, 32.0f};
-        _gui_window_chrome.inset_left = _gui_window_chrome.inset_right = 8.0f;
-        _gui_window_chrome.inset_top = _gui_window_chrome.inset_bottom = 8.0f;
+        _gui_frame_chrome.texture_id = gui_chrome_texture_id;
+        _gui_frame_chrome.uv_min = {0.0f, 0.0f};
+        _gui_frame_chrome.uv_max = {0.5f, 1.0f};
+        _gui_frame_chrome.sprite_size = {32.0f, 32.0f};
+        _gui_frame_chrome.inset_left = _gui_frame_chrome.inset_right = 8.0f;
+        _gui_frame_chrome.inset_top = _gui_frame_chrome.inset_bottom = 8.0f;
 
         _gui_button_chrome.texture_id = gui_chrome_texture_id;
         _gui_button_chrome.uv_min = {0.5f, 0.0f};
@@ -333,7 +333,7 @@ namespace helloworld {
         // text content (see Style::padding), just to have something actually
         // using it visually, rather than every face still reporting {0, 0, 0, 0}.
         _gui_theme.get_default_level().padding = fl7::gui::Padding(3.0f);
-        _gui_theme.get_level(u8"window").chrome = &_gui_window_chrome;
+        _gui_theme.get_level(u8"frame").chrome = &_gui_frame_chrome;
 
         auto& gui_button_level = _gui_theme.get_level(u8"button");
         gui_button_level.chrome = &_gui_button_chrome;
@@ -400,9 +400,9 @@ namespace helloworld {
 
         auto& frame = _gui_shell->add_face<fl7::gui::faces::Frame>(U"Demo Frame");
         frame.set_position({600.0f, 210.0f});
-        // Own size set further down (see frame.set_size() below), once the
-        // content area's children/layout are actually in place: dogfoods
-        // Frame::get_effective_preferred_size() (see Window/Frame) instead of
+        // Own size set further down (see frame.set_size() below), once
+        // the content area's children/layout are actually in place:
+        // dogfoods Frame::get_effective_preferred_size() instead of
         // hand-maintaining the arithmetic that used to sit here.
 
         // Dogfooding gui::layout::BoxLayout: every direct child of the content area
@@ -528,7 +528,7 @@ namespace helloworld {
         content_layout.set_stretch(remove_checkbox_button, 0.0f);
         content_layout.perform(frame.get_content_area());
 
-        // Dogfooding Window/Frame's own _calculate_preferred_size(): asks the
+        // Dogfooding Frame's own _calculate_preferred_size(): asks the
         // content area's just-configured layout/children for the size they'd
         // actually need (see Frame::_calculate_preferred_size()) instead of
         // hand-maintaining that arithmetic here; re-performs content_layout

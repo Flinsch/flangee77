@@ -14,7 +14,7 @@ namespace fl7::gui::faces {
      * user resize it. Deliberately NOT a disabled/passive decoration, unlike
      * `Frame`'s own `_title_label` (or `TrackControl`'s handle): it overlaps the
      * frame's content area, which, unlike the title bar's own otherwise-empty
-     * strip, is both enabled and (being added first, in Window's own
+     * strip, is both enabled and (being added first, in `Frame`'s own
      * constructor) further back in z-order, so it would otherwise swallow the click
      * before it ever reached Frame's own mouse hooks. Handles dragging entirely on
      * its own instead, resizing its owning frame directly. Not a Control either:
@@ -103,7 +103,8 @@ namespace fl7::gui::faces {
     // #############################################################################
 
     Frame::Frame(cl7::u32string title)
-        : _title_label(add_child<Label>(std::move(title)))
+        : _content_area(add_child<Container>())
+        , _title_label(add_child<Label>(std::move(title)))
         , _close_button(add_child<Button>(U"X"))
         , _resize_handle(add_child<ResizeHandle>(*this))
     {
@@ -169,30 +170,30 @@ namespace fl7::gui::faces {
         _resize_handle.set_position({std::max(0.0f, new_size.x - RESIZE_HANDLE_SIZE), std::max(0.0f, new_size.y - RESIZE_HANDLE_SIZE)});
         _resize_handle.set_size({RESIZE_HANDLE_SIZE, RESIZE_HANDLE_SIZE});
 
-        get_content_area().set_position({0.0f, TITLE_BAR_HEIGHT});
-        get_content_area().set_size({new_size.x, std::max(0.0f, new_size.y - TITLE_BAR_HEIGHT)});
+        _content_area.set_position({0.0f, TITLE_BAR_HEIGHT});
+        _content_area.set_size({new_size.x, std::max(0.0f, new_size.y - TITLE_BAR_HEIGHT)});
     }
 
     /**
-     * Returns the content area's own effective preferred size (see `Window`), plus
-     * this frame's own fixed title bar height on top; width is otherwise
-     * unaffected, the title bar never needs more of it than the content area itself
+     * Returns the content area's own effective preferred size, plus this
+     * frame's own fixed title bar height on top; width is otherwise unaffected,
+     * the title bar never needs more of it than the content area itself
      * already does.
      */
     ml7::Vector2f Frame::_calculate_preferred_size() const
     {
-        return Window::_calculate_preferred_size() + ml7::Vector2f{0.0f, TITLE_BAR_HEIGHT};
+        return _content_area.get_effective_preferred_size() + ml7::Vector2f{0.0f, TITLE_BAR_HEIGHT};
     }
 
     /**
-     * Returns the content area's own effective minimum size (see `Window`), plus
-     * this frame's own fixed title bar height on top; width is otherwise
-     * unaffected, the title bar never needs more of it than the content area itself
-     * already does.
+     * Returns the content area's own effective minimum size, plus this frame's
+     * own fixed title bar height on top; width is otherwise unaffected, the
+     * title bar never needs more of it than the content area itself already
+     * does.
      */
     ml7::Vector2f Frame::_calculate_minimum_size() const
     {
-        const ml7::Vector2f content_minimum = Window::_calculate_minimum_size() + ml7::Vector2f{0.0f, TITLE_BAR_HEIGHT};
+        const ml7::Vector2f content_minimum = _content_area.get_effective_minimum_size() + ml7::Vector2f{0.0f, TITLE_BAR_HEIGHT};
         return {std::max(MIN_WIDTH, content_minimum.x), std::max(MIN_HEIGHT, content_minimum.y)};
     }
 
