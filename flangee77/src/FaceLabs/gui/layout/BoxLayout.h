@@ -202,34 +202,22 @@ public:
     ml7::Vector2f calculate_preferred_size(const Container& container) const override;
 
     /**
-     * Returns the sum of every child's own effective minimum size along this
-     * layout's own main axis (plus the fixed gaps between them, plus this layout's
-     * own padding on that axis), and the largest of their own effective minimum
-     * sizes along the cross axis (plus padding there): the size this sequence of
-     * children would occupy if every one of them actually got exactly its own
-     * minimum size, regardless of stretch (which only ever redistributes space
-     * beyond or below that, see `perform()`).
+     * Returns the smallest this sequence could ever actually be laid out at
+     * without overflowing, along this layout's own main axis (plus the fixed
+     * gaps between children, plus this layout's own padding on that axis):
+     * every non-stretched (stretch <= 0) child's own effective preferred size
+     * (that's what `perform()` always gives it, never less), plus every
+     * stretched child's own effective minimum size instead (the only ones
+     * `perform()` can actually shrink that far). Along the cross axis: the
+     * largest of every child's own effective minimum size there (plus padding),
+     * same as before, since the cross axis has no stretch distinction to begin
+     * with.
      */
     ml7::Vector2f calculate_minimum_size(const Container& container) const override;
 
 
 
 private:
-
-    // #############################################################################
-    // Helpers
-    // #############################################################################
-
-    /**
-     * Shared by `calculate_preferred_size()` or `calculate_minimum_size()`: sums
-     * `size_of(child)[axis]` across every child in this layout's own sequence
-     * (plus gaps/padding on the main axis), and takes the max of
-     * `size_of(child)[cross_axis]` (plus padding on the cross axis), for
-     * whichever per-child size getter the caller passes in.
-     */
-    ml7::Vector2f _calculate_size(ml7::Vector2f (Face::*size_of)() const) const;
-
-
 
     // #############################################################################
     // Attributes

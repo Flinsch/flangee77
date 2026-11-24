@@ -146,31 +146,43 @@ namespace fl7::gui::layout {
      */
     ml7::Vector2f BoxLayout::calculate_preferred_size(const Container& container) const
     {
-        return _calculate_size(&Face::get_effective_preferred_size);
+        const size_t n = _order.size();
+
+        const unsigned axis = _orientation == Orientation::Horizontal ? 0 : 1;
+        const unsigned cross_axis = 1 - axis;
+
+        const float padding_main = axis == 0 ? _padding.left + _padding.right : _padding.top + _padding.bottom;
+        const float padding_cross = cross_axis == 0 ? _padding.left + _padding.right : _padding.top + _padding.bottom;
+
+        float main = padding_main + (n > 0 ? _gap * static_cast<float>(n - 1) : 0.0f);
+        float cross = 0.0f;
+        for (const auto& child_ptr : _order)
+        {
+            const ml7::Vector2f preferred = child_ptr->get_effective_preferred_size();
+            main += preferred[axis];
+            cross = std::max(cross, preferred[cross_axis]);
+        }
+        cross += padding_cross;
+
+        ml7::Vector2f result;
+        result[axis] = main;
+        result[cross_axis] = cross;
+        return result;
     }
 
     /**
-     * Returns the sum of every child's own effective minimum size along this
-     * layout's own main axis (plus the fixed gaps between them, plus this layout's
-     * own padding on that axis), and the largest of their own effective minimum
-     * sizes along the cross axis (plus padding there): the size this sequence of
-     * children would occupy if every one of them actually got exactly its own
-     * minimum size, regardless of stretch (which only ever redistributes space
-     * beyond or below that, see `perform()`).
+     * Returns the smallest this sequence could ever actually be laid out at
+     * without overflowing, along this layout's own main axis (plus the fixed
+     * gaps between children, plus this layout's own padding on that axis):
+     * every non-stretched (stretch <= 0) child's own effective preferred size
+     * (that's what `perform()` always gives it, never less), plus every
+     * stretched child's own effective minimum size instead (the only ones
+     * `perform()` can actually shrink that far). Along the cross axis: the
+     * largest of every child's own effective minimum size there (plus padding),
+     * same as before, since the cross axis has no stretch distinction to begin
+     * with.
      */
     ml7::Vector2f BoxLayout::calculate_minimum_size(const Container& container) const
-    {
-        return _calculate_size(&Face::get_effective_minimum_size);
-    }
-
-    /**
-     * Shared by `calculate_preferred_size()` or `calculate_minimum_size()`: sums
-     * `size_of(child)[axis]` across every child in this layout's own sequence
-     * (plus gaps/padding on the main axis), and takes the max of
-     * `size_of(child)[cross_axis]` (plus padding on the cross axis), for
-     * whichever per-child size getter the caller passes in.
-     */
-    ml7::Vector2f BoxLayout::_calculate_size(ml7::Vector2f (Face::*size_of)() const) const
     {
         const size_t n = _order.size();
 
@@ -184,9 +196,10 @@ namespace fl7::gui::layout {
         float cross = 0.0f;
         for (const auto& child_ptr : _order)
         {
-            const ml7::Vector2f size = (child_ptr->*size_of)();
-            main += size[axis];
-            cross = std::max(cross, size[cross_axis]);
+            const Face& child = *child_ptr;
+            const ml7::Vector2f minimum = child.get_effective_minimum_size();
+            main += get_stretch(child) > 0.0f ? minimum[axis] : child.get_effective_preferred_size()[axis];
+            cross = std::max(cross, minimum[cross_axis]);
         }
         cross += padding_cross;
 

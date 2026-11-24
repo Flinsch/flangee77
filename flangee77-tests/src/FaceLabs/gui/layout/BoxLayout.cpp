@@ -357,6 +357,31 @@ TESTLABS_CASE( u8"FaceLabs:  gui:  layout:  BoxLayout:  calculate_minimum_size()
     TESTLABS_CHECK_EQ_FLT( layout.calculate_minimum_size(container).y, 8.0f );
 }
 
+TESTLABS_CASE( u8"FaceLabs:  gui:  layout:  BoxLayout:  calculate_minimum_size() uses a non-stretched (stretch <= 0) child's own preferred size along the main axis instead, not its own (possibly smaller) minimum size, since perform() never actually shrinks it that far" )
+{
+    fl7::gui::Container container;
+
+    auto& layout = container.set_layout<fl7::gui::layout::BoxLayout>(fl7::gui::layout::BoxLayout::Orientation::Horizontal, 10.0f);
+
+    auto& fixed_child = layout.add_child<fl7::gui::Container>();
+    fixed_child.set_preferred_size({50.0f, 20.0f});
+    fixed_child.set_minimum_size({10.0f, 5.0f}); // Much smaller, but never actually reached; see below.
+    layout.set_stretch(fixed_child, 0.0f);
+
+    auto& stretched_child = layout.add_child<fl7::gui::Container>();
+    stretched_child.set_preferred_size({30.0f, 35.0f});
+    stretched_child.set_minimum_size({15.0f, 8.0f});
+    // Left at the default stretch (1): unlike fixed_child above, this one
+    // actually can shrink all the way to its own minimum once space runs short.
+
+    // Main axis (x): one gap (10) + fixed_child's own preferred width (50, not
+    // its smaller minimum 10) + stretched_child's own minimum width (15) = 75.
+    TESTLABS_CHECK_EQ_FLT( layout.calculate_minimum_size(container).x, 75.0f );
+    // Cross axis (y): the larger of their own minimum heights (8, not 5), same
+    // as before: no stretch distinction along the cross axis.
+    TESTLABS_CHECK_EQ_FLT( layout.calculate_minimum_size(container).y, 8.0f );
+}
+
 TESTLABS_CASE( u8"FaceLabs:  gui:  layout:  BoxLayout:  Container::get_effective_preferred_size()/get_effective_minimum_size() defer to this layout's own calculation while it's attached, end to end" )
 {
     fl7::gui::Container container;

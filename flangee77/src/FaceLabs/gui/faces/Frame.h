@@ -23,9 +23,10 @@ namespace fl7::gui::faces {
  * actually add children, since this is a `Compound`: fixed internal composition,
  * not arbitrary public children), with a fixed title bar (title text plus a close
  * button) on top of it, draggable (by that title bar) to move it and, by a small
- * grip in its bottom-right corner, to resize it (clamped to a sane minimum size).
- * The content area fills whatever's left below the title bar and is kept in sync as
- * the frame is resized.
+ * grip in its bottom-right corner, to resize it (never below this frame's own
+ * effective minimum size, which already aggregates the content area's own children's
+ * minimum sizes recursively). The content area fills whatever is left below the
+ * title bar and is kept in sync as the frame is resized.
  */
 class Frame
     : public Compound
@@ -111,9 +112,12 @@ protected:
 
     /**
      * Returns the content area's own effective minimum size, plus this
-     * frame's own title bar height on top; width is otherwise unaffected, the
+     * frame's own title bar height on top (width otherwise unaffected: the
      * title bar never needs more of it than the content area itself already
-     * does.
+     * does), floored to `MIN_WIDTH`/`_min_height()` either way, so this
+     * frame's own chrome always has enough room regardless of how small the
+     * content area's own minimum size is. What actually keeps the resize
+     * handle (see `ResizeHandle`) from ever shrinking this frame below it.
      */
     ml7::Vector2f _calculate_minimum_size() const override;
 
@@ -151,10 +155,10 @@ private:
     // #############################################################################
 
     /**
-     * Dragging the resize handle (see `ResizeHandle`) never shrinks this
-     * frame's own width below this. Fixed for now; should eventually follow
-     * from recursively aggregating the content area's own children instead,
-     * once that's generalized (see `Container`/`Compound`).
+     * This frame's own effective minimum width (see `_calculate_minimum_size()`)
+     * never goes below this, regardless of how small the content area's own
+     * aggregated minimum width is (e.g., an empty content area's: 0): a floor
+     * for the chrome itself (title bar/close button), not the content.
      */
     static constexpr float MIN_WIDTH = 80.0f;
 
@@ -165,9 +169,9 @@ private:
     // #############################################################################
 
     /**
-     * Returns the minimum height dragging the resize handle (see
-     * `ResizeHandle`) never shrinks this frame below: tall enough for the
-     * title bar and the resize handle to both still fit.
+     * Returns the minimum height dragging the resize handle (see `ResizeHandle`)
+     * never shrinks this frame below: tall enough for the title bar and the resize
+     * handle to both still fit.
      */
     float _min_height() const;
 

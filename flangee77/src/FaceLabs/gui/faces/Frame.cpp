@@ -58,8 +58,11 @@ namespace fl7::gui::faces {
         }
 
         /**
-         * Resizes the owning frame by delta, clamped to `Frame::MIN_WIDTH` and
-         * its own `_min_height()`, while dragging is armed; see `_drag_size`.
+         * Resizes the owning frame by delta, clamped to its own effective
+         * minimum size (see `Frame::_calculate_minimum_size()`, which already
+         * aggregates the content area's own minimum size, recursively, on top
+         * of `Frame::MIN_WIDTH`/`_min_height()`), while dragging is armed; see
+         * `_drag_size`.
          */
         void _on_mouse_drag(ml7::Vector2f delta, ml7::Vector2f local_position) override
         {
@@ -67,9 +70,10 @@ namespace fl7::gui::faces {
                 return;
 
             _drag_size += delta;
+            const ml7::Vector2f minimum_size = _frame.get_effective_minimum_size();
             _frame.set_size({
-                std::max(Frame::MIN_WIDTH, _drag_size.x),
-                std::max(_frame._min_height(), _drag_size.y),
+                std::max(minimum_size.x, _drag_size.x),
+                std::max(minimum_size.y, _drag_size.y),
             });
         }
 
@@ -195,9 +199,12 @@ namespace fl7::gui::faces {
 
     /**
      * Returns the content area's own effective minimum size, plus this
-     * frame's own title bar height on top; width is otherwise unaffected, the
+     * frame's own title bar height on top (width otherwise unaffected: the
      * title bar never needs more of it than the content area itself already
-     * does.
+     * does), floored to `MIN_WIDTH`/`_min_height()` either way, so this
+     * frame's own chrome always has enough room regardless of how small the
+     * content area's own minimum size is. What actually keeps the resize
+     * handle (see `ResizeHandle`) from ever shrinking this frame below it.
      */
     ml7::Vector2f Frame::_calculate_minimum_size() const
     {
@@ -238,9 +245,9 @@ namespace fl7::gui::faces {
     // #############################################################################
 
     /**
-     * Returns the minimum height dragging the resize handle (see
-     * `ResizeHandle`) never shrinks this frame below: tall enough for the
-     * title bar and the resize handle to both still fit.
+     * Returns the minimum height dragging the resize handle (see `ResizeHandle`)
+     * never shrinks this frame below: tall enough for the title bar and the resize
+     * handle to both still fit.
      */
     float Frame::_min_height() const
     {
