@@ -229,12 +229,6 @@ private:
      */
     ml7::Vector2f _calculate_size(ml7::Vector2f (Face::*size_of)() const) const;
 
-    /**
-     * Fits a child's own preferred size within its cell, along a single axis,
-     * never below `minimum`, per anchor's `near_flag` and `far_flag`.
-     */
-    static void _fit_in_cell(Anchor anchor, Anchor near_flag, Anchor far_flag, float cell_position, float cell_size, float preferred, float minimum, float& out_position, float& out_size);
-
 
 
     // #############################################################################

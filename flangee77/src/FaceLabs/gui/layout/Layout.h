@@ -1,6 +1,8 @@
 #ifndef FL7_GUI_LAYOUT_LAYOUT_H
 #define FL7_GUI_LAYOUT_LAYOUT_H
 
+#include "../Face.h"
+
 #include <MathLabs/Vector2.h>
 
 
@@ -83,6 +85,14 @@ protected:
      * ever gets to set this, not a subclass.
      */
     Container* _get_container() const { return _container; }
+
+    /**
+     * Fits a child's own preferred size within its cell, along a single axis,
+     * never below `minimum`, per anchor's `near_flag` and `far_flag`. Shared by
+     * every concrete layout that divides its container into anchor-fitted
+     * cells (see `BoxLayout::perform()` or `GridLayout::perform()`).
+     */
+    static void _fit_in_cell(Anchor anchor, Anchor near_flag, Anchor far_flag, float cell_position, float cell_size, float preferred, float minimum, float& out_position, float& out_size);
 
 
 

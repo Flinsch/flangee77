@@ -53,6 +53,8 @@ target_sources(flangee77
 
     gui/layout/BoxLayout.cpp
     gui/layout/DefaultLayout.cpp
+    gui/layout/GridLayout.cpp
+    gui/layout/Layout.cpp
 
     gui/render/AbstractRenderer.cpp
     gui/render/BackgroundHelper.cpp

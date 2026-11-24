@@ -8,8 +8,8 @@ namespace fl7::gui {
 
 
 /**
- * A fixed space kept on each of a face's (or, within `layout::BoxLayout`, a
- * container's) four edges.
+ * A fixed space kept on each of a face's four edges (or a container's, within a
+ * layout like `layout::BoxLayout` or `layout::GridLayout`).
  */
 struct Padding
 {
