@@ -137,6 +137,46 @@ namespace fl7::gui::faces {
     }
 
     /**
+     * Returns this field's text's own natural (unwrapped) size, under its
+     * effective font/text style; see `_calculate_text_size()`. Deliberately
+     * content-based, unlike `_calculate_minimum_size()`: sized to this, the
+     * text fits without wrapping/scrolling at all, so, unlike there, no room
+     * for the scroll bar needs reserving either.
+     */
+    ml7::Vector2f TextField::_calculate_preferred_size() const
+    {
+        return _calculate_text_size();
+    }
+
+    /**
+     * Returns room for a single text line (see `_calculate_line_height()`),
+     * content-only (`get_effective_minimum_size()` adds this field's own padding on
+     * top); while `get_multiline_enabled()`, the width is instead the scroll bar's
+     * own effective minimum width (its chrome's standard thickness, absent an
+     * explicit override), and the height is widened to the scroll bar's own
+     * effective minimum height if that would otherwise exceed a single line's own,
+     * since the scroll bar is shown the moment this field's content actually needs
+     * to scroll, however small that content currently happens to be. The scroll
+     * bar's own minimum sizes are already absolute (not this field's own padding's
+     * concern), so its own height is weighed against the single line's height
+     * before padding, not after.
+     */
+    ml7::Vector2f TextField::_calculate_minimum_size() const
+    {
+        const float line_height = _calculate_line_height();
+
+        if (!_multiline_enabled)
+            return {0.0f, line_height};
+
+        const ml7::Vector2f scroll_bar_minimum = _scroll_bar.get_effective_minimum_size();
+        const Padding padding = get_effective_padding();
+        return {
+            scroll_bar_minimum.x,
+            std::max(line_height, scroll_bar_minimum.y - padding.top - padding.bottom),
+        };
+    }
+
+    /**
      * Keeps the scroll bar's size/position, and its range/visible_fraction/step,
      * in sync with this field's own new size (see `_relayout()`), and scrolls the
      * caret into view if necessary.
@@ -541,6 +581,58 @@ namespace fl7::gui::faces {
             size.y = std::max(size.y, _content_height);
         }
         return size;
+    }
+
+    /**
+     * Returns a single text line's own natural height, under this field's current
+     * effective font/text style, regardless of its actual text or width (an empty
+     * box is laid out just to read the result's own line height back off it). 0 if
+     * there's currently no effective font (e.g., not yet part of a themed `Shell`).
+     * What `_calculate_minimum_size()` needs either way, single- or multi-line.
+     */
+    float TextField::_calculate_line_height() const
+    {
+        const Style style = get_effective_style();
+        if (!style.font)
+            return 0.0f;
+
+        return fonts::TextLayout::lay_out_box({}, *style.font, style.text_style, {0.0f, 0.0f}, {0.0f, 0.0f}).line_height;
+    }
+
+    /**
+     * Returns this field's text's own natural (unwrapped) size: however wide its
+     * single widest (explicit-break-delimited) line is, times however many such
+     * lines there are, under its effective font/text style (always unwrapped,
+     * regardless of `get_multiline_enabled()`: an explicit line break still
+     * starts a new line either way, only a word-wrap-induced one doesn't).
+     * `{0, 0}` if it currently has no effective font (e.g., not yet part of a
+     * themed `Shell`). Cached, as long as neither `_text` nor the effective font
+     * have changed since.
+     */
+    ml7::Vector2f TextField::_calculate_text_size() const
+    {
+        const Style style = get_effective_style();
+        if (!style.font)
+            return {};
+
+        if (style.font == _cached_font && _text == _cached_text)
+            return _cached_text_size;
+
+        fonts::TextStyle unwrapped_style = style.text_style;
+        unwrapped_style.wrap_mode = fonts::TextStyle::WrapMode::None;
+
+        const auto codepoints = fonts::TextLayout::decode(_text);
+        const fonts::TextBlockLayout block = fonts::TextLayout::lay_out_box(codepoints, *style.font, unwrapped_style, {0.0f, 0.0f}, {0.0f, 0.0f});
+
+        float width = 0.0f;
+        for (const fonts::TextLine& line : block.lines)
+            width = std::max(width, line.width);
+
+        _cached_font = style.font;
+        _cached_text = _text;
+        _cached_text_size = {width, static_cast<float>(block.lines.size()) * block.line_height};
+
+        return _cached_text_size;
     }
 
     /**

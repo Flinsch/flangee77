@@ -73,6 +73,70 @@ TESTLABS_CASE( u8"FaceLabs:  gui:  faces:  TextField:  set_text() moves the care
 
 
 // #############################################################################
+// Preferred/minimum size
+// #############################################################################
+
+TESTLABS_CASE( u8"FaceLabs:  gui:  faces:  TextField:  without an effective font, get_effective_preferred_size()/get_effective_minimum_size() stay {0, 0}" )
+{
+    fl7::gui::faces::TextField field(U"Hello");
+    TESTLABS_CHECK_EQ_FLT( field.get_effective_preferred_size().x, 0.0f );
+    TESTLABS_CHECK_EQ_FLT( field.get_effective_preferred_size().y, 0.0f );
+    TESTLABS_CHECK_EQ_FLT( field.get_effective_minimum_size().x, 0.0f );
+    TESTLABS_CHECK_EQ_FLT( field.get_effective_minimum_size().y, 0.0f );
+}
+
+TESTLABS_CASE( u8"FaceLabs:  gui:  faces:  TextField:  set_style_override() with a real font: get_effective_preferred_size() reflects the text's own natural (unwrapped) size, growing with more text; get_effective_minimum_size() stays at a single line's own height regardless (single-line field, no padding set, so no scroll bar either)" )
+{
+    fl7::gui::Style style;
+    style.font = &get_test_font();
+
+    fl7::gui::faces::TextField field(U"Hi");
+    field.set_style_override(style);
+
+    const ml7::Vector2f short_preferred = field.get_effective_preferred_size();
+    TESTLABS_CHECK( short_preferred.x > 0.0f );
+    TESTLABS_CHECK( short_preferred.y > 0.0f );
+
+    // Single line, no padding: minimum's width is 0, and its height exactly
+    // matches the (also single-line) preferred size's own.
+    const ml7::Vector2f minimum = field.get_effective_minimum_size();
+    TESTLABS_CHECK_EQ_FLT( minimum.x, 0.0f );
+    TESTLABS_CHECK_EQ_FLT( minimum.y, short_preferred.y );
+
+    field.set_text(U"Much Longer Caption");
+    const ml7::Vector2f long_preferred = field.get_effective_preferred_size();
+    TESTLABS_CHECK( long_preferred.x > short_preferred.x );
+
+    // Minimum stays exactly as before: unlike preferred size, it deliberately
+    // doesn't grow with the actual text (clipping down to that is fine).
+    TESTLABS_CHECK_EQ_FLT( field.get_effective_minimum_size().x, minimum.x );
+    TESTLABS_CHECK_EQ_FLT( field.get_effective_minimum_size().y, minimum.y );
+}
+
+TESTLABS_CASE( u8"FaceLabs:  gui:  faces:  TextField:  get_effective_preferred_size() counts an explicit line break as its own line regardless of get_multiline_enabled(), but never actually wraps, even while it is enabled" )
+{
+    fl7::gui::Style style;
+    style.font = &get_test_font();
+
+    fl7::gui::faces::TextField single_line_field(U"Hi");
+    single_line_field.set_style_override(style);
+    const ml7::Vector2f single_line_preferred = single_line_field.get_effective_preferred_size();
+
+    fl7::gui::faces::TextField field(U"Hi\nThere");
+    field.set_style_override(style);
+
+    const ml7::Vector2f preferred = field.get_effective_preferred_size();
+    TESTLABS_CHECK_EQ_FLT( preferred.y, 2.0f * single_line_preferred.y ); // Two lines' worth of height, despite get_multiline_enabled() still being false.
+
+    field.set_multiline_enabled(true);
+    const ml7::Vector2f preferred_multiline = field.get_effective_preferred_size();
+    TESTLABS_CHECK_EQ_FLT( preferred_multiline.x, preferred.x ); // Unchanged: still never actually wraps.
+    TESTLABS_CHECK_EQ_FLT( preferred_multiline.y, preferred.y );
+}
+
+
+
+// #############################################################################
 // Interaction (via a Shell and simulated mouse/keyboard input)
 // #############################################################################
 

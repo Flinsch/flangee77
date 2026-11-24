@@ -17,19 +17,19 @@ namespace fl7::gui::layout {
 
 /**
  * Keeps each child anchored to whichever of its own parent-relative edges its
- * `Face::get_anchor()` flags (see `gui::Anchor`) say, as the container is resized:
- * Right without Left keeps its distance from the right edge (shifting as the
- * container grows/shrinks); Left and Right together instead stretches it to keep
- * its distance from both; same for `Top` and `Bottom` along the vertical axis,
- * independently. `Left` (or `Top`) alone, or no anchor at all, does nothing on
- * either axis, same as having no layout at all, which is also the default (see
- * `Face::get_anchor()`).
+ * anchor flags say, as the container is resized: `Right` without `Left` keeps its
+ * distance from the right edge (shifting as the container grows/shrinks); `Left`
+ * and `Right` together instead stretches it to keep its distance from both, never
+ * below its own effective minimum size on that axis; same for `Top` and `Bottom`
+ * along the vertical axis, independently. `Left` (or `Top`) alone, or no anchor at
+ * all, does nothing on either axis, same as having no layout at all, which is also
+ * the default.
  *
  * Each child's own "distance from its anchored edge(s)" is captured once, from its
  * own position/size relative to the container's size as of the first `perform()`
  * call that sees it (typically right when it's added), and kept fixed from then on;
  * explicitly repositioning/resizing it afterwards is overwritten again on this
- * layout's next perform() call, same as any other anchor-based GUI layout.
+ * layout's next `perform()` call, same as any other anchor-based GUI layout.
  */
 class DefaultLayout
     : public Layout
@@ -78,9 +78,43 @@ public:
      */
     void perform(Container& container) override;
 
+    /**
+     * Returns, per axis, the largest of every Left+Right (or Top+Bottom)
+     * filled child's own required container extent for it to sit at its own
+     * effective preferred size; see `_calculate_size()`.
+     */
+    ml7::Vector2f calculate_preferred_size(const Container& container) const override;
+
+    /**
+     * Returns, per axis, the largest of every Left+Right (or Top+Bottom)
+     * filled child's own required container extent, so the container never actually
+     * shrinks any such child below its own effective minimum size; see
+     * `_calculate_size()`.
+     */
+    ml7::Vector2f calculate_minimum_size(const Container& container) const override;
+
 
 
 private:
+
+    // #############################################################################
+    // Helpers
+    // #############################################################################
+
+    /**
+     * Returns, per axis, the largest of every Left+Right (or Top+Bottom) filled
+     * child's own required container extent for it to sit at `(child.*get_size)()`:
+     * this layout keeps that child's own captured insets fixed (see this class's
+     * own doc comment), so the container needs to stay at least
+     * `own_current_size - this child's own current size + (child.*get_size)()`
+     * wide/tall for that. A child anchored on only one side, or neither, never
+     * resizes on that axis to begin with, so it never contributes here either.
+     * Shared by `calculate_preferred_size()` and `calculate_minimum_size()`, which,
+     * structurally, are otherwise identical.
+     */
+    ml7::Vector2f _calculate_size(const Container& container, ml7::Vector2f (Face::*get_size)() const) const;
+
+
 
     // #############################################################################
     // Attributes

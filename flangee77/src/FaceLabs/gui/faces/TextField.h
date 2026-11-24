@@ -183,6 +183,30 @@ protected:
     void _adjust_effective_text_style(fonts::TextStyle& text_style) const override;
 
     /**
+     * Returns this field's text's own natural (unwrapped) size, under its
+     * effective font/text style; see `_calculate_text_size()`. Deliberately
+     * content-based, unlike `_calculate_minimum_size()`: sized to this, the
+     * text fits without wrapping/scrolling at all, so, unlike there, no room
+     * for the scroll bar needs reserving either.
+     */
+    ml7::Vector2f _calculate_preferred_size() const override;
+
+    /**
+     * Returns room for a single text line (see `_calculate_line_height()`),
+     * content-only (`get_effective_minimum_size()` adds this field's own padding on
+     * top); while `get_multiline_enabled()`, the width is instead the scroll bar's
+     * own effective minimum width (its chrome's standard thickness, absent an
+     * explicit override), and the height is widened to the scroll bar's own
+     * effective minimum height if that would otherwise exceed a single line's own,
+     * since the scroll bar is shown the moment this field's content actually needs
+     * to scroll, however small that content currently happens to be. The scroll
+     * bar's own minimum sizes are already absolute (not this field's own padding's
+     * concern), so its own height is weighed against the single line's height
+     * before padding, not after.
+     */
+    ml7::Vector2f _calculate_minimum_size() const override;
+
+    /**
      * Keeps the scroll bar's size/position, and its range/visible_fraction/step,
      * in sync with this field's own new size (see `_relayout()`), and scrolls the
      * caret into view if necessary.
@@ -327,6 +351,27 @@ private:
     ml7::Vector2f _effective_text_box_size() const;
 
     /**
+     * Returns a single text line's own natural height, under this field's current
+     * effective font/text style, regardless of its actual text or width (an empty
+     * box is laid out just to read the result's own line height back off it). 0 if
+     * there's currently no effective font (e.g., not yet part of a themed `Shell`).
+     * What `_calculate_minimum_size()` needs either way, single- or multi-line.
+     */
+    float _calculate_line_height() const;
+
+    /**
+     * Returns this field's text's own natural (unwrapped) size: however wide its
+     * single widest (explicit-break-delimited) line is, times however many such
+     * lines there are, under its effective font/text style (always unwrapped,
+     * regardless of `get_multiline_enabled()`: an explicit line break still
+     * starts a new line either way, only a word-wrap-induced one doesn't).
+     * `{0, 0}` if it currently has no effective font (e.g., not yet part of a
+     * themed `Shell`). Cached, as long as neither `_text` nor the effective font
+     * have changed since.
+     */
+    ml7::Vector2f _calculate_text_size() const;
+
+    /**
      * Re-decides (while `get_multiline_enabled()` and there's a font to lay out
      * against) whether the scroll bar is actually shown, per
      * `get_scroll_bar_visibility()`: `Always` unconditionally; `Auto` only once
@@ -425,6 +470,11 @@ private:
     float _content_height = 0.0f;
 
     cl7::behavioral::Signal<const cl7::u32string&> _changed;
+
+    /** The inputs/result of the last `_calculate_text_size()` call; see there. */
+    mutable fonts::Font* _cached_font = nullptr;
+    mutable cl7::u32string _cached_text;
+    mutable ml7::Vector2f _cached_text_size;
 
 }; // class TextField
 

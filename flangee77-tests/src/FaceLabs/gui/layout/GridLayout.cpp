@@ -215,6 +215,43 @@ TESTLABS_CASE( u8"FaceLabs:  gui:  layout:  GridLayout:  calculate_preferred_siz
     TESTLABS_CHECK_EQ_FLT( layout.calculate_preferred_size(container).x, 64.0f );
 }
 
+TESTLABS_CASE( u8"FaceLabs:  gui:  layout:  GridLayout:  calculate_minimum_size() uses a non-stretched (stretch <= 0) row's/column's own tallest/widest preferred extent instead, not its own (possibly smaller) minimum extent, since perform() never actually shrinks it that far" )
+{
+    fl7::gui::Container container;
+
+    auto& layout = container.set_layout<fl7::gui::layout::GridLayout>(10.0f, 5.0f, fl7::gui::Padding(2.0f));
+    layout.set_row_stretch(0, 0.0f);
+    layout.set_column_stretch(0, 0.0f);
+    // Row 1/column 1 left at the default stretch (1): unlike row 0/column 0
+    // above, these actually can shrink all the way to their own minimum once
+    // space runs short.
+
+    auto& top_left = layout.add_child<fl7::gui::Container>(0, 0); // Fixed row, fixed column.
+    top_left.set_preferred_size({50.0f, 20.0f});
+    top_left.set_minimum_size({10.0f, 5.0f}); // Much smaller, but never actually reached; see below.
+
+    auto& top_right = layout.add_child<fl7::gui::Container>(0, 1); // Fixed row, stretched column.
+    top_right.set_preferred_size({30.0f, 18.0f});
+    top_right.set_minimum_size({15.0f, 8.0f});
+
+    auto& bottom_left = layout.add_child<fl7::gui::Container>(1, 0); // Stretched row, fixed column.
+    bottom_left.set_preferred_size({45.0f, 35.0f});
+    bottom_left.set_minimum_size({10.0f, 8.0f});
+
+    auto& bottom_right = layout.add_child<fl7::gui::Container>(1, 1); // Stretched row, stretched column.
+    bottom_right.set_preferred_size({30.0f, 35.0f});
+    bottom_right.set_minimum_size({15.0f, 8.0f});
+
+    // Row heights: row 0 (fixed) is its own tallest preferred height (20, not
+    // either cell's smaller minimum), row 1 (stretched) is its own tallest
+    // minimum height (8) instead; + row_gap(10) + padding(4) = 42.
+    TESTLABS_CHECK_EQ_FLT( layout.calculate_minimum_size(container).y, 42.0f );
+    // Column widths: column 0 (fixed) is its own widest preferred width (50),
+    // column 1 (stretched) is its own widest minimum width (15) instead;
+    // + column_gap(5) + padding(4) = 74.
+    TESTLABS_CHECK_EQ_FLT( layout.calculate_minimum_size(container).x, 74.0f );
+}
+
 TESTLABS_CASE( u8"FaceLabs:  gui:  layout:  GridLayout:  Container::get_effective_preferred_size()/get_effective_minimum_size() defer to this layout's own calculation while it's attached, end to end" )
 {
     fl7::gui::Container container;

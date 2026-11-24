@@ -208,33 +208,20 @@ public:
     ml7::Vector2f calculate_preferred_size(const Container& container) const override;
 
     /**
-     * Returns the sum of every row's own tallest effective minimum height
-     * (plus the fixed gaps between rows, plus this layout's own padding on
-     * that axis) by the sum of every column's own widest effective minimum
-     * width (plus the fixed gaps between columns, plus padding there): the
-     * size this grid would occupy if every row/column actually got exactly
-     * its own minimum extent, regardless of stretch (which only ever
-     * redistributes space beyond or below that, see `perform()`).
+     * Returns the smallest this grid could ever actually be laid out at
+     * without overflowing: the sum, per axis, of every row's/column's own
+     * contribution (plus the fixed gaps/padding on that axis), which is
+     * either a non-stretched (stretch <= 0) row's/column's own tallest/widest
+     * effective preferred extent among its own cells (that's what
+     * `perform()` always gives it, never less), or a stretched one's own
+     * tallest/widest effective minimum extent instead (the only ones
+     * `perform()` can actually shrink that far).
      */
     ml7::Vector2f calculate_minimum_size(const Container& container) const override;
 
 
 
 private:
-
-    // #############################################################################
-    // Helpers
-    // #############################################################################
-
-    /**
-     * Shared by `calculate_preferred_size()` or `calculate_minimum_size()`:
-     * sums the tallest/widest `size_of(cell)` across every row/column of this
-     * layout's own grid (plus gaps/padding on each axis), for whichever
-     * per-child size getter the caller passes in.
-     */
-    ml7::Vector2f _calculate_size(ml7::Vector2f (Face::*size_of)() const) const;
-
-
 
     // #############################################################################
     // Attributes
