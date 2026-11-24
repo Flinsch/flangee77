@@ -1,5 +1,7 @@
 var NAVTREEINDEX65 =
 {
+"dd/d8a/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingContextImpl.html#ae81708556081d182db959de4274f2086":[7,0,8,1,1,0,5,12],
+"dd/d8a/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingContextImpl.html#af09f0c404b78d6c6da5d926281aa483f":[5,0,8,2,1,0,7,19],
 "dd/d8a/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingContextImpl.html#af09f0c404b78d6c6da5d926281aa483f":[7,0,8,1,1,0,5,19],
 "dd/d8a/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingContextImpl.html#af5562a9eb6291fbe40292309a45136a0":[5,0,8,2,1,0,7,25],
 "dd/d8a/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingContextImpl.html#af5562a9eb6291fbe40292309a45136a0":[7,0,8,1,1,0,5,25],
@@ -247,7 +249,5 @@ var NAVTREEINDEX65 =
 "dd/dc6/namespacedl7_1_1ini.html#adc55f4c529e153633eeb63766d69796b":[5,0,2,2,7],
 "dd/dd0/PlainErrorHandler_8h.html":[8,0,1,8,0,20],
 "dd/dd0/PlainErrorHandler_8h_source.html":[8,0,1,8,0,20],
-"dd/dd3/direct3d11_2meshes_2VertexBufferImpl_8h.html":[8,0,7,1,1,0,0,3],
-"dd/dd3/direct3d11_2meshes_2VertexBufferImpl_8h_source.html":[8,0,7,1,1,0,0,3],
-"dd/dd6/classfl7_1_1gui_1_1faces_1_1Slider_1_1Handle.html":[5,0,3,1,0,11,0]
+"dd/dd3/direct3d11_2meshes_2VertexBufferImpl_8h.html":[8,0,7,1,1,0,0,3]
 };

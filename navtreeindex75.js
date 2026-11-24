@@ -1,5 +1,7 @@
 var NAVTREEINDEX75 =
 {
+"df/db8/classcl7_1_1io_1_1IWritable.html#a06648fd1eafb8ecbd6b8bc93c0640b23":[5,0,1,5,10,6],
+"df/db8/classcl7_1_1io_1_1IWritable.html#a06648fd1eafb8ecbd6b8bc93c0640b23":[7,0,1,4,10,6],
 "df/db8/classcl7_1_1io_1_1IWritable.html#a12c593f71601bd4c690d86fc85cacfdd":[5,0,1,5,10,4],
 "df/db8/classcl7_1_1io_1_1IWritable.html#a12c593f71601bd4c690d86fc85cacfdd":[7,0,1,4,10,4],
 "df/db8/classcl7_1_1io_1_1IWritable.html#a37224ef544b4739672f393a48b4341fd":[5,0,1,5,10,5],
@@ -247,7 +249,5 @@ var NAVTREEINDEX75 =
 "df/de5/namespacecl7_1_1logging.html#a53bbe4bc2f351711756b93248cf062f3a1101a698b71e458ae45ff1dbc109cdb9":[5,0,1,6,8,8],
 "df/de5/namespacecl7_1_1logging.html#a53bbe4bc2f351711756b93248cf062f3a272ba7d164aa836995be6319a698be84":[5,0,1,6,8,5],
 "df/de5/namespacecl7_1_1logging.html#a53bbe4bc2f351711756b93248cf062f3a4059b0251f66a18cb56f544728796875":[5,0,1,6,8,1],
-"df/de5/namespacecl7_1_1logging.html#a53bbe4bc2f351711756b93248cf062f3a505a83f220c02df2f85c3810cd9ceb38":[5,0,1,6,8,2],
-"df/de5/namespacecl7_1_1logging.html#a53bbe4bc2f351711756b93248cf062f3a6311ae17c1ee52b36e68aaf4ad066387":[5,0,1,6,8,13],
-"df/de5/namespacecl7_1_1logging.html#a53bbe4bc2f351711756b93248cf062f3a7d74f3b92b19da5e606d737d339a9679":[5,0,1,6,8,7]
+"df/de5/namespacecl7_1_1logging.html#a53bbe4bc2f351711756b93248cf062f3a505a83f220c02df2f85c3810cd9ceb38":[5,0,1,6,8,2]
 };

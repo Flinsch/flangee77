@@ -1,5 +1,7 @@
 var NAVTREEINDEX71 =
 {
+"de/df3/structxl7_1_1graphics_1_1Color.html#a046fda9881058652baf23aa41522235a":[5,0,8,2,8,60],
+"de/df3/structxl7_1_1graphics_1_1Color.html#a046fda9881058652baf23aa41522235a":[7,0,8,1,8,60],
 "de/df3/structxl7_1_1graphics_1_1Color.html#a048a3724f7c94f2a67eee6ad64989b7f":[5,0,8,2,8,58],
 "de/df3/structxl7_1_1graphics_1_1Color.html#a048a3724f7c94f2a67eee6ad64989b7f":[7,0,8,1,8,58],
 "de/df3/structxl7_1_1graphics_1_1Color.html#a0ca15feeb3c2da79a6ad0916594ec775":[5,0,8,2,8,3],
@@ -247,7 +249,5 @@ var NAVTREEINDEX71 =
 "df/d06/classxl7_1_1input_1_1KeyboardMouseSystem.html#ac95517fc7b40c0cd36fb0d675b8deea6":[5,0,8,3,5,18],
 "df/d06/classxl7_1_1input_1_1KeyboardMouseSystem.html#ac95517fc7b40c0cd36fb0d675b8deea6":[7,0,8,2,5,18],
 "df/d06/classxl7_1_1input_1_1KeyboardMouseSystem.html#ace89c6b0bb58696650f745bb2380fd8b":[5,0,8,3,5,23],
-"df/d06/classxl7_1_1input_1_1KeyboardMouseSystem.html#ace89c6b0bb58696650f745bb2380fd8b":[7,0,8,2,5,23],
-"df/d06/classxl7_1_1input_1_1KeyboardMouseSystem.html#ad273b4fc40bcdb6f8acde0b0400f9144":[5,0,8,3,5,27],
-"df/d06/classxl7_1_1input_1_1KeyboardMouseSystem.html#ad273b4fc40bcdb6f8acde0b0400f9144":[7,0,8,2,5,27]
+"df/d06/classxl7_1_1input_1_1KeyboardMouseSystem.html#ace89c6b0bb58696650f745bb2380fd8b":[7,0,8,2,5,23]
 };

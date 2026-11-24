@@ -1,5 +1,7 @@
 var NAVTREEINDEX72 =
 {
+"df/d06/classxl7_1_1input_1_1KeyboardMouseSystem.html#ad273b4fc40bcdb6f8acde0b0400f9144":[5,0,8,3,5,27],
+"df/d06/classxl7_1_1input_1_1KeyboardMouseSystem.html#ad273b4fc40bcdb6f8acde0b0400f9144":[7,0,8,2,5,27],
 "df/d06/classxl7_1_1input_1_1KeyboardMouseSystem.html#ad71d1c4e0057d17f03399356257a69dd":[5,0,8,3,5,4],
 "df/d06/classxl7_1_1input_1_1KeyboardMouseSystem.html#ad71d1c4e0057d17f03399356257a69dd":[7,0,8,2,5,4],
 "df/d06/classxl7_1_1input_1_1KeyboardMouseSystem.html#ade1c33d9cff42178999ebd4ba244c139":[5,0,8,3,5,24],
@@ -247,7 +249,5 @@ var NAVTREEINDEX72 =
 "df/d51/ConstantBufferDesc_8h.html":[8,0,7,1,4,4],
 "df/d51/ConstantBufferDesc_8h_source.html":[8,0,7,1,4,4],
 "df/d52/structdl7_1_1json_1_1Format.html":[5,0,2,3,2],
-"df/d52/structdl7_1_1json_1_1Format.html":[7,0,2,3,2],
-"df/d52/structdl7_1_1json_1_1Format.html#a0be86fe44d6aff88749ec868ff1e2dbf":[5,0,2,3,2,4],
-"df/d52/structdl7_1_1json_1_1Format.html#a0be86fe44d6aff88749ec868ff1e2dbf":[7,0,2,3,2,4]
+"df/d52/structdl7_1_1json_1_1Format.html":[7,0,2,3,2]
 };

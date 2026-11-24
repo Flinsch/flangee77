@@ -1,5 +1,7 @@
 var NAVTREEINDEX66 =
 {
+"dd/dd3/direct3d11_2meshes_2VertexBufferImpl_8h_source.html":[8,0,7,1,1,0,0,3],
+"dd/dd6/classfl7_1_1gui_1_1faces_1_1Slider_1_1Handle.html":[5,0,3,1,0,11,0],
 "dd/dd6/classfl7_1_1gui_1_1faces_1_1Slider_1_1Handle.html":[7,0,3,1,0,11,0],
 "dd/dd6/classfl7_1_1gui_1_1faces_1_1Slider_1_1Handle.html#a387cb12deed960e16959dc27afd90e93":[5,0,3,1,0,11,0,3],
 "dd/dd6/classfl7_1_1gui_1_1faces_1_1Slider_1_1Handle.html#a387cb12deed960e16959dc27afd90e93":[7,0,3,1,0,11,0,3],
@@ -247,7 +249,5 @@ var NAVTREEINDEX66 =
 "de/d0a/classxl7_1_1graphics_1_1RenderingContext.html#a9a8c2cab8160e1fef2a6449c7cd55dae":[7,0,8,1,13,33],
 "de/d0a/classxl7_1_1graphics_1_1RenderingContext.html#a9d6cfa44363d6df2b8aedb628aa5175a":[5,0,8,2,13,20],
 "de/d0a/classxl7_1_1graphics_1_1RenderingContext.html#a9d6cfa44363d6df2b8aedb628aa5175a":[7,0,8,1,13,20],
-"de/d0a/classxl7_1_1graphics_1_1RenderingContext.html#aa31f7cc4b9e81885145e254a7c76b0ea":[5,0,8,2,13,38],
-"de/d0a/classxl7_1_1graphics_1_1RenderingContext.html#aa31f7cc4b9e81885145e254a7c76b0ea":[7,0,8,1,13,38],
-"de/d0a/classxl7_1_1graphics_1_1RenderingContext.html#abe398845da9d79a713ceb74afa5ef9e7":[5,0,8,2,13,6]
+"de/d0a/classxl7_1_1graphics_1_1RenderingContext.html#aa31f7cc4b9e81885145e254a7c76b0ea":[5,0,8,2,13,38]
 };

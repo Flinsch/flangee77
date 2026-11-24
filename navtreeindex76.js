@@ -1,5 +1,7 @@
 var NAVTREEINDEX76 =
 {
+"df/de5/namespacecl7_1_1logging.html#a53bbe4bc2f351711756b93248cf062f3a6311ae17c1ee52b36e68aaf4ad066387":[5,0,1,6,8,13],
+"df/de5/namespacecl7_1_1logging.html#a53bbe4bc2f351711756b93248cf062f3a7d74f3b92b19da5e606d737d339a9679":[5,0,1,6,8,7],
 "df/de5/namespacecl7_1_1logging.html#a53bbe4bc2f351711756b93248cf062f3a902b0d55fddef6f8d651fe1035b7d4bd":[5,0,1,6,8,4],
 "df/de5/namespacecl7_1_1logging.html#a53bbe4bc2f351711756b93248cf062f3ab6755d218d5f4e1cef9cce9cc39aeda9":[5,0,1,6,8,11],
 "df/de5/namespacecl7_1_1logging.html#a53bbe4bc2f351711756b93248cf062f3aca0dbad92a874b2f69b549293387925e":[5,0,1,6,8,10],
@@ -247,7 +249,5 @@ var NAVTREEINDEX76 =
 "functions_vars_x.html":[7,3,2,23],
 "functions_vars_y.html":[7,3,2,24],
 "functions_vars_z.html":[7,3,2,25],
-"functions_w.html":[7,3,0,23],
-"functions_x.html":[7,3,0,24],
-"functions_y.html":[7,3,0,25]
+"functions_w.html":[7,3,0,23]
 };
