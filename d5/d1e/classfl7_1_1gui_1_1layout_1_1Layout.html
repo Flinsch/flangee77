@@ -100,11 +100,13 @@ Inheritance diagram for fl7::gui::layout::Layout:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d6/d8d/classfl7_1_1gui_1_1layout_1_1Layout__inherit__graph.png" border="0" usemap="#afl7_1_1gui_1_1layout_1_1Layout_inherit__map" loading="lazy" alt="Inheritance graph"/></div>
 <map name="afl7_1_1gui_1_1layout_1_1Layout_inherit__map" id="afl7_1_1gui_1_1layout_1_1Layout_inherit__map">
-<area shape="rect" title=" " alt="" coords="120,5,287,33"/>
-<area shape="rect" href="../../de/d3a/classfl7_1_1gui_1_1layout_1_1BoxLayout.html" title=" " alt="" coords="5,90,197,117"/>
-<area shape="poly" title=" " alt="" coords="178,42,119,91,116,87,173,44"/>
-<area shape="rect" href="../../df/dbb/classfl7_1_1gui_1_1layout_1_1DefaultLayout.html" title=" " alt="" coords="221,81,392,126"/>
-<area shape="poly" title=" " alt="" coords="233,41,282,80,276,80,231,46"/>
+<area shape="rect" title=" " alt="" coords="5,65,172,93"/>
+<area shape="rect" href="../../de/d3a/classfl7_1_1gui_1_1layout_1_1BoxLayout.html" title=" " alt="" coords="221,5,412,33"/>
+<area shape="poly" title=" " alt="" coords="157,58,219,42,263,33,258,35,220,47,159,63"/>
+<area shape="rect" href="../../df/dbb/classfl7_1_1gui_1_1layout_1_1DefaultLayout.html" title=" " alt="" coords="231,57,402,102"/>
+<area shape="poly" title=" " alt="" coords="187,77,233,79,228,80,187,82"/>
+<area shape="rect" href="../../dc/d4f/classfl7_1_1gui_1_1layout_1_1GridLayout.html" title=" " alt="" coords="220,125,413,153"/>
+<area shape="poly" title=" " alt="" coords="158,95,220,111,263,125,258,125,219,116,158,100"/>
 </map>
 <center><span class="legend">[<a target="top" href="../../graph_legend.html">legend</a>]</span></center></div>
 <div class="dynheader">
@@ -161,6 +163,10 @@ Public Member Functions</h2></td></tr>
 Protected Member Functions</h2></td></tr>
 <tr class="memitem:afa478e70a9ee0d4ef45ff187b2a984a4" id="r_afa478e70a9ee0d4ef45ff187b2a984a4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#a4b59c95768c7207947604d2678161d38">Container</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afa478e70a9ee0d4ef45ff187b2a984a4">_get_container</a> () const</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pro-static-methods" class="groupheader"><a id="pro-static-methods" name="pro-static-methods"></a>
+Static Protected Member Functions</h2></td></tr>
+<tr class="memitem:a02a013515b169042a976ba1f54dd22f1" id="r_a02a013515b169042a976ba1f54dd22f1"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a02a013515b169042a976ba1f54dd22f1">_fit_in_cell</a> (<a class="el" href="../../d5/d56/namespacefl7_1_1gui.html#a86b128accd61114e8900e074c2d1e199">Anchor</a> anchor, <a class="el" href="../../d5/d56/namespacefl7_1_1gui.html#a86b128accd61114e8900e074c2d1e199">Anchor</a> near_flag, <a class="el" href="../../d5/d56/namespacefl7_1_1gui.html#a86b128accd61114e8900e074c2d1e199">Anchor</a> far_flag, float cell_position, float cell_size, float preferred, float minimum, float &amp;out_position, float &amp;out_size)</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-attribs" class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:aba44f58264b86aa9cf4b2413564dd3bd" id="r_aba44f58264b86aa9cf4b2413564dd3bd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#a4b59c95768c7207947604d2678161d38">Container</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aba44f58264b86aa9cf4b2413564dd3bd">_container</a> = nullptr</td></tr>
@@ -199,6 +205,71 @@ Friends</h2></td></tr>
 </div>
 </div>
 <a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a id="a02a013515b169042a976ba1f54dd22f1" name="a02a013515b169042a976ba1f54dd22f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a02a013515b169042a976ba1f54dd22f1">&#9670;&#160;</a></span>_fit_in_cell()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void fl7::gui::layout::Layout::_fit_in_cell </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d5/d56/namespacefl7_1_1gui.html#a86b128accd61114e8900e074c2d1e199">Anchor</a></td>          <td class="paramname"><span class="paramname"><em>anchor</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d5/d56/namespacefl7_1_1gui.html#a86b128accd61114e8900e074c2d1e199">Anchor</a></td>          <td class="paramname"><span class="paramname"><em>near_flag</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d5/d56/namespacefl7_1_1gui.html#a86b128accd61114e8900e074c2d1e199">Anchor</a></td>          <td class="paramname"><span class="paramname"><em>far_flag</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>cell_position</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>cell_size</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>preferred</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>minimum</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float &amp;</td>          <td class="paramname"><span class="paramname"><em>out_position</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float &amp;</td>          <td class="paramname"><span class="paramname"><em>out_size</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Fits a child's own preferred size within its cell, along a single axis, never below <span class="tt">minimum</span>, per anchor's <span class="tt">near_flag</span> and <span class="tt">far_flag</span>. Shared by every concrete layout that divides its container into anchor-fitted cells (see <span class="tt"><a class="el" href="../../de/d3a/classfl7_1_1gui_1_1layout_1_1BoxLayout.html#a3b66c706d84843cba89cc780b00984f1">BoxLayout::perform()</a></span> or <span class="tt"><a class="el" href="../../dc/d4f/classfl7_1_1gui_1_1layout_1_1GridLayout.html#aec8fe647cac4a0d01d73d332ec7848f6">GridLayout::perform()</a></span>). </p>
+
+</div>
+</div>
 <a id="afa478e70a9ee0d4ef45ff187b2a984a4" name="afa478e70a9ee0d4ef45ff187b2a984a4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#afa478e70a9ee0d4ef45ff187b2a984a4">&#9670;&#160;</a></span>_get_container()</h2>
 
@@ -249,7 +320,7 @@ Friends</h2></td></tr>
 </div><div class="memdoc">
 <p>Returns how large this layout's own strategy would ideally like container to be, given its current children's own effective minimum sizes, while this layout is attached, instead of the plain (no-layout) bounding-box calculation a <span class="tt"><a class="el" href="../../dd/d69/classfl7_1_1gui_1_1Container.html">Container</a></span> otherwise falls back to. Default: <span class="tt">{0, 0}</span> (no particular opinion; a layout that doesn't actually resize/reposition children, e.g., <span class="tt"><a class="el" href="../../df/dbb/classfl7_1_1gui_1_1layout_1_1DefaultLayout.html">DefaultLayout</a></span>, has none to report either). </p>
 
-<p>Reimplemented in <a class="el" href="../../de/d3a/classfl7_1_1gui_1_1layout_1_1BoxLayout.html#aea0d8a8b8192e20936a9f24db0004f0d">fl7::gui::layout::BoxLayout</a>.</p>
+<p>Reimplemented in <a class="el" href="../../de/d3a/classfl7_1_1gui_1_1layout_1_1BoxLayout.html#aea0d8a8b8192e20936a9f24db0004f0d">fl7::gui::layout::BoxLayout</a>, <a class="el" href="../../df/dbb/classfl7_1_1gui_1_1layout_1_1DefaultLayout.html#a37424c01bc1710c0ae1e26babaaefed6">fl7::gui::layout::DefaultLayout</a>, and <a class="el" href="../../dc/d4f/classfl7_1_1gui_1_1layout_1_1GridLayout.html#a356a8fac0aaf496a5158763e615d95ec">fl7::gui::layout::GridLayout</a>.</p>
 
 </div>
 </div>
@@ -277,7 +348,7 @@ Friends</h2></td></tr>
 </div><div class="memdoc">
 <p>Returns how large this layout's own strategy would ideally like container to be, given its current children's own effective preferred sizes, while this layout is attached, instead of the plain (no-layout) bounding-box calculation a <span class="tt"><a class="el" href="../../dd/d69/classfl7_1_1gui_1_1Container.html">Container</a></span> otherwise falls back to. Default: <span class="tt">{0, 0}</span> (no particular opinion; a layout that doesn't actually resize/reposition children, e.g., <span class="tt"><a class="el" href="../../df/dbb/classfl7_1_1gui_1_1layout_1_1DefaultLayout.html">DefaultLayout</a></span>, has none to report either). </p>
 
-<p>Reimplemented in <a class="el" href="../../de/d3a/classfl7_1_1gui_1_1layout_1_1BoxLayout.html#a735260044a6b3ba8e633815617c08ff4">fl7::gui::layout::BoxLayout</a>.</p>
+<p>Reimplemented in <a class="el" href="../../de/d3a/classfl7_1_1gui_1_1layout_1_1BoxLayout.html#a735260044a6b3ba8e633815617c08ff4">fl7::gui::layout::BoxLayout</a>, <a class="el" href="../../df/dbb/classfl7_1_1gui_1_1layout_1_1DefaultLayout.html#a6225ee76640cf3dbd167143aa55ec584">fl7::gui::layout::DefaultLayout</a>, and <a class="el" href="../../dc/d4f/classfl7_1_1gui_1_1layout_1_1GridLayout.html#a23a0a3927d83a4332acababc294edead">fl7::gui::layout::GridLayout</a>.</p>
 
 </div>
 </div>
@@ -305,7 +376,7 @@ Friends</h2></td></tr>
 </div><div class="memdoc">
 <p>(Re-)arranges container's current children within it, per this layout's own strategy. Called automatically by <span class="tt"><a class="el" href="../../dd/d69/classfl7_1_1gui_1_1Container.html">Container</a></span> whenever it matters; never needs to be called directly. </p>
 
-<p>Implemented in <a class="el" href="../../de/d3a/classfl7_1_1gui_1_1layout_1_1BoxLayout.html#a3b66c706d84843cba89cc780b00984f1">fl7::gui::layout::BoxLayout</a>, and <a class="el" href="../../df/dbb/classfl7_1_1gui_1_1layout_1_1DefaultLayout.html#a45a049fabe0708f589a654677d2d8d4e">fl7::gui::layout::DefaultLayout</a>.</p>
+<p>Implemented in <a class="el" href="../../de/d3a/classfl7_1_1gui_1_1layout_1_1BoxLayout.html#a3b66c706d84843cba89cc780b00984f1">fl7::gui::layout::BoxLayout</a>, <a class="el" href="../../df/dbb/classfl7_1_1gui_1_1layout_1_1DefaultLayout.html#a45a049fabe0708f589a654677d2d8d4e">fl7::gui::layout::DefaultLayout</a>, and <a class="el" href="../../dc/d4f/classfl7_1_1gui_1_1layout_1_1GridLayout.html#aec8fe647cac4a0d01d73d332ec7848f6">fl7::gui::layout::GridLayout</a>.</p>
 
 </div>
 </div>
@@ -355,8 +426,9 @@ Friends</h2></td></tr>
 
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following file:<ul>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>FaceLabs/gui/layout/<a class="el" href="../../d5/d2a/Layout_8h_source.html">Layout.h</a></li>
+<li>FaceLabs/gui/layout/<a class="el" href="../../d5/d08/Layout_8cpp.html">Layout.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

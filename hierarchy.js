@@ -491,7 +491,8 @@ var hierarchy =
     [ "xl7::input::KeyboardMouseSystem::KeyboardEntry", "d4/dc4/structxl7_1_1input_1_1KeyboardMouseSystem_1_1KeyboardEntry.html", null ],
     [ "fl7::gui::layout::Layout", "d5/d1e/classfl7_1_1gui_1_1layout_1_1Layout.html", [
       [ "fl7::gui::layout::BoxLayout", "de/d3a/classfl7_1_1gui_1_1layout_1_1BoxLayout.html", null ],
-      [ "fl7::gui::layout::DefaultLayout", "df/dbb/classfl7_1_1gui_1_1layout_1_1DefaultLayout.html", null ]
+      [ "fl7::gui::layout::DefaultLayout", "df/dbb/classfl7_1_1gui_1_1layout_1_1DefaultLayout.html", null ],
+      [ "fl7::gui::layout::GridLayout", "dc/d4f/classfl7_1_1gui_1_1layout_1_1GridLayout.html", null ]
     ] ],
     [ "ml7::Vector2&lt; T &gt;::less", "d6/d6c/structml7_1_1Vector2_1_1less.html", null ],
     [ "ml7::Vector3&lt; T &gt;::less", "d5/d80/structml7_1_1Vector3_1_1less.html", null ],

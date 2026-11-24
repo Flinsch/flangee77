@@ -449,7 +449,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Resizes the owning frame by delta, clamped to <span class="tt"><a class="el" href="../../dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#ad5205e5dffba076cb41f41209d1da431">Frame::MIN_WIDTH</a></span> and its own <span class="tt"><a class="el" href="../../dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#a0703b9ffee64d953c66b64c7d1b83fd4">_min_height()</a></span>, while dragging is armed; see <span class="tt"><a class="el" href="#a9a16de9761aeefd3ad11e086c70c132b">_drag_size</a></span>. </p>
+<p>Resizes the owning frame by delta, clamped to its own effective minimum size (see <span class="tt"><a class="el" href="../../dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#abf36c19461d2c95b1a234865185ecca9">Frame::_calculate_minimum_size()</a></span>, which already aggregates the content area's own minimum size, recursively, on top of <span class="tt"><a class="el" href="../../dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#ad5205e5dffba076cb41f41209d1da431">Frame::MIN_WIDTH</a></span>/<span class="tt"><a class="el" href="../../dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#a0703b9ffee64d953c66b64c7d1b83fd4">_min_height()</a></span>), while dragging is armed; see <span class="tt"><a class="el" href="#a9a16de9761aeefd3ad11e086c70c132b">_drag_size</a></span>. </p>
 
 <p>Reimplemented from <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html#af16e7e80f64342ddb418ae955e98f621">fl7::gui::Face</a>.</p>
 

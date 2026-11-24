@@ -313,7 +313,7 @@ Static Private Attributes</h2></td></tr>
 <tr class="memitem:ad5205e5dffba076cb41f41209d1da431" id="r_ad5205e5dffba076cb41f41209d1da431"><td class="memItemLeft" align="right" valign="top">static constexpr float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad5205e5dffba076cb41f41209d1da431">MIN_WIDTH</a> = 80.0f</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>A top-level window: a background/border chrome (see <span class="tt"><a class="el" href="../../dd/d02/structfl7_1_1gui_1_1Style.html">Style</a></span>) around an internal content area, exposed via <span class="tt"><a class="el" href="#a7b43547d70b2476bb8b8541f1a1f5e31">get_content_area()</a></span> (the only place a caller can actually add children, since this is a <span class="tt"><a class="el" href="../../d0/d93/classfl7_1_1gui_1_1Compound.html">Compound</a></span>: fixed internal composition, not arbitrary public children), with a fixed title bar (title text plus a close button) on top of it, draggable (by that title bar) to move it and, by a small grip in its bottom-right corner, to resize it (clamped to a sane minimum size). The content area fills whatever's left below the title bar and is kept in sync as the frame is resized. </p>
+<div class="textblock"><p>A top-level window: a background/border chrome (see <span class="tt"><a class="el" href="../../dd/d02/structfl7_1_1gui_1_1Style.html">Style</a></span>) around an internal content area, exposed via <span class="tt"><a class="el" href="#a7b43547d70b2476bb8b8541f1a1f5e31">get_content_area()</a></span> (the only place a caller can actually add children, since this is a <span class="tt"><a class="el" href="../../d0/d93/classfl7_1_1gui_1_1Compound.html">Compound</a></span>: fixed internal composition, not arbitrary public children), with a fixed title bar (title text plus a close button) on top of it, draggable (by that title bar) to move it and, by a small grip in its bottom-right corner, to resize it (never below this frame's own effective minimum size, which already aggregates the content area's own children's minimum sizes recursively). The content area fills whatever is left below the title bar and is kept in sync as the frame is resized. </p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a6ce73032f1128df3f5e97398c5c3aa98" name="a6ce73032f1128df3f5e97398c5c3aa98"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6ce73032f1128df3f5e97398c5c3aa98">&#9670;&#160;</a></span>Frame() <span class="overload">[1/3]</span></h2>
@@ -466,7 +466,7 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Returns the content area's own effective minimum size, plus this frame's own title bar height on top; width is otherwise unaffected, the title bar never needs more of it than the content area itself already does. </p>
+<p>Returns the content area's own effective minimum size, plus this frame's own title bar height on top (width otherwise unaffected: the title bar never needs more of it than the content area itself already does), floored to <span class="tt"><a class="el" href="#ad5205e5dffba076cb41f41209d1da431">MIN_WIDTH</a></span>/<span class="tt"><a class="el" href="#a0703b9ffee64d953c66b64c7d1b83fd4">_min_height()</a></span> either way, so this frame's own chrome always has enough room regardless of how small the content area's own minimum size is. What actually keeps the resize handle (see <span class="tt"><a class="el" href="../../d3/d26/classfl7_1_1gui_1_1faces_1_1Frame_1_1ResizeHandle.html">ResizeHandle</a></span>) from ever shrinking this frame below it. </p>
 
 <p>Reimplemented from <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html#af740f74d08c785ef76ef46a77d0ec530">fl7::gui::Face</a>.</p>
 
@@ -1099,7 +1099,7 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Dragging the resize handle (see <span class="tt"><a class="el" href="../../d3/d26/classfl7_1_1gui_1_1faces_1_1Frame_1_1ResizeHandle.html">ResizeHandle</a></span>) never shrinks this frame's own width below this. Fixed for now; should eventually follow from recursively aggregating the content area's own children instead, once that's generalized (see <span class="tt"><a class="el" href="../../dd/d69/classfl7_1_1gui_1_1Container.html">Container</a></span>/<span class="tt"><a class="el" href="../../d0/d93/classfl7_1_1gui_1_1Compound.html">Compound</a></span>). </p>
+<p>This frame's own effective minimum width (see <span class="tt"><a class="el" href="#abf36c19461d2c95b1a234865185ecca9">_calculate_minimum_size()</a></span>) never goes below this, regardless of how small the content area's own aggregated minimum width is (e.g., an empty content area's: 0): a floor for the chrome itself (title bar/close button), not the content. </p>
 
 </div>
 </div>

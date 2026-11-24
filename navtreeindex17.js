@@ -1,5 +1,8 @@
 var NAVTREEINDEX17 =
 {
+"d4/d64/SelectionHelper_8cpp.html":[8,0,3,1,2,10],
+"d4/d65/ClippedQuad_8cpp.html":[8,0,7,1,2,0],
+"d4/d65/ProductionRule_8h.html":[8,0,2,4,25],
 "d4/d65/ProductionRule_8h_source.html":[8,0,2,4,25],
 "d4/d65/direct3d9_2shaders_2VertexShaderImpl_8cpp.html":[8,0,7,1,1,1,1,6],
 "d4/d67/subdivide_8h.html":[8,0,4,0,1],
@@ -246,8 +249,5 @@ var NAVTREEINDEX17 =
 "d4/d9d/structml7_1_1Angle.html#ab4825269fb60c68ddcae669afb8c42b4":[5,0,4,4,32],
 "d4/d9d/structml7_1_1Angle.html#ab4825269fb60c68ddcae669afb8c42b4":[7,0,4,4,32],
 "d4/d9d/structml7_1_1Angle.html#ab4accd62e2251dbacb98e0386bf1cd0d":[5,0,4,4,10],
-"d4/d9d/structml7_1_1Angle.html#ab4accd62e2251dbacb98e0386bf1cd0d":[7,0,4,4,10],
-"d4/d9d/structml7_1_1Angle.html#ac98b51981b1f66942697d7410c13e83b":[5,0,4,4,16],
-"d4/d9d/structml7_1_1Angle.html#ac98b51981b1f66942697d7410c13e83b":[7,0,4,4,16],
-"d4/d9d/structml7_1_1Angle.html#aca80db8d45ffaab07d54c1ea47db34be":[5,0,4,4,12]
+"d4/d9d/structml7_1_1Angle.html#ab4accd62e2251dbacb98e0386bf1cd0d":[7,0,4,4,10]
 };
