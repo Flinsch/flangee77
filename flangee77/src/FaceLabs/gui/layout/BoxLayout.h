@@ -34,8 +34,12 @@ namespace fl7::gui::layout {
  * space is left over once every such fixed-size child's cell has been accounted for,
  * proportional to its own stretch factor relative to the other stretched children's
  * (every cell then just splits the main axis evenly, unless some are explicitly
- * pinned to their own preferred size via 0 instead); along the perpendicular (cross)
- * axis, every cell is simply the container's own full extent there (minus padding).
+ * pinned to their own preferred size via 0 instead), except that a stretched child
+ * whose plain share would undercut its own effective minimum size instead gets
+ * exactly that, with the leftover redistributed among the remaining stretched
+ * children the same way, repeated until none are left undercut; along the
+ * perpendicular (cross) axis, every cell is simply the container's own full extent
+ * there (minus padding).
  *
  * How a child actually sits within its own cell (possibly larger than its own
  * preferred size: filled, shrunk-and-aligned near/far, or shrunk-and-centered) is

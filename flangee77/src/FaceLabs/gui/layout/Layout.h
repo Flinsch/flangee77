@@ -5,6 +5,8 @@
 
 #include <MathLabs/Vector2.h>
 
+#include <vector>
+
 
 
 namespace fl7::gui {
@@ -93,6 +95,25 @@ protected:
      * cells (see `BoxLayout::perform()` or `GridLayout::perform()`).
      */
     static void _fit_in_cell(Anchor anchor, Anchor near_flag, Anchor far_flag, float cell_position, float cell_size, float preferred, float minimum, float& out_position, float& out_size);
+
+    /**
+     * Splits `available` among `stretch.size()` stretched contributors
+     * (`stretch`/`minimum` parallel, one entry per contributor), proportional
+     * to each one's own `stretch`, but never below its own `minimum`: any
+     * contributor whose plain ratio-based share would undercut that instead gets
+     * exactly its own `minimum`, with the leftover (space and stretch)
+     * redistributed among the remaining, not-yet-undercut contributors the same way,
+     * repeated until none are left undercut (same idea as CSS flexbox's own
+     * "resolve flexible lengths" algorithm); a contributor only ever actually ends
+     * up below its own `minimum` when every contributor's own `minimum`, summed,
+     * already exceeds `available` to begin with (then there's simply no way to
+     * honor every one, regardless). Shared by `BoxLayout::perform()` (one call, its
+     * own main axis) and `GridLayout::perform()` (one call per axis, rows and
+     * columns independently), both otherwise prone to overcommitting `available` by
+     * individually flooring an undercut contributor at its own `minimum` without
+     * taking that same amount back from the others.
+     */
+    static std::vector<float> _distribute_stretched_space(float available, const std::vector<float>& stretch, const std::vector<float>& minimum);
 
 
 

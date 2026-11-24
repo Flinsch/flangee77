@@ -83,19 +83,33 @@ namespace fl7::gui::layout {
 
         float fixed_total = 0.0f;
         float stretch_sum = 0.0f;
+        std::vector<float> stretches;
+        std::vector<float> stretch_minimums;
         for (const auto& child_ptr : _order)
         {
             const float stretch = get_stretch(*child_ptr);
             if (stretch > 0.0f)
+            {
                 stretch_sum += stretch;
+                stretches.push_back(stretch);
+                stretch_minimums.push_back(child_ptr->get_effective_minimum_size()[axis]);
+            }
             else
+            {
                 fixed_total += child_ptr->get_effective_preferred_size()[axis];
+            }
         }
 
         const float available = std::max(0.0f, container_size[axis] - padding_main_near - padding_main_far - total_gap - fixed_total);
         const float cross_available = std::max(0.0f, container_size[cross_axis] - padding_cross_near - padding_cross_far);
 
+        // Every stretched child's own final main-axis size, honoring its own
+        // minimum (see _distribute_stretched_space()'s own doc comment), in
+        // the same order as encountered above/below.
+        const std::vector<float> stretched_sizes = _distribute_stretched_space(available, stretches, stretch_minimums);
+
         float offset = padding_main_near;
+        size_t stretched_index = 0;
         for (const auto& child_ptr : _order)
         {
             Face& child = *child_ptr;
@@ -105,7 +119,7 @@ namespace fl7::gui::layout {
 
             const float stretch = get_stretch(child);
             float cell_main_size = stretch > 0.0f && stretch_sum > 0.0f
-                ? available * (stretch / stretch_sum)
+                ? stretched_sizes[stretched_index++]
                 : preferred_size[axis];
             cell_main_size = std::max(cell_main_size, minimum_size[axis]);
 

@@ -24,49 +24,45 @@ namespace fl7::gui::layout {
  * built up via `add_child()`, which places a new child at an explicit
  * row/column, growing the grid first if either is beyond its current extent
  * (see `get_row_count()`/`get_column_count()`); a child added directly via
- * `Container::add_child()` instead isn't part of this grid, so it's simply
- * left wherever it already is, unarranged by this layout. A cell is either
- * empty or holds exactly one child; `add_child()` asserts that the cell it's
- * given is still empty, rather than silently replacing whatever's already
- * there. Not yet supported: a child spanning more than one row/column.
+ * `Container::add_child()` instead isn't part of this grid, so it's simply left
+ * wherever it already is, unarranged by this layout. A cell is either empty or
+ * holds exactly one child; `add_child()` asserts that the cell it's given is still
+ * empty, rather than silently replacing whatever's already there. Not yet supported:
+ * a child spanning more than one row/column.
  *
- * Arranges that grid into rows and columns: along the horizontal axis, every
- * column is either exactly as wide as the widest effective preferred width
- * among its own cells (a stretch factor of 0 or less; see
- * `set_column_stretch()`) or a share of whatever space is left over once
- * every such fixed-width column has been accounted for, proportional to its
- * own stretch factor relative to the other stretched columns' (every
- * column's default: see `set_column_stretch()`, every column then just
- * splits the available width evenly, unless some are explicitly pinned to
- * their own widest preferred width via 0 instead); same idea vertically for
- * rows, independently, via `set_row_stretch()` (a stretch factor is kept per
- * row/column here, unlike `BoxLayout`'s own per-child one: several cells
- * share a row/column, so a per-child factor wouldn't be meaningful). Every
- * row/column is separated from its neighbors by a fixed `get_row_gap()`/
- * `get_column_gap()`, within a fixed `get_padding()` kept around the whole
- * grid.
+ * Arranges that grid into rows and columns: along the horizontal axis, every column
+ * is either exactly as wide as the widest effective preferred width among its own
+ * cells (a stretch factor of 0 or less) or a share of whatever space is left over
+ * once every such fixed-width column has been accounted for, proportional to its
+ * own stretch factor relative to the other stretched columns' (every column's
+ * default: every column then just splits the available width evenly, unless some
+ * are explicitly pinned to their own widest preferred width via 0 instead), except
+ * that a stretched column whose plain share would undercut its own widest effective
+ * minimum width instead gets exactly that, with the leftover redistributed among
+ * the remaining stretched columns the same way, repeated until none are left
+ * undercut; same idea vertically for rows, independently (a stretch factor is kept
+ * per row/column here. Every row/column is separated from its neighbors by a fixed
+ * row/column gap, within a fixed padding kept around the whole grid.
  *
- * How a child actually sits within its own cell (possibly larger than its
- * own preferred size: filled, shrunk-and-aligned near/far, or
- * shrunk-and-centered) is then up to its own anchor, independently per axis;
- * see `BoxLayout`'s own doc comment for the exact rules, identical here.
+ * How a child actually sits within its own cell (possibly larger than its own
+ * preferred size: filled, shrunk-and-aligned near/far, or shrunk-and-centered) is
+ * then up to its own anchor, independently per axis; see `BoxLayout`'s own doc
+ * comment for the exact rules, identical here.
  *
- * None of this ever shrinks a child past its own effective minimum size,
- * though: once a cell (on either axis) becomes smaller than that, the child
- * keeps its minimum size instead and simply overflows the cell, and possibly
- * this layout's own bounds, rather than shrinking further or distorting its
- * content.
+ * None of this ever shrinks a child past its own effective minimum size, though:
+ * once a cell (on either axis) becomes smaller than that, the child keeps its
+ * minimum size instead and simply overflows the cell, and possibly this layout's
+ * own bounds, rather than shrinking further or distorting its content.
  *
- * Each child's own effective preferred/minimum size is re-queried live on
- * every `perform()` call, not cached here, same as `BoxLayout`.
+ * Each child's own effective preferred/minimum size is re-queried live on every
+ * `perform()` call, not cached here, same as `BoxLayout`.
  *
- * Also reports its own preferred/minimum size (see `Layout`): the sum of
- * every row's own tallest preferred/minimum height (plus gaps/padding) by
- * the sum of every column's own widest preferred/minimum width (plus
- * gaps/padding), ignoring stretch/anchor entirely: that's the size this grid
- * would occupy if every child actually got exactly its own row/column's
- * preferred/minimum size, which is what a `Container` with this layout
- * attached reports as its own effective size.
+ * Also reports its own preferred/minimum size: the sum of every row's own tallest
+ * preferred/minimum height (plus gaps/padding) by the sum of every column's own
+ * widest preferred/minimum width (plus gaps/padding), ignoring stretch/anchor
+ * entirely: that's the size this grid would occupy if every child actually got
+ * exactly its own row/column's preferred/minimum size, which is what a `Container`
+ * with this layout attached reports as its own effective size.
  */
 class GridLayout
     : public Layout

@@ -146,6 +146,64 @@ TESTLABS_CASE( u8"FaceLabs:  gui:  layout:  BoxLayout:  a stretched child's cell
     TESTLABS_CHECK_EQ_FLT( stretched_child.get_size().y, 80.0f ); // 100 - 20.
 }
 
+TESTLABS_CASE( u8"FaceLabs:  gui:  layout:  BoxLayout:  stretched children redistribute space among each other so every one reaches its own minimum, instead of each independently clamping up and overflowing the container" )
+{
+    fl7::gui::Container container;
+    container.set_size({100.0f, 100.0f});
+
+    auto& layout = container.set_layout<fl7::gui::layout::BoxLayout>(fl7::gui::layout::BoxLayout::Orientation::Vertical);
+
+    auto& child1 = layout.add_child<fl7::gui::Container>();
+    child1.set_size({50.0f, 50.0f});
+    child1.set_preferred_size({50.0f, 50.0f});
+    child1.set_minimum_size({50.0f, 20.0f});
+    child1.set_anchor(fl7::gui::Anchor::Top | fl7::gui::Anchor::Bottom);
+
+    auto& child2 = layout.add_child<fl7::gui::Container>();
+    child2.set_size({50.0f, 50.0f});
+    child2.set_preferred_size({50.0f, 50.0f});
+    child2.set_minimum_size({50.0f, 80.0f});
+    child2.set_anchor(fl7::gui::Anchor::Top | fl7::gui::Anchor::Bottom);
+
+    // Both left at the default stretch (1): a plain ratio split would give
+    // each exactly half (50/50), which would already undercut child2's own
+    // 80-tall minimum. Naively clamping it up to 80 without taking anything
+    // back from child1 would overflow this 100-tall container by 30; this
+    // instead gives child1 exactly the 20 left over, which happens to be
+    // its own minimum too.
+    layout.perform(container);
+
+    TESTLABS_CHECK_EQ_FLT( child1.get_position().y, 0.0f );
+    TESTLABS_CHECK_EQ_FLT( child1.get_size().y, 20.0f );
+    TESTLABS_CHECK_EQ_FLT( child2.get_position().y, 20.0f );
+    TESTLABS_CHECK_EQ_FLT( child2.get_size().y, 80.0f );
+}
+
+TESTLABS_CASE( u8"FaceLabs:  gui:  layout:  BoxLayout:  if even every stretched child's own minimum together already exceeds the available space, each still gets exactly its own minimum, simply overflowing the container instead" )
+{
+    fl7::gui::Container container;
+    container.set_size({100.0f, 60.0f}); // Less than child1's 20 + child2's 80 = 100.
+
+    auto& layout = container.set_layout<fl7::gui::layout::BoxLayout>(fl7::gui::layout::BoxLayout::Orientation::Vertical);
+
+    auto& child1 = layout.add_child<fl7::gui::Container>();
+    child1.set_size({50.0f, 50.0f});
+    child1.set_preferred_size({50.0f, 50.0f});
+    child1.set_minimum_size({50.0f, 20.0f});
+    child1.set_anchor(fl7::gui::Anchor::Top | fl7::gui::Anchor::Bottom);
+
+    auto& child2 = layout.add_child<fl7::gui::Container>();
+    child2.set_size({50.0f, 50.0f});
+    child2.set_preferred_size({50.0f, 50.0f});
+    child2.set_minimum_size({50.0f, 80.0f});
+    child2.set_anchor(fl7::gui::Anchor::Top | fl7::gui::Anchor::Bottom);
+
+    layout.perform(container);
+
+    TESTLABS_CHECK_EQ_FLT( child1.get_size().y, 20.0f );
+    TESTLABS_CHECK_EQ_FLT( child2.get_size().y, 80.0f ); // Together: 100, overflowing the 60-tall container.
+}
+
 TESTLABS_CASE( u8"FaceLabs:  gui:  layout:  BoxLayout:  stretch and anchor are independent: a stretched child whose anchor doesn't fill the main axis keeps its own preferred size, merely positioned within its own (larger) cell" )
 {
     fl7::gui::Container container;

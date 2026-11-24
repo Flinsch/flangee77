@@ -81,6 +81,37 @@ TESTLABS_CASE( u8"FaceLabs:  gui:  layout:  GridLayout:  stretch and anchor are 
     TESTLABS_CHECK_EQ_FLT( cell.get_size().x, 10.0f ); // ...but it doesn't grow to fill it (100, the only column's own stretched width).
 }
 
+TESTLABS_CASE( u8"FaceLabs:  gui:  layout:  GridLayout:  stretched rows/columns redistribute space among each other so every one reaches its own minimum, instead of each independently clamping up and overflowing the container" )
+{
+    fl7::gui::Container container;
+    container.set_size({50.0f, 100.0f});
+
+    auto& layout = container.set_layout<fl7::gui::layout::GridLayout>();
+
+    auto& top = layout.add_child<fl7::gui::Container>(0, 0);
+    top.set_preferred_size({50.0f, 50.0f});
+    top.set_minimum_size({50.0f, 20.0f});
+    top.set_anchor(fl7::gui::Anchor::All);
+
+    auto& bottom = layout.add_child<fl7::gui::Container>(1, 0);
+    bottom.set_preferred_size({50.0f, 50.0f});
+    bottom.set_minimum_size({50.0f, 80.0f});
+    bottom.set_anchor(fl7::gui::Anchor::All);
+
+    // Both rows left at the default stretch (1): a plain ratio split would
+    // give each exactly half (50/50), which would already undercut the
+    // bottom row's own 80-tall minimum. Naively clamping it up to 80 without
+    // taking anything back from the top row would overflow this 100-tall
+    // container by 30; this instead gives the top row exactly the 20 left
+    // over, which happens to be its own minimum too.
+    layout.perform(container);
+
+    TESTLABS_CHECK_EQ_FLT( top.get_position().y, 0.0f );
+    TESTLABS_CHECK_EQ_FLT( top.get_size().y, 20.0f );
+    TESTLABS_CHECK_EQ_FLT( bottom.get_position().y, 20.0f );
+    TESTLABS_CHECK_EQ_FLT( bottom.get_size().y, 80.0f );
+}
+
 TESTLABS_CASE( u8"FaceLabs:  gui:  layout:  GridLayout:  a cell never shrinks past its own effective minimum size, even once its row/column has" )
 {
     fl7::gui::Container container;

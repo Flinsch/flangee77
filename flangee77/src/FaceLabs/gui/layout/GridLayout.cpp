@@ -121,37 +121,60 @@ namespace fl7::gui::layout {
         // same idea as BoxLayout::perform(), just independently per axis.
         float row_fixed_total = 0.0f;
         float row_stretch_sum = 0.0f;
+        std::vector<float> row_stretches;
+        std::vector<float> row_stretch_minimums;
         for (size_t r = 0; r < row_count; ++r)
         {
             const float stretch = get_row_stretch(r);
             if (stretch > 0.0f)
+            {
                 row_stretch_sum += stretch;
+                row_stretches.push_back(stretch);
+                row_stretch_minimums.push_back(row_minimum[r]);
+            }
             else
+            {
                 row_fixed_total += row_preferred[r];
+            }
         }
 
         float column_fixed_total = 0.0f;
         float column_stretch_sum = 0.0f;
+        std::vector<float> column_stretches;
+        std::vector<float> column_stretch_minimums;
         for (size_t c = 0; c < column_count; ++c)
         {
             const float stretch = get_column_stretch(c);
             if (stretch > 0.0f)
+            {
                 column_stretch_sum += stretch;
+                column_stretches.push_back(stretch);
+                column_stretch_minimums.push_back(column_minimum[c]);
+            }
             else
+            {
                 column_fixed_total += column_preferred[c];
+            }
         }
 
         const float row_available = std::max(0.0f, container_size.y - _padding.top - _padding.bottom - total_row_gap - row_fixed_total);
         const float column_available = std::max(0.0f, container_size.x - _padding.left - _padding.right - total_column_gap - column_fixed_total);
 
+        // Every stretched row's/column's own final size, honoring its own
+        // minimum (see _distribute_stretched_space()'s own doc comment), in
+        // the same order as encountered above/below.
+        const std::vector<float> row_stretched_sizes = _distribute_stretched_space(row_available, row_stretches, row_stretch_minimums);
+        const std::vector<float> column_stretched_sizes = _distribute_stretched_space(column_available, column_stretches, column_stretch_minimums);
+
         std::vector<float> row_size(row_count);
         std::vector<float> row_offset(row_count);
         float y = _padding.top;
+        size_t row_stretched_index = 0;
         for (size_t r = 0; r < row_count; ++r)
         {
             const float stretch = get_row_stretch(r);
             float size = stretch > 0.0f && row_stretch_sum > 0.0f
-                ? row_available * (stretch / row_stretch_sum)
+                ? row_stretched_sizes[row_stretched_index++]
                 : row_preferred[r];
             size = std::max(size, row_minimum[r]);
             row_offset[r] = y;
@@ -162,11 +185,12 @@ namespace fl7::gui::layout {
         std::vector<float> column_size(column_count);
         std::vector<float> column_offset(column_count);
         float x = _padding.left;
+        size_t column_stretched_index = 0;
         for (size_t c = 0; c < column_count; ++c)
         {
             const float stretch = get_column_stretch(c);
             float size = stretch > 0.0f && column_stretch_sum > 0.0f
-                ? column_available * (stretch / column_stretch_sum)
+                ? column_stretched_sizes[column_stretched_index++]
                 : column_preferred[c];
             size = std::max(size, column_minimum[c]);
             column_offset[c] = x;
