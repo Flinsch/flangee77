@@ -17,6 +17,7 @@
     #include <FaceLabs/gui/faces/TextField.h>
     #include <FaceLabs/gui/layout/BoxLayout.h>
     #include <FaceLabs/gui/layout/DefaultLayout.h>
+    #include <FaceLabs/gui/layout/GridLayout.h>
 
 #include <XiaoLabs/graphics.h>
     #include <XiaoLabs/graphics/images/codecs/targa/Reader.h>
@@ -536,6 +537,91 @@ namespace helloworld {
         // hand-maintaining that arithmetic here; re-performs content_layout
         // once more, against the now-final size, via Frame::_on_size_changed().
         frame.set_size(frame.get_effective_preferred_size());
+
+
+        // Demo GridLayout: a 3-column x 4-row grid dogfooding its own specifics
+        // in one place: per-column/per-row stretch (including a factor other
+        // than just 0/1, see column 2 below), every anchor combination (near/
+        // far/center/fill, independent of stretch), row/column gaps, padding
+        // around the whole grid, the minimum-size floor (drag this frame's own
+        // resize handle narrower once it's open to see it kick in), and the
+        // grid growing on its own as add_child() is called, rather than
+        // needing a fixed row/column count upfront (see the footer below,
+        // added only after, and only at column 1, growing the grid from 3 to
+        // 4 rows).
+        auto& grid_frame = _gui_shell->add_face<fl7::gui::faces::Frame>(U"Demo GridLayout");
+        // A fresh column of its own, clear of every other demo frame above
+        // regardless of any of their own actual (computed) heights.
+        grid_frame.set_position({1320.0f, 210.0f});
+
+        auto& grid_layout = grid_frame.get_content_area().set_layout<fl7::gui::layout::GridLayout>(8.0f, 12.0f, 12.0f);
+
+        // Column 0 stays pinned to its own widest preferred width (every label
+        // in it is short); columns 1/2 split whatever's left over, column 2
+        // getting twice column 1's own share. Stretch factors have to be set
+        // before add_child() below, not after: unlike add_child() itself, these
+        // setters don't re-perform this layout on their own.
+        grid_layout.set_column_stretch(0, 0.0f);
+        grid_layout.set_column_stretch(2, 2.0f);
+        // Row 0 (header) and row 3 (footer) likewise stay pinned to their own
+        // content height; rows 1/2 evenly split whatever's left vertically.
+        grid_layout.set_row_stretch(0, 0.0f);
+        grid_layout.set_row_stretch(3, 0.0f);
+
+        auto& grid_header_0 = grid_layout.add_child<fl7::gui::faces::Button>(0, 0, U"Fixed col");
+        grid_header_0.set_anchor(fl7::gui::Anchor::All);
+        auto& grid_header_1 = grid_layout.add_child<fl7::gui::faces::Button>(0, 1, U"Stretch x1");
+        grid_header_1.set_anchor(fl7::gui::Anchor::All);
+        auto& grid_header_2 = grid_layout.add_child<fl7::gui::faces::Button>(0, 2, U"Stretch x2");
+        grid_header_2.set_anchor(fl7::gui::Anchor::All);
+
+        // Left at the default anchor (Left|Top): demos "near" alignment within
+        // a cell larger than its own preferred size.
+        grid_layout.add_child<fl7::gui::faces::Button>(1, 0, U"Default\n(near)");
+
+        auto& grid_center_demo = grid_layout.add_child<fl7::gui::faces::Button>(1, 1, U"Anchor: None\n(center)");
+        grid_center_demo.set_anchor(fl7::gui::Anchor::None);
+
+        auto& grid_fill_demo = grid_layout.add_child<fl7::gui::faces::Button>(1, 2, U"Anchor: All\n(fill)");
+        grid_fill_demo.set_anchor(fl7::gui::Anchor::All);
+
+        grid_layout.add_child<fl7::gui::faces::Button>(2, 0, U"Row\nstretch");
+
+        auto& grid_far_demo = grid_layout.add_child<fl7::gui::faces::Button>(2, 1, U"Far\n(R+B)");
+        grid_far_demo.set_anchor(fl7::gui::Anchor::Right | fl7::gui::Anchor::Bottom);
+
+        auto& grid_min_size_demo = grid_layout.add_child<fl7::gui::faces::Button>(2, 2, U"Min-size\nfloor");
+        // A floor past this button's own short text, but still comfortably
+        // below column 2's own actual initial width (see the slack added to
+        // this frame's own size further down): demos that a cell only ever
+        // shrinks its child down to its own effective minimum size, then
+        // simply overflows the cell (and possibly this frame) instead of
+        // shrinking it further. Drag this frame's own resize handle
+        // narrower to see it actually kick in.
+        grid_min_size_demo.set_minimum_size({150.0f, 50.0f});
+
+        // Added only now, after every cell above, and only at column 2
+        // (columns 0/1 on this row are left empty: a cell doesn't have to
+        // hold a child; see GridLayout's own doc comment): grows this grid
+        // from 3 to 4 rows on its own, rather than needing row 3 declared
+        // upfront. Deliberately in column 2 (stretch x2), not column 1
+        // (stretch x1): this text is the widest in either column, and column
+        // 1's own smaller share of the stretched space wouldn't actually fit
+        // it (see the next comment).
+        auto& grid_footer = grid_layout.add_child<fl7::gui::faces::Button>(3, 2, U"Footer (auto-grown row)");
+        grid_footer.set_anchor(fl7::gui::Anchor::All);
+
+        // Dogfooding GridLayout's own calculate_preferred_size(), same idea as
+        // "Demo Frame" above, plus a bit of horizontal slack: stretch only
+        // ever splits the stretched columns' own share of space by their
+        // relative stretch factor, not by their own relative preferred width
+        // (see GridLayout's own doc comment), so sizing this frame at exactly
+        // its own preferred size can still come up short for whichever
+        // stretched column needs more than its own share of that factor-based
+        // split: without this, column 1 above would actually clip its own
+        // text by a few pixels. Re-performs this layout once more, against
+        // the now-final size, via Frame::_on_size_changed().
+        grid_frame.set_size(grid_frame.get_effective_preferred_size() + ml7::Vector2f{40.0f, 0.0f});
 
 
         auto& list_frame = _gui_shell->add_face<fl7::gui::faces::Frame>(U"Demo ListBox");
