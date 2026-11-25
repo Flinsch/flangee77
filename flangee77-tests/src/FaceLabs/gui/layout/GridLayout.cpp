@@ -205,6 +205,165 @@ TESTLABS_CASE( u8"FaceLabs:  gui:  layout:  GridLayout:  a child removed from th
     TESTLABS_CHECK_EQ_FLT( second.get_position().y, 0.0f );
 }
 
+TESTLABS_CASE( u8"FaceLabs:  gui:  layout:  GridLayout:  a child spanning two columns sits across their own combined width, leaving both as they were if it already fits" )
+{
+    fl7::gui::Container container;
+    container.set_size({200.0f, 100.0f});
+
+    auto& layout = container.set_layout<fl7::gui::layout::GridLayout>(0.0f, 5.0f);
+    layout.set_row_stretch(0, 0.0f);
+    layout.set_row_stretch(1, 0.0f);
+    layout.set_column_stretch(0, 0.0f);
+    layout.set_column_stretch(1, 0.0f);
+
+    layout.add_child<fl7::gui::Container>(0, 0).set_preferred_size({30.0f, 10.0f});
+    auto& top_right = layout.add_child<fl7::gui::Container>(0, 1);
+    top_right.set_preferred_size({40.0f, 10.0f});
+
+    auto& spanning = layout.add_child<fl7::gui::Container>(1, 0);
+    spanning.set_preferred_size({60.0f, 10.0f}); // Fits within 30 + 5 (gap) + 40 already.
+    spanning.set_anchor(fl7::gui::Anchor::All);
+    layout.set_span(spanning, 1, 2);
+
+    TESTLABS_CHECK_EQ_FLT( spanning.get_position().x, 0.0f );
+    TESTLABS_CHECK_EQ_FLT( spanning.get_size().x, 75.0f ); // Column 0 (30) + gap (5) + column 1 (40), both unchanged.
+    TESTLABS_CHECK_EQ_FLT( top_right.get_position().x, 35.0f );
+}
+
+TESTLABS_CASE( u8"FaceLabs:  gui:  layout:  GridLayout:  a child spanning two rows sits across their own combined height, leaving both as they were if it already fits" )
+{
+    fl7::gui::Container container;
+    container.set_size({100.0f, 200.0f});
+
+    auto& layout = container.set_layout<fl7::gui::layout::GridLayout>(5.0f, 0.0f);
+    layout.set_row_stretch(0, 0.0f);
+    layout.set_row_stretch(1, 0.0f);
+    layout.set_column_stretch(0, 0.0f);
+    layout.set_column_stretch(1, 0.0f);
+
+    layout.add_child<fl7::gui::Container>(0, 0).set_preferred_size({10.0f, 30.0f});
+    auto& bottom_left = layout.add_child<fl7::gui::Container>(1, 0);
+    bottom_left.set_preferred_size({10.0f, 40.0f});
+
+    auto& spanning = layout.add_child<fl7::gui::Container>(0, 1);
+    spanning.set_preferred_size({10.0f, 60.0f}); // Fits within 30 + 5 (gap) + 40 already.
+    spanning.set_anchor(fl7::gui::Anchor::All);
+    layout.set_span(spanning, 2, 1);
+
+    TESTLABS_CHECK_EQ_FLT( spanning.get_position().y, 0.0f );
+    TESTLABS_CHECK_EQ_FLT( spanning.get_size().y, 75.0f );
+    TESTLABS_CHECK_EQ_FLT( bottom_left.get_position().y, 35.0f );
+}
+
+TESTLABS_CASE( u8"FaceLabs:  gui:  layout:  GridLayout:  a column-spanning child whose own preferred width exceeds its spanned columns' combined width splits the shortfall evenly between them" )
+{
+    fl7::gui::Container container;
+    container.set_size({200.0f, 100.0f});
+
+    auto& layout = container.set_layout<fl7::gui::layout::GridLayout>();
+    layout.set_row_stretch(0, 0.0f);
+    layout.set_row_stretch(1, 0.0f);
+    layout.set_column_stretch(0, 0.0f);
+    layout.set_column_stretch(1, 0.0f);
+
+    layout.add_child<fl7::gui::Container>(0, 0).set_preferred_size({10.0f, 10.0f});
+    auto& top_right = layout.add_child<fl7::gui::Container>(0, 1);
+    top_right.set_preferred_size({10.0f, 10.0f});
+
+    auto& spanning = layout.add_child<fl7::gui::Container>(1, 0);
+    spanning.set_preferred_size({50.0f, 10.0f}); // 30 more than the 20 both columns add up to.
+    spanning.set_anchor(fl7::gui::Anchor::All);
+    layout.set_span(spanning, 1, 2);
+
+    TESTLABS_CHECK_EQ_FLT( top_right.get_position().x, 25.0f ); // Column 0 grew from 10 to 25 (+15, half the shortfall).
+    TESTLABS_CHECK_EQ_FLT( spanning.get_size().x, 50.0f );
+}
+
+TESTLABS_CASE( u8"FaceLabs:  gui:  layout:  GridLayout:  a row-spanning child whose own preferred height exceeds its spanned rows' combined height splits the shortfall evenly between them" )
+{
+    fl7::gui::Container container;
+    container.set_size({100.0f, 200.0f});
+
+    auto& layout = container.set_layout<fl7::gui::layout::GridLayout>();
+    layout.set_row_stretch(0, 0.0f);
+    layout.set_row_stretch(1, 0.0f);
+    layout.set_column_stretch(0, 0.0f);
+    layout.set_column_stretch(1, 0.0f);
+
+    layout.add_child<fl7::gui::Container>(0, 0).set_preferred_size({10.0f, 10.0f});
+    auto& bottom_left = layout.add_child<fl7::gui::Container>(1, 0);
+    bottom_left.set_preferred_size({10.0f, 10.0f});
+
+    auto& spanning = layout.add_child<fl7::gui::Container>(0, 1);
+    spanning.set_preferred_size({10.0f, 50.0f}); // 30 more than the 20 both rows add up to.
+    spanning.set_anchor(fl7::gui::Anchor::All);
+    layout.set_span(spanning, 2, 1);
+
+    TESTLABS_CHECK_EQ_FLT( bottom_left.get_position().y, 25.0f );
+    TESTLABS_CHECK_EQ_FLT( spanning.get_size().y, 50.0f );
+}
+
+TESTLABS_CASE( u8"FaceLabs:  gui:  layout:  GridLayout:  set_span() grows this layout's own grid to fit whatever footprint it's given, same as add_child() does for a single cell" )
+{
+    fl7::gui::Container container;
+
+    auto& layout = container.set_layout<fl7::gui::layout::GridLayout>();
+    auto& child = layout.add_child<fl7::gui::Container>(0, 0);
+    TESTLABS_CHECK_EQ( layout.get_row_count(), 1u );
+    TESTLABS_CHECK_EQ( layout.get_column_count(), 1u );
+
+    layout.set_span(child, 3, 2);
+
+    TESTLABS_CHECK_EQ( layout.get_row_count(), 3u );
+    TESTLABS_CHECK_EQ( layout.get_column_count(), 2u );
+}
+
+TESTLABS_CASE( u8"FaceLabs:  gui:  layout:  GridLayout:  shrinking a child's own span back frees whichever cells it no longer covers" )
+{
+    fl7::gui::Container container;
+    container.set_size({100.0f, 100.0f});
+
+    auto& layout = container.set_layout<fl7::gui::layout::GridLayout>();
+    layout.set_column_stretch(0, 0.0f);
+    layout.set_column_stretch(1, 0.0f);
+
+    auto& child = layout.add_child<fl7::gui::Container>(0, 0);
+    child.set_preferred_size({10.0f, 10.0f});
+    layout.set_span(child, 1, 2); // Covers (0, 0) and (0, 1).
+    layout.set_span(child, 1, 1); // Shrinks back; frees (0, 1) again.
+
+    // Would assert (cell already occupied) below if (0, 1) hadn't actually been freed.
+    auto& other = layout.add_child<fl7::gui::Container>(0, 1);
+    other.set_preferred_size({5.0f, 5.0f});
+
+    TESTLABS_CHECK_EQ( layout.get_span(child).column_span, 1u );
+    TESTLABS_CHECK_EQ_FLT( other.get_position().x, 10.0f ); // Column 0's own width (child's preferred).
+}
+
+TESTLABS_CASE( u8"FaceLabs:  gui:  layout:  GridLayout:  a child removed from the container frees every cell its own span covered, not just its origin" )
+{
+    fl7::gui::Container container;
+    container.set_size({100.0f, 100.0f});
+
+    auto& layout = container.set_layout<fl7::gui::layout::GridLayout>();
+
+    auto& child = layout.add_child<fl7::gui::Container>(0, 0);
+    child.set_preferred_size({10.0f, 10.0f});
+    layout.set_span(child, 2, 2); // Covers (0, 0), (0, 1), (1, 0), and (1, 1).
+
+    container.remove_child(child); // Also re-performs this layout, freeing every one of those cells.
+
+    // Would assert (cell already occupied) for any of these four below if
+    // removal hadn't actually freed every one of them.
+    layout.add_child<fl7::gui::Container>(0, 0);
+    layout.add_child<fl7::gui::Container>(0, 1);
+    layout.add_child<fl7::gui::Container>(1, 0);
+    layout.add_child<fl7::gui::Container>(1, 1);
+
+    TESTLABS_CHECK_EQ( layout.get_row_count(), 2u );
+    TESTLABS_CHECK_EQ( layout.get_column_count(), 2u );
+}
+
 
 
 // #############################################################################
@@ -281,6 +440,35 @@ TESTLABS_CASE( u8"FaceLabs:  gui:  layout:  GridLayout:  calculate_minimum_size(
     // column 1 (stretched) is its own widest minimum width (15) instead;
     // + column_gap(5) + padding(4) = 74.
     TESTLABS_CHECK_EQ_FLT( layout.calculate_minimum_size(container).x, 74.0f );
+}
+
+TESTLABS_CASE( u8"FaceLabs:  gui:  layout:  GridLayout:  calculate_preferred_size()/calculate_minimum_size() already reflect a spanning child's own shortfall growth, without perform() ever having run" )
+{
+    fl7::gui::Container container;
+
+    auto& layout = container.set_layout<fl7::gui::layout::GridLayout>(0.0f, 0.0f, fl7::gui::Padding(2.0f));
+    // Both columns left at the default stretch (1): calculate_minimum_size()
+    // uses their own minimum here, calculate_preferred_size() their preferred.
+
+    auto& top_left = layout.add_child<fl7::gui::Container>(0, 0);
+    top_left.set_preferred_size({10.0f, 10.0f});
+    top_left.set_minimum_size({5.0f, 5.0f});
+
+    auto& top_right = layout.add_child<fl7::gui::Container>(0, 1);
+    top_right.set_preferred_size({10.0f, 10.0f});
+    top_right.set_minimum_size({5.0f, 5.0f});
+
+    auto& spanning = layout.add_child<fl7::gui::Container>(1, 0);
+    spanning.set_preferred_size({50.0f, 10.0f});
+    spanning.set_minimum_size({40.0f, 10.0f});
+    layout.set_span(spanning, 1, 2);
+
+    // Preferred: both columns' own 10 fall 30 short of the spanning child's
+    // own 50; split evenly, each grows to 25. 25 + 25 + padding(4) = 54.
+    TESTLABS_CHECK_EQ_FLT( layout.calculate_preferred_size(container).x, 54.0f );
+    // Minimum: both columns' own 5 fall 30 short of the spanning child's own
+    // 40 instead; split evenly, each grows to 20. 20 + 20 + padding(4) = 44.
+    TESTLABS_CHECK_EQ_FLT( layout.calculate_minimum_size(container).x, 44.0f );
 }
 
 TESTLABS_CASE( u8"FaceLabs:  gui:  layout:  GridLayout:  Container::get_effective_preferred_size()/get_effective_minimum_size() defer to this layout's own calculation while it's attached, end to end" )

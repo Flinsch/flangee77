@@ -27,8 +27,8 @@ namespace fl7::gui::layout {
  * `Container::add_child()` instead isn't part of this grid, so it's simply left
  * wherever it already is, unarranged by this layout. A cell is either empty or
  * holds exactly one child; `add_child()` asserts that the cell it's given is still
- * empty, rather than silently replacing whatever's already there. Not yet supported:
- * a child spanning more than one row/column.
+ * empty, rather than silently replacing whatever's already there. A child can also
+ * cover more than one row/column (see `set_span()`).
  *
  * Arranges that grid into rows and columns: along the horizontal axis, every column
  * is either exactly as wide as the widest effective preferred width among its own
@@ -43,6 +43,11 @@ namespace fl7::gui::layout {
  * undercut; same idea vertically for rows, independently (a stretch factor is kept
  * per row/column here. Every row/column is separated from its neighbors by a fixed
  * row/column gap, within a fixed padding kept around the whole grid.
+ *
+ * A spanning child doesn't affect the rows/columns it covers until its own
+ * preferred/minimum extent there no longer fits within what they already add up to
+ * (gaps included). Any shortfall is then split evenly across them. Once sized, such
+ * a child's own cell is simply the union of every row/column it covers.
  *
  * How a child actually sits within its own cell (possibly larger than its own
  * preferred size: filled, shrunk-and-aligned near/far, or shrunk-and-centered) is
@@ -69,6 +74,15 @@ class GridLayout
 {
 
 public:
+    /** A child's own row/column span (see `get_span()`/`set_span()`). */
+    struct Span
+    {
+        size_t row_span = 1;
+        size_t column_span = 1;
+    }; // struct Span
+
+
+
     explicit GridLayout(float row_gap = 0.0f, float column_gap = 0.0f, Padding padding = {})
         : _row_gap(row_gap)
         , _column_gap(column_gap)
@@ -89,10 +103,10 @@ public:
     // Properties
     // #############################################################################
 
-    /** Returns the number of rows currently in this grid; see `add_child()`. */
+    /** Returns the number of rows currently in this grid; see `add_child()`/`set_span()`. */
     size_t get_row_count() const { return _grid.size(); }
 
-    /** Returns the number of columns currently in this grid; see `add_child()`. */
+    /** Returns the number of columns currently in this grid; see `add_child()`/`set_span()`. */
     size_t get_column_count() const { return _column_count; }
 
     /** Returns the fixed gap kept between consecutive rows. Default: 0. */
@@ -148,6 +162,21 @@ public:
     /** Sets the given column's stretch factor; see `set_row_stretch()`, same idea along the other axis. */
     void set_column_stretch(size_t column, float stretch);
 
+    /**
+     * Returns the given child's own row/column span (see `set_span()`).
+     * Default: 1 and 1.
+     */
+    Span get_span(const Face& child) const;
+
+    /**
+     * Grows (or shrinks back) the given child's own footprint to cover the
+     * specified number of rows and columns from its own cell, placed earlier via
+     * `add_child()`, growing this grid first if that footprint reaches past its
+     * current extent. Every cell it would newly cover must still be empty, same as
+     * `add_child()` itself requires.
+     */
+    void set_span(const Face& child, size_t row_span, size_t column_span);
+
 
 
     // #############################################################################
@@ -157,9 +186,10 @@ public:
     /**
      * Constructs a new child Face of the specified type in place, places it
      * at the given row/column of this layout's own grid (growing it first if
-     * either is beyond its current extent; see `get_row_count()`/
-     * `get_column_count()`), and returns a reference to the new child. That
-     * cell must still be empty (see this class's own doc comment).
+     * either is beyond its current extent; see `get_row_count()`/`get_column_count()`),
+     * and returns a reference to the new child. That cell must still be empty (see
+     * this class's own doc comment). See `set_span()` to grow it past a single
+     * row/column afterward.
      */
     template <class TFace, class... Args>
         requires(std::derived_from<TFace, Face>)
@@ -193,31 +223,68 @@ public:
     void perform(Container& container) override;
 
     /**
-     * Returns the sum of every row's own tallest effective preferred height
-     * (plus the fixed gaps between rows, plus this layout's own padding on
-     * that axis) by the sum of every column's own widest effective preferred
-     * width (plus the fixed gaps between columns, plus padding there): the
-     * size this grid would occupy if every row/column actually got exactly
-     * its own preferred extent, regardless of stretch (which only ever
-     * redistributes space beyond or below that, see `perform()`).
+     * Returns the sum of every row's own tallest effective preferred height (plus
+     * the fixed gaps between rows, plus this layout's own padding on that axis) by
+     * the sum of every column's own widest effective preferred width (plus the
+     * fixed gaps between columns, plus padding there): the size this grid would
+     * occupy if every row/column actually got exactly its own preferred extent,
+     * regardless of stretch (which only ever redistributes space beyond or below
+     * that). A spanning child's own shortfall can grow a row's/column's own
+     * contribution here past any single cell's own.
      */
     ml7::Vector2f calculate_preferred_size(const Container& container) const override;
 
     /**
-     * Returns the smallest this grid could ever actually be laid out at
-     * without overflowing: the sum, per axis, of every row's/column's own
-     * contribution (plus the fixed gaps/padding on that axis), which is
-     * either a non-stretched (stretch <= 0) row's/column's own tallest/widest
-     * effective preferred extent among its own cells (that's what
-     * `perform()` always gives it, never less), or a stretched one's own
-     * tallest/widest effective minimum extent instead (the only ones
-     * `perform()` can actually shrink that far).
+     * Returns the smallest this grid could ever actually be laid out at without
+     * overflowing: the sum, per axis, of every row's/column's own contribution
+     * (plus the fixed gaps/padding on that axis), which is either a non-stretched
+     * (stretch <= 0) row's/column's own tallest/widest effective preferred extent
+     * among its own cells (that's what `perform()` always gives it, never less), or
+     * a stretched one's own tallest/widest effective minimum extent instead (the
+     * only ones `perform()` can actually shrink that far). A spanning child's own
+     * shortfall can grow a row's/column's own contribution here past any single
+     * cell's own.
      */
     ml7::Vector2f calculate_minimum_size(const Container& container) const override;
 
 
 
 private:
+
+    // #############################################################################
+    // Helpers
+    // #############################################################################
+
+    struct TrackExtents
+    {
+        std::vector<float> row_preferred;
+        std::vector<float> row_minimum;
+        std::vector<float> column_preferred;
+        std::vector<float> column_minimum;
+    }; // struct TrackExtents
+
+    /**
+     * Every row's own tallest effective preferred/minimum height, and every
+     * column's own widest effective preferred/minimum width: first gathered from
+     * whichever cells don't themselves span that axis, same as if there were no
+     * spans at all; then, for every cell that does span an axis (shortest span
+     * first, so shorter ones settle before longer ones build on top of them), grown
+     * evenly across its own spanned rows/columns (plus the gaps between them) if
+     * its own preferred/minimum extent there doesn't already fit what they add up
+     * to. Shared by `perform()`, `calculate_preferred_size()`, and
+     * `calculate_minimum_size()`, which otherwise all gather the same thing.
+     */
+    TrackExtents _measure_tracks() const;
+
+    /**
+     * Grows `sizes[start, start + span)` evenly until their sum (plus `gap` kept
+     * between them) reaches `own_extent`, or leaves them as they are if it already
+     * does. Shared by `_measure_tracks()`'s own row and column passes, otherwise
+     * identical.
+     */
+    static void _grow_spanned_tracks(std::vector<float>& sizes, size_t start, size_t span, float gap, float own_extent);
+
+
 
     // #############################################################################
     // Attributes
@@ -228,24 +295,42 @@ private:
     Padding _padding;
 
     /**
-     * This layout's own grid, built up via `add_child()`; see this class's
-     * own doc comment. Rows of columns, `nullptr` marking an empty cell;
-     * non-owning, each actual Face is one of this layout's own container's
-     * children. Pruned (cells reset to `nullptr`, not actually shrunk) of any
-     * child no longer actually present on every `perform()` call, same as
-     * `BoxLayout`'s own analogous `_order`.
+     * This layout's own grid, built up via `add_child()`; see this class's own doc
+     * comment. Rows of columns, `nullptr` marking an empty cell; non-owning, each
+     * actual Face is one of this layout's own container's children. A spanning
+     * child (see `set_span()`) has the same pointer in every cell it covers, not
+     * just its own origin. Pruned (cells reset to `nullptr`, not actually shrunk)
+     * of any child no longer actually present on every `perform()` call.
      */
     std::vector<std::vector<Face*>> _grid;
 
     /**
      * This grid's own current column count. Every row in `_grid` is always
-     * resized to match it (see `add_child()`), so this is only ever actually
-     * needed on its own with zero rows, where there's no row left to ask.
+     * resized to match it (see `add_child()`/`set_span()`), so this is only
+     * ever actually needed on its own with zero rows, where there's no row
+     * left to ask.
      */
     size_t _column_count = 0;
 
     std::unordered_map<size_t, float> _row_stretches;
     std::unordered_map<size_t, float> _column_stretches;
+
+    /** A spanning child's own origin cell and span; see `set_span()`. */
+    struct SpanEntry
+    {
+        size_t row = 0;
+        size_t column = 0;
+        size_t row_span = 1;
+        size_t column_span = 1;
+    }; // struct SpanEntry
+
+    /**
+     * Every child's own span, keyed by its own address, but only once it's
+     * actually larger than 1x1 (see `set_span()`); absent otherwise, same
+     * convention as `_row_stretches`/`_column_stretches`'s own default.
+     * Pruned the same way as `_grid`.
+     */
+    std::unordered_map<const Face*, SpanEntry> _spans;
 
 }; // class GridLayout
 
