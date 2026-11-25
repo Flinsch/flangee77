@@ -7,7 +7,9 @@
 #include <DataLabs/syntax/Diagnostics.h>
 
 #include <concepts>
+#include <optional>
 #include <tuple>
+#include <type_traits>
 #include <utility>
 #include <vector>
 
@@ -35,6 +37,20 @@ namespace detail {
     template <typename T>
     concept bound_sequence = is_bound_sequence<T>::value;
 
+    template <typename T>
+    struct is_bound_optional : std::false_type {};
+
+    template <typename T>
+    struct is_bound_optional<std::optional<T>> : std::true_type {};
+
+    /**
+     * Satisfied by `std::optional<T>`, for a field that may or may not be set at
+     * its own level, independently of whatever its inner `T` is (a struct, an enum,
+     * a string, a number, a boolean).
+     */
+    template <typename T>
+    concept bound_optional = is_bound_optional<T>::value;
+
 } // namespace detail
 
 
@@ -53,6 +69,13 @@ namespace detail {
  * Scalars are read leniently where a format leaves no choice: INI and XML have no
  * types to speak of and hand everything over as a string, so a string that reads as
  * a number or a boolean is accepted for a field of that type.
+ *
+ * A field can also be `std::optional<T>`, for any bindable `T`: absence still means
+ * what it always means for that field (left as it was), while an explicit null
+ * resets it to not-set, letting one configuration layer deliberately undo what an
+ * earlier layer set rather than merely leaving it be. Saving an unset optional
+ * field leaves it out of the mapping entirely rather than writing it as an explicit
+ * null, the same "state only what differs" idea applied to writing.
  */
 class Binder
 {
@@ -145,7 +168,9 @@ private:
     template <typename T>
     void _load_value(const Value& value, T& target, const string_t& path)
     {
-        if constexpr (bound_struct<T>)
+        if constexpr (detail::bound_optional<T>)
+            _load_optional(value, target, path);
+        else if constexpr (bound_struct<T>)
             _load_struct(value, target, path);
         else if constexpr (named_enum<T>)
             _load_enum(value, target, path);
@@ -161,6 +186,26 @@ private:
             _load_float(value, target, path);
         else
             static_assert(detail::always_false<T>, "This type cannot be bound: give it a `Binding` or an `EnumNames` specialization.");
+    }
+
+    /**
+     * Reads an optional field: an explicit null resets it to not-set; otherwise its
+     * inner value is loaded, overlaid onto whatever the optional already held (same
+     * field-by-field overlay as a required struct field) or, if it wasn't set yet,
+     * onto a freshly default-constructed one.
+     */
+    template <detail::bound_optional Toptional>
+    void _load_optional(const Value& value, Toptional& target, const string_t& path)
+    {
+        if (value.is_null())
+        {
+            target.reset();
+            return;
+        }
+
+        typename Toptional::value_type inner = target.has_value() ? *target : typename Toptional::value_type{};
+        _load_value(value, inner, path);
+        target = std::move(inner);
     }
 
     template <named_enum Tenum>
@@ -259,16 +304,35 @@ private:
 
         std::apply([&](const auto&... fields)
         {
-            ((mapping[string_t{fields.key}] = _save_value(source.*(fields.member))), ...);
+            (_save_field(mapping, source, fields), ...);
         }, Binding<Tstruct>::fields);
 
         return Value{std::move(mapping)};
     }
 
+    template <typename Tstruct, typename Tfield>
+    void _save_field(mapping_t& mapping, const Tstruct& source, const Tfield& field)
+    {
+        const auto& member = source.*(field.member);
+
+        // Left out entirely rather than written as an explicit null:
+        // a field not set at this level is the normal case, and a
+        // hand-authored file should only ever have to state what differs.
+        if constexpr (detail::bound_optional<std::remove_cvref_t<decltype(member)>>)
+        {
+            if (!member.has_value())
+                return;
+        }
+
+        mapping[string_t{field.key}] = _save_value(member);
+    }
+
     template <typename T>
     Value _save_value(const T& source)
     {
-        if constexpr (bound_struct<T>)
+        if constexpr (detail::bound_optional<T>)
+            return _save_optional(source);
+        else if constexpr (bound_struct<T>)
             return _save_struct(source);
         else if constexpr (named_enum<T>)
             return _save_enum(source);
@@ -317,6 +381,22 @@ private:
             sequence.push_back(_save_value(entry));
 
         return Value{std::move(sequence)};
+    }
+
+    /**
+     * Saves an optional field's inner value, or null if it isn't set. `_save_field`
+     * already leaves a struct's own unset optional fields out of the mapping
+     * entirely instead of going through this, so this path is only ever reached
+     * for an optional nested somewhere a missing key isn't an option, e.g., inside
+     * a sequence.
+     */
+    template <detail::bound_optional Toptional>
+    Value _save_optional(const Toptional& source)
+    {
+        if (!source.has_value())
+            return Value{null_t{}};
+
+        return _save_value(*source);
     }
 
 

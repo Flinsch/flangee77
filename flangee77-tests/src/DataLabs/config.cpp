@@ -8,6 +8,7 @@
 
 #include "../shared.h"
 
+#include <optional>
 #include <vector>
 
 
@@ -349,6 +350,18 @@ namespace binding_test {
         bool operator==(const Settings&) const = default;
     };
 
+    /**
+     * A fixture of its own for optional fields: a scalar one and a struct-valued
+     * one, both unset by default, the way a theme level's own fields will be.
+     */
+    struct Overrides
+    {
+        std::optional<unsigned> width;
+        std::optional<Limits> limits;
+
+        bool operator==(const Overrides&) const = default;
+    };
+
 } // namespace binding_test
 
 namespace dl7::config {
@@ -383,6 +396,14 @@ namespace dl7::config {
             field( u8"limits", &binding_test::Settings::limits ),
             field( u8"ports", &binding_test::Settings::ports ),
             field( u8"tiers", &binding_test::Settings::tiers ) );
+    };
+
+    template <>
+    struct Binding<binding_test::Overrides>
+    {
+        static constexpr auto fields = std::make_tuple(
+            field( u8"width", &binding_test::Overrides::width ),
+            field( u8"limits", &binding_test::Overrides::limits ) );
     };
 
 } // namespace dl7::config
@@ -668,6 +689,167 @@ TESTLABS_CASE( u8"DataLabs:  config:  Binder:  save (an enumeration value with n
 
     TESTLABS_CHECK( binder.get_diagnostics().get_error_count() > 0 );
     TESTLABS_CHECK( value.at( u8"mode" ).is_null() );
+}
+
+
+// #############################################################################
+// Optional fields: unset by default, left alone if the value does not mention
+// them, reset to unset by an explicit null, and otherwise overlaid like any
+// other field (merging onto whatever they already held, if anything).
+// #############################################################################
+
+TESTLABS_CASE( u8"DataLabs:  config:  Binder:  load (an optional field not mentioned keeps whatever it already had, set or not)" )
+{
+    using dl7::config::Value;
+    using dl7::config::mapping_t;
+
+    dl7::config::Binder binder;
+
+    // Unset, and still unset afterwards.
+    {
+        binding_test::Overrides overrides;
+        binder.load( Value( mapping_t{} ), overrides );
+        TESTLABS_CHECK( !overrides.width.has_value() );
+        TESTLABS_CHECK_EQ( binder.get_diagnostics().get_count(), 0 );
+    }
+
+    // Already set, and still set to the same thing afterwards.
+    {
+        binding_test::Overrides overrides;
+        overrides.width = 1024;
+        binder.load( Value( mapping_t{} ), overrides );
+        TESTLABS_CHECK_EQ( overrides.width, 1024 );
+        TESTLABS_CHECK_EQ( binder.get_diagnostics().get_count(), 0 );
+    }
+}
+
+TESTLABS_CASE( u8"DataLabs:  config:  Binder:  load (an explicit null resets an optional field, even one that was already set)" )
+{
+    using dl7::config::Value;
+    using dl7::config::mapping_t;
+
+    dl7::config::Binder binder;
+    binding_test::Overrides overrides;
+    overrides.width = 1024;
+    overrides.limits = binding_test::Limits{ 2048, u8"preset" };
+
+    binder.load( Value( mapping_t{ { u8"width", Value() }, { u8"limits", Value() } } ), overrides );
+
+    TESTLABS_CHECK( !overrides.width.has_value() );
+    TESTLABS_CHECK( !overrides.limits.has_value() );
+    TESTLABS_CHECK_EQ( binder.get_diagnostics().get_count(), 0 );
+}
+
+TESTLABS_CASE( u8"DataLabs:  config:  Binder:  load (a struct-valued optional field overlays onto what it already held, defaulting only if it wasn't set yet)" )
+{
+    using dl7::config::Value;
+    using dl7::config::mapping_t;
+
+    dl7::config::Binder binder;
+
+    // Already set: the mentioned sub-field changes, the other is preserved, not reset to Limits' own default.
+    {
+        binding_test::Overrides overrides;
+        overrides.limits = binding_test::Limits{ 2048, u8"preset" };
+        binder.load( Value( mapping_t{ { u8"limits", Value( mapping_t{ { u8"memory", Value( 4096 ) } } ) } } ), overrides );
+
+        TESTLABS_CHECK( overrides.limits.has_value() );
+        if ( overrides.limits.has_value() )
+        {
+            TESTLABS_CHECK_EQ( overrides.limits->memory, 4096 );
+            TESTLABS_CHECK_EQ( overrides.limits->label, u8"preset" );
+        }
+    }
+
+    // Not set yet: the unmentioned sub-field comes from Limits' own default.
+    {
+        binding_test::Overrides overrides;
+        binder.load( Value( mapping_t{ { u8"limits", Value( mapping_t{ { u8"memory", Value( 4096 ) } } ) } } ), overrides );
+
+        TESTLABS_CHECK( overrides.limits.has_value() );
+        if ( overrides.limits.has_value() )
+        {
+            TESTLABS_CHECK_EQ( overrides.limits->memory, 4096 );
+            TESTLABS_CHECK_EQ( overrides.limits->label, u8"default" );
+        }
+    }
+}
+
+TESTLABS_CASE( u8"DataLabs:  config:  Binder:  load (an optional field that fails to read keeps whatever it already had, set or not)" )
+{
+    using dl7::config::Value;
+    using dl7::config::mapping_t;
+
+    dl7::config::Binder binder;
+    binding_test::Overrides overrides;
+    overrides.width = 800;
+
+    binder.load( Value( mapping_t{ { u8"width", Value( u8"wide" ) } } ), overrides );
+
+    TESTLABS_CHECK_EQ( overrides.width, 800 );
+    TESTLABS_CHECK_EQ( binder.get_diagnostics().get_error_count(), 1 );
+    TESTLABS_CHECK_EQ( binder.get_diagnostics().get_all().front().message, u8"width: A whole number is expected here." );
+}
+
+TESTLABS_CASE( u8"DataLabs:  config:  Binder:  save (an unset optional field is left out of the mapping entirely, not written as null)" )
+{
+    using dl7::config::Value;
+    using dl7::config::mapping_t;
+
+    binding_test::Overrides overrides;
+
+    dl7::config::Binder binder;
+    const auto value = binder.save( overrides );
+
+    TESTLABS_CHECK_EQ( binder.get_diagnostics().get_count(), 0 );
+    TESTLABS_CHECK_EQ( value, Value( mapping_t{} ) );
+}
+
+TESTLABS_CASE( u8"DataLabs:  config:  Binder:  save (a set optional field is written as its own value, not wrapped)" )
+{
+    using dl7::config::Value;
+    using dl7::config::mapping_t;
+
+    binding_test::Overrides overrides;
+    overrides.width = 1920;
+    overrides.limits = binding_test::Limits{ 256, u8"small" };
+
+    dl7::config::Binder binder;
+    const auto value = binder.save( overrides );
+
+    TESTLABS_CHECK_EQ( binder.get_diagnostics().get_count(), 0 );
+    TESTLABS_CHECK_EQ( value, Value( mapping_t{
+        { u8"width", Value( 1920 ) },
+        { u8"limits", Value( mapping_t{ { u8"memory", Value( 256 ) }, { u8"label", Value( u8"small" ) } } ) },
+    } ) );
+}
+
+TESTLABS_CASE( u8"DataLabs:  config:  Binder:  round trip (optional fields survive save+load, set or not)" )
+{
+    struct Entry
+    {
+        cl7::u8string label;
+        binding_test::Overrides source;
+    } entry;
+
+    const std::vector<Entry> container {
+        { u8"both unset", binding_test::Overrides{} },
+        { u8"scalar set, struct unset", binding_test::Overrides{ .width = 1234 } },
+        { u8"scalar unset, struct set", binding_test::Overrides{ .limits = binding_test::Limits{ 4096, u8"large" } } },
+        { u8"both set", binding_test::Overrides{ .width = 1234, .limits = binding_test::Limits{ 4096, u8"large" } } },
+    };
+
+    TESTLABS_SUBCASE_BATCH_WITH_DATA_STRING( u8"", container, entry, entry.label )
+    {
+        dl7::config::Binder binder;
+        const auto value = binder.save( entry.source );
+
+        binding_test::Overrides target;
+        binder.load( value, target );
+
+        TESTLABS_CHECK_EQ( binder.get_diagnostics().get_count(), 0 );
+        TESTLABS_CHECK( target == entry.source );
+    }
 }
 
 

@@ -6,6 +6,7 @@
 #include <CoreLabs/string.h>
 
 #include <cfloat>
+#include <optional>
 
 
 
@@ -115,6 +116,9 @@ namespace tl7::internals {
     inline cl7::u8string to_string(long double val) { return cl7::to_string(val); }
 
     inline cl7::u8string to_string(bool val) { return cl7::to_string(val); }
+
+    template <typename T>
+    inline cl7::u8string to_string(const std::optional<T>& val) { return val.has_value() ? to_string(*val) : cl7::u8string(u8"(unset)"); }
 
     cl7::u8string to_string(const std::nullptr_t& null);
 
