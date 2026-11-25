@@ -1,5 +1,15 @@
 var NAVTREEINDEX37 =
 {
+"d8/d30/namespacexl7_1_1graphics.html#a87b0232522b5f61ad70e5451fdd7082dad865c8685eaca0a8002ebae3e41927d0":[5,0,8,2,20,16],
+"d8/d30/namespacexl7_1_1graphics.html#a87b0232522b5f61ad70e5451fdd7082dadf69a0abc30c531ebdced795d5bc7749":[5,0,8,2,20,40],
+"d8/d30/namespacexl7_1_1graphics.html#a87b0232522b5f61ad70e5451fdd7082dae00f80e3640e18f2997325c36fe0ef90":[5,0,8,2,20,23],
+"d8/d30/namespacexl7_1_1graphics.html#a87b0232522b5f61ad70e5451fdd7082dae53d190f1e9fa67fb47bc8c053b53278":[5,0,8,2,20,37],
+"d8/d30/namespacexl7_1_1graphics.html#a87b0232522b5f61ad70e5451fdd7082daf010bb9e5a699e4cb9c80b2f5d982218":[5,0,8,2,20,10],
+"d8/d30/namespacexl7_1_1graphics.html#a87b0232522b5f61ad70e5451fdd7082daf3748f42b5cc8bc07da32114bf541df5":[5,0,8,2,20,46],
+"d8/d30/namespacexl7_1_1graphics.html#a87b0232522b5f61ad70e5451fdd7082daf55c1c722034e92213df328d31e33c62":[5,0,8,2,20,41],
+"d8/d30/namespacexl7_1_1graphics.html#a87b0232522b5f61ad70e5451fdd7082dafb3d9b81391ab907186bd39d1e0ec06b":[5,0,8,2,20,4],
+"d8/d30/namespacexl7_1_1graphics.html#a87b0232522b5f61ad70e5451fdd7082dafb68704b014646b912f3d2471ce2a53f":[5,0,8,2,20,2],
+"d8/d30/namespacexl7_1_1graphics.html#a87b0232522b5f61ad70e5451fdd7082dafd9ca5bb13785040311bc3b0dbe4f192":[5,0,8,2,20,53],
 "d8/d30/namespacexl7_1_1graphics.html#a9d43dfd9ab5d3c3aeac0e26d4e057e2a":[5,0,8,2,32],
 "d8/d30/namespacexl7_1_1graphics.html#aa71feae4df7933bab193e0da7bf8a6f5":[5,0,8,2,36],
 "d8/d30/namespacexl7_1_1graphics.html#aac35b301d45e523480af6c9469f8fd22":[5,0,8,2,28],
@@ -239,15 +249,5 @@ var NAVTREEINDEX37 =
 "d8/d86/structfl7_1_1fonts_1_1TextStyle.html#ac0d1db6498ffc6c449aa4406952e458b":[5,0,3,0,18,1],
 "d8/d86/structfl7_1_1fonts_1_1TextStyle.html#ac0d1db6498ffc6c449aa4406952e458b":[7,0,3,0,17,1],
 "d8/d86/structfl7_1_1fonts_1_1TextStyle.html#ac0d1db6498ffc6c449aa4406952e458ba2ad9d63b69c4a10a5cc9cad923133bc4":[5,0,3,0,18,1,2],
-"d8/d86/structfl7_1_1fonts_1_1TextStyle.html#ac0d1db6498ffc6c449aa4406952e458ba2ad9d63b69c4a10a5cc9cad923133bc4":[7,0,3,0,17,1,2],
-"d8/d86/structfl7_1_1fonts_1_1TextStyle.html#ac0d1db6498ffc6c449aa4406952e458baa4a32c4764653e50488bff6ce2eb815b":[5,0,3,0,18,1,3],
-"d8/d86/structfl7_1_1fonts_1_1TextStyle.html#ac0d1db6498ffc6c449aa4406952e458baa4a32c4764653e50488bff6ce2eb815b":[7,0,3,0,17,1,3],
-"d8/d86/structfl7_1_1fonts_1_1TextStyle.html#ac0d1db6498ffc6c449aa4406952e458baa4ffdcf0dc1f31b9acaf295d75b51d00":[5,0,3,0,18,1,0],
-"d8/d86/structfl7_1_1fonts_1_1TextStyle.html#ac0d1db6498ffc6c449aa4406952e458baa4ffdcf0dc1f31b9acaf295d75b51d00":[7,0,3,0,17,1,0],
-"d8/d86/structfl7_1_1fonts_1_1TextStyle.html#ac0d1db6498ffc6c449aa4406952e458bab1ca34f82e83c52b010f86955f264e05":[5,0,3,0,18,1,1],
-"d8/d86/structfl7_1_1fonts_1_1TextStyle.html#ac0d1db6498ffc6c449aa4406952e458bab1ca34f82e83c52b010f86955f264e05":[7,0,3,0,17,1,1],
-"d8/d86/structfl7_1_1fonts_1_1TextStyle.html#ad3ede83741e79efafa054e0c098e45bf":[5,0,3,0,18,8],
-"d8/d86/structfl7_1_1fonts_1_1TextStyle.html#ad3ede83741e79efafa054e0c098e45bf":[7,0,3,0,17,8],
-"d8/d86/structfl7_1_1fonts_1_1TextStyle.html#af47569e19bb1dc5414eb9d3dd6874954":[5,0,3,0,18,10],
-"d8/d86/structfl7_1_1fonts_1_1TextStyle.html#af47569e19bb1dc5414eb9d3dd6874954":[7,0,3,0,17,10]
+"d8/d86/structfl7_1_1fonts_1_1TextStyle.html#ac0d1db6498ffc6c449aa4406952e458ba2ad9d63b69c4a10a5cc9cad923133bc4":[7,0,3,0,17,1,2]
 };

@@ -1,9 +1,14 @@
 var classfl7_1_1gui_1_1layout_1_1GridLayout =
 [
+    [ "Span", "de/d51/structfl7_1_1gui_1_1layout_1_1GridLayout_1_1Span.html", "de/d51/structfl7_1_1gui_1_1layout_1_1GridLayout_1_1Span" ],
+    [ "TrackExtents", "db/dc3/structfl7_1_1gui_1_1layout_1_1GridLayout_1_1TrackExtents.html", "db/dc3/structfl7_1_1gui_1_1layout_1_1GridLayout_1_1TrackExtents" ],
+    [ "SpanEntry", "d5/d24/structfl7_1_1gui_1_1layout_1_1GridLayout_1_1SpanEntry.html", "d5/d24/structfl7_1_1gui_1_1layout_1_1GridLayout_1_1SpanEntry" ],
     [ "GridLayout", "dc/d4f/classfl7_1_1gui_1_1layout_1_1GridLayout.html#a8ab39232051ee73f11cf31f4d073cb27", null ],
     [ "GridLayout", "dc/d4f/classfl7_1_1gui_1_1layout_1_1GridLayout.html#ad40e6ff9f819e437b14f3cc5bccfa350", null ],
     [ "GridLayout", "dc/d4f/classfl7_1_1gui_1_1layout_1_1GridLayout.html#a26cace59c53fbd78002fc0de7c9517eb", null ],
     [ "~GridLayout", "dc/d4f/classfl7_1_1gui_1_1layout_1_1GridLayout.html#a32ad9bc87edc8dc5effe48a1a9122291", null ],
+    [ "_grow_spanned_tracks", "dc/d4f/classfl7_1_1gui_1_1layout_1_1GridLayout.html#a6a2441c307301359cd5952de62d81ee0", null ],
+    [ "_measure_tracks", "dc/d4f/classfl7_1_1gui_1_1layout_1_1GridLayout.html#aa09daa11c8984694350bc34644cdfed6", null ],
     [ "add_child", "dc/d4f/classfl7_1_1gui_1_1layout_1_1GridLayout.html#a0bc4a9b360853a80ef79283e38651c5e", null ],
     [ "calculate_minimum_size", "dc/d4f/classfl7_1_1gui_1_1layout_1_1GridLayout.html#a356a8fac0aaf496a5158763e615d95ec", null ],
     [ "calculate_preferred_size", "dc/d4f/classfl7_1_1gui_1_1layout_1_1GridLayout.html#a23a0a3927d83a4332acababc294edead", null ],
@@ -14,6 +19,7 @@ var classfl7_1_1gui_1_1layout_1_1GridLayout =
     [ "get_row_count", "dc/d4f/classfl7_1_1gui_1_1layout_1_1GridLayout.html#ac978eb4ec370d03830933f26714809d1", null ],
     [ "get_row_gap", "dc/d4f/classfl7_1_1gui_1_1layout_1_1GridLayout.html#a77702ae4ec6995fe8ea1fe7cbd8f40af", null ],
     [ "get_row_stretch", "dc/d4f/classfl7_1_1gui_1_1layout_1_1GridLayout.html#a735ca24b41dd70f4fcfe86922aefe197", null ],
+    [ "get_span", "dc/d4f/classfl7_1_1gui_1_1layout_1_1GridLayout.html#a3012b7b363b7f372d3875ace56b0868b", null ],
     [ "operator=", "dc/d4f/classfl7_1_1gui_1_1layout_1_1GridLayout.html#a74c1d258e0c85f4779d433eae64e2755", null ],
     [ "operator=", "dc/d4f/classfl7_1_1gui_1_1layout_1_1GridLayout.html#a8a9ca39cb86f79f9b847e190ef15ba1a", null ],
     [ "perform", "dc/d4f/classfl7_1_1gui_1_1layout_1_1GridLayout.html#aec8fe647cac4a0d01d73d332ec7848f6", null ],
@@ -23,11 +29,13 @@ var classfl7_1_1gui_1_1layout_1_1GridLayout =
     [ "set_padding", "dc/d4f/classfl7_1_1gui_1_1layout_1_1GridLayout.html#a649af7ce181a298f9c81a7563da58c7f", null ],
     [ "set_row_gap", "dc/d4f/classfl7_1_1gui_1_1layout_1_1GridLayout.html#ae7fcfaf14b31ea532e274bb9e4f62e35", null ],
     [ "set_row_stretch", "dc/d4f/classfl7_1_1gui_1_1layout_1_1GridLayout.html#a4d89795b60a92c786584913097174c4e", null ],
+    [ "set_span", "dc/d4f/classfl7_1_1gui_1_1layout_1_1GridLayout.html#a2da63e2bb66733d07ed1edd90d7f869f", null ],
     [ "_column_count", "dc/d4f/classfl7_1_1gui_1_1layout_1_1GridLayout.html#a94d67da644dc71a26375baff20d961a3", null ],
     [ "_column_gap", "dc/d4f/classfl7_1_1gui_1_1layout_1_1GridLayout.html#a7a5705ca22107b79d99d5751576da5ff", null ],
     [ "_column_stretches", "dc/d4f/classfl7_1_1gui_1_1layout_1_1GridLayout.html#a1d83779ba8db17d7db251b1cce90d1f2", null ],
     [ "_grid", "dc/d4f/classfl7_1_1gui_1_1layout_1_1GridLayout.html#a396fb1feef93303491b094ed6be2b7f8", null ],
     [ "_padding", "dc/d4f/classfl7_1_1gui_1_1layout_1_1GridLayout.html#ad479aa8b6243f1c9ca04b4198921316e", null ],
     [ "_row_gap", "dc/d4f/classfl7_1_1gui_1_1layout_1_1GridLayout.html#a3ccdcda94a003ec8350c2f3b48317fad", null ],
-    [ "_row_stretches", "dc/d4f/classfl7_1_1gui_1_1layout_1_1GridLayout.html#afe33a829f93c75eef6f62546a84564b1", null ]
+    [ "_row_stretches", "dc/d4f/classfl7_1_1gui_1_1layout_1_1GridLayout.html#afe33a829f93c75eef6f62546a84564b1", null ],
+    [ "_spans", "dc/d4f/classfl7_1_1gui_1_1layout_1_1GridLayout.html#a2ec52d60d0f8422320958ae9d10c6dc4", null ]
 ];

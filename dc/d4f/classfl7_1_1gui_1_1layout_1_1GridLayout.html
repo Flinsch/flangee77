@@ -152,6 +152,12 @@ Collaboration diagram for fl7::gui::layout::GridLayout:</div>
 </map>
 <center><span class="legend">[<a target="top" href="../../graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:Span" id="r_Span"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d51/structfl7_1_1gui_1_1layout_1_1GridLayout_1_1Span.html">Span</a></td></tr>
+<tr class="memitem:TrackExtents" id="r_TrackExtents"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/dc3/structfl7_1_1gui_1_1layout_1_1GridLayout_1_1TrackExtents.html">TrackExtents</a></td></tr>
+<tr class="memitem:SpanEntry" id="r_SpanEntry"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d24/structfl7_1_1gui_1_1layout_1_1GridLayout_1_1SpanEntry.html">SpanEntry</a></td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a8ab39232051ee73f11cf31f4d073cb27" id="r_a8ab39232051ee73f11cf31f4d073cb27"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8ab39232051ee73f11cf31f4d073cb27">GridLayout</a> (float row_gap=0.0f, float column_gap=0.0f, <a class="el" href="../../d5/d8c/structfl7_1_1gui_1_1Padding.html">Padding</a> padding={})</td></tr>
@@ -173,6 +179,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a4d89795b60a92c786584913097174c4e" id="r_a4d89795b60a92c786584913097174c4e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4d89795b60a92c786584913097174c4e">set_row_stretch</a> (size_t row, float stretch)</td></tr>
 <tr class="memitem:a81e445eded76256ca4878866722a3248" id="r_a81e445eded76256ca4878866722a3248"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a81e445eded76256ca4878866722a3248">get_column_stretch</a> (size_t column) const</td></tr>
 <tr class="memitem:a12a1cdafd49c32da8841a2070a3b0e96" id="r_a12a1cdafd49c32da8841a2070a3b0e96"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a12a1cdafd49c32da8841a2070a3b0e96">set_column_stretch</a> (size_t column, float stretch)</td></tr>
+<tr class="memitem:a3012b7b363b7f372d3875ace56b0868b" id="r_a3012b7b363b7f372d3875ace56b0868b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../de/d51/structfl7_1_1gui_1_1layout_1_1GridLayout_1_1Span.html">Span</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3012b7b363b7f372d3875ace56b0868b">get_span</a> (const <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a> &amp;child) const</td></tr>
+<tr class="memitem:a2da63e2bb66733d07ed1edd90d7f869f" id="r_a2da63e2bb66733d07ed1edd90d7f869f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2da63e2bb66733d07ed1edd90d7f869f">set_span</a> (const <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a> &amp;child, size_t row_span, size_t column_span)</td></tr>
 <tr class="memitem:a0bc4a9b360853a80ef79283e38651c5e" id="r_a0bc4a9b360853a80ef79283e38651c5e"><td class="memTemplParams" colspan="2">template&lt;class TFace, class... Args&gt; <br />
 requires (std::derived_from&lt;TFace, <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a>&gt;)</td></tr>
 <tr class="memitem:a0bc4a9b360853a80ef79283e38651c5e template"><td class="memItemLeft" align="right" valign="top">TFace &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0bc4a9b360853a80ef79283e38651c5e">add_child</a> (size_t row, size_t column, Args &amp;&amp;... args)</td></tr>
@@ -181,6 +189,14 @@ requires (std::derived_from&lt;TFace, <a class="el" href="../../d9/d1a/classfl7_
 <tr class="memitem:a356a8fac0aaf496a5158763e615d95ec" id="r_a356a8fac0aaf496a5158763e615d95ec"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d3/d53/namespaceml7.html#add70e3ce89c6f3e39fa3a52d54713255">ml7::Vector2f</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a356a8fac0aaf496a5158763e615d95ec">calculate_minimum_size</a> (const <a class="el" href="../../d5/d1e/classfl7_1_1gui_1_1layout_1_1Layout.html#a4b59c95768c7207947604d2678161d38">Container</a> &amp;container) const override</td></tr>
 <tr class="inherit_header pub_methods_classfl7_1_1gui_1_1layout_1_1Layout"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classfl7_1_1gui_1_1layout_1_1Layout')"><span class="dynarrow"><span class="arrowhead closed"></span></span>Public Member Functions inherited from <a class="el" href="../../d5/d1e/classfl7_1_1gui_1_1layout_1_1Layout.html">fl7::gui::layout::Layout</a></td></tr>
 <tr class="memitem:a3e2613aadfcfaf9635207d3c46e6c33c inherit pub_methods_classfl7_1_1gui_1_1layout_1_1Layout" id="r_a3e2613aadfcfaf9635207d3c46e6c33c"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d1e/classfl7_1_1gui_1_1layout_1_1Layout.html#a3e2613aadfcfaf9635207d3c46e6c33c">~Layout</a> ()=default</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pri-methods" class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:aa09daa11c8984694350bc34644cdfed6" id="r_aa09daa11c8984694350bc34644cdfed6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/dc3/structfl7_1_1gui_1_1layout_1_1GridLayout_1_1TrackExtents.html">TrackExtents</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa09daa11c8984694350bc34644cdfed6">_measure_tracks</a> () const</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pri-static-methods" class="groupheader"><a id="pri-static-methods" name="pri-static-methods"></a>
+Static Private Member Functions</h2></td></tr>
+<tr class="memitem:a6a2441c307301359cd5952de62d81ee0" id="r_a6a2441c307301359cd5952de62d81ee0"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6a2441c307301359cd5952de62d81ee0">_grow_spanned_tracks</a> (std::vector&lt; float &gt; &amp;sizes, size_t start, size_t span, float gap, float own_extent)</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-attribs" class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -191,6 +207,7 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a94d67da644dc71a26375baff20d961a3" id="r_a94d67da644dc71a26375baff20d961a3"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a94d67da644dc71a26375baff20d961a3">_column_count</a> = 0</td></tr>
 <tr class="memitem:afe33a829f93c75eef6f62546a84564b1" id="r_afe33a829f93c75eef6f62546a84564b1"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; size_t, float &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afe33a829f93c75eef6f62546a84564b1">_row_stretches</a></td></tr>
 <tr class="memitem:a1d83779ba8db17d7db251b1cce90d1f2" id="r_a1d83779ba8db17d7db251b1cce90d1f2"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; size_t, float &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1d83779ba8db17d7db251b1cce90d1f2">_column_stretches</a></td></tr>
+<tr class="memitem:a2ec52d60d0f8422320958ae9d10c6dc4" id="r_a2ec52d60d0f8422320958ae9d10c6dc4"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; const <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a> *, <a class="el" href="../../d5/d24/structfl7_1_1gui_1_1layout_1_1GridLayout_1_1SpanEntry.html">SpanEntry</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2ec52d60d0f8422320958ae9d10c6dc4">_spans</a></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-inherited" class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -201,8 +218,9 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:a350505d002c3809757c1d1055690cbfe inherit pro_static_methods_classfl7_1_1gui_1_1layout_1_1Layout" id="r_a350505d002c3809757c1d1055690cbfe"><td class="memItemLeft" align="right" valign="top">static std::vector&lt; float &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d1e/classfl7_1_1gui_1_1layout_1_1Layout.html#a350505d002c3809757c1d1055690cbfe">_distribute_stretched_space</a> (float available, const std::vector&lt; float &gt; &amp;stretch, const std::vector&lt; float &gt; &amp;minimum)</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>This layout keeps its own grid of children, independent of the attached container's own child list (which only ever determines Z-order/hit-testing): built up via <span class="tt"><a class="el" href="#a0bc4a9b360853a80ef79283e38651c5e">add_child()</a></span>, which places a new child at an explicit row/column, growing the grid first if either is beyond its current extent (see <span class="tt"><a class="el" href="#ac978eb4ec370d03830933f26714809d1">get_row_count()</a></span>/<span class="tt"><a class="el" href="#ae2b0f885fbe3bef76f657d5d3cba9d6c">get_column_count()</a></span>); a child added directly via <span class="tt"><a class="el" href="../../dd/d69/classfl7_1_1gui_1_1Container.html#a07a865e38cfd6bf3654f7bab50fc45a1">Container::add_child()</a></span> instead isn't part of this grid, so it's simply left wherever it already is, unarranged by this layout. A cell is either empty or holds exactly one child; <span class="tt"><a class="el" href="#a0bc4a9b360853a80ef79283e38651c5e">add_child()</a></span> asserts that the cell it's given is still empty, rather than silently replacing whatever's already there. Not yet supported: a child spanning more than one row/column.</p>
+<div class="textblock"><p>This layout keeps its own grid of children, independent of the attached container's own child list (which only ever determines Z-order/hit-testing): built up via <span class="tt"><a class="el" href="#a0bc4a9b360853a80ef79283e38651c5e">add_child()</a></span>, which places a new child at an explicit row/column, growing the grid first if either is beyond its current extent (see <span class="tt"><a class="el" href="#ac978eb4ec370d03830933f26714809d1">get_row_count()</a></span>/<span class="tt"><a class="el" href="#ae2b0f885fbe3bef76f657d5d3cba9d6c">get_column_count()</a></span>); a child added directly via <span class="tt"><a class="el" href="../../dd/d69/classfl7_1_1gui_1_1Container.html#a07a865e38cfd6bf3654f7bab50fc45a1">Container::add_child()</a></span> instead isn't part of this grid, so it's simply left wherever it already is, unarranged by this layout. A cell is either empty or holds exactly one child; <span class="tt"><a class="el" href="#a0bc4a9b360853a80ef79283e38651c5e">add_child()</a></span> asserts that the cell it's given is still empty, rather than silently replacing whatever's already there. A child can also cover more than one row/column (see <span class="tt"><a class="el" href="#a2da63e2bb66733d07ed1edd90d7f869f">set_span()</a></span>).</p>
 <p>Arranges that grid into rows and columns: along the horizontal axis, every column is either exactly as wide as the widest effective preferred width among its own cells (a stretch factor of 0 or less) or a share of whatever space is left over once every such fixed-width column has been accounted for, proportional to its own stretch factor relative to the other stretched columns' (every column's default: every column then just splits the available width evenly, unless some are explicitly pinned to their own widest preferred width via 0 instead), except that a stretched column whose plain share would undercut its own widest effective minimum width instead gets exactly that, with the leftover redistributed among the remaining stretched columns the same way, repeated until none are left undercut; same idea vertically for rows, independently (a stretch factor is kept per row/column here. Every row/column is separated from its neighbors by a fixed row/column gap, within a fixed padding kept around the whole grid.</p>
+<p>A spanning child doesn't affect the rows/columns it covers until its own preferred/minimum extent there no longer fits within what they already add up to (gaps included). Any shortfall is then split evenly across them. Once sized, such a child's own cell is simply the union of every row/column it covers.</p>
 <p>How a child actually sits within its own cell (possibly larger than its own preferred size: filled, shrunk-and-aligned near/far, or shrunk-and-centered) is then up to its own anchor, independently per axis; see <span class="tt"><a class="el" href="../../de/d3a/classfl7_1_1gui_1_1layout_1_1BoxLayout.html">BoxLayout</a></span>'s own doc comment for the exact rules, identical here.</p>
 <p>None of this ever shrinks a child past its own effective minimum size, though: once a cell (on either axis) becomes smaller than that, the child keeps its minimum size instead and simply overflows the cell, and possibly this layout's own bounds, rather than shrinking further or distorting its content.</p>
 <p>Each child's own effective preferred/minimum size is re-queried live on every <span class="tt"><a class="el" href="#aec8fe647cac4a0d01d73d332ec7848f6">perform()</a></span> call, not cached here, same as <span class="tt"><a class="el" href="../../de/d3a/classfl7_1_1gui_1_1layout_1_1BoxLayout.html">BoxLayout</a></span>.</p>
@@ -318,6 +336,77 @@ Additional Inherited Members</h2></td></tr>
 </div>
 </div>
 <a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a id="a6a2441c307301359cd5952de62d81ee0" name="a6a2441c307301359cd5952de62d81ee0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6a2441c307301359cd5952de62d81ee0">&#9670;&#160;</a></span>_grow_spanned_tracks()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void fl7::gui::layout::GridLayout::_grow_spanned_tracks </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; float &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>sizes</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>start</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>span</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>gap</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>own_extent</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Grows <span class="tt">sizes[start, start + span)</span> evenly until their sum (plus <span class="tt">gap</span> kept between them) reaches <span class="tt">own_extent</span>, or leaves them as they are if it already does. Shared by <span class="tt"><a class="el" href="#aa09daa11c8984694350bc34644cdfed6">_measure_tracks()</a></span>'s own row and column passes, otherwise identical. </p>
+
+</div>
+</div>
+<a id="aa09daa11c8984694350bc34644cdfed6" name="aa09daa11c8984694350bc34644cdfed6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa09daa11c8984694350bc34644cdfed6">&#9670;&#160;</a></span>_measure_tracks()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../db/dc3/structfl7_1_1gui_1_1layout_1_1GridLayout_1_1TrackExtents.html">GridLayout::TrackExtents</a> fl7::gui::layout::GridLayout::_measure_tracks </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Every row's own tallest effective preferred/minimum height, and every column's own widest effective preferred/minimum width: first gathered from whichever cells don't themselves span that axis, same as if there were no spans at all; then, for every cell that does span an axis (shortest span first, so shorter ones settle before longer ones build on top of them), grown evenly across its own spanned rows/columns (plus the gaps between them) if its own preferred/minimum extent there doesn't already fit what they add up to. Shared by <span class="tt"><a class="el" href="#aec8fe647cac4a0d01d73d332ec7848f6">perform()</a></span>, <span class="tt"><a class="el" href="#a23a0a3927d83a4332acababc294edead">calculate_preferred_size()</a></span>, and <span class="tt"><a class="el" href="#a356a8fac0aaf496a5158763e615d95ec">calculate_minimum_size()</a></span>, which otherwise all gather the same thing. </p>
+
+</div>
+</div>
 <a id="a0bc4a9b360853a80ef79283e38651c5e" name="a0bc4a9b360853a80ef79283e38651c5e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0bc4a9b360853a80ef79283e38651c5e">&#9670;&#160;</a></span>add_child()</h2>
 
@@ -352,7 +441,7 @@ requires (std::derived_from&lt;TFace, <a class="el" href="../../d9/d1a/classfl7_
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Constructs a new child <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a> of the specified type in place, places it at the given row/column of this layout's own grid (growing it first if either is beyond its current extent; see <span class="tt"><a class="el" href="#ac978eb4ec370d03830933f26714809d1">get_row_count()</a></span>/ <span class="tt"><a class="el" href="#ae2b0f885fbe3bef76f657d5d3cba9d6c">get_column_count()</a></span>), and returns a reference to the new child. That cell must still be empty (see this class's own doc comment). </p>
+<p>Constructs a new child <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a> of the specified type in place, places it at the given row/column of this layout's own grid (growing it first if either is beyond its current extent; see <span class="tt"><a class="el" href="#ac978eb4ec370d03830933f26714809d1">get_row_count()</a></span>/<span class="tt"><a class="el" href="#ae2b0f885fbe3bef76f657d5d3cba9d6c">get_column_count()</a></span>), and returns a reference to the new child. That cell must still be empty (see this class's own doc comment). See <span class="tt"><a class="el" href="#a2da63e2bb66733d07ed1edd90d7f869f">set_span()</a></span> to grow it past a single row/column afterward. </p>
 
 </div>
 </div>
@@ -378,7 +467,7 @@ requires (std::derived_from&lt;TFace, <a class="el" href="../../d9/d1a/classfl7_
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Returns the smallest this grid could ever actually be laid out at without overflowing: the sum, per axis, of every row's/column's own contribution (plus the fixed gaps/padding on that axis), which is either a non-stretched (stretch &lt;= 0) row's/column's own tallest/widest effective preferred extent among its own cells (that's what <span class="tt"><a class="el" href="#aec8fe647cac4a0d01d73d332ec7848f6">perform()</a></span> always gives it, never less), or a stretched one's own tallest/widest effective minimum extent instead (the only ones <span class="tt"><a class="el" href="#aec8fe647cac4a0d01d73d332ec7848f6">perform()</a></span> can actually shrink that far). </p>
+<p>Returns the smallest this grid could ever actually be laid out at without overflowing: the sum, per axis, of every row's/column's own contribution (plus the fixed gaps/padding on that axis), which is either a non-stretched (stretch &lt;= 0) row's/column's own tallest/widest effective preferred extent among its own cells (that's what <span class="tt"><a class="el" href="#aec8fe647cac4a0d01d73d332ec7848f6">perform()</a></span> always gives it, never less), or a stretched one's own tallest/widest effective minimum extent instead (the only ones <span class="tt"><a class="el" href="#aec8fe647cac4a0d01d73d332ec7848f6">perform()</a></span> can actually shrink that far). A spanning child's own shortfall can grow a row's/column's own contribution here past any single cell's own. </p>
 
 <p>Reimplemented from <a class="el" href="../../d5/d1e/classfl7_1_1gui_1_1layout_1_1Layout.html#a987254ce293a955583764b7fe7619c3f">fl7::gui::layout::Layout</a>.</p>
 
@@ -406,7 +495,7 @@ requires (std::derived_from&lt;TFace, <a class="el" href="../../d9/d1a/classfl7_
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Returns the sum of every row's own tallest effective preferred height (plus the fixed gaps between rows, plus this layout's own padding on that axis) by the sum of every column's own widest effective preferred width (plus the fixed gaps between columns, plus padding there): the size this grid would occupy if every row/column actually got exactly its own preferred extent, regardless of stretch (which only ever redistributes space beyond or below that, see <span class="tt"><a class="el" href="#aec8fe647cac4a0d01d73d332ec7848f6">perform()</a></span>). </p>
+<p>Returns the sum of every row's own tallest effective preferred height (plus the fixed gaps between rows, plus this layout's own padding on that axis) by the sum of every column's own widest effective preferred width (plus the fixed gaps between columns, plus padding there): the size this grid would occupy if every row/column actually got exactly its own preferred extent, regardless of stretch (which only ever redistributes space beyond or below that). A spanning child's own shortfall can grow a row's/column's own contribution here past any single cell's own. </p>
 
 <p>Reimplemented from <a class="el" href="../../d5/d1e/classfl7_1_1gui_1_1layout_1_1Layout.html#a3a4f407032920ae178c42bfb88f87096">fl7::gui::layout::Layout</a>.</p>
 
@@ -434,7 +523,7 @@ requires (std::derived_from&lt;TFace, <a class="el" href="../../d9/d1a/classfl7_
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Returns the number of columns currently in this grid; see <span class="tt"><a class="el" href="#a0bc4a9b360853a80ef79283e38651c5e">add_child()</a></span>. </p>
+<p>Returns the number of columns currently in this grid; see <span class="tt"><a class="el" href="#a0bc4a9b360853a80ef79283e38651c5e">add_child()</a></span>/<span class="tt"><a class="el" href="#a2da63e2bb66733d07ed1edd90d7f869f">set_span()</a></span>. </p>
 
 </div>
 </div>
@@ -530,7 +619,7 @@ requires (std::derived_from&lt;TFace, <a class="el" href="../../d9/d1a/classfl7_
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Returns the number of rows currently in this grid; see <span class="tt"><a class="el" href="#a0bc4a9b360853a80ef79283e38651c5e">add_child()</a></span>. </p>
+<p>Returns the number of rows currently in this grid; see <span class="tt"><a class="el" href="#a0bc4a9b360853a80ef79283e38651c5e">add_child()</a></span>/<span class="tt"><a class="el" href="#a2da63e2bb66733d07ed1edd90d7f869f">set_span()</a></span>. </p>
 
 </div>
 </div>
@@ -575,6 +664,24 @@ requires (std::derived_from&lt;TFace, <a class="el" href="../../d9/d1a/classfl7_
       </table>
 </div><div class="memdoc">
 <p>Returns the given row's stretch factor; see <span class="tt"><a class="el" href="#a4d89795b60a92c786584913097174c4e">set_row_stretch()</a></span>. Default: 1 (every row, until told otherwise, participates evenly in distributing the available height). </p>
+
+</div>
+</div>
+<a id="a3012b7b363b7f372d3875ace56b0868b" name="a3012b7b363b7f372d3875ace56b0868b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3012b7b363b7f372d3875ace56b0868b">&#9670;&#160;</a></span>get_span()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../de/d51/structfl7_1_1gui_1_1layout_1_1GridLayout_1_1Span.html">GridLayout::Span</a> fl7::gui::layout::GridLayout::get_span </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>child</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Returns the given child's own row/column span (see <span class="tt"><a class="el" href="#a2da63e2bb66733d07ed1edd90d7f869f">set_span()</a></span>). Default: 1 and 1. </p>
 
 </div>
 </div>
@@ -804,6 +911,33 @@ requires (std::derived_from&lt;TFace, <a class="el" href="../../d9/d1a/classfl7_
 
 </div>
 </div>
+<a id="a2da63e2bb66733d07ed1edd90d7f869f" name="a2da63e2bb66733d07ed1edd90d7f869f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2da63e2bb66733d07ed1edd90d7f869f">&#9670;&#160;</a></span>set_span()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void fl7::gui::layout::GridLayout::set_span </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>child</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>row_span</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>column_span</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Grows (or shrinks back) the given child's own footprint to cover the specified number of rows and columns from its own cell, placed earlier via <span class="tt"><a class="el" href="#a0bc4a9b360853a80ef79283e38651c5e">add_child()</a></span>, growing this grid first if that footprint reaches past its current extent. Every cell it would newly cover must still be empty, same as <span class="tt"><a class="el" href="#a0bc4a9b360853a80ef79283e38651c5e">add_child()</a></span> itself requires. </p>
+
+</div>
+</div>
 <a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">Member Data Documentation</h2>
 <a id="a94d67da644dc71a26375baff20d961a3" name="a94d67da644dc71a26375baff20d961a3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a94d67da644dc71a26375baff20d961a3">&#9670;&#160;</a></span>_column_count</h2>
@@ -824,7 +958,7 @@ requires (std::derived_from&lt;TFace, <a class="el" href="../../d9/d1a/classfl7_
   </tr>
 </table>
 </div><div class="memdoc">
-<p>This grid's own current column count. Every row in <span class="tt"><a class="el" href="#a396fb1feef93303491b094ed6be2b7f8">_grid</a></span> is always resized to match it (see <span class="tt"><a class="el" href="#a0bc4a9b360853a80ef79283e38651c5e">add_child()</a></span>), so this is only ever actually needed on its own with zero rows, where there's no row left to ask. </p>
+<p>This grid's own current column count. Every row in <span class="tt"><a class="el" href="#a396fb1feef93303491b094ed6be2b7f8">_grid</a></span> is always resized to match it (see <span class="tt"><a class="el" href="#a0bc4a9b360853a80ef79283e38651c5e">add_child()</a></span>/<span class="tt"><a class="el" href="#a2da63e2bb66733d07ed1edd90d7f869f">set_span()</a></span>), so this is only ever actually needed on its own with zero rows, where there's no row left to ask. </p>
 
 </div>
 </div>
@@ -891,7 +1025,7 @@ requires (std::derived_from&lt;TFace, <a class="el" href="../../d9/d1a/classfl7_
   </tr>
 </table>
 </div><div class="memdoc">
-<p>This layout's own grid, built up via <span class="tt"><a class="el" href="#a0bc4a9b360853a80ef79283e38651c5e">add_child()</a></span>; see this class's own doc comment. Rows of columns, <span class="tt">nullptr</span> marking an empty cell; non-owning, each actual <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a> is one of this layout's own container's children. Pruned (cells reset to <span class="tt">nullptr</span>, not actually shrunk) of any child no longer actually present on every <span class="tt"><a class="el" href="#aec8fe647cac4a0d01d73d332ec7848f6">perform()</a></span> call, same as <span class="tt"><a class="el" href="../../de/d3a/classfl7_1_1gui_1_1layout_1_1BoxLayout.html">BoxLayout</a></span>'s own analogous <span class="tt">_order</span>. </p>
+<p>This layout's own grid, built up via <span class="tt"><a class="el" href="#a0bc4a9b360853a80ef79283e38651c5e">add_child()</a></span>; see this class's own doc comment. Rows of columns, <span class="tt">nullptr</span> marking an empty cell; non-owning, each actual <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a> is one of this layout's own container's children. A spanning child (see <span class="tt"><a class="el" href="#a2da63e2bb66733d07ed1edd90d7f869f">set_span()</a></span>) has the same pointer in every cell it covers, not just its own origin. Pruned (cells reset to <span class="tt">nullptr</span>, not actually shrunk) of any child no longer actually present on every <span class="tt"><a class="el" href="#aec8fe647cac4a0d01d73d332ec7848f6">perform()</a></span> call. </p>
 
 </div>
 </div>
@@ -958,6 +1092,29 @@ requires (std::derived_from&lt;TFace, <a class="el" href="../../d9/d1a/classfl7_
   </tr>
 </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2ec52d60d0f8422320958ae9d10c6dc4" name="a2ec52d60d0f8422320958ae9d10c6dc4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2ec52d60d0f8422320958ae9d10c6dc4">&#9670;&#160;</a></span>_spans</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unordered_map&lt;const <a class="el" href="../../d9/d1a/classfl7_1_1gui_1_1Face.html">Face</a>*, <a class="el" href="../../d5/d24/structfl7_1_1gui_1_1layout_1_1GridLayout_1_1SpanEntry.html">SpanEntry</a>&gt; fl7::gui::layout::GridLayout::_spans</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Every child's own span, keyed by its own address, but only once it's actually larger than 1x1 (see <span class="tt"><a class="el" href="#a2da63e2bb66733d07ed1edd90d7f869f">set_span()</a></span>); absent otherwise, same convention as <span class="tt"><a class="el" href="#afe33a829f93c75eef6f62546a84564b1">_row_stretches</a></span>/<span class="tt"><a class="el" href="#a1d83779ba8db17d7db251b1cce90d1f2">_column_stretches</a></span>'s own default. Pruned the same way as <span class="tt"><a class="el" href="#a396fb1feef93303491b094ed6be2b7f8">_grid</a></span>. </p>
 
 </div>
 </div>
