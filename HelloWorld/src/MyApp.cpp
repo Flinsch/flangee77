@@ -548,7 +548,10 @@ namespace helloworld {
         // grid growing on its own as add_child() is called, rather than
         // needing a fixed row/column count upfront (see the footer below,
         // added only after, and only at column 1, growing the grid from 3 to
-        // 4 rows).
+        // 4 rows). A child spanning more than one row/column at once (see
+        // `GridLayout::set_span()`) is demoed separately, in "Demo GridLayout
+        // Spans" below, rather than bolted onto this already carefully-tuned
+        // grid.
         auto& grid_frame = _gui_shell->add_face<fl7::gui::faces::Frame>(U"Demo GridLayout");
         // A fresh column of its own, clear of every other demo frame above
         // regardless of any of their own actual (computed) heights.
@@ -622,6 +625,73 @@ namespace helloworld {
         // text by a few pixels. Re-performs this layout once more, against
         // the now-final size, via Frame::_on_size_changed().
         grid_frame.set_size(grid_frame.get_effective_preferred_size() + ml7::Vector2f{40.0f, 0.0f});
+
+
+        // Demo GridLayout Spans: a second, minimal grid built only to make
+        // set_span()'s own even shortfall split visible, side by side with
+        // the fixed-track case that's always exact (see `GridLayout::set_span()`'s
+        // own doc comment). Two diagonal 2x2 spans, one pair of always-fixed
+        // rows/columns each, one pair of differently-stretched (1:3)
+        // rows/columns each, plus one small cell at (4, 4) stretched on both
+        // axes just to give those stretched rows/columns something else to
+        // compete with: without a competitor, a span that owns its whole
+        // stretched pool by itself still ends up exactly right regardless of
+        // how unevenly that pool is then actually split between its own
+        // rows/columns, since only their sum (not the individual split) ever
+        // reaches the span itself. Every other cell gets its own small
+        // "r<row>c<column>" marker button (see below), so the grid's own
+        // row/column boundaries stay visible even where a span's merged
+        // rectangle wouldn't otherwise show them. Sized to exactly its own
+        // preferred size on purpose, unlike the grid above: no slack added,
+        // so any shortfall here shows up as real clipping.
+        auto& grid_spans_frame = _gui_shell->add_face<fl7::gui::faces::Frame>(U"Demo GridLayout Spans");
+        grid_spans_frame.set_position({1320.0f, grid_frame.get_position().y + grid_frame.get_size().y + 20.0f});
+
+        auto& grid_spans_layout = grid_spans_frame.get_content_area().set_layout<fl7::gui::layout::GridLayout>(8.0f, 8.0f, 12.0f);
+
+        grid_spans_layout.set_row_stretch(0, 0.0f);
+        grid_spans_layout.set_row_stretch(1, 0.0f);
+        grid_spans_layout.set_row_stretch(2, 1.0f);
+        grid_spans_layout.set_row_stretch(3, 3.0f);
+        grid_spans_layout.set_row_stretch(4, 2.0f);
+        grid_spans_layout.set_column_stretch(0, 1.0f);
+        grid_spans_layout.set_column_stretch(1, 3.0f);
+        grid_spans_layout.set_column_stretch(2, 0.0f);
+        grid_spans_layout.set_column_stretch(3, 0.0f);
+        grid_spans_layout.set_column_stretch(4, 2.0f);
+
+        auto& span_a = grid_spans_layout.add_child<fl7::gui::faces::Button>(0, 0, U"Span A\n(rows fixed+fixed,\ncols stretch 1:3)");
+        span_a.set_anchor(fl7::gui::Anchor::All);
+        grid_spans_layout.set_span(span_a, 2, 2);
+
+        auto& span_b = grid_spans_layout.add_child<fl7::gui::faces::Button>(2, 2, U"Span B\n(rows stretch 1:3,\ncols fixed+fixed)");
+        span_b.set_anchor(fl7::gui::Anchor::All);
+        grid_spans_layout.set_span(span_b, 2, 2);
+
+        // The competitor mentioned above.
+        auto& competitor = grid_spans_layout.add_child<fl7::gui::faces::Button>(4, 4, U"Competing\nstretch cell");
+        competitor.set_anchor(fl7::gui::Anchor::All);
+
+        // Every remaining cell's own boundary marker; see this frame's own
+        // comment above. Filled (Anchor::All), not just placed, so each
+        // one's own edges actually line up with its own cell's boundary.
+        for (int r = 0; r < 5; ++r)
+        {
+            for (int c = 0; c < 5; ++c)
+            {
+                const bool in_span_a = r < 2 && c < 2;
+                const bool in_span_b = r >= 2 && r < 4 && c >= 2 && c < 4;
+                const bool is_competitor = r == 4 && c == 4;
+                if (in_span_a || in_span_b || is_competitor)
+                    continue;
+
+                auto& marker = grid_spans_layout.add_child<fl7::gui::faces::Button>(r, c,
+                    U"r" + cl7::text::codec::to_utf32(cl7::to_string(r)) + U"c" + cl7::text::codec::to_utf32(cl7::to_string(c)));
+                marker.set_anchor(fl7::gui::Anchor::All);
+            }
+        }
+
+        grid_spans_frame.set_size(grid_spans_frame.get_effective_preferred_size());
 
 
         auto& list_frame = _gui_shell->add_face<fl7::gui::faces::Frame>(U"Demo ListBox");
