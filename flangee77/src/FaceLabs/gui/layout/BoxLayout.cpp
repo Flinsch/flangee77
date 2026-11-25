@@ -156,7 +156,7 @@ namespace fl7::gui::layout {
      * sizes along the cross axis (plus padding there): the size this sequence of
      * children would occupy if every one of them actually got exactly its own
      * preferred size, regardless of stretch (which only ever redistributes space
-     * beyond or below that, see `perform()`).
+     * beyond or below that).
      */
     ml7::Vector2f BoxLayout::calculate_preferred_size(const Container& container) const
     {
