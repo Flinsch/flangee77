@@ -1,5 +1,6 @@
 var NAVTREEINDEX51 =
 {
+"da/dbc/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1states_1_1SamplerStateImpl_1_1Attorney.html":[7,0,8,1,1,1,2,3,0],
 "da/dbc/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1states_1_1SamplerStateImpl_1_1Attorney.html#aa6d860d65cc0083a5bd02c9493097cd7":[5,0,8,2,1,1,4,3,0,1],
 "da/dbc/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1states_1_1SamplerStateImpl_1_1Attorney.html#aa6d860d65cc0083a5bd02c9493097cd7":[7,0,8,1,1,1,2,3,0,1],
 "da/dbc/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1states_1_1SamplerStateImpl_1_1Attorney.html#aa9b233308fe49897a8014204417496fa":[5,0,8,2,1,1,4,3,0,0],
@@ -248,6 +249,5 @@ var NAVTREEINDEX51 =
 "db/d02/classtl7_1_1reporting_1_1CoutLogger.html#ab5b41766cdae43ad4b4410584f6dbef9":[7,0,7,1,0,11],
 "db/d02/classtl7_1_1reporting_1_1CoutLogger.html#ab8334e68a4c540039c752383127597c3":[5,0,7,2,0,0],
 "db/d02/classtl7_1_1reporting_1_1CoutLogger.html#ab8334e68a4c540039c752383127597c3":[7,0,7,1,0,0],
-"db/d02/classtl7_1_1reporting_1_1CoutLogger.html#ab8bc0dddb9e739a939a632220baeb259":[5,0,7,2,0,5],
-"db/d02/classtl7_1_1reporting_1_1CoutLogger.html#ab8bc0dddb9e739a939a632220baeb259":[7,0,7,1,0,5]
+"db/d02/classtl7_1_1reporting_1_1CoutLogger.html#ab8bc0dddb9e739a939a632220baeb259":[5,0,7,2,0,5]
 };

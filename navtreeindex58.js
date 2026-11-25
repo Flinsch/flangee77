@@ -1,5 +1,6 @@
 var NAVTREEINDEX58 =
 {
+"dc/d3c/structcl7_1_1text_1_1codec_1_1CodepointResult.html#ac3820690c769dcf85d32aabc0d0890e4":[7,0,1,9,0,4,1],
 "dc/d3c/structcl7_1_1text_1_1codec_1_1CodepointResult.html#aee8608d2ff06758f12c158f1e243ed4d":[5,0,1,11,0,4,0],
 "dc/d3c/structcl7_1_1text_1_1codec_1_1CodepointResult.html#aee8608d2ff06758f12c158f1e243ed4d":[7,0,1,9,0,4,0],
 "dc/d41/structfl7_1_1fonts_1_1Contour.html":[5,0,3,0,5],
@@ -10,6 +11,8 @@ var NAVTREEINDEX58 =
 "dc/d41/structfl7_1_1fonts_1_1Contour.html#ad30d8c88e3041aa87dfbda5451be833d":[7,0,3,0,4,2],
 "dc/d41/structfl7_1_1fonts_1_1Contour.html#af07f651dd998c084c4a1626c28c08100":[5,0,3,0,5,0],
 "dc/d41/structfl7_1_1fonts_1_1Contour.html#af07f651dd998c084c4a1626c28c08100":[7,0,3,0,4,0],
+"dc/d43/conceptdl7_1_1config_1_1detail_1_1bound__optional.html":[5,0,2,1,0,5],
+"dc/d43/conceptdl7_1_1config_1_1detail_1_1bound__optional.html":[6,1,0,0,1],
 "dc/d45/structxl7_1_1graphics_1_1RenderingContext_1_1ResolvedTextureSamplerStates.html":[5,0,8,2,13,2],
 "dc/d45/structxl7_1_1graphics_1_1RenderingContext_1_1ResolvedTextureSamplerStates.html":[7,0,8,1,13,2],
 "dc/d45/structxl7_1_1graphics_1_1RenderingContext_1_1ResolvedTextureSamplerStates.html#a97be60cf65fddd9098a6e3df25d6f77d":[5,0,8,2,13,2,0],
@@ -152,6 +155,8 @@ var NAVTREEINDEX58 =
 "dc/d64/namespacexl7_1_1graphics_1_1impl_1_1direct3d9_1_1errors.html#a2e4cf9f4019c9768e3aa689d6f676922":[5,0,8,2,1,1,0,0],
 "dc/d64/namespacexl7_1_1graphics_1_1impl_1_1direct3d9_1_1errors.html#a86bfdc5f93664887028a9f3614b5611a":[5,0,8,2,1,1,0,1],
 "dc/d69/detail_2windows_2filesystem_8cpp.html":[8,0,1,5,0,1,2],
+"dc/d69/structdl7_1_1config_1_1detail_1_1is__bound__optional.html":[5,0,2,1,0,2],
+"dc/d69/structdl7_1_1config_1_1detail_1_1is__bound__optional.html":[7,0,2,1,0,2],
 "dc/d6e/direct3d11_2RenderingDeviceImpl_8cpp.html":[8,0,7,1,1,0,13],
 "dc/d6e/namespacefl7_1_1fonts_1_1TextLayout.html":[5,0,3,0,3],
 "dc/d6e/namespacefl7_1_1fonts_1_1TextLayout.html#a1ab89e1f0c5d2df777d78e2449db7b76":[5,0,3,0,3,8],
@@ -244,10 +249,5 @@ var NAVTREEINDEX58 =
 "dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#ac4d91f7f3076dfb773412eb3c650f311":[5,0,3,1,0,3,30],
 "dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#ac4d91f7f3076dfb773412eb3c650f311":[7,0,3,1,0,3,30],
 "dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#acd688b33e6ede88882aac836ba1c3802":[5,0,3,1,0,3,18],
-"dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#acd688b33e6ede88882aac836ba1c3802":[7,0,3,1,0,3,18],
-"dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#ad5205e5dffba076cb41f41209d1da431":[5,0,3,1,0,3,31],
-"dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#ad5205e5dffba076cb41f41209d1da431":[7,0,3,1,0,3,31],
-"dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#adfba79abdc735fa6f1932a565df90513":[5,0,3,1,0,3,13],
-"dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#adfba79abdc735fa6f1932a565df90513":[7,0,3,1,0,3,13],
-"dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#aecde8701b6786d5cdfc11c006dcc01fd":[5,0,3,1,0,3,10]
+"dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#acd688b33e6ede88882aac836ba1c3802":[7,0,3,1,0,3,18]
 };

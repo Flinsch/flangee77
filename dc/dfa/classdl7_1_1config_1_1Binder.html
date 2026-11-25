@@ -128,6 +128,8 @@ Private Member Functions</h2></td></tr>
 <tr class="memitem:ac61f1af54a8f1dbcc245e51be50420e9 template"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac61f1af54a8f1dbcc245e51be50420e9">_report_unknown_keys</a> (const <a class="el" href="../../df/d08/namespacedl7_1_1config.html#ae32137cc7224c585f33f68788e933f85">mapping_t</a> &amp;mapping, const <a class="el" href="../../df/d08/namespacedl7_1_1config.html#aac504f113ab16a047143979997126471">string_t</a> &amp;path)</td></tr>
 <tr class="memitem:a4185012907566f88242b21e089d125fb" id="r_a4185012907566f88242b21e089d125fb"><td class="memTemplParams" colspan="2">template&lt;typename T&gt; </td></tr>
 <tr class="memitem:a4185012907566f88242b21e089d125fb template"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4185012907566f88242b21e089d125fb">_load_value</a> (const <a class="el" href="../../d7/de1/classdl7_1_1config_1_1Value.html">Value</a> &amp;value, T &amp;target, const <a class="el" href="../../df/d08/namespacedl7_1_1config.html#aac504f113ab16a047143979997126471">string_t</a> &amp;path)</td></tr>
+<tr class="memitem:ae560213683db1e98d99a395272d6ea53" id="r_ae560213683db1e98d99a395272d6ea53"><td class="memTemplParams" colspan="2">template&lt;detail::bound_optional Toptional&gt; </td></tr>
+<tr class="memitem:ae560213683db1e98d99a395272d6ea53 template"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae560213683db1e98d99a395272d6ea53">_load_optional</a> (const <a class="el" href="../../d7/de1/classdl7_1_1config_1_1Value.html">Value</a> &amp;value, Toptional &amp;target, const <a class="el" href="../../df/d08/namespacedl7_1_1config.html#aac504f113ab16a047143979997126471">string_t</a> &amp;path)</td></tr>
 <tr class="memitem:a97105f6799c536738c7348a3012fa9ec" id="r_a97105f6799c536738c7348a3012fa9ec"><td class="memTemplParams" colspan="2">template&lt;named_enum Tenum&gt; </td></tr>
 <tr class="memitem:a97105f6799c536738c7348a3012fa9ec template"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a97105f6799c536738c7348a3012fa9ec">_load_enum</a> (const <a class="el" href="../../d7/de1/classdl7_1_1config_1_1Value.html">Value</a> &amp;value, Tenum &amp;target, const <a class="el" href="../../df/d08/namespacedl7_1_1config.html#aac504f113ab16a047143979997126471">string_t</a> &amp;path)</td></tr>
 <tr class="memitem:a2cc7b6c0bdcacb8a1854adb541ba9860" id="r_a2cc7b6c0bdcacb8a1854adb541ba9860"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2cc7b6c0bdcacb8a1854adb541ba9860">_load_string</a> (const <a class="el" href="../../d7/de1/classdl7_1_1config_1_1Value.html">Value</a> &amp;value, <a class="el" href="../../df/d08/namespacedl7_1_1config.html#aac504f113ab16a047143979997126471">string_t</a> &amp;target, const <a class="el" href="../../df/d08/namespacedl7_1_1config.html#aac504f113ab16a047143979997126471">string_t</a> &amp;path)</td></tr>
@@ -142,12 +144,16 @@ Private Member Functions</h2></td></tr>
 <tr class="memitem:a62c498fae439d7fcee2af5f940529a61" id="r_a62c498fae439d7fcee2af5f940529a61"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a62c498fae439d7fcee2af5f940529a61">_read_float</a> (const <a class="el" href="../../d7/de1/classdl7_1_1config_1_1Value.html">Value</a> &amp;value, <a class="el" href="../../df/d08/namespacedl7_1_1config.html#a835f5861f57be96781df30e0c205d7f1">float_t</a> &amp;target, const <a class="el" href="../../df/d08/namespacedl7_1_1config.html#aac504f113ab16a047143979997126471">string_t</a> &amp;path)</td></tr>
 <tr class="memitem:acff2c5420117ea665452204765af2ed0" id="r_acff2c5420117ea665452204765af2ed0"><td class="memTemplParams" colspan="2">template&lt;bound_struct Tstruct&gt; </td></tr>
 <tr class="memitem:acff2c5420117ea665452204765af2ed0 template"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d7/de1/classdl7_1_1config_1_1Value.html">Value</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acff2c5420117ea665452204765af2ed0">_save_struct</a> (const Tstruct &amp;source)</td></tr>
+<tr class="memitem:a5ef5c6edc18f34243e025f7edd74047f" id="r_a5ef5c6edc18f34243e025f7edd74047f"><td class="memTemplParams" colspan="2">template&lt;typename Tstruct, typename Tfield&gt; </td></tr>
+<tr class="memitem:a5ef5c6edc18f34243e025f7edd74047f template"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5ef5c6edc18f34243e025f7edd74047f">_save_field</a> (<a class="el" href="../../df/d08/namespacedl7_1_1config.html#ae32137cc7224c585f33f68788e933f85">mapping_t</a> &amp;mapping, const Tstruct &amp;source, const Tfield &amp;<a class="el" href="../../df/d08/namespacedl7_1_1config.html#aae0e145f3023b81070ca84d38fdc0567">field</a>)</td></tr>
 <tr class="memitem:a4d5c4492aa3d0b63459862fb0c8d1866" id="r_a4d5c4492aa3d0b63459862fb0c8d1866"><td class="memTemplParams" colspan="2">template&lt;typename T&gt; </td></tr>
 <tr class="memitem:a4d5c4492aa3d0b63459862fb0c8d1866 template"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d7/de1/classdl7_1_1config_1_1Value.html">Value</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4d5c4492aa3d0b63459862fb0c8d1866">_save_value</a> (const T &amp;source)</td></tr>
 <tr class="memitem:a5678432aa4f93cdb7e2e09c33a9c8d2c" id="r_a5678432aa4f93cdb7e2e09c33a9c8d2c"><td class="memTemplParams" colspan="2">template&lt;named_enum Tenum&gt; </td></tr>
 <tr class="memitem:a5678432aa4f93cdb7e2e09c33a9c8d2c template"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d7/de1/classdl7_1_1config_1_1Value.html">Value</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5678432aa4f93cdb7e2e09c33a9c8d2c">_save_enum</a> (const Tenum &amp;source)</td></tr>
 <tr class="memitem:a54ce0a4c93e038fa7bdcd8e37b854c7a" id="r_a54ce0a4c93e038fa7bdcd8e37b854c7a"><td class="memTemplParams" colspan="2">template&lt;detail::bound_sequence Tsequence&gt; </td></tr>
 <tr class="memitem:a54ce0a4c93e038fa7bdcd8e37b854c7a template"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d7/de1/classdl7_1_1config_1_1Value.html">Value</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a54ce0a4c93e038fa7bdcd8e37b854c7a">_save_sequence</a> (const Tsequence &amp;source)</td></tr>
+<tr class="memitem:aa7b90d9a8d9769b8086732666927f68a" id="r_aa7b90d9a8d9769b8086732666927f68a"><td class="memTemplParams" colspan="2">template&lt;detail::bound_optional Toptional&gt; </td></tr>
+<tr class="memitem:aa7b90d9a8d9769b8086732666927f68a template"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d7/de1/classdl7_1_1config_1_1Value.html">Value</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa7b90d9a8d9769b8086732666927f68a">_save_optional</a> (const Toptional &amp;source)</td></tr>
 <tr class="memitem:a54a3b965c1e0101fab9c76c238ca1665" id="r_a54a3b965c1e0101fab9c76c238ca1665"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a54a3b965c1e0101fab9c76c238ca1665">_error</a> (<a class="el" href="../../d1/d2e/namespacecl7.html#ab692485dcff0d37818bb647e9721bd04">cl7::u8string_view</a> message, const <a class="el" href="../../df/d08/namespacedl7_1_1config.html#aac504f113ab16a047143979997126471">string_t</a> &amp;path)</td></tr>
 <tr class="memitem:a8f45cade7c9398f80d102ceb6b8603cc" id="r_a8f45cade7c9398f80d102ceb6b8603cc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8f45cade7c9398f80d102ceb6b8603cc">_warning</a> (<a class="el" href="../../d1/d2e/namespacecl7.html#ab692485dcff0d37818bb647e9721bd04">cl7::u8string_view</a> message, const <a class="el" href="../../df/d08/namespacedl7_1_1config.html#aac504f113ab16a047143979997126471">string_t</a> &amp;path)</td></tr>
 </table><table class="memberdecls">
@@ -163,7 +169,8 @@ Private Attributes</h2></td></tr>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Reads configuration values into native structures and writes them back out, both driven by the same <span class="tt"><a class="el" href="../../d1/dd5/structdl7_1_1config_1_1Binding.html">Binding</a></span> description.</p>
 <p>Reading lays a configuration over what the structure already holds, which is what makes a structure's own defaults the defaults of the configuration: a field the value does not mention keeps what it had, silently, that being the normal case for a configuration file that only states what differs. What does get reported is a key no field answers to (a typo, most likely) and a value a field cannot take (an error, the field keeping its default).</p>
-<p>Scalars are read leniently where a format leaves no choice: INI and XML have no types to speak of and hand everything over as a string, so a string that reads as a number or a boolean is accepted for a field of that type. </p>
+<p>Scalars are read leniently where a format leaves no choice: INI and XML have no types to speak of and hand everything over as a string, so a string that reads as a number or a boolean is accepted for a field of that type.</p>
+<p>A field can also be <span class="tt">std::optional&lt;T&gt;</span>, for any bindable <span class="tt">T</span>: absence still means what it always means for that field (left as it was), while an explicit null resets it to not-set, letting one configuration layer deliberately undo what an earlier layer set rather than merely leaving it be. Saving an unset optional field leaves it out of the mapping entirely rather than writing it as an explicit null, the same "state only what differs" idea applied to writing. </p>
 </div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
 <a id="a54a3b965c1e0101fab9c76c238ca1665" name="a54a3b965c1e0101fab9c76c238ca1665"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a54a3b965c1e0101fab9c76c238ca1665">&#9670;&#160;</a></span>_error()</h2>
@@ -437,6 +444,43 @@ template&lt;std::integral Tinteger&gt; </div>
 
 </div>
 </div>
+<a id="ae560213683db1e98d99a395272d6ea53" name="ae560213683db1e98d99a395272d6ea53"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae560213683db1e98d99a395272d6ea53">&#9670;&#160;</a></span>_load_optional()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;detail::bound_optional Toptional&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void dl7::config::Binder::_load_optional </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="../../d7/de1/classdl7_1_1config_1_1Value.html">Value</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>value</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Toptional &amp;</td>          <td class="paramname"><span class="paramname"><em>target</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="../../df/d08/namespacedl7_1_1config.html#aac504f113ab16a047143979997126471">string_t</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>path</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Reads an optional field: an explicit null resets it to not-set; otherwise its inner value is loaded, overlaid onto whatever the optional already held (same field-by-field overlay as a required struct field) or, if it wasn't set yet, onto a freshly default-constructed one. </p>
+
+</div>
+</div>
 <a id="a80c77d33b2f951556edbba3292da84db" name="a80c77d33b2f951556edbba3292da84db"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a80c77d33b2f951556edbba3292da84db">&#9670;&#160;</a></span>_load_sequence()</h2>
 
@@ -704,6 +748,70 @@ template&lt;named_enum Tenum&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5ef5c6edc18f34243e025f7edd74047f" name="a5ef5c6edc18f34243e025f7edd74047f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ef5c6edc18f34243e025f7edd74047f">&#9670;&#160;</a></span>_save_field()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Tstruct, typename Tfield&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void dl7::config::Binder::_save_field </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../df/d08/namespacedl7_1_1config.html#ae32137cc7224c585f33f68788e933f85">mapping_t</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>mapping</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Tstruct &amp;</td>          <td class="paramname"><span class="paramname"><em>source</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Tfield &amp;</td>          <td class="paramname"><span class="paramname"><em>field</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa7b90d9a8d9769b8086732666927f68a" name="aa7b90d9a8d9769b8086732666927f68a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa7b90d9a8d9769b8086732666927f68a">&#9670;&#160;</a></span>_save_optional()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;detail::bound_optional Toptional&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d7/de1/classdl7_1_1config_1_1Value.html">Value</a> dl7::config::Binder::_save_optional </td>
+          <td>(</td>
+          <td class="paramtype">const Toptional &amp;</td>          <td class="paramname"><span class="paramname"><em>source</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Saves an optional field's inner value, or null if it isn't set. <span class="tt"><a class="el" href="#a5ef5c6edc18f34243e025f7edd74047f">_save_field</a></span> already leaves a struct's own unset optional fields out of the mapping entirely instead of going through this, so this path is only ever reached for an optional nested somewhere a missing key isn't an option, e.g., inside a sequence. </p>
 
 </div>
 </div>

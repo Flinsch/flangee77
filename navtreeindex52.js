@@ -1,5 +1,6 @@
 var NAVTREEINDEX52 =
 {
+"db/d02/classtl7_1_1reporting_1_1CoutLogger.html#ab8bc0dddb9e739a939a632220baeb259":[7,0,7,1,0,5],
 "db/d02/classtl7_1_1reporting_1_1CoutLogger.html#ad5d7f754cc09116ab79b0da44610dbcd":[5,0,7,2,0,12],
 "db/d02/classtl7_1_1reporting_1_1CoutLogger.html#ad5d7f754cc09116ab79b0da44610dbcd":[7,0,7,1,0,12],
 "db/d02/classtl7_1_1reporting_1_1CoutLogger.html#ae1a8e9b7b183031ae24d0de7ba21bf2b":[5,0,7,2,0,8],
@@ -248,6 +249,5 @@ var NAVTREEINDEX52 =
 "db/d3c/classcl7_1_1io_1_1ReadableMemory.html#aaf2c72b35583db3d404579ac8a8ddc56":[7,0,1,4,11,8],
 "db/d3c/classcl7_1_1io_1_1ReadableMemory.html#ab2a5c9b6caa9888306bc9894a8805456":[5,0,1,5,11,15],
 "db/d3c/classcl7_1_1io_1_1ReadableMemory.html#ab2a5c9b6caa9888306bc9894a8805456":[7,0,1,4,11,15],
-"db/d3c/classcl7_1_1io_1_1ReadableMemory.html#acb7fd44b616bc82df219e1e7dd392e6d":[5,0,1,5,11,0],
-"db/d3c/classcl7_1_1io_1_1ReadableMemory.html#acb7fd44b616bc82df219e1e7dd392e6d":[7,0,1,4,11,0]
+"db/d3c/classcl7_1_1io_1_1ReadableMemory.html#acb7fd44b616bc82df219e1e7dd392e6d":[5,0,1,5,11,0]
 };

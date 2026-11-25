@@ -1,5 +1,6 @@
 var NAVTREEINDEX43 =
 {
+"d9/d59/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1ResourceFactoryImpl_1_1Attorney.html":[7,0,8,1,1,1,7,0],
 "d9/d59/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1ResourceFactoryImpl_1_1Attorney.html#a6e49d19d06d48be0c82ac41c79714f7b":[5,0,8,2,1,1,9,0,0],
 "d9/d59/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1ResourceFactoryImpl_1_1Attorney.html#a6e49d19d06d48be0c82ac41c79714f7b":[7,0,8,1,1,1,7,0,0],
 "d9/d59/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1ResourceFactoryImpl_1_1Attorney.html#a71660db6f5fb63a3baa73c6d3fa72e82":[5,0,8,2,1,1,9,0,1],
@@ -248,6 +249,5 @@ var NAVTREEINDEX43 =
 "d9/d9c/classdl7_1_1xml_1_1detail_1_1Lexer.html#a526c819fb133a6784316792ad7903985":[5,0,2,6,0,2,1],
 "d9/d9c/classdl7_1_1xml_1_1detail_1_1Lexer.html#a526c819fb133a6784316792ad7903985":[7,0,2,6,0,2,1],
 "d9/d9c/classdl7_1_1xml_1_1detail_1_1Lexer.html#ab2b7bd853cd98f33206558bf4b24d366":[5,0,2,6,0,2,0],
-"d9/d9c/classdl7_1_1xml_1_1detail_1_1Lexer.html#ab2b7bd853cd98f33206558bf4b24d366":[7,0,2,6,0,2,0],
-"d9/d9e/ClearFlags_8h.html":[8,0,7,1,11]
+"d9/d9c/classdl7_1_1xml_1_1detail_1_1Lexer.html#ab2b7bd853cd98f33206558bf4b24d366":[7,0,2,6,0,2,0]
 };

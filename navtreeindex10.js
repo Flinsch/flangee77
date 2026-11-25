@@ -1,5 +1,6 @@
 var NAVTREEINDEX10 =
 {
+"d2/dcd/classxl7_1_1graphics_1_1textures_1_1Texture3DUpdater.html":[7,0,8,1,7,20],
 "d2/dcd/classxl7_1_1graphics_1_1textures_1_1Texture3DUpdater.html#afe1ec134d5425b42e26d03fe5b9e37cb":[5,0,8,2,7,20,0],
 "d2/dcd/classxl7_1_1graphics_1_1textures_1_1Texture3DUpdater.html#afe1ec134d5425b42e26d03fe5b9e37cb":[7,0,8,1,7,20,0],
 "d2/dcf/classfl7_1_1gui_1_1faces_1_1ListBox_1_1Row.html":[5,0,3,1,0,5,0],
@@ -52,7 +53,7 @@ var NAVTREEINDEX10 =
 "d2/dea/structcl7_1_1platform_1_1memory_1_1MemoryStatus.html#ad510b2dba72354a0213b8ddc654c335f":[5,0,1,8,2,0,0],
 "d2/dea/structcl7_1_1platform_1_1memory_1_1MemoryStatus.html#ad510b2dba72354a0213b8ddc654c335f":[7,0,1,6,0,0,0],
 "d2/def/namespacedl7_1_1config_1_1detail.html":[5,0,2,1,0],
-"d2/def/namespacedl7_1_1config_1_1detail.html#ab679c362248a51a6ab30f4024336e323":[5,0,2,1,0,3],
+"d2/def/namespacedl7_1_1config_1_1detail.html#ab679c362248a51a6ab30f4024336e323":[5,0,2,1,0,6],
 "d2/df3/classcl7_1_1logging_1_1StandardLogger.html":[5,0,1,6,7],
 "d2/df3/classcl7_1_1logging_1_1StandardLogger.html":[7,0,1,5,7],
 "d2/df3/classcl7_1_1logging_1_1StandardLogger.html#a120a5c6293d1baaed52710ae6bd701ff":[5,0,1,6,7,5],
@@ -248,6 +249,5 @@ var NAVTREEINDEX10 =
 "d3/d26/classfl7_1_1gui_1_1faces_1_1Frame_1_1ResizeHandle.html#a9e7660375fab0a00667959fca2720e3d":[7,0,3,1,0,3,0,6],
 "d3/d26/classfl7_1_1gui_1_1faces_1_1Frame_1_1ResizeHandle.html#aa429419262a696dc1c20206f2f6ece4b":[5,0,3,1,0,3,0,3],
 "d3/d26/classfl7_1_1gui_1_1faces_1_1Frame_1_1ResizeHandle.html#aa429419262a696dc1c20206f2f6ece4b":[7,0,3,1,0,3,0,3],
-"d3/d26/classfl7_1_1gui_1_1faces_1_1Frame_1_1ResizeHandle.html#ae07f7550c0dcf5d73365a7786051178c":[5,0,3,1,0,3,0,11],
-"d3/d26/classfl7_1_1gui_1_1faces_1_1Frame_1_1ResizeHandle.html#ae07f7550c0dcf5d73365a7786051178c":[7,0,3,1,0,3,0,11]
+"d3/d26/classfl7_1_1gui_1_1faces_1_1Frame_1_1ResizeHandle.html#ae07f7550c0dcf5d73365a7786051178c":[5,0,3,1,0,3,0,11]
 };

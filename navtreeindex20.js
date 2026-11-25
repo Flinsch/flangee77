@@ -1,5 +1,6 @@
 var NAVTREEINDEX20 =
 {
+"d5/d56/namespacefl7_1_1gui.html#a0d7cdc70924ddc602ebd434283e9342e":[5,0,3,1,29],
 "d5/d56/namespacefl7_1_1gui.html#a30fe03b96f3682e72e7438fd4bcce1cc":[5,0,3,1,28],
 "d5/d56/namespacefl7_1_1gui.html#a30fe03b96f3682e72e7438fd4bcce1cca06b9281e396db002010bde1de57262eb":[5,0,3,1,28,2],
 "d5/d56/namespacefl7_1_1gui.html#a30fe03b96f3682e72e7438fd4bcce1cca68eec46437c384d8dad18d5464ebc35c":[5,0,3,1,28,0],
@@ -248,6 +249,5 @@ var NAVTREEINDEX20 =
 "d5/d7b/classxl7_1_1resources_1_1Resource.html#ad7efc70bc71653223aba475835f662cb":[7,0,8,3,1,33],
 "d5/d7b/classxl7_1_1resources_1_1Resource.html#ae38af8299222a70c4fd46ac28b11eb6b":[5,0,8,4,1,7],
 "d5/d7b/classxl7_1_1resources_1_1Resource.html#ae38af8299222a70c4fd46ac28b11eb6b":[7,0,8,3,1,7],
-"d5/d7b/classxl7_1_1resources_1_1Resource.html#ae626e9a4160099526d8e087ac01db9f5":[5,0,8,4,1,24],
-"d5/d7b/classxl7_1_1resources_1_1Resource.html#ae626e9a4160099526d8e087ac01db9f5":[7,0,8,3,1,24]
+"d5/d7b/classxl7_1_1resources_1_1Resource.html#ae626e9a4160099526d8e087ac01db9f5":[5,0,8,4,1,24]
 };

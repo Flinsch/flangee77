@@ -1,5 +1,6 @@
 var NAVTREEINDEX42 =
 {
+"d9/d1a/classfl7_1_1gui_1_1Face.html#ada9684b1b9f86341ede8c15ee552c180":[5,0,3,1,7,23],
 "d9/d1a/classfl7_1_1gui_1_1Face.html#ada9684b1b9f86341ede8c15ee552c180":[7,0,3,1,7,23],
 "d9/d1a/classfl7_1_1gui_1_1Face.html#adf8326447e4871a39acbb90cf93debd1":[5,0,3,1,7,30],
 "d9/d1a/classfl7_1_1gui_1_1Face.html#adf8326447e4871a39acbb90cf93debd1":[7,0,3,1,7,30],
@@ -248,6 +249,5 @@ var NAVTREEINDEX42 =
 "d9/d58/namespacedl7_1_1toml_1_1detail.html#a48f6ae72c9dac29ef592e9169e1f8678ad87d77709acfe5a55581bb99d2996b74":[5,0,2,5,0,6,3],
 "d9/d58/namespacedl7_1_1toml_1_1detail.html#a48f6ae72c9dac29ef592e9169e1f8678ad97b73f0d41865782b3d5c346cd59256":[5,0,2,5,0,6,5],
 "d9/d58/namespacedl7_1_1toml_1_1detail.html#a48f6ae72c9dac29ef592e9169e1f8678aed3f0008b4b041d00f79b88d9397d8c1":[5,0,2,5,0,6,9],
-"d9/d59/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1ResourceFactoryImpl_1_1Attorney.html":[5,0,8,2,1,1,9,0],
-"d9/d59/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1ResourceFactoryImpl_1_1Attorney.html":[7,0,8,1,1,1,7,0]
+"d9/d59/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1ResourceFactoryImpl_1_1Attorney.html":[5,0,8,2,1,1,9,0]
 };

@@ -1,5 +1,6 @@
 var NAVTREEINDEX44 =
 {
+"d9/d9e/ClearFlags_8h.html":[8,0,7,1,11],
 "d9/d9e/ClearFlags_8h_source.html":[8,0,7,1,11],
 "d9/d9e/direct3d11_2states_2BlendStateImpl_8h.html":[8,0,7,1,1,0,2,1],
 "d9/d9e/direct3d11_2states_2BlendStateImpl_8h_source.html":[8,0,7,1,1,0,2,1],
@@ -248,6 +249,5 @@ var NAVTREEINDEX44 =
 "d9/dcb/namespacedl7_1_1toml.html#ad0bb653b6f56400886e4e5398dafd883":[5,0,2,5,6],
 "d9/dcb/namespacedl7_1_1toml.html#aed77836f70fe2e32215a5d547b8f0b77":[5,0,2,5,9],
 "d9/dce/classcl7_1_1logging_1_1HtmlLogHandler.html":[5,0,1,6,3],
-"d9/dce/classcl7_1_1logging_1_1HtmlLogHandler.html":[7,0,1,5,3],
-"d9/dce/classcl7_1_1logging_1_1HtmlLogHandler.html#a13c808b878d961f0881f84eee31f78be":[5,0,1,6,3,9]
+"d9/dce/classcl7_1_1logging_1_1HtmlLogHandler.html":[7,0,1,5,3]
 };

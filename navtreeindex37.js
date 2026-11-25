@@ -1,5 +1,6 @@
 var NAVTREEINDEX37 =
 {
+"d8/d30/namespacexl7_1_1graphics.html#a87b0232522b5f61ad70e5451fdd7082dad8187d21ed6dc3072e4c8e819e202c05":[5,0,8,2,20,7],
 "d8/d30/namespacexl7_1_1graphics.html#a87b0232522b5f61ad70e5451fdd7082dad865c8685eaca0a8002ebae3e41927d0":[5,0,8,2,20,16],
 "d8/d30/namespacexl7_1_1graphics.html#a87b0232522b5f61ad70e5451fdd7082dadf69a0abc30c531ebdced795d5bc7749":[5,0,8,2,20,40],
 "d8/d30/namespacexl7_1_1graphics.html#a87b0232522b5f61ad70e5451fdd7082dae00f80e3640e18f2997325c36fe0ef90":[5,0,8,2,20,23],
@@ -248,6 +249,5 @@ var NAVTREEINDEX37 =
 "d8/d86/structfl7_1_1fonts_1_1TextStyle.html#ab1c104dd0bbf49807b3059a1d4734c4c":[7,0,3,0,17,3],
 "d8/d86/structfl7_1_1fonts_1_1TextStyle.html#ac0d1db6498ffc6c449aa4406952e458b":[5,0,3,0,18,1],
 "d8/d86/structfl7_1_1fonts_1_1TextStyle.html#ac0d1db6498ffc6c449aa4406952e458b":[7,0,3,0,17,1],
-"d8/d86/structfl7_1_1fonts_1_1TextStyle.html#ac0d1db6498ffc6c449aa4406952e458ba2ad9d63b69c4a10a5cc9cad923133bc4":[5,0,3,0,18,1,2],
-"d8/d86/structfl7_1_1fonts_1_1TextStyle.html#ac0d1db6498ffc6c449aa4406952e458ba2ad9d63b69c4a10a5cc9cad923133bc4":[7,0,3,0,17,1,2]
+"d8/d86/structfl7_1_1fonts_1_1TextStyle.html#ac0d1db6498ffc6c449aa4406952e458ba2ad9d63b69c4a10a5cc9cad923133bc4":[5,0,3,0,18,1,2]
 };

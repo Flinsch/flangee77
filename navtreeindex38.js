@@ -1,5 +1,6 @@
 var NAVTREEINDEX38 =
 {
+"d8/d86/structfl7_1_1fonts_1_1TextStyle.html#ac0d1db6498ffc6c449aa4406952e458ba2ad9d63b69c4a10a5cc9cad923133bc4":[7,0,3,0,17,1,2],
 "d8/d86/structfl7_1_1fonts_1_1TextStyle.html#ac0d1db6498ffc6c449aa4406952e458baa4a32c4764653e50488bff6ce2eb815b":[5,0,3,0,18,1,3],
 "d8/d86/structfl7_1_1fonts_1_1TextStyle.html#ac0d1db6498ffc6c449aa4406952e458baa4a32c4764653e50488bff6ce2eb815b":[7,0,3,0,17,1,3],
 "d8/d86/structfl7_1_1fonts_1_1TextStyle.html#ac0d1db6498ffc6c449aa4406952e458baa4ffdcf0dc1f31b9acaf295d75b51d00":[5,0,3,0,18,1,0],
@@ -248,6 +249,5 @@ var NAVTREEINDEX38 =
 "d8/dac/classfl7_1_1gui_1_1TrackControl.html#a6927a1ed12bf60931a29a1672438b0b8":[5,0,3,1,23,41],
 "d8/dac/classfl7_1_1gui_1_1TrackControl.html#a6927a1ed12bf60931a29a1672438b0b8":[7,0,3,1,23,41],
 "d8/dac/classfl7_1_1gui_1_1TrackControl.html#a6997a86170354d4e2f8c807a5f64ddf5":[5,0,3,1,23,6],
-"d8/dac/classfl7_1_1gui_1_1TrackControl.html#a6997a86170354d4e2f8c807a5f64ddf5":[7,0,3,1,23,6],
-"d8/dac/classfl7_1_1gui_1_1TrackControl.html#a778c755f36804b28458ffe9a52c19bbc":[5,0,3,1,23,15]
+"d8/dac/classfl7_1_1gui_1_1TrackControl.html#a6997a86170354d4e2f8c807a5f64ddf5":[7,0,3,1,23,6]
 };

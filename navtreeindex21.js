@@ -1,5 +1,6 @@
 var NAVTREEINDEX21 =
 {
+"d5/d7b/classxl7_1_1resources_1_1Resource.html#ae626e9a4160099526d8e087ac01db9f5":[7,0,8,3,1,24],
 "d5/d7b/classxl7_1_1resources_1_1Resource.html#ae998d74e7de3ebe7501d0d22c23add17":[5,0,8,4,1,17],
 "d5/d7b/classxl7_1_1resources_1_1Resource.html#ae998d74e7de3ebe7501d0d22c23add17":[7,0,8,3,1,17],
 "d5/d7b/classxl7_1_1resources_1_1Resource.html#aeb9d43f803b628716c843ca032c252c9":[5,0,8,4,1,3],
@@ -248,6 +249,5 @@ var NAVTREEINDEX21 =
 "d5/db1/classal7_1_1packing_1_1SkylinePacker.html#ab85348ee9f2d92cb2c485baa1610b58f":[7,0,0,0,10,18],
 "d5/db1/classal7_1_1packing_1_1SkylinePacker.html#ac69490f888fa72c4a4abcb750e195182":[5,0,0,1,10,4],
 "d5/db1/classal7_1_1packing_1_1SkylinePacker.html#ac69490f888fa72c4a4abcb750e195182":[7,0,0,0,10,4],
-"d5/db1/classal7_1_1packing_1_1SkylinePacker.html#ac69490f888fa72c4a4abcb750e195182a3be09308e76c7409a4e21584527d7f6e":[5,0,0,1,10,4,1],
-"d5/db1/classal7_1_1packing_1_1SkylinePacker.html#ac69490f888fa72c4a4abcb750e195182a3be09308e76c7409a4e21584527d7f6e":[7,0,0,0,10,4,1]
+"d5/db1/classal7_1_1packing_1_1SkylinePacker.html#ac69490f888fa72c4a4abcb750e195182a3be09308e76c7409a4e21584527d7f6e":[5,0,0,1,10,4,1]
 };

@@ -314,10 +314,12 @@ var hierarchy =
         [ "cl7::is_any_string_view< Tstring_view >", "d9/d41/structcl7_1_1is__any__string__view.html", null ]
       ] ],
       [ "cl7::detail::_is_any_string_view< std::basic_string_view< Tchar, Ttraits > >", "d4/d6b/structcl7_1_1detail_1_1__is__any__string__view_3_01std_1_1basic__string__view_3_01Tchar_00_01Ttraits_01_4_01_4.html", null ],
+      [ "dl7::config::detail::is_bound_optional< std::optional< T > >", "dc/d91/structdl7_1_1config_1_1detail_1_1is__bound__optional_3_01std_1_1optional_3_01T_01_4_01_4.html", null ],
       [ "dl7::config::detail::is_bound_sequence< std::vector< T, Tallocator > >", "dd/dbf/structdl7_1_1config_1_1detail_1_1is__bound__sequence_3_01std_1_1vector_3_01T_00_01Tallocator_01_4_01_4.html", null ],
       [ "cl7::detail::_is_any_string< T >", "d8/d05/structcl7_1_1detail_1_1__is__any__string.html", null ],
       [ "cl7::detail::_is_any_string_span< T >", "de/d1e/structcl7_1_1detail_1_1__is__any__string__span.html", null ],
       [ "cl7::detail::_is_any_string_view< T >", "df/d9b/structcl7_1_1detail_1_1__is__any__string__view.html", null ],
+      [ "dl7::config::detail::is_bound_optional< T >", "dc/d69/structdl7_1_1config_1_1detail_1_1is__bound__optional.html", null ],
       [ "dl7::config::detail::is_bound_sequence< T >", "d8/da7/structdl7_1_1config_1_1detail_1_1is__bound__sequence.html", null ]
     ] ],
     [ "dl7::config::Field&lt; Tstruct, Tmember &gt;", "d1/ddf/structdl7_1_1config_1_1Field.html", null ],
@@ -963,6 +965,7 @@ var hierarchy =
       [ "cl7::detail::_is_any_string< std::basic_string< Tchar, Ttraits, Talloc > >", "d0/d63/structcl7_1_1detail_1_1__is__any__string_3_01std_1_1basic__string_3_01Tchar_00_01Ttraits_00_01Talloc_01_4_01_4.html", null ],
       [ "cl7::detail::_is_any_string_span< std::span< Tchar > >", "d0/d3a/structcl7_1_1detail_1_1__is__any__string__span_3_01std_1_1span_3_01Tchar_01_4_01_4.html", null ],
       [ "cl7::detail::_is_any_string_view< std::basic_string_view< Tchar, Ttraits > >", "d4/d6b/structcl7_1_1detail_1_1__is__any__string__view_3_01std_1_1basic__string__view_3_01Tchar_00_01Ttraits_01_4_01_4.html", null ],
+      [ "dl7::config::detail::is_bound_optional< std::optional< T > >", "dc/d91/structdl7_1_1config_1_1detail_1_1is__bound__optional_3_01std_1_1optional_3_01T_01_4_01_4.html", null ],
       [ "dl7::config::detail::is_bound_sequence< std::vector< T, Tallocator > >", "dd/dbf/structdl7_1_1config_1_1detail_1_1is__bound__sequence_3_01std_1_1vector_3_01T_00_01Tallocator_01_4_01_4.html", null ]
     ] ],
     [ "fl7::fonts::detail::ttf::TrueTypeFontLoader::TrueTypeFontMetric", "d5/d55/structfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader_1_1TrueTypeFontMetric.html", null ],

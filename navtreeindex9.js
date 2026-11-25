@@ -1,5 +1,6 @@
 var NAVTREEINDEX9 =
 {
+"d2/d7e/structxl7_1_1graphics_1_1textures_1_1TextureDesc.html#a991fd104f64a001912b4a0ae64aad5af":[7,0,8,1,7,23,4],
 "d2/d7e/structxl7_1_1graphics_1_1textures_1_1TextureDesc.html#ae30c039d7396e4d4931ec90c3dbe23b0":[5,0,8,2,7,23,2],
 "d2/d7e/structxl7_1_1graphics_1_1textures_1_1TextureDesc.html#ae30c039d7396e4d4931ec90c3dbe23b0":[7,0,8,1,7,23,2],
 "d2/d80/transform_8h.html":[8,0,1,8,10],
@@ -248,6 +249,5 @@ var NAVTREEINDEX9 =
 "d2/dc3/json_2detail_2UnescaperErrorHandler_8cpp.html":[8,0,2,3,0,9],
 "d2/dc6/namespacecl7_1_1checksum.html":[5,0,1,2],
 "d2/dc6/namespacecl7_1_1checksum.html#a5f0de7008ac13cf5bf26a25a4bcec732":[5,0,1,2,0],
-"d2/dcd/classxl7_1_1graphics_1_1textures_1_1Texture3DUpdater.html":[5,0,8,2,7,20],
-"d2/dcd/classxl7_1_1graphics_1_1textures_1_1Texture3DUpdater.html":[7,0,8,1,7,20]
+"d2/dcd/classxl7_1_1graphics_1_1textures_1_1Texture3DUpdater.html":[5,0,8,2,7,20]
 };
