@@ -1,18 +1,7 @@
 var structfl7_1_1gui_1_1ThemeLevel =
 [
-    [ "background_color", "d0/d60/structfl7_1_1gui_1_1ThemeLevel.html#a42ede6e99e4834aa667116b1a9190ed9", null ],
-    [ "border_color", "d0/d60/structfl7_1_1gui_1_1ThemeLevel.html#a49c5abfef79f57dc2b49018ceb7cc6eb", null ],
-    [ "border_width", "d0/d60/structfl7_1_1gui_1_1ThemeLevel.html#a1df8aa74bb34b7bedba948b2ccd7ef8b", null ],
-    [ "checked", "d0/d60/structfl7_1_1gui_1_1ThemeLevel.html#a72767cf90966e8e06cbc1f815b9d0d22", null ],
-    [ "chrome", "d0/d60/structfl7_1_1gui_1_1ThemeLevel.html#a73a02a67ecf0580ea881edee10209bd8", null ],
-    [ "focused", "d0/d60/structfl7_1_1gui_1_1ThemeLevel.html#a43abf9841b7d008965ba83bf1669610e", null ],
-    [ "font", "d0/d60/structfl7_1_1gui_1_1ThemeLevel.html#a7df043f7508535c07b379c29fd7f88f5", null ],
-    [ "hovered", "d0/d60/structfl7_1_1gui_1_1ThemeLevel.html#acee8407be61b2754982afd1196d2265d", null ],
-    [ "padding", "d0/d60/structfl7_1_1gui_1_1ThemeLevel.html#ac2806f062f91060bd88ffdfcd7ae95b8", null ],
-    [ "pressed", "d0/d60/structfl7_1_1gui_1_1ThemeLevel.html#a1ef388b1ede869857fbe1e9cb6ae778a", null ],
-    [ "resize_handle_size", "d0/d60/structfl7_1_1gui_1_1ThemeLevel.html#a7c5701add49fe4bc109b564672771508", null ],
-    [ "scroll_bar_thickness", "d0/d60/structfl7_1_1gui_1_1ThemeLevel.html#a955f320e0e3ac09679797957bb270c62", null ],
-    [ "selection_color", "d0/d60/structfl7_1_1gui_1_1ThemeLevel.html#a2c5f45db9a7018f878b648cfae0c6a41", null ],
-    [ "text_style", "d0/d60/structfl7_1_1gui_1_1ThemeLevel.html#a591f4e891e9c7a055682a614d4f26fda", null ],
-    [ "title_bar_height", "d0/d60/structfl7_1_1gui_1_1ThemeLevel.html#a1cdf4f80913af70eca4e8a891c0d281b", null ]
+    [ "checked", "d0/d60/structfl7_1_1gui_1_1ThemeLevel.html#a2f8d2cb00a64426836bb90edfe3c4153", null ],
+    [ "focused", "d0/d60/structfl7_1_1gui_1_1ThemeLevel.html#ab7144be454e0ce518f5fbeeaaab1e0a1", null ],
+    [ "hovered", "d0/d60/structfl7_1_1gui_1_1ThemeLevel.html#a3aacea2ae8fd5590bdc80335bf999157", null ],
+    [ "pressed", "d0/d60/structfl7_1_1gui_1_1ThemeLevel.html#ae7dc152daa8f688b2e0c36cb35833fd5", null ]
 ];

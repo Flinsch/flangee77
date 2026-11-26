@@ -1,5 +1,9 @@
 var NAVTREEINDEX75 =
 {
+"df/db1/math_8h.html":[8,0,4,13],
+"df/db1/math_8h_source.html":[8,0,4,13],
+"df/db2/namespacecl7_1_1memory.html":[5,0,1,7],
+"df/db2/namespacecl7_1_1memory.html#a52ff4ff0cae6b516a3028d74f580cafa":[5,0,1,7,2],
 "df/db2/namespacecl7_1_1memory.html#a6c396ea26cdb8106e06b70208f03c202":[5,0,1,7,0],
 "df/db2/namespacecl7_1_1memory.html#ae7f0acb86ccc919f73ecbe25d4e45105":[5,0,1,7,1],
 "df/db4/ByteWriter_8cpp.html":[8,0,1,3,6],
@@ -245,9 +249,5 @@ var NAVTREEINDEX75 =
 "df/dd7/classcl7_1_1text_1_1codec_1_1Decoder.html#ac9445fefde7044272442c1c71501b4d0":[7,0,1,9,0,5,4],
 "df/dd7/classcl7_1_1text_1_1codec_1_1Decoder.html#adc0c21b12819af3b78d012a02acc1f47":[5,0,1,11,0,5,2],
 "df/dd7/classcl7_1_1text_1_1codec_1_1Decoder.html#adc0c21b12819af3b78d012a02acc1f47":[7,0,1,9,0,5,2],
-"df/dd7/classcl7_1_1text_1_1codec_1_1Decoder.html#aedd1100de7e6baa0d8dc80d598886c89":[5,0,1,11,0,5,12],
-"df/dd7/classcl7_1_1text_1_1codec_1_1Decoder.html#aedd1100de7e6baa0d8dc80d598886c89":[7,0,1,9,0,5,12],
-"df/dd8/structal7_1_1packing_1_1Rect.html":[5,0,0,1,7],
-"df/dd8/structal7_1_1packing_1_1Rect.html":[7,0,0,0,7],
-"df/dd8/structal7_1_1packing_1_1Rect.html#a05a6e0b41f57838cb0766181c32a11c4":[5,0,0,1,7,0]
+"df/dd7/classcl7_1_1text_1_1codec_1_1Decoder.html#aedd1100de7e6baa0d8dc80d598886c89":[5,0,1,11,0,5,12]
 };

@@ -1,5 +1,9 @@
 var NAVTREEINDEX66 =
 {
+"dd/dbc/classfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader.html#ab0922bf6af32a6af9345b9abfd12be7d":[5,0,3,0,0,0,1,33],
+"dd/dbc/classfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader.html#ab0922bf6af32a6af9345b9abfd12be7d":[7,0,3,0,0,0,1,33],
+"dd/dbc/classfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader.html#ab0fb1e1402e8ed7dd4fa8b16353a4fd1":[5,0,3,0,0,0,1,23],
+"dd/dbc/classfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader.html#ab0fb1e1402e8ed7dd4fa8b16353a4fd1":[7,0,3,0,0,0,1,23],
 "dd/dbc/classfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader.html#ab4dae6203fd63e74eaa6d5e6a7ede9b5":[5,0,3,0,0,0,1,36],
 "dd/dbc/classfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader.html#ab4dae6203fd63e74eaa6d5e6a7ede9b5":[7,0,3,0,0,0,1,36],
 "dd/dbc/classfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader.html#aba7b0c6011965e16cf8dd7f920e37fdb":[5,0,3,0,0,0,1,35],
@@ -245,9 +249,5 @@ var NAVTREEINDEX66 =
 "de/d05/namespacedl7_1_1ini_1_1detail.html#a8c73c1af2331e6a5187acf3b8020fef2a5929d5ade2c537cdc67852eb2a2075b7":[5,0,2,2,0,5,0],
 "de/d05/namespacedl7_1_1ini_1_1detail.html#a8c73c1af2331e6a5187acf3b8020fef2a5be0884e7072a69d63d5306bf0cded4c":[5,0,2,2,0,5,8],
 "de/d05/namespacedl7_1_1ini_1_1detail.html#a8c73c1af2331e6a5187acf3b8020fef2a866de65c0d1f2edacb31b5ee0ff6f126":[5,0,2,2,0,5,2],
-"de/d05/namespacedl7_1_1ini_1_1detail.html#a8c73c1af2331e6a5187acf3b8020fef2aa2577c7f87e9bf1b3ab79a11a68897d3":[5,0,2,2,0,5,9],
-"de/d05/namespacedl7_1_1ini_1_1detail.html#a8c73c1af2331e6a5187acf3b8020fef2ab3b1336a87a229d09590afbc4f2d46b2":[5,0,2,2,0,5,6],
-"de/d05/namespacedl7_1_1ini_1_1detail.html#a8c73c1af2331e6a5187acf3b8020fef2abceec35b9fc7a423962c12bdee66b799":[5,0,2,2,0,5,7],
-"de/d05/namespacedl7_1_1ini_1_1detail.html#a8c73c1af2331e6a5187acf3b8020fef2ac100edd79259afc7a6b6324eda8bf90b":[5,0,2,2,0,5,10],
-"de/d05/namespacedl7_1_1ini_1_1detail.html#a8c73c1af2331e6a5187acf3b8020fef2af81d10576aa269e67e74bca67b6a56a4":[5,0,2,2,0,5,5]
+"de/d05/namespacedl7_1_1ini_1_1detail.html#a8c73c1af2331e6a5187acf3b8020fef2aa2577c7f87e9bf1b3ab79a11a68897d3":[5,0,2,2,0,5,9]
 };

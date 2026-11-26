@@ -23,6 +23,7 @@ var namespacefl7_1_1gui =
     [ "Style", "dd/d02/structfl7_1_1gui_1_1Style.html", "dd/d02/structfl7_1_1gui_1_1Style" ],
     [ "Theme", "d8/dc4/classfl7_1_1gui_1_1Theme.html", "d8/dc4/classfl7_1_1gui_1_1Theme" ],
     [ "ThemeLevel", "d0/d60/structfl7_1_1gui_1_1ThemeLevel.html", "d0/d60/structfl7_1_1gui_1_1ThemeLevel" ],
+    [ "ThemeOverlay", "db/db9/structfl7_1_1gui_1_1ThemeOverlay.html", "db/db9/structfl7_1_1gui_1_1ThemeOverlay" ],
     [ "TrackControl", "d8/dac/classfl7_1_1gui_1_1TrackControl.html", "d8/dac/classfl7_1_1gui_1_1TrackControl" ],
     [ "Anchor", "d5/d56/namespacefl7_1_1gui.html#a86b128accd61114e8900e074c2d1e199", [
       [ "None", "d5/d56/namespacefl7_1_1gui.html#a86b128accd61114e8900e074c2d1e199a6adf97f83acf6453d4a6a4b1070f3754", null ],

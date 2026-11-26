@@ -100,13 +100,15 @@ Collaboration diagram for fl7::gui::Theme:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../db/d4e/classfl7_1_1gui_1_1Theme__coll__graph.png" border="0" usemap="#afl7_1_1gui_1_1Theme_coll__map" loading="lazy" alt="Collaboration graph"/></div>
 <map name="afl7_1_1gui_1_1Theme_coll__map" id="afl7_1_1gui_1_1Theme_coll__map">
-<area shape="rect" title=" " alt="" coords="126,207,244,234"/>
-<area shape="rect" href="../../d0/d60/structfl7_1_1gui_1_1ThemeLevel.html" title=" " alt="" coords="108,106,261,134"/>
-<area shape="poly" title=" " alt="" coords="187,148,187,207,182,205,183,151"/>
+<area shape="rect" title=" " alt="" coords="126,284,244,311"/>
+<area shape="rect" href="../../d0/d60/structfl7_1_1gui_1_1ThemeLevel.html" title=" " alt="" coords="108,183,261,211"/>
+<area shape="poly" title=" " alt="" coords="187,225,187,284,182,282,183,228"/>
+<area shape="rect" href="../../db/db9/structfl7_1_1gui_1_1ThemeOverlay.html" title=" " alt="" coords="100,106,269,134"/>
+<area shape="poly" title=" " alt="" coords="186,147,187,184,182,182,183,151"/>
 <area shape="rect" href="../../d0/d13/structfl7_1_1gui_1_1NineSliceChrome.html" title=" " alt="" coords="5,5,191,33"/>
 <area shape="poly" title=" " alt="" coords="120,42,176,105,170,106,119,47"/>
 <area shape="rect" href="../../d3/d00/classfl7_1_1fonts_1_1Font.html" title=" " alt="" coords="214,5,328,33"/>
-<area shape="poly" title=" " alt="" coords="252,43,198,107,194,103,248,46"/>
+<area shape="poly" title=" " alt="" coords="252,43,198,107,194,104,248,47"/>
 </map>
 <center><span class="legend">[<a target="top" href="../../graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -129,7 +131,7 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-static-methods" class="groupheader"><a id="pri-static-methods" name="pri-static-methods"></a>
 Static Private Member Functions</h2></td></tr>
-<tr class="memitem:ac21e1fa9ae5c195c11e555170662bfc0" id="r_ac21e1fa9ae5c195c11e555170662bfc0"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac21e1fa9ae5c195c11e555170662bfc0">_apply_overlay</a> (<a class="el" href="../../dd/d02/structfl7_1_1gui_1_1Style.html">Style</a> &amp;style, const <a class="el" href="../../d0/d60/structfl7_1_1gui_1_1ThemeLevel.html">ThemeLevel</a> &amp;overlay)</td></tr>
+<tr class="memitem:a7ac5f4196bd77c637752461715dc22f7" id="r_a7ac5f4196bd77c637752461715dc22f7"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7ac5f4196bd77c637752461715dc22f7">_apply_overlay</a> (<a class="el" href="../../dd/d02/structfl7_1_1gui_1_1Style.html">Style</a> &amp;style, const <a class="el" href="../../db/db9/structfl7_1_1gui_1_1ThemeOverlay.html">ThemeOverlay</a> &amp;overlay)</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-attribs" class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -240,8 +242,8 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
-<a id="ac21e1fa9ae5c195c11e555170662bfc0" name="ac21e1fa9ae5c195c11e555170662bfc0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac21e1fa9ae5c195c11e555170662bfc0">&#9670;&#160;</a></span>_apply_overlay()</h2>
+<a id="a7ac5f4196bd77c637752461715dc22f7" name="a7ac5f4196bd77c637752461715dc22f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7ac5f4196bd77c637752461715dc22f7">&#9670;&#160;</a></span>_apply_overlay()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -257,7 +259,7 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="../../d0/d60/structfl7_1_1gui_1_1ThemeLevel.html">ThemeLevel</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>overlay</em></span>&#160;)</td>
+          <td class="paramtype">const <a class="el" href="../../db/db9/structfl7_1_1gui_1_1ThemeOverlay.html">ThemeOverlay</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>overlay</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -408,7 +410,7 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Resolves the specified face-type/role key into a complete style: each field individually falls back from that key's own level to the theme-wide default level, then to style's own hard-coded default, except chrome, which only ever comes from the key's own level. Unknown keys resolve as if their level were empty (falling through to the theme-wide default/style's own defaults for everything but chrome). The key's own level's checked/hovered/pressed/ focused overlays (if any) whose state is currently active in <span class="tt">state</span> are then applied on top, in that fixed priority order (see <span class="tt"><a class="el" href="../../d0/d60/structfl7_1_1gui_1_1ThemeLevel.html">ThemeLevel</a></span>). </p>
+<p>Resolves the specified face-type/role key into a complete style: each field individually falls back from that key's own level to the theme-wide default level, then to style's own hard-coded default, except chrome, which only ever comes from the key's own level. Unknown keys resolve as if their level were empty (falling through to the theme-wide default/style's own defaults for everything but chrome). The key's own level's checked/hovered/pressed/ focused overlays (if any) whose state is currently active in <span class="tt">state</span> are then applied on top, in that fixed order: checked, then hovered, then pressed, then focused (each later one's set fields winning over the earlier ones'): checked comes first, rather than alongside the transient hovered/pressed/ focused trio, because it's a persistent, semantic value (see <span class="tt"><a class="el" href="../../d9/db9/classfl7_1_1gui_1_1HasCheckedState.html">HasCheckedState</a></span>), not a passing interaction: momentary feedback should tint whichever (checked or unchecked) look is currently in effect, not replace it. </p>
 
 </div>
 </div>

@@ -5,7 +5,7 @@ var classfl7_1_1gui_1_1Theme =
     [ "Theme", "d8/dc4/classfl7_1_1gui_1_1Theme.html#aba097538e80751a2a4ce7e3f06940d4d", null ],
     [ "Theme", "d8/dc4/classfl7_1_1gui_1_1Theme.html#ae7647d48f1a51f0f731c6af02f59e4b3", null ],
     [ "~Theme", "d8/dc4/classfl7_1_1gui_1_1Theme.html#ab0c4932e82dd304bed693726ce396fb2", null ],
-    [ "_apply_overlay", "d8/dc4/classfl7_1_1gui_1_1Theme.html#ac21e1fa9ae5c195c11e555170662bfc0", null ],
+    [ "_apply_overlay", "d8/dc4/classfl7_1_1gui_1_1Theme.html#a7ac5f4196bd77c637752461715dc22f7", null ],
     [ "get_default_level", "d8/dc4/classfl7_1_1gui_1_1Theme.html#a605d2005503a55e844ba5d57e505d0f3", null ],
     [ "get_default_level", "d8/dc4/classfl7_1_1gui_1_1Theme.html#a15a984befb2a3c6eb7a6436b20dff8b6", null ],
     [ "get_level", "d8/dc4/classfl7_1_1gui_1_1Theme.html#a366611361142c5cd88b08e839ac86328", null ],

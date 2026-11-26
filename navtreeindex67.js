@@ -1,5 +1,9 @@
 var NAVTREEINDEX67 =
 {
+"de/d05/namespacedl7_1_1ini_1_1detail.html#a8c73c1af2331e6a5187acf3b8020fef2ab3b1336a87a229d09590afbc4f2d46b2":[5,0,2,2,0,5,6],
+"de/d05/namespacedl7_1_1ini_1_1detail.html#a8c73c1af2331e6a5187acf3b8020fef2abceec35b9fc7a423962c12bdee66b799":[5,0,2,2,0,5,7],
+"de/d05/namespacedl7_1_1ini_1_1detail.html#a8c73c1af2331e6a5187acf3b8020fef2ac100edd79259afc7a6b6324eda8bf90b":[5,0,2,2,0,5,10],
+"de/d05/namespacedl7_1_1ini_1_1detail.html#a8c73c1af2331e6a5187acf3b8020fef2af81d10576aa269e67e74bca67b6a56a4":[5,0,2,2,0,5,5],
 "de/d0a/classxl7_1_1graphics_1_1RenderingContext.html":[5,0,8,2,13],
 "de/d0a/classxl7_1_1graphics_1_1RenderingContext.html":[7,0,8,1,13],
 "de/d0a/classxl7_1_1graphics_1_1RenderingContext.html#a0aef0f9e9e347b76158bf6bdea920f85":[5,0,8,2,13,35],
@@ -162,7 +166,7 @@ var NAVTREEINDEX67 =
 "de/d15/conceptcl7_1_1any__char__ptr.html":[5,0,1,37],
 "de/d15/conceptcl7_1_1any__char__ptr.html":[6,0,2],
 "de/d17/DigitalState_8cpp.html":[8,0,7,2,3],
-"de/d18/TrackControl_8cpp.html":[8,0,3,1,30],
+"de/d18/TrackControl_8cpp.html":[8,0,3,1,31],
 "de/d1b/Binder_8cpp.html":[8,0,2,1,0],
 "de/d1b/datetime_8h.html":[8,0,1,7,1],
 "de/d1b/datetime_8h_source.html":[8,0,1,7,1],
@@ -245,9 +249,5 @@ var NAVTREEINDEX67 =
 "de/d2c/classxl7_1_1graphics_1_1textures_1_1Texture3D.html#ab8da7a9189142b9669ca337ca41c1a83":[5,0,8,2,7,18,9],
 "de/d2c/classxl7_1_1graphics_1_1textures_1_1Texture3D.html#ab8da7a9189142b9669ca337ca41c1a83":[7,0,8,1,7,18,9],
 "de/d2c/classxl7_1_1graphics_1_1textures_1_1Texture3D.html#ad19dfb5186dae85d0b1b3241ae9d4ff0":[5,0,8,2,7,18,2],
-"de/d2c/classxl7_1_1graphics_1_1textures_1_1Texture3D.html#ad19dfb5186dae85d0b1b3241ae9d4ff0":[7,0,8,1,7,18,2],
-"de/d2c/classxl7_1_1graphics_1_1textures_1_1Texture3D.html#ae0275bc9f6442350e2245f16ad4cc2a1":[5,0,8,2,7,18,10],
-"de/d2c/classxl7_1_1graphics_1_1textures_1_1Texture3D.html#ae0275bc9f6442350e2245f16ad4cc2a1":[7,0,8,1,7,18,10],
-"de/d2c/classxl7_1_1graphics_1_1textures_1_1Texture3D.html#af22604eb0a7305c9498f740a214cdb4d":[5,0,8,2,7,18,0],
-"de/d2c/classxl7_1_1graphics_1_1textures_1_1Texture3D.html#af22604eb0a7305c9498f740a214cdb4d":[7,0,8,1,7,18,0]
+"de/d2c/classxl7_1_1graphics_1_1textures_1_1Texture3D.html#ad19dfb5186dae85d0b1b3241ae9d4ff0":[7,0,8,1,7,18,2]
 };

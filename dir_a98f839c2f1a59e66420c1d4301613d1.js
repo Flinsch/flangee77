@@ -30,6 +30,7 @@ var dir_a98f839c2f1a59e66420c1d4301613d1 =
     [ "Theme.cpp", "d6/d23/Theme_8cpp.html", null ],
     [ "Theme.h", "d3/d96/Theme_8h.html", "d3/d96/Theme_8h" ],
     [ "ThemeLevel.h", "db/dfe/ThemeLevel_8h.html", "db/dfe/ThemeLevel_8h" ],
+    [ "ThemeOverlay.h", "d3/d8b/ThemeOverlay_8h.html", "d3/d8b/ThemeOverlay_8h" ],
     [ "TrackControl.cpp", "de/d18/TrackControl_8cpp.html", null ],
     [ "TrackControl.h", "d6/df2/TrackControl_8h.html", "d6/df2/TrackControl_8h" ]
 ];
