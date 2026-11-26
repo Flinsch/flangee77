@@ -10,6 +10,7 @@
 #include <optional>
 #include <tuple>
 #include <type_traits>
+#include <unordered_map>
 #include <utility>
 #include <vector>
 
@@ -24,6 +25,7 @@ namespace detail {
     template <typename T>
     constexpr bool always_false = false;
 
+
     template <typename T>
     struct is_bound_sequence : std::false_type {};
 
@@ -36,6 +38,7 @@ namespace detail {
      */
     template <typename T>
     concept bound_sequence = is_bound_sequence<T>::value;
+
 
     template <typename T>
     struct is_bound_optional : std::false_type {};
@@ -50,6 +53,22 @@ namespace detail {
      */
     template <typename T>
     concept bound_optional = is_bound_optional<T>::value;
+
+
+    template <typename T>
+    struct is_bound_map : std::false_type {};
+
+    template <typename Tvalue, typename Thash, typename Tkeyeq, typename Tallocator>
+    struct is_bound_map<std::unordered_map<string_t, Tvalue, Thash, Tkeyeq, Tallocator>> : std::true_type {};
+
+    /**
+     * Satisfied by an `std::unordered_map` keyed by `string_t`, for a field whose
+     * keys are themselves part of what the configuration states (e.g., one entry
+     * per face-type/role), rather than a fixed, named set of fields a `Binding`
+     * could enumerate.
+     */
+    template <typename T>
+    concept bound_map = is_bound_map<T>::value;
 
 } // namespace detail
 
@@ -76,6 +95,15 @@ namespace detail {
  * earlier layer set rather than merely leaving it be. Saving an unset optional
  * field leaves it out of the mapping entirely rather than writing it as an explicit
  * null, the same "state only what differs" idea applied to writing.
+ *
+ * A field can also be an `std::unordered_map<string_t, T>`, for entries whose keys
+ * are themselves part of what the configuration states rather than a fixed set a
+ * `Binding` could enumerate. Unlike a sequence (replaced wholesale, since stating a
+ * list means that list), a map is overlaid entry by entry, keyed by name: a key the
+ * value does not mention keeps whatever entry the map already had under it, and a
+ * key it does mention is loaded onto that entry (or a freshly default-constructed
+ * one, if there wasn't one yet) rather than replacing it outright, the same
+ * overlay the rest of this class gives struct fields.
  */
 class Binder
 {
@@ -178,6 +206,8 @@ private:
             _load_string(value, target, path);
         else if constexpr (detail::bound_sequence<T>)
             _load_sequence(value, target, path);
+        else if constexpr (detail::bound_map<T>)
+            _load_map(value, target, path);
         else if constexpr (std::same_as<T, bool>)
             _load_boolean(value, target, path);
         else if constexpr (std::integral<T>)
@@ -279,6 +309,33 @@ private:
     }
 
     /**
+     * Reads a map field: each key the value mentions is loaded onto whatever entry
+     * the map already has under it, or a freshly default-constructed one if there
+     * wasn't one yet; a key the value does not mention keeps its entry untouched.
+     * Unlike a sequence, the map as a whole is never cleared first: its keys are
+     * themselves named things, not positions in a list the configuration restates
+     * wholesale.
+     */
+    template <detail::bound_map Tmap>
+    void _load_map(const Value& value, Tmap& target, const string_t& path)
+    {
+        if (!value.is_mapping())
+        {
+            _error(u8"A mapping is expected here.", path);
+            return;
+        }
+
+        for (const auto& p : value.as_mapping())
+        {
+            auto it = target.find(p.first);
+            if (it == target.end())
+                it = target.emplace(p.first, typename Tmap::mapped_type{}).first;
+
+            _load_value(p.second, it->second, _extend(path, p.first));
+        }
+    }
+
+    /**
      * Reads a scalar as an integer, accepting a string that reads as one. Returns
      * false (having reported) if the value is neither.
      */
@@ -340,6 +397,8 @@ private:
             return Value{source};
         else if constexpr (detail::bound_sequence<T>)
             return _save_sequence(source);
+        else if constexpr (detail::bound_map<T>)
+            return _save_map(source);
         else if constexpr (std::same_as<T, bool>)
             return Value{source};
         else if constexpr (std::integral<T>)
@@ -381,6 +440,20 @@ private:
             sequence.push_back(_save_value(entry));
 
         return Value{std::move(sequence)};
+    }
+
+    /**
+     * Saves a map field: one mapping entry per key, each written as its own value.
+     */
+    template <detail::bound_map Tmap>
+    Value _save_map(const Tmap& source)
+    {
+        mapping_t mapping;
+
+        for (const auto& p : source)
+            mapping[string_t{p.first}] = _save_value(p.second);
+
+        return Value{std::move(mapping)};
     }
 
     /**

@@ -9,6 +9,7 @@
 #include "../shared.h"
 
 #include <optional>
+#include <unordered_map>
 #include <vector>
 
 
@@ -362,6 +363,15 @@ namespace binding_test {
         bool operator==(const Overrides&) const = default;
     };
 
+    /**
+     * A fixture for a dynamic, name-keyed map field, the way a theme's per-key
+     * levels will be.
+     */
+    struct Collection
+    {
+        std::unordered_map<cl7::u8string, Limits> entries;
+    };
+
 } // namespace binding_test
 
 namespace dl7::config {
@@ -404,6 +414,13 @@ namespace dl7::config {
         static constexpr auto fields = std::make_tuple(
             field( u8"width", &binding_test::Overrides::width ),
             field( u8"limits", &binding_test::Overrides::limits ) );
+    };
+
+    template <>
+    struct Binding<binding_test::Collection>
+    {
+        static constexpr auto fields = std::make_tuple(
+            field( u8"entries", &binding_test::Collection::entries ) );
     };
 
 } // namespace dl7::config
@@ -850,6 +867,93 @@ TESTLABS_CASE( u8"DataLabs:  config:  Binder:  round trip (optional fields survi
         TESTLABS_CHECK_EQ( binder.get_diagnostics().get_count(), 0 );
         TESTLABS_CHECK( target == entry.source );
     }
+}
+
+
+// #############################################################################
+// Dynamic maps: keyed by name rather than a fixed field list, so an entry is
+// overlaid onto whatever it already held, keyed by name, rather than the whole
+// map being replaced wholesale the way a sequence is.
+// #############################################################################
+
+TESTLABS_CASE( u8"DataLabs:  config:  Binder:  load (a map entry is overlaid onto whatever it already held, keyed by name, while other entries are left untouched)" )
+{
+    using dl7::config::Value;
+    using dl7::config::mapping_t;
+
+    dl7::config::Binder binder;
+    binding_test::Collection collection;
+    collection.entries[ u8"a" ] = { 1024, u8"preset-a" };
+    collection.entries[ u8"b" ] = { 2048, u8"preset-b" };
+
+    binder.load( Value( mapping_t{
+        { u8"entries", Value( mapping_t{
+            { u8"a", Value( mapping_t{ { u8"memory", Value( 4096 ) } } ) }, // overlaid: label kept
+            { u8"c", Value( mapping_t{ { u8"memory", Value( 1 ) } } ) }, // new key: defaulted, then overlaid
+        } ) },
+    } ), collection );
+
+    TESTLABS_CHECK_EQ( binder.get_diagnostics().get_count(), 0 );
+    TESTLABS_CHECK_EQ( collection.entries.size(), 3 );
+    TESTLABS_CHECK_EQ( collection.entries[ u8"a" ].memory, 4096 );
+    TESTLABS_CHECK_EQ( collection.entries[ u8"a" ].label, u8"preset-a" );
+    TESTLABS_CHECK_EQ( collection.entries[ u8"b" ].memory, 2048 ); // not mentioned at all: untouched
+    TESTLABS_CHECK_EQ( collection.entries[ u8"b" ].label, u8"preset-b" );
+    TESTLABS_CHECK_EQ( collection.entries[ u8"c" ].memory, 1 );
+    TESTLABS_CHECK_EQ( collection.entries[ u8"c" ].label, u8"default" );
+}
+
+TESTLABS_CASE( u8"DataLabs:  config:  Binder:  load (a scalar where a map belongs)" )
+{
+    using dl7::config::Value;
+    using dl7::config::mapping_t;
+
+    dl7::config::Binder binder;
+    binding_test::Collection collection;
+
+    binder.load( Value( mapping_t{ { u8"entries", Value( 1 ) } } ), collection );
+
+    const auto& diagnostics = binder.get_diagnostics();
+    TESTLABS_CHECK_EQ( diagnostics.get_count(), 1 );
+    if ( !diagnostics.get_all().empty() )
+        TESTLABS_CHECK_EQ( diagnostics.get_all().front().message, u8"entries: A mapping is expected here." );
+}
+
+TESTLABS_CASE( u8"DataLabs:  config:  Binder:  save (a map, one entry per key)" )
+{
+    using dl7::config::Value;
+    using dl7::config::mapping_t;
+
+    binding_test::Collection collection;
+    collection.entries[ u8"a" ] = { 1024, u8"one" };
+    collection.entries[ u8"b" ] = { 2048, u8"two" };
+
+    dl7::config::Binder binder;
+    const auto value = binder.save( collection );
+
+    TESTLABS_CHECK_EQ( binder.get_diagnostics().get_count(), 0 );
+    TESTLABS_CHECK_EQ( value, Value( mapping_t{
+        { u8"entries", Value( mapping_t{
+            { u8"a", Value( mapping_t{ { u8"memory", Value( 1024 ) }, { u8"label", Value( u8"one" ) } } ) },
+            { u8"b", Value( mapping_t{ { u8"memory", Value( 2048 ) }, { u8"label", Value( u8"two" ) } } ) },
+        } ) },
+    } ) );
+}
+
+TESTLABS_CASE( u8"DataLabs:  config:  Binder:  round trip (a map survives save+load)" )
+{
+    binding_test::Collection source;
+    source.entries[ u8"a" ] = { 4096, u8"large" };
+    source.entries[ u8"b" ] = { 256, u8"small" };
+
+    dl7::config::Binder binder;
+    const auto value = binder.save( source );
+
+    binding_test::Collection target;
+    binder.load( value, target );
+
+    TESTLABS_CHECK_EQ( binder.get_diagnostics().get_count(), 0 );
+    TESTLABS_CHECK( target.entries == source.entries );
 }
 
 
