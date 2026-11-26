@@ -11,8 +11,6 @@
 
 #include "./shared.h"
 
-#include <memory>
-
 
 
 namespace tl7::internals {
@@ -101,9 +99,9 @@ TESTLABS_CASE( u8"FaceLabs:  gui:  Face:  dragging off a pressed face cancels it
     fl7::gui::Theme theme;
     fl7::gui::ThemeLevel& level = theme.get_level(u8"button");
     level.background_color = base_background;
-    level.hovered = std::make_unique<fl7::gui::ThemeLevel>();
+    level.hovered = fl7::gui::ThemeOverlay{};
     level.hovered->background_color = hovered_background;
-    level.pressed = std::make_unique<fl7::gui::ThemeLevel>();
+    level.pressed = fl7::gui::ThemeOverlay{};
     level.pressed->background_color = pressed_background;
     shell.set_theme(&theme);
 
@@ -147,7 +145,7 @@ TESTLABS_CASE( u8"FaceLabs:  gui:  Face:  while a press is captured on one face,
     fl7::gui::Theme theme;
     fl7::gui::ThemeLevel& level = theme.get_level(u8"button");
     level.background_color = base_background;
-    level.hovered = std::make_unique<fl7::gui::ThemeLevel>();
+    level.hovered = fl7::gui::ThemeOverlay{};
     level.hovered->background_color = hovered_background;
     shell.set_theme(&theme);
 

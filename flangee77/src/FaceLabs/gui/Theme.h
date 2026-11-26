@@ -3,6 +3,7 @@
 
 #include "./Style.h"
 #include "./ThemeLevel.h"
+#include "./ThemeOverlay.h"
 
 #include <CoreLabs/string.h>
 
@@ -80,7 +81,12 @@ public:
      * were empty (falling through to the theme-wide default/style's own defaults
      * for everything but chrome). The key's own level's checked/hovered/pressed/
      * focused overlays (if any) whose state is currently active in `state` are then
-     * applied on top, in that fixed priority order (see `ThemeLevel`).
+     * applied on top, in that fixed order: checked, then hovered, then pressed,
+     * then focused (each later one's set fields winning over the earlier ones'):
+     * checked comes first, rather than alongside the transient hovered/pressed/
+     * focused trio, because it's a persistent, semantic value (see
+     * `HasCheckedState`), not a passing interaction: momentary feedback should tint
+     * whichever (checked or unchecked) look is currently in effect, not replace it.
      */
     Style resolve(cl7::u8string_view key, const State& state) const;
 
@@ -96,7 +102,7 @@ private:
      * Overwrites the given style's fields with whichever ones the specified
      * overlay actually has set, leaving the rest of the style untouched.
      */
-    static void _apply_overlay(Style& style, const ThemeLevel& overlay);
+    static void _apply_overlay(Style& style, const ThemeOverlay& overlay);
 
 
 

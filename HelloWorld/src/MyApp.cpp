@@ -342,11 +342,11 @@ namespace helloworld {
         // Demo hover/pressed feedback: no dedicated chrome art for these states yet,
         // so just tint the button's text color instead, proving the state cascade
         // without needing new assets.
-        gui_button_level.hovered = std::make_unique<fl7::gui::ThemeLevel>();
+        gui_button_level.hovered = fl7::gui::ThemeOverlay{};
         gui_button_level.hovered->text_style = fl7::gui::Style{}.text_style;
         gui_button_level.hovered->text_style->text_color = {1.0f, 0.85f, 0.3f, 1.0f};
 
-        gui_button_level.pressed = std::make_unique<fl7::gui::ThemeLevel>();
+        gui_button_level.pressed = fl7::gui::ThemeOverlay{};
         gui_button_level.pressed->text_style = fl7::gui::Style{}.text_style;
         gui_button_level.pressed->text_style->text_color = {1.0f, 0.4f, 0.4f, 1.0f};
 
@@ -354,18 +354,18 @@ namespace helloworld {
         // yet either, so these stay flat-colored boxes, just switching fill color
         // when checked.
         auto& gui_checkbox_level = _gui_theme.get_level(u8"checkbox");
-        gui_checkbox_level.checked = std::make_unique<fl7::gui::ThemeLevel>();
+        gui_checkbox_level.checked = fl7::gui::ThemeOverlay{};
         gui_checkbox_level.checked->background_color = {0.3f, 0.75f, 0.35f, 1.0f};
 
         auto& gui_radio_button_level = _gui_theme.get_level(u8"radio_button");
-        gui_radio_button_level.checked = std::make_unique<fl7::gui::ThemeLevel>();
+        gui_radio_button_level.checked = fl7::gui::ThemeOverlay{};
         gui_radio_button_level.checked->background_color = {0.85f, 0.55f, 0.2f, 1.0f};
 
         // Demo focus feedback: no dedicated text field chrome art either, so a
         // slightly lighter fill is all that marks the focused one out.
         auto& gui_text_field_level = _gui_theme.get_level(u8"text_field");
         gui_text_field_level.background_color = {0.15f, 0.15f, 0.15f, 1.0f};
-        gui_text_field_level.focused = std::make_unique<fl7::gui::ThemeLevel>();
+        gui_text_field_level.focused = fl7::gui::ThemeOverlay{};
         gui_text_field_level.focused->background_color = {0.25f, 0.25f, 0.3f, 1.0f};
 
         // Demo hover feedback for the slider's handle: same "no dedicated chrome
@@ -375,7 +375,7 @@ namespace helloworld {
 
         auto& gui_slider_handle_level = _gui_theme.get_level(u8"slider_handle");
         gui_slider_handle_level.background_color = {0.3f, 0.6f, 0.9f, 1.0f};
-        gui_slider_handle_level.hovered = std::make_unique<fl7::gui::ThemeLevel>();
+        gui_slider_handle_level.hovered = fl7::gui::ThemeOverlay{};
         gui_slider_handle_level.hovered->background_color = {0.45f, 0.7f, 1.0f, 1.0f};
 
         // ScrollBar itself has no visual role of its own: it's a plain Compound
@@ -394,7 +394,7 @@ namespace helloworld {
         gui_list_box_level.background_color = {0.3f, 0.35f, 0.4f, 1.0f};
 
         auto& gui_list_box_row_level = _gui_theme.get_level(u8"list_box_row");
-        gui_list_box_row_level.checked = std::make_unique<fl7::gui::ThemeLevel>();
+        gui_list_box_row_level.checked = fl7::gui::ThemeOverlay{};
         gui_list_box_row_level.checked->background_color = {0.3f, 0.5f, 0.75f, 1.0f};
 
         _gui_shell->set_theme(&_gui_theme);

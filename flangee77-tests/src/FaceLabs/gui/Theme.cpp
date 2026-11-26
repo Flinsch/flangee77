@@ -6,8 +6,6 @@
 
 #include <XiaoLabs/graphics/Color.h>
 
-#include <memory>
-
 
 
 namespace tl7::internals {
@@ -81,17 +79,17 @@ TESTLABS_CASE( u8"FaceLabs:  gui:  Theme:  checked/hovered/pressed/focused overl
     fl7::gui::ThemeLevel& level = theme.get_level(u8"checkbox");
     level.background_color = base_background;
 
-    level.checked = std::make_unique<fl7::gui::ThemeLevel>();
+    level.checked = fl7::gui::ThemeOverlay{};
     level.checked->background_color = checked_background;
 
-    level.hovered = std::make_unique<fl7::gui::ThemeLevel>();
+    level.hovered = fl7::gui::ThemeOverlay{};
     level.hovered->background_color = hovered_background;
     level.hovered->border_color = hovered_border; // a field the other overlays don't touch
 
-    level.pressed = std::make_unique<fl7::gui::ThemeLevel>();
+    level.pressed = fl7::gui::ThemeOverlay{};
     level.pressed->background_color = pressed_background;
 
-    level.focused = std::make_unique<fl7::gui::ThemeLevel>();
+    level.focused = fl7::gui::ThemeOverlay{};
     level.focused->background_color = focused_background;
 
     // Nothing active: plain base level.
@@ -148,7 +146,7 @@ TESTLABS_CASE( u8"FaceLabs:  gui:  Theme:  padding cascades field-by-field (own 
     TESTLABS_CHECK_EQ_FLT( resolved.padding.left, button_padding.left );
     TESTLABS_CHECK_EQ_FLT( resolved.padding.top, button_padding.top );
 
-    button_level.pressed = std::make_unique<fl7::gui::ThemeLevel>();
+    button_level.pressed = fl7::gui::ThemeOverlay{};
     button_level.pressed->padding = pressed_padding;
 
     resolved = theme.resolve(u8"button", { .pressed = true });
