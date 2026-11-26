@@ -104,6 +104,10 @@ namespace detail {
  * key it does mention is loaded onto that entry (or a freshly default-constructed
  * one, if there wasn't one yet) rather than replacing it outright, the same
  * overlay the rest of this class gives struct fields.
+ *
+ * A field can also be any type with a `StringBinding` specialization, for a scalar
+ * that is not a struct of named fields but still reads from and writes as a single
+ * string (e.g., a color as a hex string) rather than a mapping.
  */
 class Binder
 {
@@ -208,6 +212,8 @@ private:
             _load_sequence(value, target, path);
         else if constexpr (detail::bound_map<T>)
             _load_map(value, target, path);
+        else if constexpr (string_convertible<T>)
+            _load_string_convertible(value, target, path);
         else if constexpr (std::same_as<T, bool>)
             _load_boolean(value, target, path);
         else if constexpr (std::integral<T>)
@@ -336,6 +342,23 @@ private:
     }
 
     /**
+     * Reads a `string_convertible` field: its `StringBinding::from_string` decides
+     * whether the string is valid, the field keeping whatever it already had if not.
+     */
+    template <string_convertible T>
+    void _load_string_convertible(const Value& value, T& target, const string_t& path)
+    {
+        if (!value.is_string())
+        {
+            _error(u8"A string is expected here.", path);
+            return;
+        }
+
+        if (!StringBinding<T>::from_string(value.as_string(), target))
+            _error(u8"This string is not valid here.", path);
+    }
+
+    /**
      * Reads a scalar as an integer, accepting a string that reads as one. Returns
      * false (having reported) if the value is neither.
      */
@@ -399,6 +422,8 @@ private:
             return _save_sequence(source);
         else if constexpr (detail::bound_map<T>)
             return _save_map(source);
+        else if constexpr (string_convertible<T>)
+            return _save_string_convertible(source);
         else if constexpr (std::same_as<T, bool>)
             return Value{source};
         else if constexpr (std::integral<T>)
@@ -454,6 +479,15 @@ private:
             mapping[string_t{p.first}] = _save_value(p.second);
 
         return Value{std::move(mapping)};
+    }
+
+    /**
+     * Saves a `string_convertible` field via its `StringBinding::to_string`.
+     */
+    template <string_convertible T>
+    Value _save_string_convertible(const T& source)
+    {
+        return Value{StringBinding<T>::to_string(source)};
     }
 
     /**

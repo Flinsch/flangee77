@@ -3,6 +3,7 @@
 
 #include "./types.h"
 
+#include <concepts>
 #include <type_traits>
 
 
@@ -102,6 +103,37 @@ concept bound_struct = requires { Binding<T>::fields; };
  */
 template <typename T>
 concept named_enum = std::is_enum_v<T> && requires { EnumNames<T>::names; };
+
+
+
+/**
+ * Describes how a scalar type that is not a struct of named fields (e.g., a color)
+ * reads from and writes as a single string in a configuration value, rather than
+ * as a mapping. Specialize it and give it `to_string`/`from_string`:
+ *
+ *     namespace dl7::config {
+ *         template <>
+ *         struct StringBinding<xl7::graphics::Color>
+ *         {
+ *             static cl7::u8string to_string(const xl7::graphics::Color& value);
+ *             static bool from_string(cl7::u8string_view string, xl7::graphics::Color& target);
+ *         };
+ *     }
+ *
+ * `from_string` returns whether the string was valid, leaving the target untouched
+ * if not, same as any other field that fails to read.
+ */
+template <typename T>
+struct StringBinding;
+
+/**
+ * Satisfied by a type with a `StringBinding` specialization.
+ */
+template <typename T>
+concept string_convertible = requires(const T& value, T& target, cl7::u8string_view string) {
+    { StringBinding<T>::to_string(value) } -> std::convertible_to<cl7::u8string>;
+    { StringBinding<T>::from_string(string, target) } -> std::convertible_to<bool>;
+};
 
 
 

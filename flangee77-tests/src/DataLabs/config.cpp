@@ -372,6 +372,26 @@ namespace binding_test {
         std::unordered_map<cl7::u8string, Limits> entries;
     };
 
+    /**
+     * A fixture for a type bound as a single string rather than a struct of
+     * fields (see `StringBinding`), the way a color (as a hex string) will be.
+     */
+    struct Tag
+    {
+        cl7::u8string name;
+
+        bool operator==(const Tag&) const = default;
+    };
+
+    struct TagHolder
+    {
+        Tag tag;
+        std::optional<Tag> optional_tag;
+        std::vector<Tag> tags;
+
+        bool operator==(const TagHolder&) const = default;
+    };
+
 } // namespace binding_test
 
 namespace dl7::config {
@@ -421,6 +441,31 @@ namespace dl7::config {
     {
         static constexpr auto fields = std::make_tuple(
             field( u8"entries", &binding_test::Collection::entries ) );
+    };
+
+    template <>
+    struct StringBinding<binding_test::Tag>
+    {
+        static cl7::u8string to_string( const binding_test::Tag& value ) { return u8"tag:" + value.name; }
+
+        static bool from_string( cl7::u8string_view string, binding_test::Tag& target )
+        {
+            constexpr cl7::u8string_view prefix = u8"tag:";
+            if ( string.size() < prefix.size() || string.substr( 0, prefix.size() ) != prefix )
+                return false;
+
+            target.name = cl7::u8string{ string.substr( prefix.size() ) };
+            return true;
+        }
+    };
+
+    template <>
+    struct Binding<binding_test::TagHolder>
+    {
+        static constexpr auto fields = std::make_tuple(
+            field( u8"tag", &binding_test::TagHolder::tag ),
+            field( u8"optional_tag", &binding_test::TagHolder::optional_tag ),
+            field( u8"tags", &binding_test::TagHolder::tags ) );
     };
 
 } // namespace dl7::config
@@ -954,6 +999,109 @@ TESTLABS_CASE( u8"DataLabs:  config:  Binder:  round trip (a map survives save+l
 
     TESTLABS_CHECK_EQ( binder.get_diagnostics().get_count(), 0 );
     TESTLABS_CHECK( target.entries == source.entries );
+}
+
+
+// #############################################################################
+// A scalar bound as a single string rather than a struct of fields (see
+// `StringBinding`), e.g., for a color that will be written as a hex string.
+// #############################################################################
+
+TESTLABS_CASE( u8"DataLabs:  config:  Binder:  load (a type with a StringBinding reads its value from a single string, including nested in an optional and in a sequence)" )
+{
+    using dl7::config::Value;
+    using dl7::config::mapping_t;
+    using dl7::config::sequence_t;
+
+    dl7::config::Binder binder;
+    binding_test::TagHolder holder;
+
+    binder.load( Value( mapping_t{
+        { u8"tag", Value( u8"tag:plain" ) },
+        { u8"optional_tag", Value( u8"tag:optional" ) },
+        { u8"tags", Value( sequence_t{ Value( u8"tag:one" ), Value( u8"tag:two" ) } ) },
+    } ), holder );
+
+    TESTLABS_CHECK_EQ( binder.get_diagnostics().get_count(), 0 );
+    TESTLABS_CHECK_EQ( holder.tag.name, u8"plain" );
+    TESTLABS_CHECK( holder.optional_tag.has_value() );
+    if ( holder.optional_tag.has_value() )
+        TESTLABS_CHECK_EQ( holder.optional_tag->name, u8"optional" );
+    TESTLABS_CHECK_EQ( holder.tags.size(), 2 );
+    if ( holder.tags.size() == 2 )
+    {
+        TESTLABS_CHECK_EQ( holder.tags[ 0 ].name, u8"one" );
+        TESTLABS_CHECK_EQ( holder.tags[ 1 ].name, u8"two" );
+    }
+}
+
+TESTLABS_CASE( u8"DataLabs:  config:  Binder:  load (a string a StringBinding rejects keeps the field as it was)" )
+{
+    using dl7::config::Value;
+    using dl7::config::mapping_t;
+
+    dl7::config::Binder binder;
+    binding_test::TagHolder holder;
+    holder.tag.name = u8"original";
+
+    binder.load( Value( mapping_t{ { u8"tag", Value( u8"not-a-tag" ) } } ), holder );
+
+    TESTLABS_CHECK_EQ( holder.tag.name, u8"original" );
+    TESTLABS_CHECK_EQ( binder.get_diagnostics().get_error_count(), 1 );
+    TESTLABS_CHECK_EQ( binder.get_diagnostics().get_all().front().message, u8"tag: This string is not valid here." );
+}
+
+TESTLABS_CASE( u8"DataLabs:  config:  Binder:  load (a number where a StringBinding-bound string belongs)" )
+{
+    using dl7::config::Value;
+    using dl7::config::mapping_t;
+
+    dl7::config::Binder binder;
+    binding_test::TagHolder holder;
+
+    binder.load( Value( mapping_t{ { u8"tag", Value( 1 ) } } ), holder );
+
+    TESTLABS_CHECK_EQ( binder.get_diagnostics().get_error_count(), 1 );
+    TESTLABS_CHECK_EQ( binder.get_diagnostics().get_all().front().message, u8"tag: A string is expected here." );
+}
+
+TESTLABS_CASE( u8"DataLabs:  config:  Binder:  save (a type with a StringBinding writes as a single string)" )
+{
+    using dl7::config::Value;
+    using dl7::config::mapping_t;
+    using dl7::config::sequence_t;
+
+    binding_test::TagHolder holder;
+    holder.tag.name = u8"plain";
+    holder.optional_tag = binding_test::Tag{ u8"optional" };
+    holder.tags = { binding_test::Tag{ u8"one" }, binding_test::Tag{ u8"two" } };
+
+    dl7::config::Binder binder;
+    const auto value = binder.save( holder );
+
+    TESTLABS_CHECK_EQ( binder.get_diagnostics().get_count(), 0 );
+    TESTLABS_CHECK_EQ( value, Value( mapping_t{
+        { u8"tag", Value( u8"tag:plain" ) },
+        { u8"optional_tag", Value( u8"tag:optional" ) },
+        { u8"tags", Value( sequence_t{ Value( u8"tag:one" ), Value( u8"tag:two" ) } ) },
+    } ) );
+}
+
+TESTLABS_CASE( u8"DataLabs:  config:  Binder:  round trip (a type with a StringBinding survives save+load)" )
+{
+    binding_test::TagHolder source;
+    source.tag.name = u8"plain";
+    source.optional_tag = binding_test::Tag{ u8"optional" };
+    source.tags = { binding_test::Tag{ u8"one" }, binding_test::Tag{ u8"two" } };
+
+    dl7::config::Binder binder;
+    const auto value = binder.save( source );
+
+    binding_test::TagHolder target;
+    binder.load( value, target );
+
+    TESTLABS_CHECK_EQ( binder.get_diagnostics().get_count(), 0 );
+    TESTLABS_CHECK( target == source );
 }
 
 
