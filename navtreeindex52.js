@@ -1,5 +1,7 @@
 var NAVTREEINDEX52 =
 {
+"db/d04/structxl7_1_1graphics_1_1textures_1_1Texture2DDesc.html":[7,0,8,1,7,15],
+"db/d04/structxl7_1_1graphics_1_1textures_1_1Texture2DDesc.html#a27b41e2e4621af68cbb2eec1734a57d8":[5,0,8,2,7,15,4],
 "db/d04/structxl7_1_1graphics_1_1textures_1_1Texture2DDesc.html#a27b41e2e4621af68cbb2eec1734a57d8":[7,0,8,1,7,15,4],
 "db/d04/structxl7_1_1graphics_1_1textures_1_1Texture2DDesc.html#a427367fb41463b5949df0a5c81c9fc5a":[5,0,8,2,7,15,2],
 "db/d04/structxl7_1_1graphics_1_1textures_1_1Texture2DDesc.html#a427367fb41463b5949df0a5c81c9fc5a":[7,0,8,1,7,15,2],
@@ -94,6 +96,8 @@ var NAVTREEINDEX52 =
 "db/d25/classxl7_1_1graphics_1_1meshes_1_1IMeshFactory.html#ab3b632235d539749fd9a10f80d1fcda7":[7,0,8,1,2,2,2],
 "db/d25/classxl7_1_1graphics_1_1meshes_1_1IMeshFactory.html#acc9113f88cce57f86ce403585dc5f0f3":[5,0,8,2,2,2,1],
 "db/d25/classxl7_1_1graphics_1_1meshes_1_1IMeshFactory.html#acc9113f88cce57f86ce403585dc5f0f3":[7,0,8,1,2,2,1],
+"db/d25/structdl7_1_1config_1_1StringBinding.html":[5,0,2,1,6],
+"db/d25/structdl7_1_1config_1_1StringBinding.html":[7,0,2,1,6],
 "db/d27/WritableMemory_8h.html":[8,0,1,3,25],
 "db/d27/WritableMemory_8h_source.html":[8,0,1,3,25],
 "db/d29/classxl7_1_1graphics_1_1impl_1_1direct3d11_1_1RenderingDeviceImpl.html":[5,0,8,2,1,0,8],
@@ -179,10 +183,10 @@ var NAVTREEINDEX52 =
 "db/d34/namespacedl7_1_1syntax.html#ab1b57a9e4c1d182fe54892446379cb35":[5,0,2,4,32],
 "db/d37/Binder_8h.html":[8,0,2,1,1],
 "db/d37/Binder_8h_source.html":[8,0,2,1,1],
-"db/d37/structdl7_1_1config_1_1Binding_3_01xl7_1_1Config_01_4.html":[5,0,2,1,11],
-"db/d37/structdl7_1_1config_1_1Binding_3_01xl7_1_1Config_01_4.html":[7,0,2,1,11],
-"db/d37/structdl7_1_1config_1_1Binding_3_01xl7_1_1Config_01_4.html#a33f6d8a2e1bfd167fe3a43bd6ad43476":[5,0,2,1,11,0],
-"db/d37/structdl7_1_1config_1_1Binding_3_01xl7_1_1Config_01_4.html#a33f6d8a2e1bfd167fe3a43bd6ad43476":[7,0,2,1,11,0],
+"db/d37/structdl7_1_1config_1_1Binding_3_01xl7_1_1Config_01_4.html":[5,0,2,1,12],
+"db/d37/structdl7_1_1config_1_1Binding_3_01xl7_1_1Config_01_4.html":[7,0,2,1,12],
+"db/d37/structdl7_1_1config_1_1Binding_3_01xl7_1_1Config_01_4.html#a33f6d8a2e1bfd167fe3a43bd6ad43476":[5,0,2,1,12,0],
+"db/d37/structdl7_1_1config_1_1Binding_3_01xl7_1_1Config_01_4.html#a33f6d8a2e1bfd167fe3a43bd6ad43476":[7,0,2,1,12,0],
 "db/d3a/structdl7_1_1syntax_1_1matchers_1_1DoubleQuotedStringMatcher.html":[5,0,2,4,0,1],
 "db/d3a/structdl7_1_1syntax_1_1matchers_1_1DoubleQuotedStringMatcher.html":[7,0,2,4,0,1],
 "db/d3a/structdl7_1_1syntax_1_1matchers_1_1DoubleQuotedStringMatcher.html#a73dc08b1ab0e2aa8e14073f02d69b7aa":[5,0,2,4,0,1,0],
@@ -245,9 +249,5 @@ var NAVTREEINDEX52 =
 "db/d41/WindowImpl_8cpp.html":[8,0,7,0,0,2],
 "db/d47/ConstantBufferUpdater_8cpp.html":[8,0,7,1,4,9],
 "db/d48/classcl7_1_1io_1_1EndianAwareWriter.html":[5,0,1,5,5],
-"db/d48/classcl7_1_1io_1_1EndianAwareWriter.html":[7,0,1,4,5],
-"db/d48/classcl7_1_1io_1_1EndianAwareWriter.html#a1babf86bc47b8ee58c92dd673c4be6c8":[5,0,1,5,5,4],
-"db/d48/classcl7_1_1io_1_1EndianAwareWriter.html#a1babf86bc47b8ee58c92dd673c4be6c8":[7,0,1,4,5,4],
-"db/d48/classcl7_1_1io_1_1EndianAwareWriter.html#a2d3098829318efc753fa36db4336d5b2":[5,0,1,5,5,2],
-"db/d48/classcl7_1_1io_1_1EndianAwareWriter.html#a2d3098829318efc753fa36db4336d5b2":[7,0,1,4,5,2]
+"db/d48/classcl7_1_1io_1_1EndianAwareWriter.html":[7,0,1,4,5]
 };

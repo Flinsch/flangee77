@@ -1,5 +1,7 @@
 var NAVTREEINDEX17 =
 {
+"d4/d6b/structcl7_1_1detail_1_1__is__any__string__view_3_01std_1_1basic__string__view_3_01Tchar_00_01Ttraits_01_4_01_4.html":[7,0,1,3,3],
+"d4/d6c/XiaoLabs_2graphics_2images_2Image_8h.html":[8,0,7,1,0,2],
 "d4/d6c/XiaoLabs_2graphics_2images_2Image_8h_source.html":[8,0,7,1,0,2],
 "d4/d6d/namespacexl7_1_1graphics_1_1impl_1_1direct3d11.html":[5,0,8,2,1,0],
 "d4/d6f/D3DShaderCompiler_8cpp.html":[8,0,7,1,1,2,1,0],
@@ -247,7 +249,5 @@ var NAVTREEINDEX17 =
 "d4/da5/toml_2detail_2Lexer_8h_source.html":[8,0,2,5,0,9],
 "d4/da8/ISurfaceFactory_8h.html":[8,0,7,1,6,4],
 "d4/da8/ISurfaceFactory_8h_source.html":[8,0,7,1,6,4],
-"d4/daa/Glyph_8h.html":[8,0,3,0,12],
-"d4/daa/Glyph_8h_source.html":[8,0,3,0,12],
-"d4/dac/GuillotinePacker_8cpp.html":[8,0,0,1,4]
+"d4/daa/Glyph_8h.html":[8,0,3,0,12]
 };

@@ -157,6 +157,7 @@ var annotated_dup =
         [ "Binding", "d1/dd5/structdl7_1_1config_1_1Binding.html", null ],
         [ "EnumValue", "db/d77/structdl7_1_1config_1_1EnumValue.html", "db/d77/structdl7_1_1config_1_1EnumValue" ],
         [ "EnumNames", "df/da4/structdl7_1_1config_1_1EnumNames.html", null ],
+        [ "StringBinding", "db/d25/structdl7_1_1config_1_1StringBinding.html", null ],
         [ "Value", "d7/de1/classdl7_1_1config_1_1Value.html", "d7/de1/classdl7_1_1config_1_1Value" ],
         [ "EnumNames&lt; xl7::Config::Video::PresentationMode &gt;", "d2/d05/structdl7_1_1config_1_1EnumNames_3_01xl7_1_1Config_1_1Video_1_1PresentationMode_01_4.html", "d2/d05/structdl7_1_1config_1_1EnumNames_3_01xl7_1_1Config_1_1Video_1_1PresentationMode_01_4" ],
         [ "Binding&lt; xl7::Config::General &gt;", "d2/d8b/structdl7_1_1config_1_1Binding_3_01xl7_1_1Config_1_1General_01_4.html", "d2/d8b/structdl7_1_1config_1_1Binding_3_01xl7_1_1Config_1_1General_01_4" ],

@@ -20,7 +20,8 @@ var concepts =
           [ "bound_map", "de/d1b/conceptdl7_1_1config_1_1detail_1_1bound__map.html", null ]
         ] ],
         [ "bound_struct", "da/de9/conceptdl7_1_1config_1_1bound__struct.html", null ],
-        [ "named_enum", "da/de7/conceptdl7_1_1config_1_1named__enum.html", null ]
+        [ "named_enum", "da/de7/conceptdl7_1_1config_1_1named__enum.html", null ],
+        [ "string_convertible", "d3/dd0/conceptdl7_1_1config_1_1string__convertible.html", null ]
       ] ],
       [ "syntax", "db/d34/namespacedl7_1_1syntax.html", [
         [ "PrefixMatcher", "d7/d2b/conceptdl7_1_1syntax_1_1PrefixMatcher.html", null ]

@@ -1,5 +1,7 @@
 var NAVTREEINDEX19 =
 {
+"d5/d1f/structxl7_1_1input_1_1GameController_1_1StickState.html":[5,0,8,3,2,1],
+"d5/d1f/structxl7_1_1input_1_1GameController_1_1StickState.html":[7,0,8,2,2,1],
 "d5/d1f/structxl7_1_1input_1_1GameController_1_1StickState.html#a0491edaf665fbac2c6d65453f97de2fb":[5,0,8,3,2,1,0],
 "d5/d1f/structxl7_1_1input_1_1GameController_1_1StickState.html#a0491edaf665fbac2c6d65453f97de2fb":[7,0,8,2,2,1,0],
 "d5/d1f/structxl7_1_1input_1_1GameController_1_1StickState.html#a214951885e0b4ff7754bb23a95de39ef":[5,0,8,3,2,1,2],
@@ -247,7 +249,5 @@ var NAVTREEINDEX19 =
 "d5/d56/namespacefl7_1_1gui.html#a86b128accd61114e8900e074c2d1e199":[5,0,3,1,25],
 "d5/d56/namespacefl7_1_1gui.html#a86b128accd61114e8900e074c2d1e199a06ce2a25e5d12c166a36f654dbea6012":[5,0,3,1,25,6],
 "d5/d56/namespacefl7_1_1gui.html#a86b128accd61114e8900e074c2d1e199a2ad9d63b69c4a10a5cc9cad923133bc4":[5,0,3,1,25,5],
-"d5/d56/namespacefl7_1_1gui.html#a86b128accd61114e8900e074c2d1e199a6adf97f83acf6453d4a6a4b1070f3754":[5,0,3,1,25,0],
-"d5/d56/namespacefl7_1_1gui.html#a86b128accd61114e8900e074c2d1e199a92b09c7c48c520c3c55e497875da437c":[5,0,3,1,25,2],
-"d5/d56/namespacefl7_1_1gui.html#a86b128accd61114e8900e074c2d1e199a945d5e233cf7d6240f6b783b36a374ff":[5,0,3,1,25,1]
+"d5/d56/namespacefl7_1_1gui.html#a86b128accd61114e8900e074c2d1e199a6adf97f83acf6453d4a6a4b1070f3754":[5,0,3,1,25,0]
 };

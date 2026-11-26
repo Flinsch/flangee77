@@ -1,5 +1,7 @@
 var NAVTREEINDEX18 =
 {
+"d4/daa/Glyph_8h_source.html":[8,0,3,0,12],
+"d4/dac/GuillotinePacker_8cpp.html":[8,0,0,1,4],
 "d4/dad/structfl7_1_1fonts_1_1raster_1_1PixelOffset.html":[5,0,3,0,1,7],
 "d4/dad/structfl7_1_1fonts_1_1raster_1_1PixelOffset.html":[7,0,3,0,1,6],
 "d4/dad/structfl7_1_1fonts_1_1raster_1_1PixelOffset.html#ab3ff32bb644386ffd0f87218f5a6bcab":[5,0,3,0,1,7,0],
@@ -247,7 +249,5 @@ var NAVTREEINDEX18 =
 "d5/d1e/classfl7_1_1gui_1_1layout_1_1Layout.html#aba44f58264b86aa9cf4b2413564dd3bd":[7,0,3,1,1,3,8],
 "d5/d1e/classfl7_1_1gui_1_1layout_1_1Layout.html#afa478e70a9ee0d4ef45ff187b2a984a4":[5,0,3,1,1,3,3],
 "d5/d1e/classfl7_1_1gui_1_1layout_1_1Layout.html#afa478e70a9ee0d4ef45ff187b2a984a4":[7,0,3,1,1,3,3],
-"d5/d1f/platform_2detail_2linux_2memory_8cpp.html":[8,0,1,5,0,0,0],
-"d5/d1f/structxl7_1_1input_1_1GameController_1_1StickState.html":[5,0,8,3,2,1],
-"d5/d1f/structxl7_1_1input_1_1GameController_1_1StickState.html":[7,0,8,2,2,1]
+"d5/d1f/platform_2detail_2linux_2memory_8cpp.html":[8,0,1,5,0,0,0]
 };

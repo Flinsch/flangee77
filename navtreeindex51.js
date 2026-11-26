@@ -1,5 +1,7 @@
 var NAVTREEINDEX51 =
 {
+"da/dbf/classcl7_1_1text_1_1codec_1_1Transcoder.html#a8347544f4c6b9a0f32a8be9a8b76ad88":[7,0,1,9,0,19,11],
+"da/dbf/classcl7_1_1text_1_1codec_1_1Transcoder.html#a85ab15520d7098d1df7101111076d263":[5,0,1,11,0,19,4],
 "da/dbf/classcl7_1_1text_1_1codec_1_1Transcoder.html#a85ab15520d7098d1df7101111076d263":[7,0,1,9,0,19,4],
 "da/dbf/classcl7_1_1text_1_1codec_1_1Transcoder.html#aa4546efe47c126b9d6b543c7f68d5415":[5,0,1,11,0,19,6],
 "da/dbf/classcl7_1_1text_1_1codec_1_1Transcoder.html#aa4546efe47c126b9d6b543c7f68d5415":[7,0,1,9,0,19,6],
@@ -59,7 +61,7 @@ var NAVTREEINDEX51 =
 "da/de1/MeshBufferDesc_8h_source.html":[8,0,7,1,2,13],
 "da/de2/BitmapRenderer_8h.html":[8,0,3,0,2,5],
 "da/de2/BitmapRenderer_8h_source.html":[8,0,3,0,2,5],
-"da/de7/conceptdl7_1_1config_1_1named__enum.html":[5,0,2,1,13],
+"da/de7/conceptdl7_1_1config_1_1named__enum.html":[5,0,2,1,14],
 "da/de7/conceptdl7_1_1config_1_1named__enum.html":[6,1,0,2],
 "da/de8/find__roots__by__sign__change__and__newton_8h.html":[8,0,0,0,4],
 "da/de8/find__roots__by__sign__change__and__newton_8h_source.html":[8,0,0,0,4],
@@ -69,7 +71,7 @@ var NAVTREEINDEX51 =
 "da/de9/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1states_1_1RasterizerStateImpl_1_1Attorney.html#a86224caf8efeee374e6b4db5d7431c2b":[7,0,8,1,1,1,2,2,0,0],
 "da/de9/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1states_1_1RasterizerStateImpl_1_1Attorney.html#aa6d860d65cc0083a5bd02c9493097cd7":[5,0,8,2,1,1,4,2,0,1],
 "da/de9/classxl7_1_1graphics_1_1impl_1_1direct3d9_1_1states_1_1RasterizerStateImpl_1_1Attorney.html#aa6d860d65cc0083a5bd02c9493097cd7":[7,0,8,1,1,1,2,2,0,1],
-"da/de9/conceptdl7_1_1config_1_1bound__struct.html":[5,0,2,1,12],
+"da/de9/conceptdl7_1_1config_1_1bound__struct.html":[5,0,2,1,13],
 "da/de9/conceptdl7_1_1config_1_1bound__struct.html":[6,1,0,1],
 "da/dea/ConfigProvider_8cpp.html":[8,0,7,12],
 "da/deb/classal7_1_1packing_1_1AbstractFreeRectPacker.html":[5,0,0,1,0],
@@ -247,7 +249,5 @@ var NAVTREEINDEX51 =
 "db/d03/structxl7_1_1Config_1_1Input.html#a81ef4eae80e907bede449db6f1261292":[7,0,8,7,2,1],
 "db/d03/structxl7_1_1Config_1_1Input.html#ae9dbeb0d812e11654bc1406371d30e89":[5,0,8,8,2,0],
 "db/d03/structxl7_1_1Config_1_1Input.html#ae9dbeb0d812e11654bc1406371d30e89":[7,0,8,7,2,0],
-"db/d04/structxl7_1_1graphics_1_1textures_1_1Texture2DDesc.html":[5,0,8,2,7,15],
-"db/d04/structxl7_1_1graphics_1_1textures_1_1Texture2DDesc.html":[7,0,8,1,7,15],
-"db/d04/structxl7_1_1graphics_1_1textures_1_1Texture2DDesc.html#a27b41e2e4621af68cbb2eec1734a57d8":[5,0,8,2,7,15,4]
+"db/d04/structxl7_1_1graphics_1_1textures_1_1Texture2DDesc.html":[5,0,8,2,7,15]
 };

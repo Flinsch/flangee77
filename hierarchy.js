@@ -865,6 +865,7 @@ var hierarchy =
     [ "xl7::input::GameController::StickState", "d5/d1f/structxl7_1_1input_1_1GameController_1_1StickState.html", null ],
     [ "cl7::profiling::Stopwatch", "d6/dac/classcl7_1_1profiling_1_1Stopwatch.html", null ],
     [ "cl7::string_hash&lt; Tchar &gt;", "d0/dbc/structcl7_1_1string__hash.html", null ],
+    [ "dl7::config::StringBinding&lt; T &gt;", "db/d25/structdl7_1_1config_1_1StringBinding.html", null ],
     [ "fl7::gui::Style", "dd/d02/structfl7_1_1gui_1_1Style.html", null ],
     [ "fl7::fonts::render::StyleRun", "de/ddd/structfl7_1_1fonts_1_1render_1_1StyleRun.html", null ],
     [ "tl7::SubcaseBranchSwitch", "d3/d95/classtl7_1_1SubcaseBranchSwitch.html", null ],

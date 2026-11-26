@@ -85,13 +85,14 @@ var searchData=
   ['string_5fspan_5ftype_82',['string_span_type',['../d7/d07/structcl7_1_1text_1_1codec_1_1traits.html',1,'cl7::text::codec::string_span_type&lt; Tchar &gt;'],['../d7/d07/structcl7_1_1text_1_1codec_1_1traits.html',1,'cl7::text::codec::string_span_type&lt; Tchar_to &gt;']]],
   ['string_5ftype_83',['string_type',['../d7/d07/structcl7_1_1text_1_1codec_1_1traits.html',1,'cl7::text::codec::string_type&lt; Tchar &gt;'],['../d7/d07/structcl7_1_1text_1_1codec_1_1traits.html',1,'cl7::text::codec::string_type&lt; Tchar_to &gt;']]],
   ['string_5fview_5ftype_84',['string_view_type',['../d7/d07/structcl7_1_1text_1_1codec_1_1traits.html',1,'cl7::text::codec::string_view_type&lt; Tchar &gt;'],['../d7/d07/structcl7_1_1text_1_1codec_1_1traits.html',1,'cl7::text::codec::string_view_type&lt; Tchar_from &gt;']]],
-  ['style_85',['Style',['../dd/d02/structfl7_1_1gui_1_1Style.html',1,'fl7::gui']]],
-  ['stylerun_86',['StyleRun',['../de/ddd/structfl7_1_1fonts_1_1render_1_1StyleRun.html',1,'fl7::fonts::render']]],
-  ['subcasebranchswitch_87',['SubcaseBranchSwitch',['../d3/d95/classtl7_1_1SubcaseBranchSwitch.html',1,'tl7']]],
-  ['subcasecontext_88',['SubcaseContext',['../d4/dc8/classtl7_1_1SubcaseContext.html',1,'tl7']]],
-  ['surface_89',['Surface',['../d6/d3f/classxl7_1_1graphics_1_1surfaces_1_1Surface.html',1,'xl7::graphics::surfaces']]],
-  ['surfacedesc_90',['SurfaceDesc',['../dc/dfc/structxl7_1_1graphics_1_1surfaces_1_1SurfaceDesc.html',1,'xl7::graphics::surfaces']]],
-  ['surfacemanager_91',['SurfaceManager',['../d9/dc4/classxl7_1_1graphics_1_1surfaces_1_1SurfaceManager.html',1,'xl7::graphics::surfaces']]],
-  ['swapbytesimpl_92',['SwapBytesImpl',['../d6/d9e/structcl7_1_1bits_1_1detail_1_1SwapBytesImpl.html',1,'cl7::bits::detail']]],
-  ['swapbytesimpl_3c_20t_2c_201_20_3e_93',['SwapBytesImpl&lt; T, 1 &gt;',['../d8/d51/structcl7_1_1bits_1_1detail_1_1SwapBytesImpl_3_01T_00_011_01_4.html',1,'cl7::bits::detail']]]
+  ['stringbinding_85',['StringBinding',['../db/d25/structdl7_1_1config_1_1StringBinding.html',1,'dl7::config']]],
+  ['style_86',['Style',['../dd/d02/structfl7_1_1gui_1_1Style.html',1,'fl7::gui']]],
+  ['stylerun_87',['StyleRun',['../de/ddd/structfl7_1_1fonts_1_1render_1_1StyleRun.html',1,'fl7::fonts::render']]],
+  ['subcasebranchswitch_88',['SubcaseBranchSwitch',['../d3/d95/classtl7_1_1SubcaseBranchSwitch.html',1,'tl7']]],
+  ['subcasecontext_89',['SubcaseContext',['../d4/dc8/classtl7_1_1SubcaseContext.html',1,'tl7']]],
+  ['surface_90',['Surface',['../d6/d3f/classxl7_1_1graphics_1_1surfaces_1_1Surface.html',1,'xl7::graphics::surfaces']]],
+  ['surfacedesc_91',['SurfaceDesc',['../dc/dfc/structxl7_1_1graphics_1_1surfaces_1_1SurfaceDesc.html',1,'xl7::graphics::surfaces']]],
+  ['surfacemanager_92',['SurfaceManager',['../d9/dc4/classxl7_1_1graphics_1_1surfaces_1_1SurfaceManager.html',1,'xl7::graphics::surfaces']]],
+  ['swapbytesimpl_93',['SwapBytesImpl',['../d6/d9e/structcl7_1_1bits_1_1detail_1_1SwapBytesImpl.html',1,'cl7::bits::detail']]],
+  ['swapbytesimpl_3c_20t_2c_201_20_3e_94',['SwapBytesImpl&lt; T, 1 &gt;',['../d8/d51/structcl7_1_1bits_1_1detail_1_1SwapBytesImpl_3_01T_00_011_01_4.html',1,'cl7::bits::detail']]]
 ];

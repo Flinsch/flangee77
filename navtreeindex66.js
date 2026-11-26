@@ -1,5 +1,13 @@
 var NAVTREEINDEX66 =
 {
+"dd/dbc/classfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader.html#a97e2e7678efcd34fe41d6f5bd57d9af9":[5,0,3,0,0,0,1,15],
+"dd/dbc/classfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader.html#a97e2e7678efcd34fe41d6f5bd57d9af9":[7,0,3,0,0,0,1,15],
+"dd/dbc/classfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader.html#a9895c23a88723481a7c0902f3b6edb34":[5,0,3,0,0,0,1,18],
+"dd/dbc/classfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader.html#a9895c23a88723481a7c0902f3b6edb34":[7,0,3,0,0,0,1,18],
+"dd/dbc/classfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader.html#a9ec0e2e68b44aaaa150681ea599d5bc5":[5,0,3,0,0,0,1,28],
+"dd/dbc/classfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader.html#a9ec0e2e68b44aaaa150681ea599d5bc5":[7,0,3,0,0,0,1,28],
+"dd/dbc/classfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader.html#a9f7c951e25257f033a5548b190f341ad":[5,0,3,0,0,0,1,7],
+"dd/dbc/classfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader.html#a9f7c951e25257f033a5548b190f341ad":[7,0,3,0,0,0,1,7],
 "dd/dbc/classfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader.html#aa8d500fd906086c616ef548e406e0d22":[5,0,3,0,0,0,1,11],
 "dd/dbc/classfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader.html#aa8d500fd906086c616ef548e406e0d22":[7,0,3,0,0,0,1,11],
 "dd/dbc/classfl7_1_1fonts_1_1detail_1_1ttf_1_1TrueTypeFontLoader.html#aaef85f8da046382fd2c86484680f7dab":[5,0,3,0,0,0,1,17],
@@ -241,13 +249,5 @@ var NAVTREEINDEX66 =
 "de/d03/structxl7_1_1graphics_1_1textures_1_1TextureExtent3D.html#a7c0987266874757577a60ab5bfb1a5b7":[7,0,8,1,7,26,3],
 "de/d03/structxl7_1_1graphics_1_1textures_1_1TextureExtent3D.html#a96a4008865ba823f5109fc63222ce89d":[5,0,8,2,7,26,4],
 "de/d03/structxl7_1_1graphics_1_1textures_1_1TextureExtent3D.html#a96a4008865ba823f5109fc63222ce89d":[7,0,8,1,7,26,4],
-"de/d03/structxl7_1_1graphics_1_1textures_1_1TextureExtent3D.html#a9ae604df89f8e6f1a265d77cf1c71355":[5,0,8,2,7,26,0],
-"de/d03/structxl7_1_1graphics_1_1textures_1_1TextureExtent3D.html#a9ae604df89f8e6f1a265d77cf1c71355":[7,0,8,1,7,26,0],
-"de/d03/structxl7_1_1graphics_1_1textures_1_1TextureExtent3D.html#aa84749135e0dd087239a40f53a80c62e":[5,0,8,2,7,26,2],
-"de/d03/structxl7_1_1graphics_1_1textures_1_1TextureExtent3D.html#aa84749135e0dd087239a40f53a80c62e":[7,0,8,1,7,26,2],
-"de/d03/structxl7_1_1graphics_1_1textures_1_1TextureExtent3D.html#add817c0b072208252a77462bf3940fce":[5,0,8,2,7,26,1],
-"de/d03/structxl7_1_1graphics_1_1textures_1_1TextureExtent3D.html#add817c0b072208252a77462bf3940fce":[7,0,8,1,7,26,1],
-"de/d05/namespacedl7_1_1ini_1_1detail.html":[5,0,2,2,0],
-"de/d05/namespacedl7_1_1ini_1_1detail.html#a8c73c1af2331e6a5187acf3b8020fef2":[5,0,2,2,0,5],
-"de/d05/namespacedl7_1_1ini_1_1detail.html#a8c73c1af2331e6a5187acf3b8020fef2a07adb69019df06ba7b377961ae3b45d6":[5,0,2,2,0,5,1]
+"de/d03/structxl7_1_1graphics_1_1textures_1_1TextureExtent3D.html#a9ae604df89f8e6f1a265d77cf1c71355":[5,0,8,2,7,26,0]
 };
