@@ -16,7 +16,8 @@ var concepts =
       [ "config", "df/d08/namespacedl7_1_1config.html", [
         [ "detail", "d2/def/namespacedl7_1_1config_1_1detail.html", [
           [ "bound_sequence", "db/db6/conceptdl7_1_1config_1_1detail_1_1bound__sequence.html", null ],
-          [ "bound_optional", "dc/d43/conceptdl7_1_1config_1_1detail_1_1bound__optional.html", null ]
+          [ "bound_optional", "dc/d43/conceptdl7_1_1config_1_1detail_1_1bound__optional.html", null ],
+          [ "bound_map", "de/d1b/conceptdl7_1_1config_1_1detail_1_1bound__map.html", null ]
         ] ],
         [ "bound_struct", "da/de9/conceptdl7_1_1config_1_1bound__struct.html", null ],
         [ "named_enum", "da/de7/conceptdl7_1_1config_1_1named__enum.html", null ]

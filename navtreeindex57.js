@@ -1,5 +1,7 @@
 var NAVTREEINDEX57 =
 {
+"db/df3/structdl7_1_1xml_1_1Format.html#a79cbbb2f423475c561be08709a473cdea46f93f25d0dbb9ada04ac822ba055e8c":[7,0,2,6,5,2,1],
+"db/df3/structdl7_1_1xml_1_1Format.html#a79cbbb2f423475c561be08709a473cdeab1fe2c2a59e883740e7ea87667e44a24":[5,0,2,6,5,2,0],
 "db/df3/structdl7_1_1xml_1_1Format.html#a79cbbb2f423475c561be08709a473cdeab1fe2c2a59e883740e7ea87667e44a24":[7,0,2,6,5,2,0],
 "db/df3/structdl7_1_1xml_1_1Format.html#a9ef781ca58f247550ce2956561458f28":[5,0,2,6,5,7],
 "db/df3/structdl7_1_1xml_1_1Format.html#a9ef781ca58f247550ce2956561458f28":[7,0,2,6,5,7],
@@ -247,7 +249,5 @@ var NAVTREEINDEX57 =
 "dc/d3a/classdl7_1_1ini_1_1Section.html#af2756fb80de1ec2f3dbe4bbf3e4848d3":[5,0,2,2,5,1],
 "dc/d3a/classdl7_1_1ini_1_1Section.html#af2756fb80de1ec2f3dbe4bbf3e4848d3":[7,0,2,2,5,1],
 "dc/d3a/classdl7_1_1ini_1_1Section.html#af5e8f3e0bb9522401c7a8026c5a8c777":[5,0,2,2,5,17],
-"dc/d3a/classdl7_1_1ini_1_1Section.html#af5e8f3e0bb9522401c7a8026c5a8c777":[7,0,2,2,5,17],
-"dc/d3b/RenderingContext_8cpp.html":[8,0,7,1,24],
-"dc/d3c/structcl7_1_1text_1_1codec_1_1CodepointResult.html":[5,0,1,11,0,4]
+"dc/d3a/classdl7_1_1ini_1_1Section.html#af5e8f3e0bb9522401c7a8026c5a8c777":[7,0,2,2,5,17]
 };

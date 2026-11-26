@@ -1,5 +1,7 @@
 var NAVTREEINDEX58 =
 {
+"dc/d3b/RenderingContext_8cpp.html":[8,0,7,1,24],
+"dc/d3c/structcl7_1_1text_1_1codec_1_1CodepointResult.html":[5,0,1,11,0,4],
 "dc/d3c/structcl7_1_1text_1_1codec_1_1CodepointResult.html":[7,0,1,9,0,4],
 "dc/d3c/structcl7_1_1text_1_1codec_1_1CodepointResult.html#a38b769eea09e4af3b1c3ec92777351fa":[5,0,1,11,0,4,2],
 "dc/d3c/structcl7_1_1text_1_1codec_1_1CodepointResult.html#a38b769eea09e4af3b1c3ec92777351fa":[7,0,1,9,0,4,2],
@@ -15,7 +17,7 @@ var NAVTREEINDEX58 =
 "dc/d41/structfl7_1_1fonts_1_1Contour.html#ad30d8c88e3041aa87dfbda5451be833d":[7,0,3,0,4,2],
 "dc/d41/structfl7_1_1fonts_1_1Contour.html#af07f651dd998c084c4a1626c28c08100":[5,0,3,0,5,0],
 "dc/d41/structfl7_1_1fonts_1_1Contour.html#af07f651dd998c084c4a1626c28c08100":[7,0,3,0,4,0],
-"dc/d43/conceptdl7_1_1config_1_1detail_1_1bound__optional.html":[5,0,2,1,0,5],
+"dc/d43/conceptdl7_1_1config_1_1detail_1_1bound__optional.html":[5,0,2,1,0,7],
 "dc/d43/conceptdl7_1_1config_1_1detail_1_1bound__optional.html":[6,1,0,0,1],
 "dc/d45/structxl7_1_1graphics_1_1RenderingContext_1_1ResolvedTextureSamplerStates.html":[5,0,8,2,13,2],
 "dc/d45/structxl7_1_1graphics_1_1RenderingContext_1_1ResolvedTextureSamplerStates.html":[7,0,8,1,13,2],
@@ -247,7 +249,5 @@ var NAVTREEINDEX58 =
 "dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#ab6a92230915b2852da9d651f6edea294":[5,0,3,1,0,3,12],
 "dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#ab6a92230915b2852da9d651f6edea294":[7,0,3,1,0,3,12],
 "dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#abf36c19461d2c95b1a234865185ecca9":[5,0,3,1,0,3,6],
-"dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#abf36c19461d2c95b1a234865185ecca9":[7,0,3,1,0,3,6],
-"dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#ac2e927a234a8faaf23a5aef5c5f45123":[5,0,3,1,0,3,24],
-"dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#ac2e927a234a8faaf23a5aef5c5f45123":[7,0,3,1,0,3,24]
+"dc/d79/classfl7_1_1gui_1_1faces_1_1Frame.html#abf36c19461d2c95b1a234865185ecca9":[7,0,3,1,0,3,6]
 };

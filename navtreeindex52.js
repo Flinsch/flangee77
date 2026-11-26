@@ -1,5 +1,7 @@
 var NAVTREEINDEX52 =
 {
+"db/d04/structxl7_1_1graphics_1_1textures_1_1Texture2DDesc.html#a27b41e2e4621af68cbb2eec1734a57d8":[7,0,8,1,7,15,4],
+"db/d04/structxl7_1_1graphics_1_1textures_1_1Texture2DDesc.html#a427367fb41463b5949df0a5c81c9fc5a":[5,0,8,2,7,15,2],
 "db/d04/structxl7_1_1graphics_1_1textures_1_1Texture2DDesc.html#a427367fb41463b5949df0a5c81c9fc5a":[7,0,8,1,7,15,2],
 "db/d04/structxl7_1_1graphics_1_1textures_1_1Texture2DDesc.html#a4b1f2baf23820872d410215b4e4e29c4":[5,0,8,2,7,15,1],
 "db/d04/structxl7_1_1graphics_1_1textures_1_1Texture2DDesc.html#a4b1f2baf23820872d410215b4e4e29c4":[7,0,8,1,7,15,1],
@@ -247,7 +249,5 @@ var NAVTREEINDEX52 =
 "db/d48/classcl7_1_1io_1_1EndianAwareWriter.html#a1babf86bc47b8ee58c92dd673c4be6c8":[5,0,1,5,5,4],
 "db/d48/classcl7_1_1io_1_1EndianAwareWriter.html#a1babf86bc47b8ee58c92dd673c4be6c8":[7,0,1,4,5,4],
 "db/d48/classcl7_1_1io_1_1EndianAwareWriter.html#a2d3098829318efc753fa36db4336d5b2":[5,0,1,5,5,2],
-"db/d48/classcl7_1_1io_1_1EndianAwareWriter.html#a2d3098829318efc753fa36db4336d5b2":[7,0,1,4,5,2],
-"db/d48/classcl7_1_1io_1_1EndianAwareWriter.html#a6a2b7ef408c7f6019a5b64a34885d6cf":[5,0,1,5,5,0],
-"db/d48/classcl7_1_1io_1_1EndianAwareWriter.html#a6a2b7ef408c7f6019a5b64a34885d6cf":[7,0,1,4,5,0]
+"db/d48/classcl7_1_1io_1_1EndianAwareWriter.html#a2d3098829318efc753fa36db4336d5b2":[7,0,1,4,5,2]
 };
